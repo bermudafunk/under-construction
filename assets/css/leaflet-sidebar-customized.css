@@ -1,0 +1,166 @@
+.leaflet-sidebar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+    z-index: 2000;
+    transition: width 500ms;
+}
+
+.leaflet-sidebar.collapsed {
+    width: 60px;
+}
+
+.leaflet-sidebar-left {
+    left: 0;
+}
+
+.leaflet-sidebar-right {
+    right: 0;
+}
+
+.leaflet-sidebar-tabs {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    background-color: #F2FF5B;
+    width: 60px;
+}
+
+.leaflet-sidebar-left .leaflet-sidebar-tabs {
+    left: 0;
+}
+
+.leaflet-sidebar-right .leaflet-sidebar-tabs {
+    right: 0;
+}
+
+.leaflet-sidebar-tabs > button {
+    width: 100%;
+    aspect-ratio: 1/1;
+    font-size: 1em;
+    overflow: hidden;
+    transition: background-color 200ms;
+    background-color: #F2FF5B;
+    border: 0;
+    display: block;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    cursor: pointer;
+}
+.leaflet-sidebar-tabs > button:hover {
+    background-color: #E2EF4B;
+}
+
+.leaflet-sidebar-content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: #F2FF5B;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.leaflet-sidebar-left .leaflet-sidebar-content {
+    left: 60px;
+    right: 0;
+}
+
+.leaflet-sidebar-right .leaflet-sidebar-content {
+    left: 0;
+    right: 60px;
+}
+
+.leaflet-sidebar-pane {
+    display: none;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+    padding: 10px 20px;
+}
+
+.leaflet-sidebar-pane.active {
+    display: block;
+}
+
+.leaflet-sidebar-header {
+    margin: -10px -20px 0;
+    height: 40px;
+    padding: 0 20px;
+    line-height: 40px;
+    font-size: 14.4pt;
+    background-color: #F2FF5B;
+}
+
+.leaflet-sidebar-right .leaflet-sidebar-header {
+    padding-left: 40px;
+}
+
+
+@media (min-width: 768px) {
+  .leaflet-sidebar-left ~ .leaflet-control-container .leaflet-left {
+      transition: left 500ms;
+  }
+  .leaflet-sidebar-right ~ .leaflet-control-container .leaflet-right {
+    transition: right 500ms;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .leaflet-sidebar {
+    width: 325px;
+    max-width: 325px;
+  }
+  .leaflet-sidebar-pane {
+    min-width: 265px;
+  }
+  .leaflet-sidebar-left ~ .leaflet-control-container .leaflet-left {
+      left: 335px;
+  }
+  .leaflet-sidebar-right ~ .leaflet-control-container .leaflet-right {
+    right: 335px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .leaflet-sidebar {
+    width: 410px;
+    max-width: 410px;
+  }
+  .leaflet-sidebar-pane {
+    min-width: 350px;
+  }
+  .leaflet-sidebar-left ~ .leaflet-control-container .leaflet-left {
+    left: 420px;
+  }
+  .leaflet-sidebar-right ~ .leaflet-control-container .leaflet-right {
+    right: 420px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .leaflet-sidebar {
+    width: 480px;
+    max-width: 480px;
+  }
+  .leaflet-sidebar-pane {
+    min-width: 420px;
+  }
+  .leaflet-sidebar-left ~ .leaflet-control-container .leaflet-left {
+    left: 490px;
+  }
+  .leaflet-sidebar-right ~ .leaflet-control-container .leaflet-right {
+    right: 490px;
+  }
+}
+
+.leaflet-sidebar-right.collapsed ~ .leaflet-control-container .leaflet-right {
+    right: 70px;
+}
+
+.leaflet-sidebar-left.collapsed ~ .leaflet-control-container .leaflet-left {
+  left: 70px;
+}
