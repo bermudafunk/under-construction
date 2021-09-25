@@ -42,6 +42,9 @@ window.addEventListener('DOMContentLoaded', function(){
                 search_sidebar_fulltext.classList.remove('active');
                 search_sidebar_tags.classList.remove('active');
             });
+            sidebar_right.on('closing', _ => {
+                sidebar_right_dom.classList.remove('expanded');
+            });
             sidebar_right.on('opening', _ => {
                 search_sidebar_fulltext.classList.remove('active');
                 search_sidebar_tags.classList.remove('active');
@@ -86,6 +89,14 @@ window.addEventListener('DOMContentLoaded', function(){
             let waveform = document.querySelector('#play .waveform svg');
             let waveform_progress = waveform.querySelector('#progress');
             let waveform_update_interval = null;
+            let open_under_construction_info = document.querySelectorAll('.open-under-construction-info');
+            let sidebar_right_dom = document.querySelector('.leaflet-sidebar-right');
+            for(let opener of open_under_construction_info){
+                opener.addEventListener('click', _ => {
+                    sidebar_right_dom.classList.add('expanded');
+                    sidebar_right.open('#info');
+                });
+            }
             black_white_switcher.addEventListener('click', _ => {
                 if(body.classList.contains('black-white')){
                     black_white_switcher.querySelector('circle').setAttribute('fill', '#FFFFFF');

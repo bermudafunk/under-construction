@@ -24,33 +24,22 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
      * @param {string} [options.position=left] - Position of the sidebar: 'left' or 'right'
      * @param {string} [options.container] - ID of a predefined sidebar container that should be used
      */
-    initialize: function(options, deprecatedOptions) {
-        if (typeof options === 'string') {
-            console.warn('this syntax is deprecated. please use L.control.sidebar({ container }) now');
-            options = { container: options };
-        }
-
-        if (typeof options === 'object' && options.id) {
-            console.warn('this syntax is deprecated. please use L.control.sidebar({ container }) now');
-            options.container = options.id;
-        }
+    initialize: function(options) {
 
         this._tabitems = [];
         this._panes = [];
 
         L.setOptions(this, options);
-        L.setOptions(this, deprecatedOptions);
         return this;
     },
 
     /**
      * Add this sidebar to the specified map.
      *
-     * @param {L.Map} map
      * @returns {Sidebar}
      */
-    onAdd: function(map) {
-        var i, child, tabContainers, newContainer, container;
+    onAdd: function() {
+        let i, child, tabContainers, container;
 
         // use container from previous onAdd()
         container = this._container
@@ -70,7 +59,7 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
         this._tabContainerTop    = tabContainers[0] || null;
 
         // Store Tabs in Collection for easier iteration
-        for (i = 0; i < this._tabContainerTop.children.length; i++) {
+        for (i = 0; i < this._tabContainerTop.children.length; ++i) {
             child = this._tabContainerTop.children[i];
             child._sidebar = this;
             child._id = child.getAttribute('href'); // FIXME: this could break for links!
@@ -78,7 +67,7 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
         }
 
         // Store Panes in Collection for easier iteration
-        for (i = 0; i < this._paneContainer.children.length; i++) {
+        for (i = 0; i < this._paneContainer.children.length; ++i) {
             child = this._paneContainer.children[i];
             if (child.tagName === 'DIV' &&
                 L.DomUtil.hasClass(child, 'leaflet-sidebar-pane')) {
@@ -87,7 +76,7 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
         }
 
         // set click listeners for tab & close buttons
-        for (i = 0; i < this._tabitems.length; i++) {
+        for (i = 0; i < this._tabitems.length; ++i) {
             this._tabClick(this._tabitems[i], 'on');
         }
 
@@ -103,7 +92,7 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
     addTo: function (map) {
         this._map = map;
 
-        this._container = this.onAdd(map);
+        this._container = this.onAdd();
 
         L.DomUtil.addClass(this._container, 'leaflet-control');
         L.DomUtil.addClass(this._container, 'leaflet-sidebar-' + this.getPosition());
@@ -130,11 +119,11 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
         tab = id.slice(1);
 
         // Hide old active contents and show new content
-        for (i = 0; i < this._panes.length; i++) {
+        for (i = 0; i < this._panes.length; ++i) {
             child = this._panes[i];
             if (child.id === tab)
                 L.DomUtil.addClass(child, 'active');
-            else if (L.DomUtil.hasClass(child, 'active'))
+            else
                 L.DomUtil.removeClass(child, 'active');
         }
 
@@ -143,7 +132,7 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
             child = this._tabitems[i];
             if (child.getAttribute('href') === id)
                 L.DomUtil.addClass(child, 'active');
-            else if (L.DomUtil.hasClass(child, 'active'))
+            else
                 L.DomUtil.removeClass(child, 'active');
         }
 
@@ -164,15 +153,17 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
      * @returns {L.Control.Sidebar}
      */
     close: function() {
-        var i;
+        let i;
 
         // Remove old active highlights
-        for (i = 0; i < this._tabitems.length; i++) {
-            var child = this._tabitems[i];
-            if (L.DomUtil.hasClass(child, 'active'))
-                L.DomUtil.removeClass(child, 'active');
+        for (i = 0; i < this._tabitems.length; ++i) {
+            let child = this._tabitems[i];
+            L.DomUtil.removeClass(child, 'active');
         }
-
+        for (i = 0; i < this._panes.length; ++i) {
+            let child = this._panes[i];
+            L.DomUtil.removeClass(child, 'active');
+        }
         // close sidebar, if it's opened
         if (!L.DomUtil.hasClass(this._container, 'collapsed')) {
             this.fire('closing');
@@ -229,6 +220,6 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
  * @param {string} [options.container] - ID of a predefined sidebar container that should be used
  * @returns {Sidebar} A new sidebar instance
  */
-L.control.sidebar = function(options, deprecated) {
-    return new L.Control.Sidebar(options, deprecated);
+L.control.sidebar = function(options) {
+    return new L.Control.Sidebar(options);
 };

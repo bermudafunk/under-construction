@@ -269,7 +269,7 @@ $random_audio = $map_data[array_rand($map_data)];
                     </div>
                 </div>
                 <div class="leaflet-sidebar-tabs" role="tablist">
-                    <button href="#info" role="tab" aria-label="<?php esc_attr_e('Show info about the project', 'mannheim-under-construction'); ?>">
+                    <button class="open-under-construction-info" role="tab" aria-label="<?php esc_attr_e('Show info about the project', 'mannheim-under-construction'); ?>">
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 57.167 81.5" xml:space="preserve">
                             <g>
@@ -279,7 +279,7 @@ $random_audio = $map_data[array_rand($map_data)];
                             </g>
                         </svg>
                     </button>
-                    <button href="#info" role="tab" id="right_sidebar_title">
+                    <button class="open-under-construction-info" role="tab" id="right_sidebar_title" aria-hidden="true">
                         <span>M</span>
                         <span>a</span>
                         <span>n</span>
