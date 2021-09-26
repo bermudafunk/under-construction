@@ -3,6 +3,7 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="<?php esc_attr_e('Mannheim Under Construction, the audio map of civil societal engagement. This map introduces civil societal engagement in the city Mannheim.', 'mannheim-under-construction'); ?>">
 	<?php wp_head(); ?>
 </head>
 
@@ -83,18 +84,18 @@ $random_audio = $map_data[array_rand($map_data)];
     <div class="mannheim-under-construction-map-wrapper">
         <div class="mannheim-under-construction-map sidebar-map">
             <div class="mannheim-under-construction-onboarding active">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                      viewBox="0 0 57.167 81.5" xml:space="preserve" class="onboarding-arrow" id="onboarding-arrow-1">
                     <path d="M16.848,23.62h24.189l4.551,4.552H24.633l20.951,20.96l-3.207,3.229L21.398,31.406v20.955l-4.551-4.574V23.62z"/>
                 </svg>
                 <p class="onboarding-explainer" id="onboarding-explainer-1"><?php esc_html_e('Change the font size or switch to black/white view', 'mannheim-under-construction'); ?></p>
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                      viewBox="0 0 57.167 81.5" xml:space="preserve" class="onboarding-arrow" id="onboarding-arrow-2">
                     <path d="M16.848,23.62h24.189l4.551,4.552H24.633l20.951,20.96l-3.207,3.229L21.398,31.406v20.955l-4.551-4.574V23.62z"/>
                 </svg>
                 <p class="onboarding-explainer" id="onboarding-explainer-2"><?php esc_html_e('Search in archive', 'mannheim-under-construction'); ?></p>
                 <p class="onboarding-explainer" id="onboarding-explainer-3"><?php esc_html_e('Choose a marker...', 'mannheim-under-construction'); ?></p>
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                      viewBox="0 0 57.167 81.5" xml:space="preserve" id="onboarding-marker">
                     <g>
                         <path d="M45.104,31.343c0,12.841-16.722,34.775-17.248,34.249c-6.74-6.732-17.25-21.408-17.25-34.249
@@ -104,7 +105,7 @@ $random_audio = $map_data[array_rand($map_data)];
                         </g>
                     </g>
                 </svg>
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                      viewBox="0 0 57.167 81.5" xml:space="preserve" class="onboarding-arrow" id="onboarding-arrow-3">
                     <path d="M16.848,23.62h24.189l4.551,4.552H24.633l20.951,20.96l-3.207,3.229L21.398,31.406v20.955l-4.551-4.574V23.62z"/>
                 </svg>
@@ -136,7 +137,7 @@ $random_audio = $map_data[array_rand($map_data)];
                         <div class="content-title"><?php echo esc_html($random_audio['title']); ?></div>
                         <div class="content-player">
                             <div class="play_pause_button" aria-label="<?php esc_attr_e('Play/Pause', 'mannheim-under-construction'); ?>">
-                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                      viewBox="0 0 114.334 81.5" xml:space="preserve">
                                     <path d="M17.185,55.664V25.225l26.361,15.229L17.185,55.664z"/>
                                     <g>
@@ -175,7 +176,7 @@ $random_audio = $map_data[array_rand($map_data)];
                 </div>
                 <div class="leaflet-sidebar-tabs" role="tablist">
                     <button id="black_white_switcher" aria-label="<?php esc_attr_e('Change contrast', 'mannheim-under-construction'); ?>">
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 57.167 81.5" xml:space="preserve">
                             <g>
                                 <circle fill="#FFFFFF" stroke="#000000" stroke-width="2" stroke-miterlimit="10" cx="29.396" cy="41.105" r="14.771"/>
@@ -184,7 +185,7 @@ $random_audio = $map_data[array_rand($map_data)];
                         </svg>
                     </button>
                     <button id="font_size_switcher" role="button" aria-label="<?php esc_attr_e('Change font size', 'mannheim-under-construction'); ?>">
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 57.167 81.5" xml:space="preserve">
                             <g>
                                 <g>
@@ -198,7 +199,7 @@ $random_audio = $map_data[array_rand($map_data)];
                         </svg>
                     </button>
                     <button href="#search" role="tab" aria-label="<?php esc_attr_e('Search', 'mannheim-under-construction'); ?>">
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 57.167 81.5" xml:space="preserve">
                             <g>
                                 <circle fill="none" stroke="#000000" stroke-width="3.5" stroke-miterlimit="10" cx="35.522" cy="33.893" r="16.597"/>
@@ -211,13 +212,13 @@ $random_audio = $map_data[array_rand($map_data)];
                         </svg>
                     </button>
                     <button id="play_tab_button" href="#play" role="tab" aria-label="<?php esc_attr_e('Open player', 'mannheim-under-construction'); ?>">
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 57.167 81.5" xml:space="preserve">
                             <path d="M17.185,55.664V25.225l26.361,15.229L17.185,55.664z"/>
                         </svg>
                     </button>
                     <button id="back_button" aria-label="<?php esc_attr_e('Back', 'mannheim-under-construction'); ?>">
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 57.167 81.5" xml:space="preserve">
                             <path d="M18.812,32.084v6.938L10.14,30.35l8.672-8.672v6.938h12.141c3.844,0,7.117,1.355,9.82,4.066s4.055,5.98,4.055,9.809
                                 s-1.355,7.098-4.066,9.809s-5.98,4.066-9.809,4.066H18.812v-3.469h12.141c2.875,0,5.328-1.016,7.359-3.047
@@ -270,7 +271,7 @@ $random_audio = $map_data[array_rand($map_data)];
                 </div>
                 <div class="leaflet-sidebar-tabs" role="tablist">
                     <button class="open-under-construction-info" role="tab" aria-label="<?php esc_attr_e('Show info about the project', 'mannheim-under-construction'); ?>">
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 57.167 81.5" xml:space="preserve">
                             <g>
                                 <rect x="11.5" y="25" width="36" height="6"/>
@@ -321,7 +322,7 @@ $random_audio = $map_data[array_rand($map_data)];
         <span class="tags-info" hidden><?php echo esc_html(json_encode($tag_data)); ?></span>
         <noscript id="mannheim-under-construction-no-js-error"><p><?php esc_html_e('Sorry, you need to enable JavaScript to use this map.', 'mannheim-under-construction'); ?></p></noscript>
     </div>
-</main><!-- #main -->
+</main>
 <?php wp_footer(); ?>
 </body>
 </html>
