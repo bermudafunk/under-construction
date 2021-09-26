@@ -173,17 +173,12 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
         return this;
     },
 
-    onTabClick: function(e) {
+    onTabClick: function() {
         // `this` points to the tab DOM element!
         if (L.DomUtil.hasClass(this, 'active')) {
             this._sidebar.close();
-        } else if (!L.DomUtil.hasClass(this, 'disabled')) {
-            if (typeof this._button === 'string') // an url
-                window.location.href = this._button;
-            else if (typeof this._button === 'function') // a clickhandler
-                this._button(e);
-            else // a normal pane
-                this._sidebar.open(this.getAttribute('href'));
+        } else {
+            this._sidebar.open(this.getAttribute('href'));
         }
     },
 
@@ -192,7 +187,7 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
      * depending on the second argument.
      * @private
      *
-     * @param {DOMelement} [tab]
+     * @param {HTMLElement} [tab]
      * @param {String} [on] 'on' or 'off'
      */
     _tabClick: function(tab, on) {

@@ -154,6 +154,7 @@ class Mannheim_Under_Constrcution
 				}
 				wp_deregister_style( 'wp-block-library' );
 				wp_deregister_style( 'wp-block-library-theme' );
+				wp_deregister_script( 'wp-embed' );
 				wp_enqueue_style( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.css', __FILE__ ), [], '1.7.1' );
 				wp_enqueue_script( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.js', __FILE__ ), [], '1.7.1', true );
 				wp_enqueue_style( 'mannheim-under-construction-sidebar-v2', plugins_url( 'assets/css/leaflet-sidebar-customized.css', __FILE__ ), [], substr( md5_file( __DIR__ . '/assets/css/leaflet-sidebar-customized.css' ), 20 ) );
