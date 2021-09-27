@@ -112,7 +112,6 @@
 @media (min-width: 768px) and (max-width: 991px) {
   .leaflet-sidebar {
     width: 325px;
-    max-width: 325px;
   }
   .leaflet-sidebar-pane {
     min-width: 265px;
@@ -128,7 +127,6 @@
 @media (min-width: 992px) and (max-width: 1199px) {
   .leaflet-sidebar {
     width: 410px;
-    max-width: 410px;
   }
   .leaflet-sidebar-pane {
     min-width: 350px;
@@ -144,7 +142,6 @@
 @media (min-width: 1200px) {
   .leaflet-sidebar {
     width: 480px;
-    max-width: 480px;
   }
   .leaflet-sidebar-pane {
     min-width: 420px;

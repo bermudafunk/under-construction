@@ -255,12 +255,50 @@ $random_audio = $map_data[array_rand($map_data)];
             <div id="right_sidebar" class="leaflet-sidebar collapsed leaflet-sidebar-right">
                 <div class="leaflet-sidebar-content">
                     <div class="leaflet-sidebar-pane" id="info" role="tabpanel">
-                        <h1><?php _e('Welcome to <span class="font-neue-black">Mannheim Under Construction</span>', 'mannheim-under-construction'); ?></h1>
-                        <p><?php esc_html_e('the audio map of civil societal engagement', 'mannheim-under-construction'); ?></p>
-                        <p><?php printf(__('This map introduces civil societal engagement in the city Mannheim. <span class="font-neue-black">Mannheim Under Construction</span> means, means that this engagement is an ongoing process, which always continues to be written, thought and spoken. The Free Radio Rhein-Neckar e. V., the %s, accompany this process with the eponymous Project.', 'mannheim-under-construction'), '<a href="https://bermudafunk.org" rel="noopener" target="_blank">bermuda.funk</a>'); ?></p>
-                        <h2><?php esc_html_e('Discover and listen: How does engagement sound?', 'mannheim-under-construction'); ?></h2>
-                        <p><?php esc_html_e('Locations and engagement. Locations and memory. Markers in the city. Current and historical. Interim report and archive. Activism. Empowerment.', 'mannheim-under-construction'); ?></p>
-                        <p><?php esc_html_e('The Formats are diverse: Project introduction, interviews, Stories and other – also experimental – Posts in various lengths invite to linger, browse, discover and listen.', 'mannheim-under-construction'); ?></p>
+                        <div class="left-part">
+                            <div class="info-menu">
+                                <button class="under-construction-more-info" role="tab" aria-label="<?php esc_attr_e('Show more info about the project', 'mannheim-under-construction'); ?>">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         viewBox="0 0 57.167 81.5" xml:space="preserve">
+                                        <g>
+                                            <rect x="11.5" y="25" width="36" height="6"/>
+                                            <rect x="11.5" y="38" width="36" height="6"/>
+                                            <rect x="11.5" y="52" width="36" height="6"/>
+                                        </g>
+                                    </svg>
+                                </button>
+                                <div>
+                                    <button href="#imprint" id="imprint_menu" role="tab">
+                                        <?php esc_html_e('Imprint', 'mannheim-under-construction'); ?>
+                                    </button>
+                                    <button href="#privacy" id="privacy_menu" role="tab">
+                                        <?php esc_html_e('Privacy', 'mannheim-under-construction'); ?>
+                                    </button>
+                                    <button id="help_menu" role="tab">
+                                        <?php esc_html_e('Help', 'mannheim-under-construction'); ?>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="under-construction-title">
+                                <div class="title-line-1">
+                                    <span>Ma</span><span>nn</span><span>he</span><span>im</span>
+                                </div>
+                                <div class="title-line-2">
+                                    <span>U</span><span>n</span><span>de</span><span>r</span>
+                                </div>
+                                <div class="title-line-3">
+                                    <span>C</span><span>onst</span><span>ruc</span><span>tion</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right-part">
+                            <p><?php _e('Welcome to <span class="font-neue-black">Mannheim Under Construction</span>', 'mannheim-under-construction'); ?></p>
+                            <p><?php esc_html_e('the audio map of civil societal engagement', 'mannheim-under-construction'); ?></p>
+                            <p><?php printf(__('This map introduces civil societal engagement in the city Mannheim. <span class="font-neue-black">Mannheim Under Construction</span> means, means that this engagement is an ongoing process, which always continues to be written, thought and spoken. The Free Radio Rhein-Neckar e. V., the %s, accompany this process with the eponymous Project.', 'mannheim-under-construction'), '<a href="https://bermudafunk.org" rel="noopener" target="_blank">bermuda.funk</a>'); ?></p>
+                            <h2><?php esc_html_e('Discover and listen: How does engagement sound?', 'mannheim-under-construction'); ?></h2>
+                            <p><?php esc_html_e('Locations and engagement. Locations and memory. Markers in the city. Current and historical. Interim report and archive. Activism. Empowerment.', 'mannheim-under-construction'); ?></p>
+                            <p><?php esc_html_e('The Formats are diverse: Project introduction, interviews, Stories and other – also experimental – Posts in various lengths invite to linger, browse, discover and listen.', 'mannheim-under-construction'); ?></p>
+                        </div>
                     </div>
                     <div class="leaflet-sidebar-pane" id="imprint" role="tabpanel">
                         <?php echo apply_filters( 'the_content', get_the_content(null, false, 169) ); ?>

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Mannheim Under Construction\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-13 20:28+0000\n"
-"PO-Revision-Date: 2021-09-26 11:24+0000\n"
+"PO-Revision-Date: 2021-09-27 23:47+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch (Sie)\n"
 "Language: de_DE_formal\n"
@@ -154,7 +154,7 @@ msgstr "Daniel Winzen"
 msgid "Desired location"
 msgstr "Gewünschter Ort"
 
-#: page-map.php:261
+#: page-map.php:298
 msgid "Discover and listen: How does engagement sound?"
 msgstr "Entdecken und zuhören: Wie klingt Engagement?"
 
@@ -209,11 +209,15 @@ msgstr ""
 "Container, welches das moov Atom am Anfang hat und von fast allen Browsern "
 "unterstützt wird."
 
+#: page-map.php:278
+msgid "Help"
+msgstr "Hilfe"
+
 #. Author URI of the plugin
 msgid "https://danwin1210.me"
 msgstr "https://danwin1210.me"
 
-#: page-map.php:313
+#: page-map.php:272 page-map.php:351
 msgid "Imprint"
 msgstr "Impressum"
 
@@ -221,7 +225,7 @@ msgstr "Impressum"
 msgid "Insert into audio station"
 msgstr "In Audiostation einfügen"
 
-#: page-map.php:262
+#: page-map.php:299
 msgid ""
 "Locations and engagement. Locations and memory. Markers in the city. Current "
 "and historical. Interim report and archive. Activism. Empowerment."
@@ -298,7 +302,7 @@ msgstr "Oder hören Sie sich diesen zufällig ausgewählten Beitrag an:"
 msgid "Play/Pause"
 msgstr "Abspielen/Pausieren"
 
-#: page-map.php:316
+#: page-map.php:275 page-map.php:354
 msgid "Privacy"
 msgstr "Datenschutz"
 
@@ -335,11 +339,15 @@ msgstr "Vorwärts spulen"
 msgid "Short and longer posts."
 msgstr "Kurze und längere Beiträge."
 
-#: page-map.php:273
+#: page-map.php:311
 msgid "Show info about the project"
 msgstr "Informationen zum Projekt anzeigen"
 
-#: page-map.php:323
+#: page-map.php:260
+msgid "Show more info about the project"
+msgstr "Mehr Informationen zum Projekt anzeigen"
+
+#: page-map.php:361
 msgid "Sorry, you need to enable JavaScript to use this map."
 msgstr ""
 "Tut uns leid, aber Sie benötigen JavaScript um diese Karte zu benutzen."
@@ -348,12 +356,12 @@ msgstr ""
 msgid "Start"
 msgstr "Start"
 
-#: page-map.php:259
+#: page-map.php:296
 #| msgid "the audio map of civil societal engagement "
 msgid "the audio map of civil societal engagement"
 msgstr "der Audio-Stadtkarte zivilgesellschaftlichen Engagements"
 
-#: page-map.php:263
+#: page-map.php:300
 msgid ""
 "The Formats are diverse: Project introduction, interviews, Stories and other "
 "– also experimental – Posts in various lengths invite to linger, browse, "
@@ -395,7 +403,7 @@ msgstr ""
 "Diese digitale Audio-Stadtkarte ist Teil des gleichnamigen Projekts von "
 "bermuda.funk, dem Freien Radio Rhein-Neckar."
 
-#: page-map.php:260
+#: page-map.php:297
 #, php-format
 msgid ""
 "This map introduces civil societal engagement in the city Mannheim. <span "
@@ -462,11 +470,11 @@ msgstr ""
 msgid "Welcome to"
 msgstr "Willkommen bei"
 
-#: page-map.php:258
+#: page-map.php:295
 msgid ""
 "Welcome to <span class=\"font-neue-black\">Mannheim Under Construction</span>"
 msgstr ""
-"Weillkommen bei <span class=\"font-neue-black\">Mannheim Under "
+"Willkommen bei <span class=\"font-neue-black\">Mannheim Under "
 "Construction</span>"
 
 #: index.php:173

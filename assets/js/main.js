@@ -327,6 +327,17 @@ window.addEventListener('DOMContentLoaded', function(){
                     }
                 }
             });
+            document.querySelector('#help_menu').addEventListener('click', _ => {
+                onboarding.classList.add('active');
+            });
+            document.querySelector('#imprint_menu').addEventListener('click', _ => {
+                sidebar_right_dom.classList.remove('expanded');
+                sidebar_right.open('#imprint');
+            });
+            document.querySelector('#privacy_menu').addEventListener('click', _ => {
+                sidebar_right_dom.classList.remove('expanded');
+                sidebar_right.open('#privacy');
+            });
         }
     }
 });
