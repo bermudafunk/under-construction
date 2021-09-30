@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 zoomOutText: '−',
                 zoomInTitle: mannheim_under_construction.zoom_in_title,
                 zoomOutTitle: mannheim_under_construction.zoom_out_title,
-                position: 'bottomleft',
+                position: 'topleft',
             }).addTo(map);
             let tile_layer_light = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',

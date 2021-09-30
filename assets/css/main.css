@@ -75,6 +75,18 @@ body.small-font .leaflet-marker-icon {
     font-weight: bold;
     font-size: 0.9em;
 }
+button,
+input {
+    font-family: 'Junction', sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+button {
+    cursor: pointer;
+}
 html,
 body,
 main,
@@ -112,20 +124,22 @@ body.black-white .content-player .waveform > svg #remaining {
 }
 .content-player .waveform > svg {
     width: 100%;
+    cursor: pointer;
 }
 .content-player > div {
     padding: 10px;
 }
 .content-player,
-.content-player > div {
+.content-player > div,
+.content-player > button {
     align-items: center;
     display: flex;
 }
-.content-player .play_pause_button {
+.content-player button {
     cursor: pointer;
     width: 5em;
 }
-body.black-white .content-player .play_pause_button {
+body.black-white .content-player svg {
     fill: #FFFFFF;
 }
 .content-player .audio-time {
@@ -251,6 +265,7 @@ body.black-white .leaflet-sidebar:not(.collapsed) ~ .leaflet-map-pane {
     display: grid;
 }
 .mannheim-under-construction-onboarding.active ~ .leaflet-map-pane .leaflet-marker-pane,
+.mannheim-under-construction-onboarding.active ~ .leaflet-control-container,
 .mannheim-under-construction-onboarding.active ~ .leaflet-sidebar-right {
     visibility: hidden;
 }
@@ -298,9 +313,6 @@ body.black-white .leaflet-sidebar:not(.collapsed) ~ .leaflet-map-pane {
 #onboarding-start-button {
     font-size: 4em;
     text-align: center;
-    background: transparent;
-    outline: none;
-    border: none;
 }
 .onboarding-welcome {
     font-size: 1.2em;
@@ -330,9 +342,6 @@ body.black-white .leaflet-sidebar:not(.collapsed) ~ .leaflet-map-pane {
 }
 .mannheim-under-construction-search input[type=search] {
     background: #F2FF5B url("../img/uc_suche_icon.svg") no-repeat calc(100% - 10px) center;
-}
-.mannheim-under-construction-search button {
-    cursor: pointer;
 }
 body.black-white .mannheim-under-construction-search input[type=search],
 body.black-white .mannheim-under-construction-search button {
@@ -383,6 +392,7 @@ a, a:visited, a:hover, a:active, .leaflet-container a {
     display: none;
     padding: 10px;
     overflow-y: auto;
+    cursor: auto;
 }
 .search_sidebar.active {
     display: block;
@@ -492,13 +502,7 @@ body.wait .search_sidebar {
     width: 100%;
 }
 #info button {
-    font-family: 'Junction', sans-serif;
-    font-weight: bold;
     display: flex;
-    font-size: 1em;
-    background-color: transparent;
-    outline: none;
-    border: none;
 }
 #info .under-construction-more-info {
     width: 60px;
@@ -509,9 +513,6 @@ body.wait .search_sidebar {
 }
 #info .info-menu {
     display: flex;
-}
-#info .info-menu button {
-    cursor: pointer;
 }
 .under-construction-title span {
     display: block;

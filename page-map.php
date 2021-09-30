@@ -136,7 +136,7 @@ $random_audio = $map_data[array_rand($map_data)];
                     <div class="leaflet-sidebar-pane" id="play" role="tabpanel">
                         <div class="content-title"><?php echo esc_html($random_audio['title']); ?></div>
                         <div class="content-player">
-                            <div class="play_pause_button" aria-label="<?php esc_attr_e('Play/Pause', 'mannheim-under-construction'); ?>">
+                            <button class="play_pause_button" aria-label="<?php esc_attr_e('Play/Pause', 'mannheim-under-construction'); ?>">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                      viewBox="0 0 114.334 81.5" xml:space="preserve">
                                     <path d="M17.185,55.664V25.225l26.361,15.229L17.185,55.664z"/>
@@ -145,7 +145,7 @@ $random_audio = $map_data[array_rand($map_data)];
                                         <rect x="88.667" y="27" width="9" height="31"/>
                                     </g>
                                 </svg>
-                            </div>
+                            </button>
                             <div class="waveform">
                                 <svg preserveAspectRatio="none" width="500" height="50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 100">
                                     <linearGradient id="Gradient" x1="0" x2="0" y1="0" y2="1">
@@ -158,15 +158,29 @@ $random_audio = $map_data[array_rand($map_data)];
                                     <rect id="progress" mask="url(#Mask)" x="0" y="0" width="0" height="100"/>
                                 </svg>
                             </div>
-                            <div class="audio-time">
-                                <span class="content-length" aria-label="<?php echo esc_attr($random_audio['length_readable']); ?>"><?php echo esc_html($random_audio['length']); ?></span>
-                            </div>
-                        </div>
-                        <div class="content-player">
-                            <button id="seek_backwards"><?php esc_html_e('Seek backwards', 'mannheim-under-construction'); ?></button>
-                            <button id="seek_forwards"><?php esc_html_e('Seek forwards', 'mannheim-under-construction'); ?></button>
+                            <button id="seek_backwards" class="seek-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     viewBox="0 0 57.167 53.667" xml:space="preserve">
+                                    <g>
+                                        <path d="M29.316,25.454l13.182-15.229v30.439L29.316,25.454z"/>
+                                        <path d="M17.191,25.454l13.182-15.229v30.439L17.191,25.454z"/>
+                                    </g>
+                                </svg>
+                            </button>
+                            <button id="seek_forwards" class="seek-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        viewBox="0 0 57.167 53.667" xml:space="preserve">
+                                    <g>
+                                        <path d="M17.191,40.665V10.226l13.182,15.229L17.191,40.665z"/>
+                                        <path d="M29.316,40.665V10.226l13.182,15.229L29.316,40.665z"/>
+                                    </g>
+                                </svg>
+                            </button>
                         </div>
                         <div class="content-description"><?php echo $random_audio['description']; ?></div>
+                        <div class="content-audio-time">
+                            <p class="content-length" aria-label="<?php echo esc_attr($random_audio['length_readable']); ?>"><?php echo esc_html($random_audio['length']); ?></p>
+                        </div>
                         <div class="content-tags">
                             <?php foreach ($random_audio['tags'] as $term_id) {
                                 echo '<div class="tag" data-tagid="' . esc_attr($term_id) . '">#' . esc_html($tag_data[$term_id]) . '</div>';
