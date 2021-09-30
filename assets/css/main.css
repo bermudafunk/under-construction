@@ -232,6 +232,15 @@ body.black-white .leaflet-sidebar:not(.collapsed) ~ .leaflet-map-pane {
     position: absolute;
     bottom: 0;
 }
+button.close-button{
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    right: 0;
+}
+.search-intro-text {
+    margin-right: 60px;
+}
 #imprint_button {
     position: absolute;
     bottom: 30px;
@@ -464,6 +473,9 @@ body.black-white .leaflet-sidebar-content {
 #search-fulltext .audios li {
     cursor: pointer;
 }
+#search-fulltext .message{
+    margin-right: 60px;
+}
 body.wait .leaflet-popup-pane,
 body.wait .leaflet-sidebar-pane input,
 body.wait .leaflet-control,
@@ -487,7 +499,7 @@ body.wait .search_sidebar {
 .leaflet-sidebar-right.expanded .leaflet-sidebar-tabs {
     display: none;
 }
-.leaflet-sidebar-right .leaflet-sidebar-content{
+.leaflet-sidebar-right.expanded .leaflet-sidebar-content{
     right: 0;
 }
 .leaflet-bottom .leaflet-control-zoom {

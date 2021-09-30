@@ -75,7 +75,7 @@ window.addEventListener('DOMContentLoaded', function(){
             let player = document.querySelector('#audio_player');
             let player_new = document.querySelector('#audio_player_new');
             let play_pause_button = document.querySelector('.play_pause_button');
-            let back_button = document.querySelector('#back_button');
+            let back_buttons = document.querySelectorAll('#back_button, button.close-button');
             let black_white_switcher = document.querySelector('#black_white_switcher');
             let font_size_button = document.querySelector('#font_size_switcher');
             let onboarding = document.querySelector('.mannheim-under-construction-onboarding');
@@ -109,16 +109,18 @@ window.addEventListener('DOMContentLoaded', function(){
                 }
                 body.classList.toggle('black-white');
             });
-            back_button.addEventListener('click', _ => {
-                sidebar_right.close();
-                if(search_sidebar_tags.classList.contains('active')){
-                    search_sidebar_tags.classList.remove('active');
-                }else if(search_sidebar_fulltext.classList.contains('active')){
-                    search_sidebar_fulltext.classList.remove('active');
-                } else {
-                    sidebar_left.close();
-                }
-            });
+            for(let back_button of back_buttons) {
+                back_button.addEventListener('click', _ => {
+                    sidebar_right.close();
+                    if (search_sidebar_tags.classList.contains('active')) {
+                        search_sidebar_tags.classList.remove('active');
+                    } else if (search_sidebar_fulltext.classList.contains('active')) {
+                        search_sidebar_fulltext.classList.remove('active');
+                    } else {
+                        sidebar_left.close();
+                    }
+                });
+            }
             let font_size = 2;
             font_size_button.addEventListener('click', _ => {
                 ++font_size;

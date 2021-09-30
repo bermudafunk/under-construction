@@ -126,7 +126,16 @@ $random_audio = $map_data[array_rand($map_data)];
             <div id="left_sidebar" class="leaflet-sidebar collapsed leaflet-sidebar-left">
                 <div class="leaflet-sidebar-content">
                     <div class="leaflet-sidebar-pane" id="search" role="tabpanel">
-                        <p><?php esc_html_e('Next to the full-text search (by search phrase) we have assigned tags to the posts – these are, as always, subjektive, but can help finding posts with similar topics.', 'mannheim-under-construction'); ?></p>
+                        <button class="close-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                 viewBox="0 0 57.167 53.667" xml:space="preserve">
+                                <g>
+                                    <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
+                                    <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
+                                </g>
+                            </svg>
+                        </button>
+                        <p class="search-intro-text"><?php esc_html_e('Next to the full-text search (by search phrase) we have assigned tags to the posts – these are, as always, subjektive, but can help finding posts with similar topics.', 'mannheim-under-construction'); ?></p>
                         <form class="mannheim-under-construction-search">
                             <button type="button"><?php esc_html_e('Search for tags', 'mannheim-under-construction'); ?></button>
                             <input name="s" type="search" placeholder="<?php esc_attr_e('Enter a search phrase', 'mannheim-under-construction'); ?>" aria-label="<?php esc_attr_e('Enter a search phrase', 'mannheim-under-construction'); ?>">
@@ -134,6 +143,15 @@ $random_audio = $map_data[array_rand($map_data)];
                         </form>
                     </div>
                     <div class="leaflet-sidebar-pane" id="play" role="tabpanel">
+                        <button class="close-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                 viewBox="0 0 57.167 53.667" xml:space="preserve">
+                                <g>
+                                    <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
+                                    <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
+                                </g>
+                            </svg>
+                        </button>
                         <div class="content-title"><?php echo esc_html($random_audio['title']); ?></div>
                         <div class="content-player">
                             <button class="play_pause_button" aria-label="<?php esc_attr_e('Play/Pause', 'mannheim-under-construction'); ?>">
@@ -242,6 +260,15 @@ $random_audio = $map_data[array_rand($map_data)];
                 </div>
             </div>
             <div class="search_sidebar" id="search-tags">
+                <button class="close-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                         viewBox="0 0 57.167 53.667" xml:space="preserve">
+                        <g>
+                            <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
+                            <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
+                        </g>
+                    </svg>
+                </button>
                 <?php
                 if(is_array($tag_data)){
                     foreach ($tag_data as $term_id => $term_name) {
@@ -263,6 +290,15 @@ $random_audio = $map_data[array_rand($map_data)];
                 ?>
             </div>
             <div class="search_sidebar" id="search-fulltext">
+                <button class="close-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                         viewBox="0 0 57.167 53.667" xml:space="preserve">
+                        <g>
+                            <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
+                            <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
+                        </g>
+                    </svg>
+                </button>
                 <div class="message"></div>
                 <ol class="audios"></ol>
             </div>
@@ -306,6 +342,15 @@ $random_audio = $map_data[array_rand($map_data)];
                             </div>
                         </div>
                         <div class="right-part">
+                            <button class="close-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     viewBox="0 0 57.167 53.667" xml:space="preserve">
+                                <g>
+                                    <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
+                                    <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
+                                </g>
+                            </svg>
+                            </button>
                             <p><?php _e('Welcome to <span class="font-neue-black">Mannheim Under Construction</span>', 'mannheim-under-construction'); ?></p>
                             <p><?php esc_html_e('the audio map of civil societal engagement', 'mannheim-under-construction'); ?></p>
                             <p><?php printf(__('This map introduces civil societal engagement in the city Mannheim. <span class="font-neue-black">Mannheim Under Construction</span> means, means that this engagement is an ongoing process, which always continues to be written, thought and spoken. The Free Radio Rhein-Neckar e. V., the %s, accompany this process with the eponymous Project.', 'mannheim-under-construction'), '<a href="https://bermudafunk.org" rel="noopener" target="_blank">bermuda.funk</a>'); ?></p>
@@ -315,9 +360,27 @@ $random_audio = $map_data[array_rand($map_data)];
                         </div>
                     </div>
                     <div class="leaflet-sidebar-pane" id="imprint" role="tabpanel">
+                        <button class="close-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                 viewBox="0 0 57.167 53.667" xml:space="preserve">
+                                <g>
+                                    <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
+                                    <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
+                                </g>
+                            </svg>
+                        </button>
                         <?php echo apply_filters( 'the_content', get_the_content(null, false, 169) ); ?>
                     </div>
                     <div class="leaflet-sidebar-pane" id="privacy" role="tabpanel">
+                        <button class="close-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                 viewBox="0 0 57.167 53.667" xml:space="preserve">
+                                <g>
+                                    <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
+                                    <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
+                                </g>
+                            </svg>
+                        </button>
                         <?php echo apply_filters( 'the_content', get_the_content(null, false, 7) ); ?>
                     </div>
                 </div>
