@@ -172,6 +172,7 @@ class Mannheim_Under_Constrcution
 						'search_error_message' => esc_html__('Oops, an error occured while loading your search results. Please try again', 'mannheim-under-construction'),
                         'zoom_in_title' => esc_html__('Zoom in', 'mannheim-under-construction'),
                         'zoom_out_title' => esc_html__('Zoom out', 'mannheim-under-construction'),
+                        'back' => esc_html__('Back', 'mannheim-under-construction'),
 					]
 				);
 		    }

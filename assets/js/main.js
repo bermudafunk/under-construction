@@ -330,6 +330,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 }
             });
             document.querySelector('#help_menu').addEventListener('click', _ => {
+                onboarding.querySelector('#onboarding-start-button').innerText = mannheim_under_construction.back;
                 onboarding.classList.add('active');
             });
             document.querySelector('#imprint_menu').addEventListener('click', _ => {
