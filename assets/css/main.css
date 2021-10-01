@@ -119,7 +119,9 @@ main,
 .content-player .waveform > svg #remaining {
     fill: #000000;
 }
-body.black-white .content-player .waveform > svg #remaining {
+body.black-white .content-player .waveform > svg #remaining,
+body.black-white .content-player svg,
+body.black-white .leaflet-sidebar-right .leaflet-sidebar-content svg {
     fill: #FFFFFF;
 }
 .content-player .waveform > svg {
@@ -138,9 +140,6 @@ body.black-white .content-player .waveform > svg #remaining {
 .content-player button {
     cursor: pointer;
     width: 5em;
-}
-body.black-white .content-player svg {
-    fill: #FFFFFF;
 }
 .content-player .audio-time {
     width: 5em;
@@ -387,6 +386,10 @@ body.black-white .leaflet-sidebar-content::-webkit-scrollbar-thumb {
 a, a:visited, a:hover, a:active, .leaflet-container a {
     color: #000000;
     text-decoration: underline;
+}
+body.black-white .leaflet-sidebar a,
+body.black-white .leaflet-sidebar-right .leaflet-sidebar-content button {
+    color: #FFFFFF;
 }
 .leaflet-sidebar, .leaflet-touch .leaflet-bar a {
     text-decoration: none;
