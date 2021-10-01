@@ -557,3 +557,15 @@ body.wait .search_sidebar {
         height: 4em;
     }
 }
+#deepdive-more-info {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+#deepdive-more-info span {
+    align-self: center;
+}
+#deepdive-more-info svg {
+    width: 60px;
+    height: 60px;
+}
