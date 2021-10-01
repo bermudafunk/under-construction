@@ -307,7 +307,7 @@ $random_audio = $map_data[array_rand($map_data)];
                     <div class="leaflet-sidebar-pane" id="info" role="tabpanel">
                         <div class="left-part">
                             <div class="info-menu">
-                                <button class="under-construction-more-info" role="tab" aria-label="<?php esc_attr_e('Show more info about the project', 'mannheim-under-construction'); ?>">
+                                <button id="info-menu-button" class="under-construction-more-info" role="tab" aria-label="<?php esc_attr_e('Show more info about the project', 'mannheim-under-construction'); ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                          viewBox="0 0 57.167 81.5" xml:space="preserve">
                                         <g>
@@ -341,6 +341,40 @@ $random_audio = $map_data[array_rand($map_data)];
                                 </div>
                             </div>
                         </div>
+                        <div class="open-middle-part">
+                            <p><span class="font-neue-black">Mannheim Under Construction</span> ist ein Projekt des <a href="https://bermudafunk.org" rel="noopener" target="_blank">bermuda.funk</a>, Freies Radio Rhein-Neckar. Seit Mai 2020 läuft im <a href="https://bermudafunk.org" rel="noopener" target="_blank">bermuda.funk</a> die gleichnamige Projektsendung.
+                                Die Audio-Stadtkarte zu zivilgesellschaftlichem Engagement ist seit Herbst 2021 online.</p>
+                            <p>Die Audio-Stadtkarte stellt zivilgesellschaftliches Engagement in der Stadt Mannheim vor.</p>
+                            <p><span class="font-neue-black">Mannheim Under Construction</span> bedeutet, dass es sich bei diesem Engagement um einen fortdauernden Prozess handelt, der immer weitergeschrieben, -gedacht und -gesprochen wird.</p>
+                            <p>Das Freie Radio Rhein-Neckar e. V., der <a href="https://bermudafunk.org" rel="noopener" target="_blank">bermuda.funk</a>, begleitet diesen Prozess mit seinem gleichnamigen Projekt.</p>
+                            <p><span class="font-neue-black">Mannheim Under Construction</span> wird gefördert von der Stadt Mannheim im Rahmen des Aktionsfonds</p>
+                                <h3>Zivilgesellschaftliches Engagement gegen Rechtsradikalismus, Muslimfeindlichkeit, Antisemitismus und Antiziganismus.</h3>
+                                <p>Weitere Informationen gibt es auf der <a href="https://www.mannheim.de/de/service-bieten/integration-migration/mannheimer-buendnis-fuer-ein-zusammenleben-in-vielfalt/aktionsfonds-zivilgesellschaftliches-engagement" rel="noopener" target="_blank">Homepage des Aktionsfonds</a>.</p>
+                        </div>
+                        <div class="open-right-part">
+                            <button class="close-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     viewBox="0 0 57.167 53.667" xml:space="preserve">
+                                    <g>
+                                        <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
+                                        <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
+                                    </g>
+                                </svg>
+                            </button>
+                            <h2>Kontakt</h2>
+                            <p><a href="mailto:<?php echo antispambot('underconstruction@bermudafunk.org'); ?>"><?php echo antispambot('underconstruction@bermudafunk.org'); ?></a></p>
+
+                            <h2>Projektleitung</h2>
+                            <p>Christina Gehrlein, bermuda.funk</p>
+
+                            <h2>Webseite</h2>
+                            <p>Gabriela Kühnhardt-Alvarez, Design<br>
+                                Daniel Winzen, Entwicklung</p>
+
+                            <h2>Dankeschön</h2>
+                            <p>Wir danken allen, die sich bisher an diesem Projekt beteiligt haben – die Hinweise gegeben, die mit uns gesprochen, uns Feedback gegeben oder das Projekt in anderer Form unterstützt haben!
+                                Wir danken dem Aktionsfonds „Zivilgesellschaftliches Engagement“ der Stadt Mannheim für die Förderung.</p>
+                        </div>
                         <div class="right-part">
                             <button class="close-button">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -357,8 +391,8 @@ $random_audio = $map_data[array_rand($map_data)];
                             <h2><?php esc_html_e('Discover and listen: How does engagement sound?', 'mannheim-under-construction'); ?></h2>
                             <p><?php esc_html_e('Locations and engagement. Locations and memory. Markers in the city. Current and historical. Interim report and archive. Activism. Empowerment.', 'mannheim-under-construction'); ?></p>
                             <p><?php esc_html_e('The Formats are diverse: Project introduction, interviews, Stories and other – also experimental – Posts in various lengths invite to linger, browse, discover and listen.', 'mannheim-under-construction'); ?></p>
-                            <button id="deepdive-more-info">
-                                <span>mehr Informationen</span>
+                            <button id="deepdive-more-info" class="under-construction-more-info">
+                                <span><?php esc_html_e('more information', 'mannheim-under-construction'); ?></span>
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                      viewBox="0 0 57.167 81.5" xml:space="preserve">
                                     <path d="M18.147,56.521l-4.71-4.733h21.685L13.438,30.104l3.325-3.324l21.683,21.682l0.023-21.681l4.71,4.71v25.03H18.147z"/>

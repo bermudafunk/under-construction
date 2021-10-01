@@ -43,6 +43,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 search_sidebar_tags.classList.remove('active');
             });
             sidebar_right.on('closing', _ => {
+                sidebar_right_dom.classList.remove('fully-expanded');
                 sidebar_right_dom.classList.remove('expanded');
             });
             sidebar_right.on('opening', _ => {
@@ -90,10 +91,17 @@ window.addEventListener('DOMContentLoaded', function(){
             let waveform_progress = waveform.querySelector('#progress');
             let waveform_update_interval = null;
             let open_under_construction_info = document.querySelectorAll('.open-under-construction-info');
+            let open_under_construction_more_info = document.querySelectorAll('.under-construction-more-info');
             let sidebar_right_dom = document.querySelector('.leaflet-sidebar-right');
             for(let opener of open_under_construction_info){
                 opener.addEventListener('click', _ => {
                     sidebar_right_dom.classList.add('expanded');
+                    sidebar_right.open('#info');
+                });
+            }
+            for(let opener of open_under_construction_more_info){
+                opener.addEventListener('click', _ => {
+                    sidebar_right_dom.classList.add('fully-expanded');
                     sidebar_right.open('#info');
                 });
             }
@@ -335,10 +343,11 @@ window.addEventListener('DOMContentLoaded', function(){
             });
             document.querySelector('#imprint_menu').addEventListener('click', _ => {
                 sidebar_right_dom.classList.remove('expanded');
+                sidebar_right_dom.classList.remove('fully-expanded');
                 sidebar_right.open('#imprint');
             });
             document.querySelector('#privacy_menu').addEventListener('click', _ => {
-                sidebar_right_dom.classList.remove('expanded');
+                sidebar_right_dom.classList.remove('fully-expanded');
                 sidebar_right.open('#privacy');
             });
         }
