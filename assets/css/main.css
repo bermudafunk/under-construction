@@ -121,7 +121,8 @@ main,
 }
 body.black-white .content-player .waveform > svg #remaining,
 body.black-white .content-player svg,
-body.black-white .leaflet-sidebar-right .leaflet-sidebar-content svg {
+body.black-white .leaflet-sidebar-right .leaflet-sidebar-content svg,
+body.black-white .close-button svg {
     fill: #FFFFFF;
 }
 .content-player .waveform > svg {
@@ -570,7 +571,21 @@ body.wait .search_sidebar {
 .fully-expanded .under-construction-title .title-line-3 span:nth-child(2n+1) {
     align-self: start;
 }
+body.search-results-open .leaflet-sidebar-content,
+body.sidebar-open .leaflet-sidebar.collapsed,
+body.sidebar-open .leaflet-control-container,
+body.deepdive-open .leaflet-sidebar.collapsed {
+    visibility: hidden;
+}
 @media (min-width: 768px) {
+    body.search-results-open .leaflet-sidebar-content,
+    body.sidebar-open .leaflet-sidebar.collapsed,
+    body.sidebar-open .leaflet-control-container{
+        visibility: visible;
+    }
+    body.deepdive-open .leaflet-sidebar.collapsed {
+        visibility: hidden;
+    }
     #info .right-part,
     #info .left-part {
         width: 50%;
