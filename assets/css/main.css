@@ -396,14 +396,17 @@ body.black-white .leaflet-sidebar-right .leaflet-sidebar-content button {
 .search_sidebar.active {
     display: block;
 }
+:root {
+    --sidebar-background: url('../img/uc_c_yllw_muster.svg');
+}
 .search_sidebar,
 .leaflet-sidebar-content {
-    background: url("../img/bg_uc_collective_vogel_muster.svg") repeat;
+    background: var(--sidebar-background) repeat;
 }
 body.black-white .search_sidebar,
 body.black-white .leaflet-sidebar-content {
     color: #FFFFFF;
-    background: url("../img/bg_uc_collective_vogel_blk.svg") repeat;
+    background: var(--sidebar-background) repeat;
 }
 @media (min-width:768px) and (max-width:991px) {
     .search_sidebar.active ~ .leaflet-control-container .leaflet-left {

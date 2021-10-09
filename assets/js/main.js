@@ -37,6 +37,7 @@ window.addEventListener('DOMContentLoaded', function(){
             }).addTo(map);
             sidebar_left.on('opening', _ => {
                 sidebar_right.close();
+                update_bg();
                 body.classList.add('sidebar-open');
             });
             sidebar_left.on('closing', _ => {
@@ -55,6 +56,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 search_sidebar_fulltext.classList.remove('active');
                 search_sidebar_tags.classList.remove('active');
                 sidebar_left.close();
+                update_bg();
                 body.classList.add('sidebar-open');
             });
             let audio_stations = [];
@@ -336,6 +338,17 @@ window.addEventListener('DOMContentLoaded', function(){
                 if (physicalPosition) {
                     waveform_progress.setAttribute('width', physicalPosition);
                 }
+            }
+
+
+            function update_bg(){
+                let backgrounds;
+                if(body.classList.contains('black-white')){
+                    backgrounds = mannheim_under_construction.dark_backgrounds;
+                } else {
+                    backgrounds = mannheim_under_construction.light_backgrounds;
+                }
+                document.documentElement.style.setProperty('--sidebar-background', 'url(' + backgrounds[Math.floor(Math.random() * backgrounds.length)] + ')');
             }
 
             document.querySelector('#play .content-tags').addEventListener('click', e => {

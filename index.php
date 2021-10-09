@@ -173,6 +173,8 @@ class Mannheim_Under_Constrcution
                         'zoom_in_title' => esc_html__('Zoom in', 'mannheim-under-construction'),
                         'zoom_out_title' => esc_html__('Zoom out', 'mannheim-under-construction'),
                         'back' => esc_html__('Back', 'mannheim-under-construction'),
+                        'dark_backgrounds' => [plugins_url( 'assets/img/uc_c_blk_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_m_blk_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_u_blk_muster.svg', __FILE__ )],
+                        'light_backgrounds' => [plugins_url( 'assets/img/uc_c_yllw_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_m_yllw_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_u_yllw_muster.svg', __FILE__ )],
 					]
 				);
 		    }
