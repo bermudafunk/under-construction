@@ -340,7 +340,6 @@ window.addEventListener('DOMContentLoaded', function(){
                 }
             }
 
-
             function update_bg(){
                 let backgrounds;
                 if(body.classList.contains('black-white')){

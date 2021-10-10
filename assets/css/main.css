@@ -567,7 +567,15 @@ body.sidebar-open .leaflet-control-container,
 body.deepdive-open .leaflet-sidebar.collapsed {
     visibility: hidden;
 }
+@media (max-width: 767px) {
+    .desktop-only {
+        display: none;
+    }
+}
 @media (min-width: 768px) {
+    .mobile-only {
+        display: none;
+    }
     body.search-results-open .leaflet-sidebar-content,
     body.sidebar-open .leaflet-sidebar.collapsed,
     body.sidebar-open .leaflet-control-container{
@@ -595,8 +603,8 @@ body.deepdive-open .leaflet-sidebar.collapsed {
     }
 }
 #deepdive-more-info {
-    position: absolute;
-    right: 0;
+    margin-left: auto;
+    margin-right: 0;
     bottom: 0;
 }
 #deepdive-more-info span {
