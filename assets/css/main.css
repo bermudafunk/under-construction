@@ -33,6 +33,12 @@ body.black-white {
     color: #000;
     background-color: #FFFFFF;
 }
+.leaflet-tile-pane{
+    transition: filter 500ms;
+}
+body.black-white .leaflet-tile-pane{
+    filter: invert(0.9);
+}
 body.small-font {
     font-size: 80%;
 }
@@ -403,11 +409,18 @@ body.black-white .leaflet-sidebar-right .leaflet-sidebar-content button {
 .search_sidebar,
 .leaflet-sidebar-content {
     background: var(--sidebar-background) repeat;
+    background-size: 6em;
 }
 body.black-white .search_sidebar,
 body.black-white .leaflet-sidebar-content {
     color: #FFFFFF;
     background: var(--sidebar-background) repeat;
+}
+#black_white_switcher circle{
+    fill: #FFFFFF;
+}
+body.black-white #black_white_switcher circle{
+    fill: #F2FF5B;
 }
 @media (min-width:768px) and (max-width:991px) {
     .search_sidebar.active ~ .leaflet-control-container .leaflet-left {

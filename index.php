@@ -103,6 +103,7 @@ class Mannheim_Under_Constrcution
 //				'mannheim_under_construction_webm',
 //				'mannheim_under_construction_vtt',
 				'mannheim_under_construction_waveform',
+				'mannheim_under_construction_location',
 				'mannheim_under_construction_location_lat',
 				'mannheim_under_construction_location_lng',
 			];
@@ -216,14 +217,20 @@ class Mannheim_Under_Constrcution
         </ul> -->
 		<div>
 			<input type="hidden" id="mannheim_under_construction_ogg" name="mannheim_under_construction_ogg" value="<?php echo esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_ogg', true)); ?>">
-            <button class="under-construction-upload" data-field="mannheim_under_construction_ogg" data-type="audio/ogg"><?php esc_html_e('Upload OGG-Audio file', 'mannheim-under-construction'); ?></button>
+            <button type="button" class="under-construction-upload" data-field="mannheim_under_construction_ogg" data-type="audio/ogg"><?php esc_html_e('Upload OGG-Audio file', 'mannheim-under-construction'); ?></button>
             <span id="mannheim_under_construction_ogg-selected"><?php echo esc_html(basename(get_post_meta( (get_post_meta(get_the_ID(), 'mannheim_under_construction_ogg', true)), '_wp_attached_file', true ))); ?></span>
 		</div>
         <br>
 		<div>
 			<input type="hidden" id="mannheim_under_construction_aac" name="mannheim_under_construction_aac" value="<?php echo esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_aac', true)); ?>">
-            <button class="under-construction-upload" data-field="mannheim_under_construction_aac" data-type="audio/mpeg,audio/aac"><?php esc_html_e('Upload AAC-Audio file', 'mannheim-under-construction'); ?></button>
+            <button type="button" class="under-construction-upload" data-field="mannheim_under_construction_aac" data-type="audio/mpeg,audio/aac"><?php esc_html_e('Upload AAC-Audio file', 'mannheim-under-construction'); ?></button>
             <span id="mannheim_under_construction_aac-selected"><?php echo esc_html(basename(get_post_meta( (get_post_meta(get_the_ID(), 'mannheim_under_construction_aac', true)), '_wp_attached_file', true ))); ?></span>
+		</div>
+        <br>
+		<div>
+			<label for="mannheim_under_construction_location">
+                <?php esc_html_e('Location:', 'mannheim-under-construction'); ?> <input type="text" id="mannheim_under_construction_location" name="mannheim_under_construction_location" value="<?php echo esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_location', true)); ?>">
+            </label>
 		</div>
         <br>
 		<div>

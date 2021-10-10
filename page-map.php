@@ -47,7 +47,8 @@ foreach ($posts as $post_id){
 		'id' => $post_id,
 		'lat' => get_post_meta($post_id, 'mannheim_under_construction_location_lat', true),
 		'lng' => get_post_meta($post_id, 'mannheim_under_construction_location_lng', true),
-		'title' => get_the_title($post_id),
+		'location' => esc_html(get_post_meta($post_id, 'mannheim_under_construction_location', true)),
+		'title' => esc_html(get_the_title($post_id)),
 		'description' => apply_filters('the_content', get_the_content(null, false, $post_id)),
 		'ogg' => wp_get_attachment_url($ogg_id),
 		'ogg_mime' => get_post_mime_type($ogg_id),
@@ -152,6 +153,7 @@ $random_audio = $map_data[array_rand($map_data)];
                                 </g>
                             </svg>
                         </button>
+                        <div class="content-location"><?php echo esc_html($random_audio['location']); ?></div>
                         <div class="content-title"><?php echo esc_html($random_audio['title']); ?></div>
                         <div class="content-player">
                             <button class="play_pause_button" aria-label="<?php esc_attr_e('Play/Pause', 'mannheim-under-construction'); ?>">
@@ -211,7 +213,7 @@ $random_audio = $map_data[array_rand($map_data)];
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 57.167 81.5" xml:space="preserve">
                             <g>
-                                <circle fill="#FFFFFF" stroke="#000000" stroke-width="2" stroke-miterlimit="10" cx="29.396" cy="41.105" r="14.771"/>
+                                <circle stroke="#000000" stroke-width="2" stroke-miterlimit="10" cx="29.396" cy="41.105" r="14.771"/>
                                 <path d="M29.5,26.335c8,0,14.771,6.613,14.771,14.771S37.5,55.876,29.5,55.876C29.5,55.75,30,26.5,29.5,26.335z"/>
                             </g>
                         </svg>

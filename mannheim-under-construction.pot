@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mannheim Under Construction\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-01 15:58+0000\n"
+"POT-Creation-Date: 2021-10-10 14:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid "... or a random post."
 msgstr ""
 
-#: index.php:207
+#: index.php:210
 msgid ""
 "AAC at 96kbps (alternatively MP3 at 128kbps) with 48kHz sample rate, which "
 "is supported by almost all browsers."
@@ -42,7 +42,7 @@ msgstr ""
 msgid "Audio station Attributes"
 msgstr ""
 
-#: index.php:198
+#: index.php:201
 msgid "Audio station data"
 msgstr ""
 
@@ -117,7 +117,7 @@ msgctxt "audio-station"
 msgid "Use as featured image"
 msgstr ""
 
-#: index.php:175 page-map.php:252
+#: index.php:176 page-map.php:252 page-map.php:343
 msgid "Back"
 msgstr ""
 
@@ -137,7 +137,7 @@ msgstr ""
 msgid "Choose a marker..."
 msgstr ""
 
-#: index.php:128
+#: index.php:129
 msgid "Choose or Upload Media"
 msgstr ""
 
@@ -149,15 +149,15 @@ msgstr ""
 msgid "Daniel Winzen"
 msgstr ""
 
-#: index.php:130
+#: index.php:131
 msgid "Desired location"
 msgstr ""
 
-#: page-map.php:391
+#: page-map.php:408
 msgid "Discover and listen: How does engagement sound?"
 msgstr ""
 
-#: index.php:205
+#: index.php:208
 msgid ""
 "Each audio file should be converted into several formats for best cross "
 "browser compatibility and optimizing download size for modern clients. Only "
@@ -169,11 +169,11 @@ msgstr ""
 msgid "Edit audio station"
 msgstr ""
 
-#: index.php:204
+#: index.php:207
 msgid "Encoding guideline:"
 msgstr ""
 
-#: index.php:288
+#: index.php:297
 msgid ""
 "Enter a new search term or try finding an interesting post with the tag "
 "search :)"
@@ -191,7 +191,7 @@ msgstr ""
 msgid "Filter by date"
 msgstr ""
 
-#: index.php:212
+#: index.php:215
 msgid ""
 "H264 with Pixel format yuv420p, main profile and 25 fps in an mp4 container, "
 "which has the moov atom at the beginning, which is supported by almost all "
@@ -206,7 +206,7 @@ msgstr ""
 msgid "https://danwin1210.me"
 msgstr ""
 
-#: page-map.php:322 page-map.php:561
+#: page-map.php:322 page-map.php:578
 msgid "Imprint"
 msgstr ""
 
@@ -214,10 +214,22 @@ msgstr ""
 msgid "Insert into audio station"
 msgstr ""
 
-#: page-map.php:392
+#: index.php:232
+msgid "Location:"
+msgstr ""
+
+#: page-map.php:409
 msgid ""
 "Locations and engagement. Locations and memory. Markers in the city. Current "
 "and historical. Interim report and archive. Activism. Empowerment."
+msgstr ""
+
+#: page-map.php:392
+msgid "Logo - bermuda.funk"
+msgstr ""
+
+#: page-map.php:388
+msgid "Logo - City Mannheim"
 msgstr ""
 
 #: page-map.php:116
@@ -234,7 +246,7 @@ msgid ""
 "This map introduces civil societal engagement in the city Mannheim."
 msgstr ""
 
-#: page-map.php:395
+#: page-map.php:412
 msgid "more information"
 msgstr ""
 
@@ -257,7 +269,7 @@ msgstr ""
 msgid "No audio stations found."
 msgstr ""
 
-#: index.php:172
+#: index.php:173
 msgid ""
 "Oops, an error occured while loading your search results. Please try again"
 msgstr ""
@@ -266,14 +278,14 @@ msgstr ""
 msgid "Open player"
 msgstr ""
 
-#: index.php:208
+#: index.php:211
 msgid ""
 "Opus at 64kbps with 48kHz sample rate in an OGG container, which offers "
 "significant lower file size with about the same quality. It's supported by "
 "most modern browsers."
 msgstr ""
 
-#: index.php:289
+#: index.php:298
 msgid "Or listen to this randomly selected post:"
 msgstr ""
 
@@ -281,7 +293,7 @@ msgstr ""
 msgid "Play/Pause"
 msgstr ""
 
-#: page-map.php:325 page-map.php:564
+#: page-map.php:325 page-map.php:581
 msgid "Privacy"
 msgstr ""
 
@@ -309,7 +321,7 @@ msgstr ""
 msgid "Short and longer posts."
 msgstr ""
 
-#: page-map.php:429
+#: page-map.php:446
 msgid "Show info about the project"
 msgstr ""
 
@@ -317,7 +329,7 @@ msgstr ""
 msgid "Show more info about the project"
 msgstr ""
 
-#: page-map.php:571
+#: page-map.php:588
 msgid "Sorry, you need to enable JavaScript to use this map."
 msgstr ""
 
@@ -325,28 +337,28 @@ msgstr ""
 msgid "Start"
 msgstr ""
 
-#: page-map.php:389
+#: page-map.php:406
 msgid "the audio map of civil societal engagement"
 msgstr ""
 
-#: page-map.php:393
+#: page-map.php:410
 msgid ""
 "The Formats are diverse: Project introduction, interviews, Stories and other "
 "– also experimental – Posts in various lengths invite to linger, browse, "
 "discover and listen."
 msgstr ""
 
-#: index.php:210
+#: index.php:213
 msgid ""
 "The same applies to video files used in the sign language version. These are:"
 msgstr ""
 
-#: index.php:287
+#: index.php:296
 #, php-format
 msgid "The search term \"%s\" did unfortunately not find any posts :("
 msgstr ""
 
-#: index.php:292
+#: index.php:301
 #, php-format
 msgid ""
 "The search term \"%s\" found the following posts. Click on the title to "
@@ -359,7 +371,7 @@ msgid ""
 "free radio Rhein-Neckar."
 msgstr ""
 
-#: page-map.php:390
+#: page-map.php:407
 #, php-format
 msgid ""
 "This map introduces civil societal engagement in the city Mannheim. <span "
@@ -373,11 +385,11 @@ msgstr ""
 msgid "Under Construction"
 msgstr ""
 
-#: index.php:223
+#: index.php:226
 msgid "Upload AAC-Audio file"
 msgstr ""
 
-#: index.php:217
+#: index.php:220
 msgid "Upload OGG-Audio file"
 msgstr ""
 
@@ -385,7 +397,7 @@ msgstr ""
 msgid "Uploaded to this audio station"
 msgstr ""
 
-#: index.php:129
+#: index.php:130
 msgid "Use this media"
 msgstr ""
 
@@ -403,7 +415,7 @@ msgstr ""
 msgid "View audio stations"
 msgstr ""
 
-#: index.php:213
+#: index.php:216
 msgid ""
 "VP9 at CRF 40 and 25 fps in a WebM container, which offers significantly "
 "lower file size with about the same quality. It's supported by most modern "
@@ -414,15 +426,15 @@ msgstr ""
 msgid "Welcome to"
 msgstr ""
 
-#: page-map.php:388
+#: page-map.php:405
 msgid ""
 "Welcome to <span class=\"font-neue-black\">Mannheim Under Construction</span>"
 msgstr ""
 
-#: index.php:173
+#: index.php:174
 msgid "Zoom in"
 msgstr ""
 
-#: index.php:174
+#: index.php:175
 msgid "Zoom out"
 msgstr ""

@@ -18,15 +18,11 @@ window.addEventListener('DOMContentLoaded', function(){
                 zoomOutTitle: mannheim_under_construction.zoom_out_title,
                 position: 'topleft',
             }).addTo(map);
-            let tile_layer_light = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener noreferrer">CARTO</a>',
                 subdomains: 'abcd',
                 maxZoom: 19
             }).addTo(map);
-            let tile_layer_dark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
-                maxZoom: 20,
-                attribution: '&copy; <a href="https://stadiamaps.com/" target="_blank" rel="noopener noreferrer">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/" target="_blank" rel="noopener noreferrer">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors'
-            });
             let sidebar_left = L.control.sidebar({
                 position: 'left',
                 container: 'left_sidebar',
@@ -118,15 +114,6 @@ window.addEventListener('DOMContentLoaded', function(){
                 });
             }
             black_white_switcher.addEventListener('click', _ => {
-                if(body.classList.contains('black-white')){
-                    black_white_switcher.querySelector('circle').setAttribute('fill', '#FFFFFF');
-                    tile_layer_dark.removeFrom(map);
-                    tile_layer_light.addTo(map);
-                } else {
-                    black_white_switcher.querySelector('circle').setAttribute('fill', '#F2FF5B');
-                    tile_layer_light.removeFrom(map);
-                    tile_layer_dark.addTo(map);
-                }
                 body.classList.toggle('black-white');
             });
             for(let back_button of back_buttons) {
@@ -301,6 +288,7 @@ window.addEventListener('DOMContentLoaded', function(){
             function load_audio(audio_id){
                 if(audio_stations[audio_id]){
                     let audio_station = audio_stations[audio_id];
+                    document.querySelector('#play .content-location').innerHTML = audio_station.location;
                     document.querySelector('#play .content-title').innerHTML = audio_station.title;
                     document.querySelector('#play .content-description').innerHTML = audio_station.description;
                     let content_length = document.querySelector('#play .content-length');
