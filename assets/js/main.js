@@ -83,7 +83,7 @@ window.addEventListener('DOMContentLoaded', function(){
             let player = document.querySelector('#audio_player');
             let player_new = document.querySelector('#audio_player_new');
             let play_pause_button = document.querySelector('.play_pause_button');
-            let back_buttons = document.querySelectorAll('#back_button, button.close-button');
+            let back_buttons = document.querySelectorAll('.back-button, button.close-button');
             let black_white_switcher = document.querySelector('#black_white_switcher');
             let font_size_button = document.querySelector('#font_size_switcher');
             let onboarding = document.querySelector('.mannheim-under-construction-onboarding');
@@ -99,6 +99,7 @@ window.addEventListener('DOMContentLoaded', function(){
             let waveform_update_interval = null;
             let open_under_construction_info = document.querySelectorAll('.open-under-construction-info');
             let open_under_construction_more_info = document.querySelectorAll('.under-construction-more-info');
+            let sidebar_left_dom = document.querySelector('.leaflet-sidebar-left');
             let sidebar_right_dom = document.querySelector('.leaflet-sidebar-right');
             for(let opener of open_under_construction_info){
                 opener.addEventListener('click', _ => {
@@ -107,9 +108,13 @@ window.addEventListener('DOMContentLoaded', function(){
             }
             for(let opener of open_under_construction_more_info){
                 opener.addEventListener('click', _ => {
-                    sidebar_right_dom.classList.add('fully-expanded');
-                    body.classList.add('deepdive-open');
-                    sidebar_right.open('#info');
+                    if(sidebar_right_dom.classList.contains('fully-expanded')){
+                        sidebar_right_dom.classList.remove('fully-expanded');
+                        body.classList.remove('deepdive-open');
+                    } else {
+                        sidebar_right_dom.classList.add('fully-expanded');
+                        body.classList.add('deepdive-open');
+                    }
                 });
             }
             black_white_switcher.addEventListener('click', _ => {
@@ -126,15 +131,19 @@ window.addEventListener('DOMContentLoaded', function(){
             });
             for(let back_button of back_buttons) {
                 back_button.addEventListener('click', _ => {
-                    sidebar_right.close();
                     if (search_sidebar_tags.classList.contains('active')) {
                         search_sidebar_tags.classList.remove('active');
                         body.classList.remove('search-results-open');
                     } else if (search_sidebar_fulltext.classList.contains('active')) {
                         search_sidebar_fulltext.classList.remove('active');
                         body.classList.remove('search-results-open');
-                    } else {
+                    } else if(!sidebar_left_dom.classList.contains('collapsed')) {
                         sidebar_left.close();
+                    } else if(sidebar_right_dom.classList.contains('fully-expanded')){
+                        sidebar_right_dom.classList.remove('fully-expanded');
+                        body.classList.remove('deepdive-open');
+                    } else if(!sidebar_right_dom.classList.contains('collapsed')) {
+                        sidebar_right.close();
                     }
                 });
             }

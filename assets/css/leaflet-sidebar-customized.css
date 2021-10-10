@@ -76,10 +76,9 @@
 
 .leaflet-sidebar-pane {
     display: none;
-    left: 0;
-    right: 0;
     box-sizing: border-box;
     padding: 10px 20px;
+    height: 100%;
 }
 
 .leaflet-sidebar-pane.active {

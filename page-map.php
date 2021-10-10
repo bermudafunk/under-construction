@@ -249,7 +249,7 @@ $random_audio = $map_data[array_rand($map_data)];
                             <path d="M17.185,55.664V25.225l26.361,15.229L17.185,55.664z"/>
                         </svg>
                     </button>
-                    <button id="back_button" aria-label="<?php esc_attr_e('Back', 'mannheim-under-construction'); ?>">
+                    <button id="back_button" class="back-button" aria-label="<?php esc_attr_e('Back', 'mannheim-under-construction'); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 57.167 81.5" xml:space="preserve">
                             <path d="M18.812,32.084v6.938L10.14,30.35l8.672-8.672v6.938h12.141c3.844,0,7.117,1.355,9.82,4.066s4.055,5.98,4.055,9.809
@@ -340,6 +340,14 @@ $random_audio = $map_data[array_rand($map_data)];
                                     <span>C</span><span>onst</span><span>ruc</span><span>tion</span>
                                 </div>
                             </div>
+                            <button class="back-button" aria-label="<?php esc_attr_e('Back', 'mannheim-under-construction'); ?>">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     viewBox="0 0 57.167 81.5" xml:space="preserve">
+                                    <path d="M18.812,32.084v6.938L10.14,30.35l8.672-8.672v6.938h12.141c3.844,0,7.117,1.355,9.82,4.066s4.055,5.98,4.055,9.809
+                                        s-1.355,7.098-4.066,9.809s-5.98,4.066-9.809,4.066H18.812v-3.469h12.141c2.875,0,5.328-1.016,7.359-3.047
+                                        s3.047-4.484,3.047-7.359s-1.016-5.328-3.047-7.359s-4.484-3.047-7.359-3.047H18.812z"/>
+                                </svg>
+                            </button>
                         </div>
                         <div class="open-middle-part">
                             <p><span class="font-neue-black">Mannheim Under Construction</span> ist ein Projekt des <a href="https://bermudafunk.org" rel="noopener" target="_blank">bermuda.funk</a>, Freies Radio Rhein-Neckar. Seit Mai 2020 läuft im <a href="https://bermudafunk.org" rel="noopener" target="_blank">bermuda.funk</a> die gleichnamige Projektsendung.
@@ -372,8 +380,17 @@ $random_audio = $map_data[array_rand($map_data)];
                                 Daniel Winzen, Entwicklung</p>
 
                             <h2>Dankeschön</h2>
-                            <p>Wir danken allen, die sich bisher an diesem Projekt beteiligt haben – die Hinweise gegeben, die mit uns gesprochen, uns Feedback gegeben oder das Projekt in anderer Form unterstützt haben!
-                                Wir danken dem Aktionsfonds „Zivilgesellschaftliches Engagement“ der Stadt Mannheim für die Förderung.</p>
+                            <p>Wir danken allen, die sich bisher an diesem Projekt beteiligt haben – die Hinweise gegeben, die mit uns gesprochen, uns Feedback gegeben oder das Projekt in anderer Form unterstützt haben!</p>
+                            <p>Wir danken dem Aktionsfonds „Zivilgesellschaftliches Engagement“ der Stadt Mannheim für die Förderung.</p>
+                            <picture>
+                                <source srcset="<?php echo plugins_url('assets/img/stadt-mannheim-logo.avif', __FILE__); ?>" type="image/avif">
+                                <source srcset="<?php echo plugins_url('assets/img/stadt-mannheim-logo.webp', __FILE__); ?>" type="image/webp">
+                                <img class="thank-you-logos" src="<?php echo plugins_url('assets/img/stadt-mannheim-logo.png', __FILE__); ?>" alt="<?php esc_html_e('Logo - City Mannheim', 'mannheim-under-construction'); ?>" loading="lazy">
+                            </picture>
+                            <picture>
+                                <source srcset="<?php echo plugins_url('assets/img/bermudafunk-logo.avif', __FILE__); ?>" type="image/avif">
+                                <img class="thank-you-logos" src="<?php echo plugins_url('assets/img/bermudafunk-logo.png', __FILE__); ?>" alt="<?php esc_html_e('Logo - bermuda.funk', 'mannheim-under-construction'); ?>" loading="lazy">
+                            </picture>
                         </div>
                         <div class="right-part">
                             <button class="close-button">

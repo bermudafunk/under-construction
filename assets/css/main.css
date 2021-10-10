@@ -540,6 +540,14 @@ body.wait .search_sidebar {
 #info .info-menu {
     display: flex;
 }
+#info .back-button{
+    width: 60px;
+    height: 60px;
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
 .under-construction-title span {
     display: block;
     font-size: 2.2em;
@@ -547,6 +555,7 @@ body.wait .search_sidebar {
     word-wrap: anywhere;
     font-family: 'TheNeueBlack', sans-serif;
     font-variant-ligatures: none;
+    transition: margin-top 500ms;
 }
 .under-construction-title div {
     height: 5em;
@@ -555,12 +564,12 @@ body.wait .search_sidebar {
 .under-construction-title .title-line-1 span:nth-child(2n+1),
 .under-construction-title .title-line-2 span:nth-child(2n),
 .under-construction-title .title-line-3 span:nth-child(2n+1) {
-    align-self: end;
+    margin-top: 1em;
 }
 .fully-expanded .under-construction-title .title-line-1 span:nth-child(2n+1),
 .fully-expanded .under-construction-title .title-line-2 span:nth-child(2n),
 .fully-expanded .under-construction-title .title-line-3 span:nth-child(2n+1) {
-    align-self: start;
+    margin-top: 0;
 }
 body.search-results-open .leaflet-sidebar-content,
 body.sidebar-open .leaflet-sidebar.collapsed,
@@ -580,10 +589,13 @@ body.deepdive-open .leaflet-sidebar.collapsed {
     #info .left-part {
         width: 50%;
     }
-    .leaflet-sidebar-right.fully-expanded #info .left-part,
-    .leaflet-sidebar-right.fully-expanded #info .open-middle-part,
-    .leaflet-sidebar-right.fully-expanded #info .open-right-part {
+    .fully-expanded #info .left-part,
+    .fully-expanded #info .open-middle-part,
+    .fully-expanded #info .open-right-part {
         width: 33.33%;
+    }
+    #info .back-button {
+        display: flex;
     }
 }
 @media (min-width: 992px) {
@@ -610,4 +622,8 @@ body.deepdive-open .leaflet-sidebar.collapsed {
 #deepdive-more-info svg {
     width: 60px;
     height: 60px;
+}
+.thank-you-logos {
+    max-width: 400px;
+    width: 100%;
 }
