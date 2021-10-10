@@ -19,13 +19,13 @@ window.addEventListener('DOMContentLoaded', function(){
                 position: 'topleft',
             }).addTo(map);
             let tile_layer_light = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener noreferrer">CARTO</a>',
                 subdomains: 'abcd',
                 maxZoom: 19
             }).addTo(map);
             let tile_layer_dark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
                 maxZoom: 20,
-                attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+                attribution: '&copy; <a href="https://stadiamaps.com/" target="_blank" rel="noopener noreferrer">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/" target="_blank" rel="noopener noreferrer">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors'
             });
             let sidebar_left = L.control.sidebar({
                 position: 'left',
@@ -48,7 +48,6 @@ window.addEventListener('DOMContentLoaded', function(){
             });
             sidebar_right.on('closing', _ => {
                 sidebar_right_dom.classList.remove('fully-expanded');
-                sidebar_right_dom.classList.remove('expanded');
                 body.classList.remove('deepdive-open');
                 body.classList.remove('sidebar-open');
             });
@@ -103,7 +102,6 @@ window.addEventListener('DOMContentLoaded', function(){
             let sidebar_right_dom = document.querySelector('.leaflet-sidebar-right');
             for(let opener of open_under_construction_info){
                 opener.addEventListener('click', _ => {
-                    sidebar_right_dom.classList.add('expanded');
                     sidebar_right.open('#info');
                 });
             }
@@ -367,7 +365,6 @@ window.addEventListener('DOMContentLoaded', function(){
                 onboarding.classList.add('active');
             });
             document.querySelector('#imprint_menu').addEventListener('click', _ => {
-                sidebar_right_dom.classList.remove('expanded');
                 sidebar_right_dom.classList.remove('fully-expanded');
                 body.classList.remove('deepdive-open');
                 sidebar_right.open('#imprint');

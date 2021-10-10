@@ -109,22 +109,7 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
-  .leaflet-sidebar {
-    width: 325px;
-  }
-  .leaflet-sidebar-pane {
-    min-width: 265px;
-  }
-  .leaflet-sidebar-left ~ .leaflet-control-container .leaflet-left {
-      left: 335px;
-  }
-  .leaflet-sidebar-right ~ .leaflet-control-container .leaflet-right {
-    right: 335px;
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 768px) and (max-width: 1199px) {
   .leaflet-sidebar {
     width: 410px;
   }
