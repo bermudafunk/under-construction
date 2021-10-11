@@ -138,9 +138,20 @@ $random_audio = $map_data[array_rand($map_data)];
                         </button>
                         <p class="search-intro-text"><?php esc_html_e('Next to the full-text search (by search phrase) we have assigned tags to the posts – these are, as always, subjektive, but can help finding posts with similar topics.', 'mannheim-under-construction'); ?></p>
                         <form class="mannheim-under-construction-search">
-                            <button type="button"><?php esc_html_e('Search for tags', 'mannheim-under-construction'); ?></button>
                             <input name="s" type="search" placeholder="<?php esc_attr_e('Enter a search phrase', 'mannheim-under-construction'); ?>" aria-label="<?php esc_attr_e('Enter a search phrase', 'mannheim-under-construction'); ?>">
-                            <button type="submit" hidden></button>
+                            <button type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     viewBox="0 0 57.167 81.5" xml:space="preserve">
+                                    <g>
+                                        <circle fill="none" stroke-width="3.5" stroke-miterlimit="10" cx="35.522" cy="33.893" r="16.597"/>
+                                        <path fill="none" stroke-width="3.5" stroke-linecap="round" stroke-miterlimit="10" d="M24.277,34.022
+                                            c0,0-0.206-8.338,8.131-10.293"/>
+                                        <path fill="none" stroke-width="3.5" stroke-linecap="round" stroke-miterlimit="10" d="M20.572,41.123"/>
+                                        <path fill="none" stroke-width="3.5" stroke-linecap="round" stroke-miterlimit="10" d="M21.035,42.256
+                                            L6.573,56.563c0,0,1.544,5.662,5.867,5.559l13.639-13.638"/>
+                                    </g>
+                                </svg>
+                            </button>
                         </form>
                     </div>
                     <div class="leaflet-sidebar-pane" id="play" role="tabpanel">

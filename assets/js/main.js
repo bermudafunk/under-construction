@@ -115,6 +115,7 @@ window.addEventListener('DOMContentLoaded', function(){
             }
             black_white_switcher.addEventListener('click', _ => {
                 body.classList.toggle('black-white');
+                update_bg();
             });
             for(let back_button of back_buttons) {
                 back_button.addEventListener('click', _ => {
@@ -219,17 +220,6 @@ window.addEventListener('DOMContentLoaded', function(){
                 e.preventDefault();
                 show_search_results(search_form_input.value);
             });
-            search_form_input.addEventListener('click', e => {
-                if(e.clientX > 410 && window.innerWidth >= 1200 ){
-                    show_search_results(search_form_input.value);
-                } else if(e.clientX > 340 && window.innerWidth >= 992 && window.innerWidth < 1200 ){
-                    show_search_results(search_form_input.value);
-                } else if(e.clientX > 250 && window.innerWidth >= 768 && window.innerWidth < 992 ){
-                    show_search_results(search_form_input.value);
-                } else if(e.clientX > window.innerWidth - 80 ){
-                    show_search_results(search_form_input.value);
-                }
-            });
             search_form_button.addEventListener('click', e => {
                 e.preventDefault();
                 search_sidebar_fulltext.classList.remove('active');
@@ -243,7 +233,7 @@ window.addEventListener('DOMContentLoaded', function(){
             L.DomEvent.disableClickPropagation(search_sidebar_tags);
             L.DomEvent.disableScrollPropagation(onboarding);
             L.DomEvent.disableClickPropagation(onboarding);
-            function show_search_results(s){
+            function show_search_results(){
                 search_sidebar_tags.classList.remove('active');
                 search_sidebar_fulltext.classList.add('active');
                 body.classList.add('wait');
@@ -312,7 +302,7 @@ window.addEventListener('DOMContentLoaded', function(){
                             clearInterval(waveform_update_interval);
                             waveform_update_interval = null;
                         }
-                        waveform_progress.setAttribute('width', 0);
+                        waveform_progress.setAttribute('width', '0');
                     }else if(!waveform_update_interval && !player.paused){
                         waveform_update_interval = setInterval(function(){
                             requestAnimationFrame(updateAudioPosition);
