@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mannheim Under Construction\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-10 14:57+0000\n"
+"POT-Creation-Date: 2021-10-14 21:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -16,11 +16,11 @@ msgstr ""
 "X-Loco-Version: 2.5.3; wp-5.7.2\n"
 "X-Domain: mannheim-under-construction"
 
-#: page-map.php:112
+#: page-map.php:113
 msgid "... or a random post."
 msgstr ""
 
-#: index.php:210
+#: index.php:260
 msgid ""
 "AAC at 96kbps (alternatively MP3 at 128kbps) with 48kHz sample rate, which "
 "is supported by almost all browsers."
@@ -42,7 +42,7 @@ msgstr ""
 msgid "Audio station Attributes"
 msgstr ""
 
-#: index.php:201
+#: index.php:251
 msgid "Audio station data"
 msgstr ""
 
@@ -117,31 +117,31 @@ msgctxt "audio-station"
 msgid "Use as featured image"
 msgstr ""
 
-#: index.php:176 page-map.php:252 page-map.php:343
+#: index.php:226 page-map.php:265 page-map.php:356
 msgid "Back"
 msgstr ""
 
-#: page-map.php:210
+#: page-map.php:223
 msgid "Change contrast"
 msgstr ""
 
-#: page-map.php:219
+#: page-map.php:232
 msgid "Change font size"
 msgstr ""
 
-#: page-map.php:91
+#: page-map.php:92
 msgid "Change the font size or switch to black/white view"
 msgstr ""
 
-#: page-map.php:97
+#: page-map.php:98
 msgid "Choose a marker..."
 msgstr ""
 
-#: index.php:129
+#: index.php:179
 msgid "Choose or Upload Media"
 msgstr ""
 
-#: page-map.php:119
+#: page-map.php:120
 msgid "Current and historical."
 msgstr ""
 
@@ -149,15 +149,15 @@ msgstr ""
 msgid "Daniel Winzen"
 msgstr ""
 
-#: index.php:131
+#: index.php:181
 msgid "Desired location"
 msgstr ""
 
-#: page-map.php:408
+#: page-map.php:421
 msgid "Discover and listen: How does engagement sound?"
 msgstr ""
 
-#: index.php:208
+#: index.php:258
 msgid ""
 "Each audio file should be converted into several formats for best cross "
 "browser compatibility and optimizing download size for modern clients. Only "
@@ -169,11 +169,11 @@ msgstr ""
 msgid "Edit audio station"
 msgstr ""
 
-#: index.php:207
+#: index.php:257
 msgid "Encoding guideline:"
 msgstr ""
 
-#: index.php:297
+#: index.php:347
 msgid ""
 "Enter a new search term or try finding an interesting post with the tag "
 "search :)"
@@ -191,14 +191,14 @@ msgstr ""
 msgid "Filter by date"
 msgstr ""
 
-#: index.php:215
+#: index.php:265
 msgid ""
 "H264 with Pixel format yuv420p, main profile and 25 fps in an mp4 container, "
 "which has the moov atom at the beginning, which is supported by almost all "
 "browsers ."
 msgstr ""
 
-#: page-map.php:328
+#: page-map.php:341
 msgid "Help"
 msgstr ""
 
@@ -206,7 +206,7 @@ msgstr ""
 msgid "https://danwin1210.me"
 msgstr ""
 
-#: page-map.php:322 page-map.php:578
+#: page-map.php:335 page-map.php:591
 msgid "Imprint"
 msgstr ""
 
@@ -214,25 +214,41 @@ msgstr ""
 msgid "Insert into audio station"
 msgstr ""
 
-#: index.php:232
+#: index.php:92
+msgid "Length of an audio station"
+msgstr ""
+
+#: index.php:91
+msgid "Lengths"
+msgstr ""
+
+#: index.php:102
+msgid "Location of an audio station"
+msgstr ""
+
+#: index.php:300
 msgid "Location:"
 msgstr ""
 
-#: page-map.php:409
+#: index.php:101
+msgid "Locations"
+msgstr ""
+
+#: page-map.php:422
 msgid ""
 "Locations and engagement. Locations and memory. Markers in the city. Current "
 "and historical. Interim report and archive. Activism. Empowerment."
 msgstr ""
 
-#: page-map.php:392
+#: page-map.php:405
 msgid "Logo - bermuda.funk"
 msgstr ""
 
-#: page-map.php:388
+#: page-map.php:401
 msgid "Logo - City Mannheim"
 msgstr ""
 
-#: page-map.php:116
+#: page-map.php:117
 msgid "Mannheim"
 msgstr ""
 
@@ -246,7 +262,7 @@ msgid ""
 "This map introduces civil societal engagement in the city Mannheim."
 msgstr ""
 
-#: page-map.php:412
+#: page-map.php:425
 msgid "more information"
 msgstr ""
 
@@ -254,7 +270,7 @@ msgstr ""
 msgid "New audio station"
 msgstr ""
 
-#: page-map.php:138
+#: page-map.php:139
 msgid ""
 "Next to the full-text search (by search phrase) we have assigned tags to the "
 "posts – these are, as always, subjektive, but can help finding posts with "
@@ -269,39 +285,55 @@ msgstr ""
 msgid "No audio stations found."
 msgstr ""
 
-#: index.php:173
+#: index.php:223
 msgid ""
 "Oops, an error occured while loading your search results. Please try again"
 msgstr ""
 
-#: page-map.php:246
+#: page-map.php:259
 msgid "Open player"
 msgstr ""
 
-#: index.php:211
+#: index.php:261
 msgid ""
 "Opus at 64kbps with 48kHz sample rate in an OGG container, which offers "
 "significant lower file size with about the same quality. It's supported by "
 "most modern browsers."
 msgstr ""
 
-#: index.php:298
+#: index.php:348
 msgid "Or listen to this randomly selected post:"
 msgstr ""
 
-#: page-map.php:157
+#: page-map.php:170
 msgid "Play/Pause"
 msgstr ""
 
-#: page-map.php:325 page-map.php:581
+#: page-map.php:338 page-map.php:594
 msgid "Privacy"
+msgstr ""
+
+#: index.php:112
+msgid "Producer of an audio station"
+msgstr ""
+
+#: index.php:111
+msgid "Producers"
+msgstr ""
+
+#: index.php:122
+msgid "Production date of an audio station"
+msgstr ""
+
+#: index.php:121
+msgid "Production dates"
 msgstr ""
 
 #. Description of the plugin
 msgid "Provides a map with audio stations"
 msgstr ""
 
-#: page-map.php:233
+#: page-map.php:246
 msgid "Search"
 msgstr ""
 
@@ -309,69 +341,65 @@ msgstr ""
 msgid "Search audio stations"
 msgstr ""
 
-#: page-map.php:140
-msgid "Search for tags"
-msgstr ""
-
-#: page-map.php:96
+#: page-map.php:97
 msgid "Search in archive"
 msgstr ""
 
-#: page-map.php:120
+#: page-map.php:121
 msgid "Short and longer posts."
 msgstr ""
 
-#: page-map.php:446
+#: page-map.php:459
 msgid "Show info about the project"
 msgstr ""
 
-#: page-map.php:310
+#: page-map.php:323
 msgid "Show more info about the project"
 msgstr ""
 
-#: page-map.php:588
+#: page-map.php:601
 msgid "Sorry, you need to enable JavaScript to use this map."
 msgstr ""
 
-#: page-map.php:113
+#: page-map.php:114
 msgid "Start"
 msgstr ""
 
-#: page-map.php:406
+#: page-map.php:419
 msgid "the audio map of civil societal engagement"
 msgstr ""
 
-#: page-map.php:410
+#: page-map.php:423
 msgid ""
 "The Formats are diverse: Project introduction, interviews, Stories and other "
 "– also experimental – Posts in various lengths invite to linger, browse, "
 "discover and listen."
 msgstr ""
 
-#: index.php:213
+#: index.php:263
 msgid ""
 "The same applies to video files used in the sign language version. These are:"
 msgstr ""
 
-#: index.php:296
+#: index.php:346
 #, php-format
 msgid "The search term \"%s\" did unfortunately not find any posts :("
 msgstr ""
 
-#: index.php:301
+#: index.php:351
 #, php-format
 msgid ""
 "The search term \"%s\" found the following posts. Click on the title to "
 "listen to the post:"
 msgstr ""
 
-#: page-map.php:123
+#: page-map.php:124
 msgid ""
 "This digital audio map is part of the eponymous project by bermuda.funk, the "
 "free radio Rhein-Neckar."
 msgstr ""
 
-#: page-map.php:407
+#: page-map.php:420
 #, php-format
 msgid ""
 "This map introduces civil societal engagement in the city Mannheim. <span "
@@ -381,15 +409,23 @@ msgid ""
 "accompany this process with the eponymous Project."
 msgstr ""
 
-#: page-map.php:117
+#: index.php:132
+msgid "Type of audio station"
+msgstr ""
+
+#: index.php:131
+msgid "Types"
+msgstr ""
+
+#: page-map.php:118
 msgid "Under Construction"
 msgstr ""
 
-#: index.php:226
+#: index.php:276
 msgid "Upload AAC-Audio file"
 msgstr ""
 
-#: index.php:220
+#: index.php:270
 msgid "Upload OGG-Audio file"
 msgstr ""
 
@@ -397,11 +433,11 @@ msgstr ""
 msgid "Uploaded to this audio station"
 msgstr ""
 
-#: index.php:130
+#: index.php:180
 msgid "Use this media"
 msgstr ""
 
-#: page-map.php:121
+#: page-map.php:122
 msgid ""
 "Variety of forms: Project introductions, reports, interviews, Stories and "
 "other, also experimental, audio posts invite to linger and discover."
@@ -415,26 +451,26 @@ msgstr ""
 msgid "View audio stations"
 msgstr ""
 
-#: index.php:216
+#: index.php:266
 msgid ""
 "VP9 at CRF 40 and 25 fps in a WebM container, which offers significantly "
 "lower file size with about the same quality. It's supported by most modern "
 "browsers."
 msgstr ""
 
-#: page-map.php:115
+#: page-map.php:116
 msgid "Welcome to"
 msgstr ""
 
-#: page-map.php:405
+#: page-map.php:418
 msgid ""
 "Welcome to <span class=\"font-neue-black\">Mannheim Under Construction</span>"
 msgstr ""
 
-#: index.php:174
+#: index.php:224
 msgid "Zoom in"
 msgstr ""
 
-#: index.php:175
+#: index.php:225
 msgid "Zoom out"
 msgstr ""

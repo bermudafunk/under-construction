@@ -87,6 +87,56 @@ class Mannheim_Under_Constrcution
 			] );
 		} );
 
+        register_taxonomy('length', 'audio-station', [
+            'label' => __('Lengths', 'mannheim-under-construction'),
+            'description' => __('Length of an audio station', 'mannheim-under-construction'),
+            'public' => true,
+            'publicly_queryable' => false,
+            'hierarchical' => true,
+	        'rewrite' => false,
+	        'show_in_rest' => true,
+        ]);
+
+        register_taxonomy('location', 'audio-station', [
+	        'label' => __('Locations', 'mannheim-under-construction'),
+            'description' => __('Location of an audio station', 'mannheim-under-construction'),
+            'public' => true,
+            'publicly_queryable' => false,
+            'hierarchical' => true,
+	        'rewrite' => false,
+	        'show_in_rest' => true,
+        ]);
+
+        register_taxonomy('producer', 'audio-station', [
+	        'label' => __('Producers', 'mannheim-under-construction'),
+            'description' => __('Producer of an audio station', 'mannheim-under-construction'),
+            'public' => true,
+            'publicly_queryable' => false,
+            'hierarchical' => true,
+	        'rewrite' => false,
+            'show_in_rest' => true,
+        ]);
+
+		register_taxonomy('production-date', 'audio-station', [
+			'label' => __('Production dates', 'mannheim-under-construction'),
+			'description' => __('Production date of an audio station', 'mannheim-under-construction'),
+			'public' => true,
+			'publicly_queryable' => false,
+			'hierarchical' => true,
+			'rewrite' => false,
+			'show_in_rest' => true,
+		]);
+
+		register_taxonomy('post-type', 'audio-station', [
+			'label' => __('Types', 'mannheim-under-construction'),
+			'description' => __('Type of audio station', 'mannheim-under-construction'),
+			'public' => true,
+			'publicly_queryable' => false,
+			'hierarchical' => true,
+            'rewrite' => false,
+			'show_in_rest' => true,
+		]);
+
 		add_action( 'plugins_loaded', function () {
 			load_plugin_textdomain( 'mannheim-under-construction', FALSE, basename( __DIR__ ) . '/languages/' );
 		} );
@@ -228,12 +278,6 @@ class Mannheim_Under_Constrcution
 		</div>
         <br>
 		<div>
-			<label for="mannheim_under_construction_location">
-                <?php esc_html_e('Location:', 'mannheim-under-construction'); ?> <input type="text" id="mannheim_under_construction_location" name="mannheim_under_construction_location" value="<?php echo esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_location', true)); ?>">
-            </label>
-		</div>
-        <br>
-		<div>
             <?php $waveform = esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_waveform', true)); ?>
 			<input type="hidden" id="mannheim_under_construction_waveform" name="mannheim_under_construction_waveform" value="<?php echo $waveform; ?>">
             <div class="mannheim-under-construction-waveform">
@@ -251,6 +295,12 @@ class Mannheim_Under_Constrcution
                 </svg>
             </div>
 		</div>
+        <br>
+        <div>
+            <label for="mannheim_under_construction_location"><?php esc_html_e('Location:', 'mannheim-under-construction'); ?>
+                <input type="text" id="mannheim_under_construction_location" name="mannheim_under_construction_location" value="<?php echo esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_location', true)); ?>">
+            </label>
+        </div>
         <br>
 <?php /*		<!-- <div>
 			<input type="hidden" id="mannheim_under_construction_vtt" name="mannheim_under_construction_vtt" value="<?php echo esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_vtt', true)); ?>">
