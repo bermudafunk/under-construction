@@ -1,8 +1,8 @@
 <!doctype html>
 <html <?php language_attributes(); ?> <?php twentytwentyone_the_html_classes(); ?>>
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="<?php bloginfo( 'charset' ); ?>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="<?php esc_attr_e('Mannheim Under Construction, the audio map of civil societal engagement. This map introduces civil societal engagement in the city Mannheim.', 'mannheim-under-construction'); ?>">
 	<?php wp_head(); ?>
 </head>
@@ -10,77 +10,77 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <main>
-<?php
-$map_data = [];
-$posts = get_posts([
-	'post_type' => 'audio-station',
-	'posts_per_page' => -1,
-	'fields' => 'ids',
-]);
-$tag_data = get_tags([
-	'fields' => 'id=>name',
-    'hide_empty' => true,
-    'orderby' => 'name',
-]);
-foreach ($posts as $post_id){
-    $ogg_id = get_post_meta($post_id, 'mannheim_under_construction_ogg', true);
-    $aac_id = get_post_meta($post_id, 'mannheim_under_construction_aac', true);
-    $ogg_meta = wp_get_attachment_metadata($ogg_id);
-    $aac_meta = wp_get_attachment_metadata($aac_id);
-    $length = '';
-    $length_readable = '';
-    $tags = get_tags([
-        'object_ids' => $post_id,
-        'fields' => 'ids',
-    ]);
-    if(!is_array($tags)){
-        $tags = [];
-    }
-    if(isset($ogg_meta['length_formatted'])) {
-        $length = $ogg_meta['length_formatted'];
-        $length_readable = human_readable_duration($length);
-    } elseif(isset($aac_meta['length_formatted'])) {
-        $length = $aac_meta['length_formatted'];
-	    $length_readable = human_readable_duration($length);
-    }
-	$map_data []= [
-		'id' => $post_id,
-		'lat' => get_post_meta($post_id, 'mannheim_under_construction_location_lat', true),
-		'lng' => get_post_meta($post_id, 'mannheim_under_construction_location_lng', true),
-		'location' => esc_html(get_post_meta($post_id, 'mannheim_under_construction_location', true)),
-		'title' => esc_html(get_the_title($post_id)),
-		'description' => apply_filters('the_content', get_the_content(null, false, $post_id)),
-		'ogg' => wp_get_attachment_url($ogg_id),
-		'ogg_mime' => get_post_mime_type($ogg_id),
-		'aac' => wp_get_attachment_url($aac_id),
-		'aac_mime' => get_post_mime_type($aac_id),
-		'waveform' => get_post_meta($post_id, 'mannheim_under_construction_waveform', true),
-        'length' => $length,
-        'length_readable' => $length_readable,
-        'tags' => $tags,
-	];
-}
-$random_audio = $map_data[array_rand($map_data)];
-?>
+	<?php
+	$map_data = [];
+	$posts = get_posts([
+		'post_type' => 'audio-station',
+		'posts_per_page' => -1,
+		'fields' => 'ids',
+	]);
+	$tag_data = get_tags([
+		'fields' => 'id=>name',
+		'hide_empty' => true,
+		'orderby' => 'name',
+	]);
+	foreach ($posts as $post_id){
+		$ogg_id = get_post_meta($post_id, 'mannheim_under_construction_ogg', true);
+		$aac_id = get_post_meta($post_id, 'mannheim_under_construction_aac', true);
+		$ogg_meta = wp_get_attachment_metadata($ogg_id);
+		$aac_meta = wp_get_attachment_metadata($aac_id);
+		$length = '';
+		$length_readable = '';
+		$tags = get_tags([
+			'object_ids' => $post_id,
+			'fields' => 'ids',
+		]);
+		if(!is_array($tags)){
+			$tags = [];
+		}
+		if(isset($ogg_meta['length_formatted'])) {
+			$length = $ogg_meta['length_formatted'];
+			$length_readable = human_readable_duration($length);
+		} elseif(isset($aac_meta['length_formatted'])) {
+			$length = $aac_meta['length_formatted'];
+			$length_readable = human_readable_duration($length);
+		}
+		$map_data []= [
+			'id' => $post_id,
+			'lat' => get_post_meta($post_id, 'mannheim_under_construction_location_lat', true),
+			'lng' => get_post_meta($post_id, 'mannheim_under_construction_location_lng', true),
+			'location' => esc_html(get_post_meta($post_id, 'mannheim_under_construction_location', true)),
+			'title' => esc_html(get_the_title($post_id)),
+			'description' => apply_filters('the_content', get_the_content(null, false, $post_id)),
+			'ogg' => wp_get_attachment_url($ogg_id),
+			'ogg_mime' => get_post_mime_type($ogg_id),
+			'aac' => wp_get_attachment_url($aac_id),
+			'aac_mime' => get_post_mime_type($aac_id),
+			'waveform' => get_post_meta($post_id, 'mannheim_under_construction_waveform', true),
+			'length' => $length,
+			'length_readable' => $length_readable,
+			'tags' => $tags,
+		];
+	}
+	$random_audio = $map_data[array_rand($map_data)];
+	?>
     <audio id="audio_player" hidden preload="metadata">
-        <?php
-        if(!empty($random_audio['ogg'])){
-            echo '<source type="audio/ogg" src="' . esc_attr($random_audio['ogg']) . '">';
-        }
-        if(!empty($random_audio['aac'])){
-            echo '<source type="audio/aac" src="' . esc_attr($random_audio['aac']) . '">';
-        }
-        ?>
+		<?php
+		if(!empty($random_audio['ogg'])){
+			echo '<source type="audio/ogg" src="' . esc_attr($random_audio['ogg']) . '">';
+		}
+		if(!empty($random_audio['aac'])){
+			echo '<source type="audio/aac" src="' . esc_attr($random_audio['aac']) . '">';
+		}
+		?>
     </audio>
     <audio id="audio_player_new" hidden preload="none">
-	    <?php
-	    if(!empty($random_audio['ogg'])){
-		    echo '<source type="audio/ogg" src="' . esc_attr($random_audio['ogg']) . '">';
-	    }
-	    if(!empty($random_audio['aac'])){
-		    echo '<source type="audio/aac" src="' . esc_attr($random_audio['aac']) . '">';
-	    }
-	    ?>
+		<?php
+		if(!empty($random_audio['ogg'])){
+			echo '<source type="audio/ogg" src="' . esc_attr($random_audio['ogg']) . '">';
+		}
+		if(!empty($random_audio['aac'])){
+			echo '<source type="audio/aac" src="' . esc_attr($random_audio['aac']) . '">';
+		}
+		?>
     </audio>
     <div class="mannheim-under-construction-map-wrapper">
         <div class="mannheim-under-construction-map sidebar-map">
@@ -113,38 +113,83 @@ $random_audio = $map_data[array_rand($map_data)];
                 <p class="onboarding-explainer" id="onboarding-explainer-4"><?php esc_html_e('... or a random post.', 'mannheim-under-construction'); ?></p>
                 <button autofocus id="onboarding-start-button"><?php esc_html_e('Start', 'mannheim-under-construction'); ?></button>
                 <div class="onboarding-welcome">
-	                <?php echo apply_filters( 'the_content', get_the_content(null, false, 209) ); ?>
+					<?php echo apply_filters( 'the_content', get_the_content(null, false, 209) ); ?>
                 </div>
             </div>
             <div id="left_sidebar" class="leaflet-sidebar collapsed leaflet-sidebar-left">
                 <div class="leaflet-sidebar-content">
                     <div class="leaflet-sidebar-pane" id="search" role="tabpanel">
-                        <button class="close-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                 viewBox="0 0 57.167 53.667" xml:space="preserve">
-                                <g>
-                                    <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
-                                    <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
-                                </g>
-                            </svg>
-                        </button>
-                        <p class="search-intro-text"><?php esc_html_e('Next to the full-text search (by search phrase) we have assigned tags to the posts – these are, as always, subjektive, but can help finding posts with similar topics.', 'mannheim-under-construction'); ?></p>
-                        <form class="mannheim-under-construction-search">
-                            <input name="s" type="search" placeholder="<?php esc_attr_e('Enter a search phrase', 'mannheim-under-construction'); ?>" aria-label="<?php esc_attr_e('Enter a search phrase', 'mannheim-under-construction'); ?>">
-                            <button type="submit">
+                        <div class="search-filters">
+                            <button class="close-button">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                     viewBox="0 0 57.167 81.5" xml:space="preserve">
+                                     viewBox="0 0 57.167 53.667" xml:space="preserve">
                                     <g>
-                                        <circle fill="none" stroke-width="3.5" stroke-miterlimit="10" cx="35.522" cy="33.893" r="16.597"/>
-                                        <path fill="none" stroke-width="3.5" stroke-linecap="round" stroke-miterlimit="10" d="M24.277,34.022
-                                            c0,0-0.206-8.338,8.131-10.293"/>
-                                        <path fill="none" stroke-width="3.5" stroke-linecap="round" stroke-miterlimit="10" d="M20.572,41.123"/>
-                                        <path fill="none" stroke-width="3.5" stroke-linecap="round" stroke-miterlimit="10" d="M21.035,42.256
-                                            L6.573,56.563c0,0,1.544,5.662,5.867,5.559l13.639-13.638"/>
+                                        <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
+                                        <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
                                     </g>
                                 </svg>
                             </button>
-                        </form>
+                            <p class="search-intro-text"><?php esc_html_e('Next to the full-text search (by search phrase) we have assigned tags to the posts – these are, as always, subjektive, but can help finding posts with similar topics.', 'mannheim-under-construction'); ?></p>
+                            <form class="mannheim-under-construction-search">
+                                <input name="s" type="search" placeholder="<?php esc_attr_e('Enter a search phrase', 'mannheim-under-construction'); ?>" aria-label="<?php esc_attr_e('Enter a search phrase', 'mannheim-under-construction'); ?>">
+                                <button type="submit">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         viewBox="0 0 57.167 81.5" xml:space="preserve">
+                                        <g>
+                                            <circle fill="none" stroke-width="3.5" stroke-miterlimit="10" cx="35.522" cy="33.893" r="16.597"/>
+                                            <path fill="none" stroke-width="3.5" stroke-linecap="round" stroke-miterlimit="10" d="M24.277,34.022
+                                                c0,0-0.206-8.338,8.131-10.293"/>
+                                            <path fill="none" stroke-width="3.5" stroke-linecap="round" stroke-miterlimit="10" d="M20.572,41.123"/>
+                                            <path fill="none" stroke-width="3.5" stroke-linecap="round" stroke-miterlimit="10" d="M21.035,42.256
+                                                L6.573,56.563c0,0,1.544,5.662,5.867,5.559l13.639-13.638"/>
+                                        </g>
+                                    </svg>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="search_sidebar" id="search-fulltext">
+                            <button class="close-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     viewBox="0 0 57.167 53.667" xml:space="preserve">
+                                    <g>
+                                        <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
+                                        <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
+                                    </g>
+                                </svg>
+                            </button>
+                            <div class="message"></div>
+                            <ol class="audios"></ol>
+                        </div>
+                        <div class="search_sidebar" id="search-tags">
+                            <button class="close-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     viewBox="0 0 57.167 53.667" xml:space="preserve">
+                                    <g>
+                                        <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
+                                        <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
+                                    </g>
+                                </svg>
+                            </button>
+							<?php
+							if(is_array($tag_data)){
+								foreach ($tag_data as $term_id => $term_name) {
+									echo '<div class="tag" data-tagid="' . esc_attr($term_id) . '">#' . esc_html($term_name) . '</div>';
+									echo '<ol class="tag-result">';
+									$audios = get_posts([
+										'post_type' => 'audio-station',
+										'posts_per_page' => -1,
+										'tax_query' => [
+											['taxonomy' => 'post_tag', 'field' => 'term_id', 'terms' => $term_id],
+										],
+									]);
+									foreach($audios as $audio){
+										echo '<li data-id="' . $audio->ID . '">' . esc_html($audio->post_title) . '</li>';
+									}
+									echo '</ol>';
+								}
+							}
+							?>
+                        </div>
                     </div>
                     <div class="leaflet-sidebar-pane" id="play" role="tabpanel">
                         <button class="close-button">
@@ -192,7 +237,7 @@ $random_audio = $map_data[array_rand($map_data)];
                             </button>
                             <button id="seek_forwards" class="seek-button">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                        viewBox="0 0 57.167 53.667" xml:space="preserve">
+                                     viewBox="0 0 57.167 53.667" xml:space="preserve">
                                     <g>
                                         <path d="M17.191,40.665V10.226l13.182,15.229L17.191,40.665z"/>
                                         <path d="M29.316,40.665V10.226l13.182,15.229L29.316,40.665z"/>
@@ -205,9 +250,9 @@ $random_audio = $map_data[array_rand($map_data)];
                             <p class="content-length"><span class="length" aria-label="<?php echo esc_attr($random_audio['length_readable']); ?>"><?php echo esc_html($random_audio['length']); ?></span> <span aria-hidden="true"><?php esc_html_e('min.', 'mannheim-under-construction'); ?></span></p>
                         </div>
                         <div class="content-tags">
-                            <?php foreach ($random_audio['tags'] as $term_id) {
-                                echo '<div class="tag" data-tagid="' . esc_attr($term_id) . '">#' . esc_html($tag_data[$term_id]) . '</div>';
-                            } ?>
+							<?php foreach ($random_audio['tags'] as $term_id) {
+								echo '<div class="tag" data-tagid="' . esc_attr($term_id) . '">#' . esc_html($tag_data[$term_id]) . '</div>';
+							} ?>
                         </div>
                     </div>
                 </div>
@@ -264,49 +309,6 @@ $random_audio = $map_data[array_rand($map_data)];
                     </button>
                 </div>
             </div>
-            <div class="search_sidebar" id="search-tags">
-                <button class="close-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                         viewBox="0 0 57.167 53.667" xml:space="preserve">
-                        <g>
-                            <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
-                            <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
-                        </g>
-                    </svg>
-                </button>
-                <?php
-                if(is_array($tag_data)){
-                    foreach ($tag_data as $term_id => $term_name) {
-                        echo '<div class="tag" data-tagid="' . esc_attr($term_id) . '">#' . esc_html($term_name) . '</div>';
-                        echo '<ol class="tag-result">';
-	                    $audios = get_posts([
-                            'post_type' => 'audio-station',
-                            'posts_per_page' => -1,
-                            'tax_query' => [
-                                ['taxonomy' => 'post_tag', 'field' => 'term_id', 'terms' => $term_id],
-                            ],
-                        ]);
-                        foreach($audios as $audio){
-                            echo '<li data-id="' . $audio->ID . '">' . esc_html($audio->post_title) . '</li>';
-                        }
-                        echo '</ol>';
-                    }
-                }
-                ?>
-            </div>
-            <div class="search_sidebar" id="search-fulltext">
-                <button class="close-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                         viewBox="0 0 57.167 53.667" xml:space="preserve">
-                        <g>
-                            <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
-                            <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
-                        </g>
-                    </svg>
-                </button>
-                <div class="message"></div>
-                <ol class="audios"></ol>
-            </div>
             <div id="right_sidebar" class="leaflet-sidebar collapsed leaflet-sidebar-right">
                 <div class="leaflet-sidebar-content">
                     <div class="leaflet-sidebar-pane" id="info" role="tabpanel">
@@ -325,13 +327,13 @@ $random_audio = $map_data[array_rand($map_data)];
                                     </button>
                                     <div>
                                         <button href="#imprint" id="imprint_menu" role="tab">
-                                            <?php esc_html_e('Imprint', 'mannheim-under-construction'); ?>
+											<?php esc_html_e('Imprint', 'mannheim-under-construction'); ?>
                                         </button>
                                         <button href="#privacy" id="privacy_menu" role="tab">
-                                            <?php esc_html_e('Privacy', 'mannheim-under-construction'); ?>
+											<?php esc_html_e('Privacy', 'mannheim-under-construction'); ?>
                                         </button>
                                         <button id="help_menu" role="tab">
-                                            <?php esc_html_e('Help', 'mannheim-under-construction'); ?>
+											<?php esc_html_e('Help', 'mannheim-under-construction'); ?>
                                         </button>
                                     </div>
                                 </div>
@@ -350,7 +352,7 @@ $random_audio = $map_data[array_rand($map_data)];
                         </div>
                         <div class="open-middle-part">
                             <div class="content">
-	                            <?php echo apply_filters( 'the_content', get_the_content(null, false, 216) ); ?>
+								<?php echo apply_filters( 'the_content', get_the_content(null, false, 216) ); ?>
                             </div>
                         </div>
                         <div class="open-right-part">
@@ -364,7 +366,7 @@ $random_audio = $map_data[array_rand($map_data)];
                                         </g>
                                     </svg>
                                 </button>
-                                <?php echo apply_filters( 'the_content', get_the_content(null, false, 218) ); ?>
+								<?php echo apply_filters( 'the_content', get_the_content(null, false, 218) ); ?>
                             </div>
                         </div>
                         <div class="right-part">
@@ -378,7 +380,7 @@ $random_audio = $map_data[array_rand($map_data)];
                                         </g>
                                     </svg>
                                 </button>
-                                <?php echo apply_filters( 'the_content', get_the_content(null, false, 212) ); ?>
+								<?php echo apply_filters( 'the_content', get_the_content(null, false, 212) ); ?>
                                 <button id="deepdive-more-info" class="under-construction-more-info">
                                     <span><?php esc_html_e('more information', 'mannheim-under-construction'); ?></span>
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -399,7 +401,7 @@ $random_audio = $map_data[array_rand($map_data)];
                                 </g>
                             </svg>
                         </button>
-                        <?php echo apply_filters( 'the_content', get_the_content(null, false, 169) ); ?>
+						<?php echo apply_filters( 'the_content', get_the_content(null, false, 169) ); ?>
                     </div>
                     <div class="leaflet-sidebar-pane" id="privacy" role="tabpanel">
                         <button class="close-button">
@@ -411,7 +413,7 @@ $random_audio = $map_data[array_rand($map_data)];
                                 </g>
                             </svg>
                         </button>
-                        <?php echo apply_filters( 'the_content', get_the_content(null, false, 7) ); ?>
+						<?php echo apply_filters( 'the_content', get_the_content(null, false, 7) ); ?>
                     </div>
                 </div>
                 <div class="leaflet-sidebar-tabs" role="tablist">
@@ -547,10 +549,10 @@ $random_audio = $map_data[array_rand($map_data)];
                         </svg>
                     </button>
                     <button href="#imprint" id="imprint_button" role="tab" class="legal-link">
-                        <?php esc_html_e('Imprint', 'mannheim-under-construction'); ?>
+						<?php esc_html_e('Imprint', 'mannheim-under-construction'); ?>
                     </button>
                     <button href="#privacy" id="privacy_button" role="tab" class="legal-link">
-                        <?php esc_html_e('Privacy', 'mannheim-under-construction'); ?>
+						<?php esc_html_e('Privacy', 'mannheim-under-construction'); ?>
                     </button>
                 </div>
             </div>
