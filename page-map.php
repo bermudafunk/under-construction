@@ -113,15 +113,7 @@ $random_audio = $map_data[array_rand($map_data)];
                 <p class="onboarding-explainer" id="onboarding-explainer-4"><?php esc_html_e('... or a random post.', 'mannheim-under-construction'); ?></p>
                 <button autofocus id="onboarding-start-button"><?php esc_html_e('Start', 'mannheim-under-construction'); ?></button>
                 <div class="onboarding-welcome">
-			        <?php esc_html_e('Welcome to', 'mannheim-under-construction'); ?><br>
-			        <?php esc_html_e('Mannheim', 'mannheim-under-construction'); ?><br>
-			        <?php esc_html_e('Under Construction', 'mannheim-under-construction'); ?>
-                    <p>
-				        <?php esc_html_e('Current and historical.', 'mannheim-under-construction'); ?><br>
-				        <?php esc_html_e('Short and longer posts.', 'mannheim-under-construction'); ?><br>
-				        <?php esc_html_e('Variety of forms: Project introductions, reports, interviews, Stories and other, also experimental, audio posts invite to linger and discover.', 'mannheim-under-construction'); ?>
-                    </p>
-                    <p><?php esc_html_e('This digital audio map is part of the eponymous project by bermuda.funk, the free radio Rhein-Neckar.', 'mannheim-under-construction'); ?></p>
+	                <?php echo apply_filters( 'the_content', get_the_content(null, false, 209) ); ?>
                 </div>
             </div>
             <div id="left_sidebar" class="leaflet-sidebar collapsed leaflet-sidebar-left">
@@ -210,7 +202,7 @@ $random_audio = $map_data[array_rand($map_data)];
                         </div>
                         <div class="content-description"><?php echo $random_audio['description']; ?></div>
                         <div class="content-audio-time">
-                            <p class="content-length" aria-label="<?php echo esc_attr($random_audio['length_readable']); ?>"><?php echo esc_html($random_audio['length']); ?></p>
+                            <p class="content-length"><span class="length" aria-label="<?php echo esc_attr($random_audio['length_readable']); ?>"><?php echo esc_html($random_audio['length']); ?></span> <span aria-hidden="true"><?php esc_html_e('min.', 'mannheim-under-construction'); ?></span></p>
                         </div>
                         <div class="content-tags">
                             <?php foreach ($random_audio['tags'] as $term_id) {
@@ -319,115 +311,82 @@ $random_audio = $map_data[array_rand($map_data)];
                 <div class="leaflet-sidebar-content">
                     <div class="leaflet-sidebar-pane" id="info" role="tabpanel">
                         <div class="left-part">
-                            <div class="info-menu">
-                                <button id="info-menu-button" class="under-construction-more-info" role="tab" aria-label="<?php esc_attr_e('Show more info about the project', 'mannheim-under-construction'); ?>">
+                            <div class="content">
+                                <div class="info-menu">
+                                    <button id="info-menu-button" class="under-construction-more-info" role="tab" aria-label="<?php esc_attr_e('Show more info about the project', 'mannheim-under-construction'); ?>">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                             viewBox="0 0 57.167 81.5" xml:space="preserve">
+                                            <g>
+                                                <rect x="11.5" y="25" width="36" height="6"/>
+                                                <rect x="11.5" y="38" width="36" height="6"/>
+                                                <rect x="11.5" y="52" width="36" height="6"/>
+                                            </g>
+                                        </svg>
+                                    </button>
+                                    <div>
+                                        <button href="#imprint" id="imprint_menu" role="tab">
+                                            <?php esc_html_e('Imprint', 'mannheim-under-construction'); ?>
+                                        </button>
+                                        <button href="#privacy" id="privacy_menu" role="tab">
+                                            <?php esc_html_e('Privacy', 'mannheim-under-construction'); ?>
+                                        </button>
+                                        <button id="help_menu" role="tab">
+                                            <?php esc_html_e('Help', 'mannheim-under-construction'); ?>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="under-construction-title">
+                                    <div class="title-line-1">
+                                        <span>Ma</span><span>nn</span><span>he</span><span>im</span>
+                                    </div>
+                                    <div class="title-line-2">
+                                        <span>U</span><span>n</span><span>de</span><span>r</span>
+                                    </div>
+                                    <div class="title-line-3">
+                                        <span>C</span><span>onst</span><span>ruc</span><span>tion</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="open-middle-part">
+                            <div class="content">
+	                            <?php echo apply_filters( 'the_content', get_the_content(null, false, 216) ); ?>
+                            </div>
+                        </div>
+                        <div class="open-right-part">
+                            <div class="content">
+                                <button class="close-button">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                         viewBox="0 0 57.167 81.5" xml:space="preserve">
+                                         viewBox="0 0 57.167 53.667" xml:space="preserve">
                                         <g>
-                                            <rect x="11.5" y="25" width="36" height="6"/>
-                                            <rect x="11.5" y="38" width="36" height="6"/>
-                                            <rect x="11.5" y="52" width="36" height="6"/>
+                                            <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
+                                            <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
                                         </g>
                                     </svg>
                                 </button>
-                                <div>
-                                    <button href="#imprint" id="imprint_menu" role="tab">
-                                        <?php esc_html_e('Imprint', 'mannheim-under-construction'); ?>
-                                    </button>
-                                    <button href="#privacy" id="privacy_menu" role="tab">
-                                        <?php esc_html_e('Privacy', 'mannheim-under-construction'); ?>
-                                    </button>
-                                    <button id="help_menu" role="tab">
-                                        <?php esc_html_e('Help', 'mannheim-under-construction'); ?>
-                                    </button>
-                                </div>
+                                <?php echo apply_filters( 'the_content', get_the_content(null, false, 218) ); ?>
                             </div>
-                            <div class="under-construction-title">
-                                <div class="title-line-1">
-                                    <span>Ma</span><span>nn</span><span>he</span><span>im</span>
-                                </div>
-                                <div class="title-line-2">
-                                    <span>U</span><span>n</span><span>de</span><span>r</span>
-                                </div>
-                                <div class="title-line-3">
-                                    <span>C</span><span>onst</span><span>ruc</span><span>tion</span>
-                                </div>
-                            </div>
-                            <button class="back-button" aria-label="<?php esc_attr_e('Back', 'mannheim-under-construction'); ?>">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                     viewBox="0 0 57.167 81.5" xml:space="preserve">
-                                    <path d="M18.812,32.084v6.938L10.14,30.35l8.672-8.672v6.938h12.141c3.844,0,7.117,1.355,9.82,4.066s4.055,5.98,4.055,9.809
-                                        s-1.355,7.098-4.066,9.809s-5.98,4.066-9.809,4.066H18.812v-3.469h12.141c2.875,0,5.328-1.016,7.359-3.047
-                                        s3.047-4.484,3.047-7.359s-1.016-5.328-3.047-7.359s-4.484-3.047-7.359-3.047H18.812z"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="open-middle-part">
-                            <p><span class="font-neue-black">Mannheim Under Construction</span> ist ein Projekt des <a href="https://bermudafunk.org" rel="noopener" target="_blank">bermuda.funk</a>, Freies Radio Rhein-Neckar. Seit Mai 2020 läuft im <a href="https://bermudafunk.org" rel="noopener" target="_blank">bermuda.funk</a> die gleichnamige Projektsendung.
-                                Die Audio-Stadtkarte zu zivilgesellschaftlichem Engagement ist seit Herbst 2021 online.</p>
-                            <p>Die Audio-Stadtkarte stellt zivilgesellschaftliches Engagement in der Stadt Mannheim vor.</p>
-                            <p><span class="font-neue-black">Mannheim Under Construction</span> bedeutet, dass es sich bei diesem Engagement um einen fortdauernden Prozess handelt, der immer weitergeschrieben, -gedacht und -gesprochen wird.</p>
-                            <p>Das Freie Radio Rhein-Neckar e. V., der <a href="https://bermudafunk.org" rel="noopener" target="_blank">bermuda.funk</a>, begleitet diesen Prozess mit seinem gleichnamigen Projekt.</p>
-                            <p><span class="font-neue-black">Mannheim Under Construction</span> wird gefördert von der Stadt Mannheim im Rahmen des Aktionsfonds</p>
-                                <h3>Zivilgesellschaftliches Engagement gegen Rechtsradikalismus, Muslimfeindlichkeit, Antisemitismus und Antiziganismus.</h3>
-                                <p>Weitere Informationen gibt es auf der <a href="https://www.mannheim.de/de/service-bieten/integration-migration/mannheimer-buendnis-fuer-ein-zusammenleben-in-vielfalt/aktionsfonds-zivilgesellschaftliches-engagement" rel="noopener" target="_blank">Homepage des Aktionsfonds</a>.</p>
-                        </div>
-                        <div class="open-right-part">
-                            <button class="close-button">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                     viewBox="0 0 57.167 53.667" xml:space="preserve">
-                                    <g>
-                                        <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
-                                        <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
-                                    </g>
-                                </svg>
-                            </button>
-                            <h2>Kontakt</h2>
-                            <p><a href="mailto:<?php echo antispambot('underconstruction@bermudafunk.org'); ?>"><?php echo antispambot('underconstruction@bermudafunk.org'); ?></a></p>
-
-                            <h2>Projektleitung</h2>
-                            <p>Christina Gehrlein, bermuda.funk</p>
-
-                            <h2>Webseite</h2>
-                            <p>Gabriela Kühnhardt-Alvarez, Design<br>
-                                Daniel Winzen, Entwicklung</p>
-
-                            <h2>Dankeschön</h2>
-                            <p>Wir danken allen, die sich bisher an diesem Projekt beteiligt haben – die Hinweise gegeben, die mit uns gesprochen, uns Feedback gegeben oder das Projekt in anderer Form unterstützt haben!</p>
-                            <p>Wir danken dem Aktionsfonds „Zivilgesellschaftliches Engagement“ der Stadt Mannheim für die Förderung.</p>
-                            <picture>
-                                <source srcset="<?php echo plugins_url('assets/img/stadt-mannheim-logo.avif', __FILE__); ?>" type="image/avif">
-                                <source srcset="<?php echo plugins_url('assets/img/stadt-mannheim-logo.webp', __FILE__); ?>" type="image/webp">
-                                <img class="thank-you-logos" src="<?php echo plugins_url('assets/img/stadt-mannheim-logo.png', __FILE__); ?>" alt="<?php esc_html_e('Logo - City Mannheim', 'mannheim-under-construction'); ?>" loading="lazy">
-                            </picture>
-                            <picture>
-                                <source srcset="<?php echo plugins_url('assets/img/bermudafunk-logo.avif', __FILE__); ?>" type="image/avif">
-                                <img class="thank-you-logos" src="<?php echo plugins_url('assets/img/bermudafunk-logo.png', __FILE__); ?>" alt="<?php esc_html_e('Logo - bermuda.funk', 'mannheim-under-construction'); ?>" loading="lazy">
-                            </picture>
                         </div>
                         <div class="right-part">
-                            <button class="close-button">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                     viewBox="0 0 57.167 53.667" xml:space="preserve">
-                                    <g>
-                                        <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
-                                        <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
-                                    </g>
-                                </svg>
-                            </button>
-                            <p><?php _e('Welcome to <span class="font-neue-black">Mannheim Under Construction</span>', 'mannheim-under-construction'); ?></p>
-                            <p><?php esc_html_e('the audio map of civil societal engagement', 'mannheim-under-construction'); ?></p>
-                            <p><?php printf(__('This map introduces civil societal engagement in the city Mannheim. <span class="font-neue-black">Mannheim Under Construction</span> means, means that this engagement is an ongoing process, which always continues to be written, thought and spoken. The Free Radio Rhein-Neckar e. V., the %s, accompany this process with the eponymous Project.', 'mannheim-under-construction'), '<a href="https://bermudafunk.org" rel="noopener" target="_blank">bermuda.funk</a>'); ?></p>
-                            <h2><?php esc_html_e('Discover and listen: How does engagement sound?', 'mannheim-under-construction'); ?></h2>
-                            <p><?php esc_html_e('Locations and engagement. Locations and memory. Markers in the city. Current and historical. Interim report and archive. Activism. Empowerment.', 'mannheim-under-construction'); ?></p>
-                            <p><?php esc_html_e('The Formats are diverse: Project introduction, interviews, Stories and other – also experimental – Posts in various lengths invite to linger, browse, discover and listen.', 'mannheim-under-construction'); ?></p>
-                            <button id="deepdive-more-info" class="under-construction-more-info">
-                                <span><?php esc_html_e('more information', 'mannheim-under-construction'); ?></span>
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                     viewBox="0 0 57.167 81.5" xml:space="preserve">
-                                    <path d="M18.147,56.521l-4.71-4.733h21.685L13.438,30.104l3.325-3.324l21.683,21.682l0.023-21.681l4.71,4.71v25.03H18.147z"/>
-                                </svg>
-                            </button>
+                            <div class="content">
+                                <button class="close-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         viewBox="0 0 57.167 53.667" xml:space="preserve">
+                                        <g>
+                                            <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
+                                            <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
+                                        </g>
+                                    </svg>
+                                </button>
+                                <?php echo apply_filters( 'the_content', get_the_content(null, false, 212) ); ?>
+                                <button id="deepdive-more-info" class="under-construction-more-info">
+                                    <span><?php esc_html_e('more information', 'mannheim-under-construction'); ?></span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         viewBox="0 0 57.167 81.5" xml:space="preserve">
+                                        <path d="M18.147,56.521l-4.71-4.733h21.685L13.438,30.104l3.325-3.324l21.683,21.682l0.023-21.681l4.71,4.71v25.03H18.147z"/>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div class="leaflet-sidebar-pane" id="imprint" role="tabpanel">

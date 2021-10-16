@@ -200,12 +200,18 @@ window.addEventListener('DOMContentLoaded', function(){
                 } else {
                     player.currentTime = player.duration;
                 }
+                if(player.innerHTML === player_new.innerHTML) {
+                    updateAudioPosition();
+                }
             });
             seek_backwards.addEventListener('click', _ => {
                 if(0 < player.currentTime - 15){
                     player.currentTime -= 15;
                 } else {
                     player.currentTime = 0;
+                }
+                if(player.innerHTML === player_new.innerHTML) {
+                    updateAudioPosition();
                 }
             });
             onboarding.addEventListener('click', _ => {
@@ -281,7 +287,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     document.querySelector('#play .content-location').innerHTML = audio_station.location;
                     document.querySelector('#play .content-title').innerHTML = audio_station.title;
                     document.querySelector('#play .content-description').innerHTML = audio_station.description;
-                    let content_length = document.querySelector('#play .content-length');
+                    let content_length = document.querySelector('#play .content-length .length');
                     content_length.innerHTML = audio_station.length;
                     content_length.setAttribute('aria-label', audio_station.length_readable);
                     let tags_html = '';

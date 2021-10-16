@@ -132,10 +132,8 @@ body.black-white .close-button svg {
 }
 .content-player button {
     cursor: pointer;
-    width: 5em;
-}
-.content-player .audio-time {
-    width: 5em;
+    width: 50px;
+    flex-shrink: 0;
 }
 .leaflet-zoom-box,
 .leaflet-bar a,
@@ -323,8 +321,7 @@ button.close-button{
     top: 60px;
     max-width: 300px;
 }
-.onboarding-welcome p {
-    font-size: 1em;
+.onboarding-welcome p+p {
     padding-left: 1em;
 }
 @media screen and (max-width: 1024px) {
@@ -427,21 +424,8 @@ body.black-white .leaflet-sidebar-content {
 body.black-white #black_white_switcher circle{
     fill: #F2FF5B;
 }
-@media (min-width:768px) and (max-width:991px) {
-    .search_sidebar.active ~ .leaflet-control-container .leaflet-left {
-        left: 500px;
-    }
-    .search_sidebar {
-        max-width: 420px;
-    }
-    .leaflet-sidebar-right:not(.collapsed) {
-        width: 708px;
-    }
-    .leaflet-sidebar-right:not(.collapsed) ~ .leaflet-control-container .leaflet-right {
-        visibility: hidden;
-    }
-}
-@media (min-width:992px) and (max-width:1199px) {
+
+@media (min-width:768px) {
     .search_sidebar.active ~ .leaflet-control-container .leaflet-left {
         left: 780px;
     }
@@ -480,6 +464,9 @@ body.black-white #black_white_switcher circle{
 #search-tags .tag,
 .content-tags .tag {
     cursor: pointer;
+}
+.content-tags{
+    margin-bottom: 30px;
 }
 #search-tags .tag-result {
     display: none;
@@ -534,6 +521,9 @@ body.wait .search_sidebar {
 #info .left-part {
     width: 100%;
 }
+#info .content {
+    margin: 0 10px;
+}
 #info .open-middle-part,
 #info .open-right-part {
     display: none;
@@ -568,7 +558,7 @@ body.wait .search_sidebar {
 }
 .under-construction-title span {
     display: block;
-    font-size: 2.2em;
+    font-size: 2.1em;
     text-transform: uppercase;
     word-wrap: anywhere;
     font-family: 'TheNeueBlack', sans-serif;
@@ -641,8 +631,9 @@ body.deepdive-open .leaflet-sidebar.collapsed {
     width: 60px;
     height: 60px;
 }
-.thank-you-logos {
+#info figure img {
     max-width: 400px;
     width: 100%;
+    height: auto;
     background: #FFFFFF;
 }

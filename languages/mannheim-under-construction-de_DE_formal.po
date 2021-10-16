@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Mannheim Under Construction\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-13 20:28+0000\n"
-"PO-Revision-Date: 2021-10-14 21:38+0000\n"
+"PO-Revision-Date: 2021-10-16 18:43+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch (Sie)\n"
 "Language: de_DE_formal\n"
@@ -118,15 +118,15 @@ msgctxt "audio-station"
 msgid "Use as featured image"
 msgstr "Als Beitragsbild verwenden"
 
-#: index.php:226 page-map.php:265 page-map.php:356
+#: index.php:226 page-map.php:257 page-map.php:348
 msgid "Back"
 msgstr "Zurück"
 
-#: page-map.php:223
+#: page-map.php:215
 msgid "Change contrast"
 msgstr "Kontrast ändern"
 
-#: page-map.php:232
+#: page-map.php:224
 msgid "Change font size"
 msgstr "Schriftgröße ändern"
 
@@ -142,10 +142,6 @@ msgstr "Wähle eine Markierung aus..."
 msgid "Choose or Upload Media"
 msgstr "Medien auswählen oder hochladen"
 
-#: page-map.php:120
-msgid "Current and historical."
-msgstr "Aktuelles und Historisches."
-
 #. Author of the plugin
 msgid "Daniel Winzen"
 msgstr "Daniel Winzen"
@@ -153,10 +149,6 @@ msgstr "Daniel Winzen"
 #: index.php:181
 msgid "Desired location"
 msgstr "Gewünschter Ort"
-
-#: page-map.php:421
-msgid "Discover and listen: How does engagement sound?"
-msgstr "Entdecken und zuhören: Wie klingt Engagement?"
 
 #: index.php:258
 msgid ""
@@ -187,7 +179,7 @@ msgstr ""
 "Gib einen neuen Suchbegriff ein oder versuche über die Schlagwortsuche einen "
 "spannenden Beitrag zu finden :)"
 
-#: page-map.php:141
+#: page-map.php:133
 msgid "Enter a search phrase"
 msgstr "Gib einen Suchbegriff ein"
 
@@ -209,7 +201,7 @@ msgstr ""
 "Container, welches das moov Atom am Anfang hat und von fast allen Browsern "
 "unterstützt wird."
 
-#: page-map.php:341
+#: page-map.php:333
 msgid "Help"
 msgstr "Hilfe"
 
@@ -217,7 +209,7 @@ msgstr "Hilfe"
 msgid "https://danwin1210.me"
 msgstr "https://danwin1210.me"
 
-#: page-map.php:335 page-map.php:591
+#: page-map.php:327 page-map.php:550
 msgid "Imprint"
 msgstr "Impressum"
 
@@ -246,27 +238,6 @@ msgstr "Ort:"
 msgid "Locations"
 msgstr "Orte"
 
-#: page-map.php:422
-msgid ""
-"Locations and engagement. Locations and memory. Markers in the city. Current "
-"and historical. Interim report and archive. Activism. Empowerment."
-msgstr ""
-"Orte und Engagement. Orte und Erinnerung. Markierungen in der Stadt. "
-"Aktuelles und Historisches. Zwischenbericht und Archiv. Aktivismus. "
-"Empowerment."
-
-#: page-map.php:405
-msgid "Logo - bermuda.funk"
-msgstr "Logo - bermuda.funk"
-
-#: page-map.php:401
-msgid "Logo - City Mannheim"
-msgstr "Logo - Stadt Mannheim"
-
-#: page-map.php:117
-msgid "Mannheim"
-msgstr "Mannheim"
-
 #. Name of the plugin
 msgid "Mannheim Under Construction"
 msgstr "Mannheim Under Construction"
@@ -280,7 +251,11 @@ msgstr ""
 "Engagements. Diese Stadtkarte stellt zivilgesellschaftliches Engagement in "
 "der Stadt Mannheim vor."
 
-#: page-map.php:425
+#: page-map.php:205
+msgid "min."
+msgstr "min."
+
+#: page-map.php:384
 msgid "more information"
 msgstr "mehr Informationen"
 
@@ -288,7 +263,7 @@ msgstr "mehr Informationen"
 msgid "New audio station"
 msgstr "Neue Audiostation"
 
-#: page-map.php:139
+#: page-map.php:131
 msgid ""
 "Next to the full-text search (by search phrase) we have assigned tags to the "
 "posts – these are, as always, subjektive, but can help finding posts with "
@@ -313,7 +288,7 @@ msgstr ""
 "Ups, während des Ladens Ihrer Suchergebnisse ist ein Fehler aufgetreten. "
 "Bitte versuchen Sie es erneut."
 
-#: page-map.php:259
+#: page-map.php:251
 msgid "Open player"
 msgstr "Wiedergabe öffnen"
 
@@ -331,11 +306,11 @@ msgstr ""
 msgid "Or listen to this randomly selected post:"
 msgstr "Oder hören Sie sich diesen zufällig ausgewählten Beitrag an:"
 
-#: page-map.php:170
+#: page-map.php:162
 msgid "Play/Pause"
 msgstr "Abspielen/Pausieren"
 
-#: page-map.php:338 page-map.php:594
+#: page-map.php:330 page-map.php:553
 msgid "Privacy"
 msgstr "Datenschutz"
 
@@ -360,7 +335,7 @@ msgstr "Produktionsdaten"
 msgid "Provides a map with audio stations"
 msgstr "Stellt eine Karte mit Audiostationen zur Verfügung"
 
-#: page-map.php:246
+#: page-map.php:238
 msgid "Search"
 msgstr "Suche"
 
@@ -372,20 +347,15 @@ msgstr "Audiostationen suchen"
 msgid "Search in archive"
 msgstr "Suche im Archiv"
 
-#: page-map.php:121
-#| msgid "Short and long posts."
-msgid "Short and longer posts."
-msgstr "Kurze und längere Beiträge."
-
-#: page-map.php:459
+#: page-map.php:418
 msgid "Show info about the project"
 msgstr "Informationen zum Projekt anzeigen"
 
-#: page-map.php:323
+#: page-map.php:315
 msgid "Show more info about the project"
 msgstr "Mehr Informationen zum Projekt anzeigen"
 
-#: page-map.php:601
+#: page-map.php:560
 msgid "Sorry, you need to enable JavaScript to use this map."
 msgstr ""
 "Tut uns leid, aber Sie benötigen JavaScript um diese Karte zu benutzen."
@@ -393,21 +363,6 @@ msgstr ""
 #: page-map.php:114
 msgid "Start"
 msgstr "Start"
-
-#: page-map.php:419
-#| msgid "the audio map of civil societal engagement "
-msgid "the audio map of civil societal engagement"
-msgstr "der Audio-Stadtkarte zivilgesellschaftlichen Engagements"
-
-#: page-map.php:423
-msgid ""
-"The Formats are diverse: Project introduction, interviews, Stories and other "
-"– also experimental – Posts in various lengths invite to linger, browse, "
-"discover and listen."
-msgstr ""
-"Die Formate sind vielfältig: Projektvorstellungen, Interviews, Geschichten "
-"und andere – auch experimentelle – Beiträge in verschiedener Länge laden zum "
-"Verweilen, Stöbern, Entdecken und Zuhören ein."
 
 #: index.php:263
 msgid ""
@@ -433,30 +388,6 @@ msgstr ""
 "Der Suchbegriff \"%s\" hat folgende Beiträge gefunden. Klicke auf den Titel "
 "um den Beitrag zu hören:"
 
-#: page-map.php:124
-msgid ""
-"This digital audio map is part of the eponymous project by bermuda.funk, the "
-"free radio Rhein-Neckar."
-msgstr ""
-"Diese digitale Audio-Stadtkarte ist Teil des gleichnamigen Projekts von "
-"bermuda.funk, dem Freien Radio Rhein-Neckar."
-
-#: page-map.php:420
-#, php-format
-msgid ""
-"This map introduces civil societal engagement in the city Mannheim. <span "
-"class=\"font-neue-black\">Mannheim Under Construction</span> means, means "
-"that this engagement is an ongoing process, which always continues to be "
-"written, thought and spoken. The Free Radio Rhein-Neckar e. V., the %s, "
-"accompany this process with the eponymous Project."
-msgstr ""
-"Diese Stadtkarte stellt zivilgesellschaftliches Engagement in der Stadt "
-"Mannheim vor. <span class=\"font-neue-black\">Mannheim Under "
-"Construction</span> bedeutet, dass es sich bei diesem Engagement um einen "
-"fortdauernden Prozess handelt, der immer weitergeschrieben, -gedacht und -"
-"gesprochen wird. Das Freie Radio Rhein-Neckar e. V., der %s, begleitet "
-"diesen Prozess mit seinem gleichnamigen Projekt."
-
 #: index.php:132
 msgid "Type of audio station"
 msgstr "Beitragsart einer Audiostation"
@@ -464,10 +395,6 @@ msgstr "Beitragsart einer Audiostation"
 #: index.php:131
 msgid "Types"
 msgstr "Beitragsarten"
-
-#: page-map.php:118
-msgid "Under Construction"
-msgstr "Under Construction"
 
 #: index.php:276
 msgid "Upload AAC-Audio file"
@@ -484,15 +411,6 @@ msgstr "Zu dieser Audiostation hochladen"
 #: index.php:180
 msgid "Use this media"
 msgstr "Diese Mediendatei verwenden"
-
-#: page-map.php:122
-msgid ""
-"Variety of forms: Project introductions, reports, interviews, Stories and "
-"other, also experimental, audio posts invite to linger and discover."
-msgstr ""
-"Formenvielfalt: Projektvorstellungen, Berichte, Interviews, Geschichten und "
-"andere, auch experimentelle Audio-Beiträge laden zum Verweilen und Entdecken "
-"ein."
 
 #: index.php:42
 msgid "View audio station"
@@ -511,17 +429,6 @@ msgstr ""
 "VP9 bei CRF 40 und 25 fps in einem WebM Container, was deutlich geringere "
 "Dateigröße bei ungefähr gleichbleibender Qualität bietet. Es wird von den "
 "meisten modernen Browsern unterstützt."
-
-#: page-map.php:116
-msgid "Welcome to"
-msgstr "Willkommen bei"
-
-#: page-map.php:418
-msgid ""
-"Welcome to <span class=\"font-neue-black\">Mannheim Under Construction</span>"
-msgstr ""
-"Willkommen bei <span class=\"font-neue-black\">Mannheim Under "
-"Construction</span>"
 
 #: index.php:224
 msgid "Zoom in"
