@@ -428,33 +428,6 @@
                         </svg>
                     </button>
                     <button class="open-under-construction-info" role="tab" id="right_sidebar_title" aria-hidden="true">
-                        <!--<span>M</span>
-                        <span>a</span>
-                        <span>n</span>
-                        <span>n</span>
-                        <span>h</span>
-                        <span>e</span>
-                        <span>i</span>
-                        <span>m</span>
-                        <span> </span>
-                        <span>U</span>
-                        <span>n</span>
-                        <span>d</span>
-                        <span>e</span>
-                        <span>r</span>
-                        <span> </span>
-                        <span>C</span>
-                        <span>o</span>
-                        <span>n</span>
-                        <span>s</span>
-                        <span>t</span>
-                        <span>r</span>
-                        <span>u</span>
-                        <span>c</span>
-                        <span>t</span>
-                        <span>i</span>
-                        <span>o</span>
-                        <span>n</span>-->
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 50 413" xml:space="preserve">
                             <g>
