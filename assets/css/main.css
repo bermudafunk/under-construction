@@ -297,6 +297,9 @@ button.close-button{
     max-width: 300px;
     font-size: 1.2em;
 }
+.large-font .onboarding-explainer {
+    max-width: 450px;
+}
 #onboarding-explainer-1 {
     top: 60px;
 }
@@ -329,6 +332,7 @@ button.close-button{
     }
 }
 .mannheim-under-construction-search{
+    margin-top: 40px;
     display: flex;
 }
 .mannheim-under-construction-search button{
