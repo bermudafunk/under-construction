@@ -171,7 +171,7 @@
                                         </g>
                                     </svg>
                                 </button>
-                                <div class="message"></div>
+                                <div class="message"><?php esc_html_e('You haven\'t started a search query yet. Your results will appear here.', 'mannheim-under-construction'); ?></div>
                                 <ol class="audios"></ol>
                             </div>
                         </div>

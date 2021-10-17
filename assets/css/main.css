@@ -431,7 +431,7 @@ body.black-white #black_white_switcher circle{
 #search-fulltext .message{
     margin-right: 60px;
 }
-body.wait .leaflet-sidebar-pane input,
+body.wait .leaflet-sidebar-pane *,
 body.wait .leaflet-sidebar-pane {
     cursor: wait;
 }

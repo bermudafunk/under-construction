@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Mannheim Under Construction\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-13 20:28+0000\n"
-"PO-Revision-Date: 2021-10-17 11:36+0000\n"
+"PO-Revision-Date: 2021-10-17 12:11+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -439,6 +439,11 @@ msgstr ""
 "VP9 bei CRF 40 und 25 fps in einem WebM Container, was deutlich geringere "
 "Dateigröße bei ungefähr gleichbleibender Qualität bietet. Es wird von den "
 "meisten modernen Browsern unterstützt."
+
+#: page-map.php:174
+msgid "You haven't started a search query yet. Your results will appear here."
+msgstr ""
+"Du hast noch keine Suche gestartet. Dein Suchergebnis wird hier erscheinen."
 
 #: index.php:224
 msgid "Zoom in"
