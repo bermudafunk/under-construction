@@ -560,15 +560,21 @@ body.search-results-open .leaflet-control-container,
 body.deepdive-open .leaflet-control-container {
     visibility: hidden;
 }
-#deepdive-more-info {
+#deepdive-more-info,
+#search-extend {
     margin-left: auto;
     margin-right: 0;
-    bottom: 0;
+    display: flex;
 }
-#deepdive-more-info span {
+.search-results-open #search-extend {
+    display: none;
+}
+#deepdive-more-info span,
+#search-extend span {
     align-self: center;
 }
-#deepdive-more-info svg {
+#deepdive-more-info svg,
+#search-extend svg {
     width: 60px;
     height: 60px;
 }

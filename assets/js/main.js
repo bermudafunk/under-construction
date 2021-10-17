@@ -90,6 +90,7 @@ window.addEventListener('DOMContentLoaded', function(){
             let waveform_update_interval = null;
             let open_under_construction_info = document.querySelectorAll('.open-under-construction-info');
             let open_under_construction_more_info = document.querySelectorAll('.under-construction-more-info');
+            let search_extend = document.querySelector('#search-extend');
             let sidebar_left_dom = document.querySelector('.leaflet-sidebar-left');
             let sidebar_right_dom = document.querySelector('.leaflet-sidebar-right');
             for(let opener of open_under_construction_info){
@@ -106,6 +107,9 @@ window.addEventListener('DOMContentLoaded', function(){
                     }
                 });
             }
+            search_extend.addEventListener('click', _ => {
+                body.classList.add('search-results-open');
+            });
             black_white_switcher.addEventListener('click', _ => {
                 body.classList.toggle('black-white');
                 update_bg();

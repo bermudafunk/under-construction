@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Mannheim Under Construction\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-13 20:28+0000\n"
-"PO-Revision-Date: 2021-10-16 18:43+0000\n"
+"PO-Revision-Date: 2021-10-17 11:36+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch (Sie)\n"
 "Language: de_DE_formal\n"
@@ -118,29 +118,34 @@ msgctxt "audio-station"
 msgid "Use as featured image"
 msgstr "Als Beitragsbild verwenden"
 
-#: index.php:226 page-map.php:257 page-map.php:348
+#: index.php:226 page-map.php:319
 msgid "Back"
 msgstr "Zurück"
 
-#: page-map.php:215
+#: page-map.php:277
 msgid "Change contrast"
 msgstr "Kontrast ändern"
 
-#: page-map.php:224
+#: page-map.php:286
 msgid "Change font size"
 msgstr "Schriftgröße ändern"
 
 #: page-map.php:92
 msgid "Change the font size or switch to black/white view"
-msgstr "Verändere die Schriftgröße oder wechsel in die Schwarz/Weiß Ansicht"
+msgstr ""
+"Veränderen Sie die Schriftgröße oder wechseln Sie in die Schwarz/Weiß Ansicht"
 
 #: page-map.php:98
 msgid "Choose a marker..."
-msgstr "Wähle eine Markierung aus..."
+msgstr "Wählen Sie eine Markierung aus..."
 
 #: index.php:179
 msgid "Choose or Upload Media"
 msgstr "Medien auswählen oder hochladen"
+
+#: page-map.php:155
+msgid "Click here for extended search"
+msgstr "Klicken Sie hier für die erweiterte Suche"
 
 #. Author of the plugin
 msgid "Daniel Winzen"
@@ -172,16 +177,17 @@ msgid "Encoding guideline:"
 msgstr "Kodierungs-Leitfaden:"
 
 #: index.php:347
-msgid ""
-"Enter a new search term or try finding an interesting post with the tag "
-"search :)"
+#| msgid ""
+#| "Enter a new search term or try finding an interesting post with the tag "
+#| "search :)"
+msgid "Enter a new search term or try finding a post with the tag search :)"
 msgstr ""
-"Gib einen neuen Suchbegriff ein oder versuche über die Schlagwortsuche einen "
-"spannenden Beitrag zu finden :)"
+"Geben Sie einen neuen Suchbegriff ein oder versuchen Sie über die "
+"Schlagwortsuche einen Beitrag zu finden :)"
 
-#: page-map.php:133
+#: page-map.php:134
 msgid "Enter a search phrase"
-msgstr "Gib einen Suchbegriff ein"
+msgstr "Geben Sie einen Suchbegriff ein"
 
 #: index.php:56
 msgid "Filter audio stations list"
@@ -190,6 +196,10 @@ msgstr "Audiostationen-Liste filtern"
 #: index.php:57
 msgid "Filter by date"
 msgstr "Nach Datum filtern"
+
+#: page-map.php:151
+msgid "For example:"
+msgstr "Zum Beispiel:"
 
 #: index.php:265
 msgid ""
@@ -201,7 +211,7 @@ msgstr ""
 "Container, welches das moov Atom am Anfang hat und von fast allen Browsern "
 "unterstützt wird."
 
-#: page-map.php:333
+#: page-map.php:353
 msgid "Help"
 msgstr "Hilfe"
 
@@ -209,7 +219,7 @@ msgstr "Hilfe"
 msgid "https://danwin1210.me"
 msgstr "https://danwin1210.me"
 
-#: page-map.php:327 page-map.php:550
+#: page-map.php:347 page-map.php:542
 msgid "Imprint"
 msgstr "Impressum"
 
@@ -251,27 +261,17 @@ msgstr ""
 "Engagements. Diese Stadtkarte stellt zivilgesellschaftliches Engagement in "
 "der Stadt Mannheim vor."
 
-#: page-map.php:205
+#: page-map.php:267
 msgid "min."
 msgstr "min."
 
-#: page-map.php:384
+#: page-map.php:402
 msgid "more information"
 msgstr "mehr Informationen"
 
 #: index.php:41
 msgid "New audio station"
 msgstr "Neue Audiostation"
-
-#: page-map.php:131
-msgid ""
-"Next to the full-text search (by search phrase) we have assigned tags to the "
-"posts – these are, as always, subjektive, but can help finding posts with "
-"similar topics."
-msgstr ""
-"Neben der Volltextsuche (per Suchbegriffe) haben wir die Beiträge mit "
-"Schlagworten versehen – wie immer sind diese subjektiv, können aber helfen, "
-"Beiträge mit ähnlichen Themen zu finden."
 
 #: index.php:46
 msgid "No audio stations found in Trash."
@@ -288,7 +288,7 @@ msgstr ""
 "Ups, während des Ladens Ihrer Suchergebnisse ist ein Fehler aufgetreten. "
 "Bitte versuchen Sie es erneut."
 
-#: page-map.php:251
+#: page-map.php:313
 msgid "Open player"
 msgstr "Wiedergabe öffnen"
 
@@ -306,11 +306,11 @@ msgstr ""
 msgid "Or listen to this randomly selected post:"
 msgstr "Oder hören Sie sich diesen zufällig ausgewählten Beitrag an:"
 
-#: page-map.php:162
+#: page-map.php:224
 msgid "Play/Pause"
 msgstr "Abspielen/Pausieren"
 
-#: page-map.php:330 page-map.php:553
+#: page-map.php:350 page-map.php:545
 msgid "Privacy"
 msgstr "Datenschutz"
 
@@ -335,7 +335,7 @@ msgstr "Produktionsdaten"
 msgid "Provides a map with audio stations"
 msgstr "Stellt eine Karte mit Audiostationen zur Verfügung"
 
-#: page-map.php:238
+#: page-map.php:300
 msgid "Search"
 msgstr "Suche"
 
@@ -347,15 +347,15 @@ msgstr "Audiostationen suchen"
 msgid "Search in archive"
 msgstr "Suche im Archiv"
 
-#: page-map.php:418
+#: page-map.php:437
 msgid "Show info about the project"
 msgstr "Informationen zum Projekt anzeigen"
 
-#: page-map.php:315
+#: page-map.php:335
 msgid "Show more info about the project"
 msgstr "Mehr Informationen zum Projekt anzeigen"
 
-#: page-map.php:560
+#: page-map.php:552
 msgid "Sorry, you need to enable JavaScript to use this map."
 msgstr ""
 "Tut uns leid, aber Sie benötigen JavaScript um diese Karte zu benutzen."
@@ -385,8 +385,16 @@ msgid ""
 "The search term \"%s\" found the following posts. Click on the title to "
 "listen to the post:"
 msgstr ""
-"Der Suchbegriff \"%s\" hat folgende Beiträge gefunden. Klicke auf den Titel "
-"um den Beitrag zu hören:"
+"Der Suchbegriff \"%s\" hat folgende Beiträge gefunden. Klicken Sie auf den "
+"Titel um den Beitrag zu hören:"
+
+#: page-map.php:150
+msgid ""
+"This is the full-text search. Enter a word, which interests you and it can "
+"lead you to new posts :)"
+msgstr ""
+"Dies ist die Volltextsuche. Geben Sie einen Begriff ein, der Sie "
+"interessiert und dies kann Sie zu neuen Audiobeiträgen führen :)"
 
 #: index.php:132
 msgid "Type of audio station"
@@ -419,6 +427,10 @@ msgstr "Audiostation ansehen"
 #: index.php:43
 msgid "View audio stations"
 msgstr "Audiostationen ansehen"
+
+#: page-map.php:152
+msgid "Vogelstang, School, Post-migration, etc."
+msgstr "Vogelstang, Schule Postmigrantisch, etc."
 
 #: index.php:266
 msgid ""

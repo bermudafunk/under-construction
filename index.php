@@ -344,7 +344,7 @@ class Mannheim_Under_Constrcution
 		        'orderby' => 'rand',
 	        ])[0];
             $message .= '<p>' . sprintf(esc_html__('The search term "%s" did unfortunately not find any posts :(', 'mannheim-under-construction'), esc_html($_POST['s'])) . '</p>';
-            $message .= '<p>' . esc_html__('Enter a new search term or try finding an interesting post with the tag search :)', 'mannheim-under-construction') . '</p>';
+            $message .= '<p>' . esc_html__('Enter a new search term or try finding a post with the tag search :)', 'mannheim-under-construction') . '</p>';
             $message .= '<p>' . esc_html__('Or listen to this randomly selected post:', 'mannheim-under-construction') . '</p>';
 	        $audios_html .= '<li data-id="' . $audio->ID . '">' . esc_html($audio->post_title) . '</li>';
         } else {

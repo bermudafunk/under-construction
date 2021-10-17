@@ -120,75 +120,92 @@
                 <div class="leaflet-sidebar-content">
                     <div class="leaflet-sidebar-pane" id="search" role="tabpanel">
                         <div class="search-filters">
-                            <button class="close-button">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                     viewBox="0 0 57.167 53.667" xml:space="preserve">
-                                    <g>
-                                        <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
-                                        <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
-                                    </g>
-                                </svg>
-                            </button>
-                            <p class="search-intro-text"><?php esc_html_e('Next to the full-text search (by search phrase) we have assigned tags to the posts – these are, as always, subjektive, but can help finding posts with similar topics.', 'mannheim-under-construction'); ?></p>
-                            <form class="mannheim-under-construction-search">
-                                <input name="s" type="search" placeholder="<?php esc_attr_e('Enter a search phrase', 'mannheim-under-construction'); ?>" aria-label="<?php esc_attr_e('Enter a search phrase', 'mannheim-under-construction'); ?>">
-                                <button type="submit">
+                            <div class="content">
+                                <button class="close-button">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                         viewBox="0 0 57.167 81.5" xml:space="preserve">
+                                         viewBox="0 0 57.167 53.667" xml:space="preserve">
                                         <g>
-                                            <circle fill="none" stroke-width="3.5" stroke-miterlimit="10" cx="35.522" cy="33.893" r="16.597"/>
-                                            <path fill="none" stroke-width="3.5" stroke-linecap="round" stroke-miterlimit="10" d="M24.277,34.022
-                                                c0,0-0.206-8.338,8.131-10.293"/>
-                                            <path fill="none" stroke-width="3.5" stroke-linecap="round" stroke-miterlimit="10" d="M20.572,41.123"/>
-                                            <path fill="none" stroke-width="3.5" stroke-linecap="round" stroke-miterlimit="10" d="M21.035,42.256
-                                                L6.573,56.563c0,0,1.544,5.662,5.867,5.559l13.639-13.638"/>
+                                            <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
+                                            <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
                                         </g>
                                     </svg>
                                 </button>
-                            </form>
+                                <form class="mannheim-under-construction-search">
+                                    <input name="s" type="search" placeholder="<?php esc_attr_e('Enter a search phrase', 'mannheim-under-construction'); ?>" aria-label="<?php esc_attr_e('Enter a search phrase', 'mannheim-under-construction'); ?>">
+                                    <button type="submit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                             viewBox="0 0 57.167 81.5" xml:space="preserve">
+                                            <g>
+                                                <circle fill="none" stroke-width="3.5" stroke-miterlimit="10" cx="35.522" cy="33.893" r="16.597"/>
+                                                <path fill="none" stroke-width="3.5" stroke-linecap="round" stroke-miterlimit="10" d="M24.277,34.022
+                                                    c0,0-0.206-8.338,8.131-10.293"/>
+                                                <path fill="none" stroke-width="3.5" stroke-linecap="round" stroke-miterlimit="10" d="M20.572,41.123"/>
+                                                <path fill="none" stroke-width="3.5" stroke-linecap="round" stroke-miterlimit="10" d="M21.035,42.256
+                                                    L6.573,56.563c0,0,1.544,5.662,5.867,5.559l13.639-13.638"/>
+                                            </g>
+                                        </svg>
+                                    </button>
+                                </form>
+                                <p class="search-intro-text">
+                                    <?php esc_html_e('This is the full-text search. Enter a word, which interests you and it can lead you to new posts :)', 'mannheim-under-construction'); ?><br>
+                                    <?php esc_html_e('For example:', 'mannheim-under-construction'); ?><br>
+                                    <?php esc_html_e('Vogelstang, School, Post-migration, etc.', 'mannheim-under-construction'); ?>
+                                </p>
+                                <button id="search-extend">
+                                    <span><?php esc_html_e('Click here for extended search', 'mannheim-under-construction'); ?></span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         viewBox="0 0 57.167 81.5" xml:space="preserve">
+                                        <path d="M44.998,48.43l-4.552,4.574V32.049L19.468,53.004l-3.206-3.229l20.95-20.96H16.257l4.551-4.552h24.19V48.43z"/>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                         <div class="search_sidebar" id="search-fulltext">
-                            <button class="close-button">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                     viewBox="0 0 57.167 53.667" xml:space="preserve">
-                                    <g>
-                                        <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
-                                        <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
-                                    </g>
-                                </svg>
-                            </button>
-                            <div class="message"></div>
-                            <ol class="audios"></ol>
+                            <div class="content">
+                                <button class="close-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         viewBox="0 0 57.167 53.667" xml:space="preserve">
+                                        <g>
+                                            <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
+                                            <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
+                                        </g>
+                                    </svg>
+                                </button>
+                                <div class="message"></div>
+                                <ol class="audios"></ol>
+                            </div>
                         </div>
                         <div class="search_sidebar" id="search-tags">
-                            <button class="close-button">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                     viewBox="0 0 57.167 53.667" xml:space="preserve">
-                                    <g>
-                                        <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
-                                        <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
-                                    </g>
-                                </svg>
-                            </button>
-							<?php
-							if(is_array($tag_data)){
-								foreach ($tag_data as $term_id => $term_name) {
-									echo '<div class="tag" data-tagid="' . esc_attr($term_id) . '">#' . esc_html($term_name) . '</div>';
-									echo '<ol class="tag-result">';
-									$audios = get_posts([
-										'post_type' => 'audio-station',
-										'posts_per_page' => -1,
-										'tax_query' => [
-											['taxonomy' => 'post_tag', 'field' => 'term_id', 'terms' => $term_id],
-										],
-									]);
-									foreach($audios as $audio){
-										echo '<li data-id="' . $audio->ID . '">' . esc_html($audio->post_title) . '</li>';
-									}
-									echo '</ol>';
-								}
-							}
-							?>
+                            <div class="content">
+                                <button class="close-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         viewBox="0 0 57.167 53.667" xml:space="preserve">
+                                        <g>
+                                            <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
+                                            <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
+                                        </g>
+                                    </svg>
+                                </button>
+                                <?php
+                                if(is_array($tag_data)){
+                                    foreach ($tag_data as $term_id => $term_name) {
+                                        echo '<div class="tag" data-tagid="' . esc_attr($term_id) . '">#' . esc_html($term_name) . '</div>';
+                                        echo '<ol class="tag-result">';
+                                        $audios = get_posts([
+                                            'post_type' => 'audio-station',
+                                            'posts_per_page' => -1,
+                                            'tax_query' => [
+                                                ['taxonomy' => 'post_tag', 'field' => 'term_id', 'terms' => $term_id],
+                                            ],
+                                        ]);
+                                        foreach($audios as $audio){
+                                            echo '<li data-id="' . $audio->ID . '">' . esc_html($audio->post_title) . '</li>';
+                                        }
+                                        echo '</ol>';
+                                    }
+                                }
+                                ?>
+                            </div>
                         </div>
                     </div>
                     <div class="leaflet-sidebar-pane" id="play" role="tabpanel">
