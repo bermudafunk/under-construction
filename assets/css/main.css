@@ -382,7 +382,7 @@ a, a:visited, a:hover, a:active, .leaflet-container a {
     text-decoration: underline;
 }
 body.black-white .leaflet-sidebar a,
-body.black-white .leaflet-sidebar-right .leaflet-sidebar-content button {
+body.black-white .leaflet-sidebar .leaflet-sidebar-content button {
     color: #FFFFFF;
 }
 .leaflet-sidebar, .leaflet-touch .leaflet-bar a {
@@ -630,6 +630,15 @@ body.deepdive-open .leaflet-control-container {
     padding: 0.5em;
     overflow: auto;
 }
+body.black-white .filter-box label,
+body.black-white .filter-box select {
+    border: 2px white solid;
+    background-color: #000000;
+    color: #FFFFFF;
+}
+body.black-white .filter-box select {
+    border-top: 0;
+}
 .filter-box option {
     cursor: pointer;
 }
@@ -642,6 +651,9 @@ body.deepdive-open .leaflet-control-container {
     margin-right: 0;
     margin-left: auto;
 }
+body.black-white .filter-box .arrow {
+    border-top: 20px solid #FFFFFF;
+}
 .filter-box input[type=checkbox]:checked ~ select {
     display: flex;
 }
@@ -653,4 +665,7 @@ body.deepdive-open .leaflet-control-container {
     border-left: 0;
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
+}
+body.black-white .filter-box input[type=checkbox]:checked ~ label .arrow {
+    border-right: 20px solid #FFFFFF;
 }
