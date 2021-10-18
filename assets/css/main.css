@@ -355,25 +355,28 @@ body.black-white .mannheim-under-construction-search button svg {
     border: 2px black solid;
     text-align: left;
 }
+.filter-box select,
 .leaflet-sidebar-content {
     scrollbar-color: #000000 #F2FF5B;
 }
+body.black-white .filter-box select,
 body.black-white .leaflet-sidebar-content {
     scrollbar-color: #000000 #FFFFFF;
 }
+.filter-box select::-webkit-scrollbar,
 .leaflet-sidebar-content::-webkit-scrollbar {
     background: #F2FF5B;
 }
+body.black-white .filter-box select::-webkit-scrollbar,
 body.black-white .leaflet-sidebar-content::-webkit-scrollbar {
     background: #FFFFFF;
 }
+.filter-box select::-webkit-scrollbar-button,
 .leaflet-sidebar-content::-webkit-scrollbar-button {
     display: none;
 }
+.filter-box select::-webkit-scrollbar-thumb,
 .leaflet-sidebar-content::-webkit-scrollbar-thumb {
-    background: #000000;
-}
-body.black-white .leaflet-sidebar-content::-webkit-scrollbar-thumb {
     background: #000000;
 }
 a, a:visited, a:hover, a:active, .leaflet-container a {
@@ -590,7 +593,11 @@ body.deepdive-open .leaflet-control-container {
     height: auto;
     background: #FFFFFF;
 }
+.filter-box {
+    margin: 10px;
+}
 .filter-box label {
+    cursor: pointer;
     margin: 0;
     border: 2px black solid;
     background-color: #F2FF5B;
@@ -616,6 +623,10 @@ body.deepdive-open .leaflet-control-container {
     font-size: 1em;
     outline: none;
     padding: 0.5em;
+    overflow: auto;
+}
+.filter-box option {
+    cursor: pointer;
 }
 .filter-box input[type=checkbox]:checked ~ select {
     display: flex;
