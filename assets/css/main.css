@@ -331,11 +331,9 @@ button.close-button{
         display: none;
     }
 }
-body:not(.search-results-open) .mannheim-under-construction-search {
-    margin-top: 40px;
-}
 .mannheim-under-construction-search{
     display: flex;
+    margin-top: 40px;
 }
 .mannheim-under-construction-search button{
     height: 60px;
@@ -519,6 +517,9 @@ body.sidebar-open .leaflet-control-container {
     visibility: hidden;
 }
 @media (min-width:768px) {
+    .search-results-open .mannheim-under-construction-search {
+        margin-top: 0;
+    }
     .leaflet-sidebar-right:not(.collapsed) {
         width: 760px;
     }
@@ -595,6 +596,10 @@ body.deepdive-open .leaflet-control-container {
 }
 .filter-box {
     margin: 10px;
+    display: none;
+}
+.search-results-open .filter-box {
+    display: block;
 }
 .filter-box label {
     cursor: pointer;
@@ -628,9 +633,24 @@ body.deepdive-open .leaflet-control-container {
 .filter-box option {
     cursor: pointer;
 }
+.filter-box .arrow {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 20px solid #000;
+    margin-right: 0;
+    margin-left: auto;
+}
 .filter-box input[type=checkbox]:checked ~ select {
     display: flex;
 }
 .filter-box input[type=checkbox]:checked ~ label {
     border-bottom: 0;
+}
+.filter-box input[type=checkbox]:checked ~ label .arrow {
+    border-right: 20px solid #000;
+    border-left: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
 }

@@ -155,7 +155,7 @@
                                     <div class="extended-filters">
                                         <div class="filter-box">
                                             <input type="checkbox" id="type-filter" hidden>
-                                            <label id="type-filter-box-label" for="type-filter"><?php esc_html_e('Post type', 'mannheim-under-construction'); ?></label>
+                                            <label id="type-filter-box-label" for="type-filter"><?php esc_html_e('Post type', 'mannheim-under-construction'); ?><span class="arrow"></span></label>
                                             <select multiple name="type[]" aria-labelledby="type-filter-box-label">
                                                 <?php
                                                 $terms = get_terms([
@@ -172,7 +172,7 @@
                                         </div>
                                         <div class="filter-box">
                                             <input type="checkbox" id="length-filter" hidden>
-                                            <label id="length-filter-box-label" for="length-filter"><?php esc_html_e('Post length', 'mannheim-under-construction'); ?></label>
+                                            <label id="length-filter-box-label" for="length-filter"><?php esc_html_e('Post length', 'mannheim-under-construction'); ?><span class="arrow"></span></label>
                                             <select multiple name="length[]" aria-labelledby="length-filter-box-label">
                                                 <?php
                                                 $terms = get_terms([
@@ -189,7 +189,7 @@
                                         </div>
                                         <div class="filter-box">
                                             <input type="checkbox" id="location-filter" hidden>
-                                            <label id="location-filter-box-label" for="location-filter"><?php esc_html_e('Location', 'mannheim-under-construction'); ?></label>
+                                            <label id="location-filter-box-label" for="location-filter"><?php esc_html_e('Location', 'mannheim-under-construction'); ?><span class="arrow"></span></label>
                                             <select multiple name="location[]" aria-labelledby="location-filter-box-label">
                                                 <?php
                                                 $terms = get_terms([
@@ -206,7 +206,7 @@
                                         </div>
                                         <div class="filter-box">
                                             <input type="checkbox" id="date-filter" hidden>
-                                            <label id="date-filter-box-label" for="date-filter"><?php esc_html_e('Production date', 'mannheim-under-construction'); ?></label>
+                                            <label id="date-filter-box-label" for="date-filter"><?php esc_html_e('Production date', 'mannheim-under-construction'); ?><span class="arrow"></span></label>
                                             <select multiple name="production-date[]" aria-labelledby="date-filter-box-label">
                                                 <?php
                                                 $terms = get_terms([
@@ -223,7 +223,7 @@
                                         </div>
                                         <div class="filter-box">
                                             <input type="checkbox" id="producer-filter" hidden>
-                                            <label id="producer-filter-box-label" for="producer-filter"><?php esc_html_e('Producer', 'mannheim-under-construction'); ?></label>
+                                            <label id="producer-filter-box-label" for="producer-filter"><?php esc_html_e('Producer', 'mannheim-under-construction'); ?><span class="arrow"></span></label>
                                             <select multiple name="producer[]" aria-labelledby="producer-filter-box-label">
                                                 <?php
                                                 $terms = get_terms([
