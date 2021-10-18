@@ -331,8 +331,10 @@ button.close-button{
         display: none;
     }
 }
-.mannheim-under-construction-search{
+body:not(.search-results-open) .mannheim-under-construction-search {
     margin-top: 40px;
+}
+.mannheim-under-construction-search{
     display: flex;
 }
 .mannheim-under-construction-search button{
@@ -587,4 +589,37 @@ body.deepdive-open .leaflet-control-container {
     width: 100%;
     height: auto;
     background: #FFFFFF;
+}
+.filter-box label {
+    margin: 0;
+    border: 2px black solid;
+    background-color: #F2FF5B;
+    padding: 0.5em;
+    text-align: left;
+    font-family: 'Junction', sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    outline: none;
+    display: flex;
+}
+.filter-box select {
+    display: none;
+    background-color: #F2FF5B;
+    width: 100%;
+    height: 100px;
+    margin: 0 0 5px 0;
+    border: 2px black solid;
+    border-top: 0;
+    text-align: left;
+    font-family: 'Junction', sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    outline: none;
+    padding: 0.5em;
+}
+.filter-box input[type=checkbox]:checked ~ select {
+    display: flex;
+}
+.filter-box input[type=checkbox]:checked ~ label {
+    border-bottom: 0;
 }

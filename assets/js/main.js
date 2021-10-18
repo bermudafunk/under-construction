@@ -78,8 +78,8 @@ window.addEventListener('DOMContentLoaded', function(){
             let black_white_switcher = document.querySelector('#black_white_switcher');
             let font_size_button = document.querySelector('#font_size_switcher');
             let onboarding = document.querySelector('.mannheim-under-construction-onboarding');
-            let search_form = document.querySelector('.mannheim-under-construction-search');
-            let search_form_input = document.querySelector('.mannheim-under-construction-search input');
+            let search_form = document.querySelector('#search form');
+            let search_form_filters = document.querySelectorAll('#search .filter-box select');
             let search_form_button = document.querySelector('.mannheim-under-construction-search button');
             let search_sidebar_fulltext = document.querySelector('#search-fulltext');
             let search_sidebar_tags = document.querySelector('#search-tags');
@@ -216,12 +216,18 @@ window.addEventListener('DOMContentLoaded', function(){
             });
             search_form.addEventListener('submit', e => {
                 e.preventDefault();
-                show_search_results(search_form_input.value);
+                show_search_results();
             });
             search_form_button.addEventListener('click', e => {
                 e.preventDefault();
-                show_search_results(search_form_input.value);
+                show_search_results();
             });
+            for(let filter of search_form_filters) {
+                filter.addEventListener('change', e => {
+                    e.preventDefault();
+                    show_search_results();
+                });
+            }
 
             L.DomEvent.disableScrollPropagation(onboarding);
             L.DomEvent.disableClickPropagation(onboarding);

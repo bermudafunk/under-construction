@@ -330,11 +330,28 @@ class Mannheim_Under_Constrcution
         $audios = [];
 	    $message = '';
 	    $audios_html = '';
-        if(!empty($_POST['s'])){
+	    $tax_query = ['relation' => 'AND'];
+        if(!empty($_POST['type']) && is_array($_POST['type'])){
+	        $tax_query []= ['taxonomy' => 'post-type', 'field' => 'term_id', 'terms' => $_POST['type']];
+        }
+        if(!empty($_POST['length']) && is_array($_POST['length'])){
+	        $tax_query []= ['taxonomy' => 'length', 'field' => 'term_id', 'terms' => $_POST['length']];
+        }
+        if(!empty($_POST['location']) && is_array($_POST['location'])){
+	        $tax_query []= ['taxonomy' => 'location', 'field' => 'term_id', 'terms' => $_POST['location']];
+        }
+        if(!empty($_POST['production-date']) && is_array($_POST['production-date'])){
+	        $tax_query []= ['taxonomy' => 'production-date', 'field' => 'term_id', 'terms' => $_POST['production-date']];
+        }
+        if(!empty($_POST['producer']) && is_array($_POST['producer'])){
+	        $tax_query []= ['taxonomy' => 'producer', 'field' => 'term_id', 'terms' => $_POST['producer']];
+        }
+        if(!empty($_POST['s']) || count($tax_query) > 1){
             $audios = get_posts([
 	            'post_type' => 'audio-station',
 	            'posts_per_page' => -1,
                 's' => $_POST['s'],
+                'tax_query' => $tax_query,
             ]);
         }
         if(empty($audios)){

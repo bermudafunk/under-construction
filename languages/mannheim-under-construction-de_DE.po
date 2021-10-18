@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Mannheim Under Construction\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-13 20:28+0000\n"
-"PO-Revision-Date: 2021-10-17 12:11+0000\n"
+"PO-Revision-Date: 2021-10-18 17:23+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -118,15 +118,15 @@ msgctxt "audio-station"
 msgid "Use as featured image"
 msgstr "Als Beitragsbild verwenden"
 
-#: index.php:226 page-map.php:319
+#: index.php:226 page-map.php:408
 msgid "Back"
 msgstr "Zurück"
 
-#: page-map.php:277
+#: page-map.php:366
 msgid "Change contrast"
 msgstr "Kontrast ändern"
 
-#: page-map.php:286
+#: page-map.php:375
 msgid "Change font size"
 msgstr "Schriftgröße ändern"
 
@@ -142,7 +142,7 @@ msgstr "Wähle eine Markierung aus..."
 msgid "Choose or Upload Media"
 msgstr "Medien auswählen oder hochladen"
 
-#: page-map.php:155
+#: page-map.php:244
 msgid "Click here for extended search"
 msgstr "Klicke hier für die erweiterte Suche"
 
@@ -184,7 +184,7 @@ msgstr ""
 "Gib einen neuen Suchbegriff ein oder versuche über die Schlagwortsuche einen "
 "Beitrag zu finden :)"
 
-#: page-map.php:134
+#: page-map.php:135
 msgid "Enter a search phrase"
 msgstr "Gib einen Suchbegriff ein"
 
@@ -196,7 +196,7 @@ msgstr "Audiostationen-Liste filtern"
 msgid "Filter by date"
 msgstr "Nach Datum filtern"
 
-#: page-map.php:151
+#: page-map.php:152
 msgid "For example:"
 msgstr "Zum Beispiel:"
 
@@ -210,7 +210,7 @@ msgstr ""
 "Container, welches das moov Atom am Anfang hat und von fast allen Browsern "
 "unterstützt wird."
 
-#: page-map.php:353
+#: page-map.php:442
 msgid "Help"
 msgstr "Hilfe"
 
@@ -218,7 +218,7 @@ msgstr "Hilfe"
 msgid "https://danwin1210.me"
 msgstr "https://danwin1210.me"
 
-#: page-map.php:347 page-map.php:542
+#: page-map.php:436 page-map.php:631
 msgid "Imprint"
 msgstr "Impressum"
 
@@ -233,6 +233,10 @@ msgstr "Länge einer Audiostation"
 #: index.php:91
 msgid "Lengths"
 msgstr "Längen"
+
+#: page-map.php:192
+msgid "Location"
+msgstr "Ort"
 
 #: index.php:102
 msgid "Location of an audio station"
@@ -260,11 +264,11 @@ msgstr ""
 "Engagements. Diese Stadtkarte stellt zivilgesellschaftliches Engagement in "
 "der Stadt Mannheim vor."
 
-#: page-map.php:267
+#: page-map.php:356
 msgid "min."
 msgstr "min."
 
-#: page-map.php:402
+#: page-map.php:491
 msgid "more information"
 msgstr "mehr Informationen"
 
@@ -287,7 +291,7 @@ msgstr ""
 "Ups, während des Ladens deiner Suchergebnisse ist ein Fehler aufgetreten. "
 "Bitte versuche es erneut."
 
-#: page-map.php:313
+#: page-map.php:402
 msgid "Open player"
 msgstr "Wiedergabe öffnen"
 
@@ -305,13 +309,25 @@ msgstr ""
 msgid "Or listen to this randomly selected post:"
 msgstr "Oder höre dir diesen zufällig ausgewählten Beitrag an:"
 
-#: page-map.php:224
+#: page-map.php:313
 msgid "Play/Pause"
 msgstr "Abspielen/Pausieren"
 
-#: page-map.php:350 page-map.php:545
+#: page-map.php:175
+msgid "Post length"
+msgstr "Beitragslänge"
+
+#: page-map.php:158
+msgid "Post type"
+msgstr "Beitragsart"
+
+#: page-map.php:439 page-map.php:634
 msgid "Privacy"
 msgstr "Datenschutz"
+
+#: page-map.php:226
+msgid "Producer"
+msgstr "Produzent*in"
 
 #: index.php:112
 #| msgid "Producer(s) of an audio station"
@@ -321,6 +337,10 @@ msgstr "Produzent*in einer Audiostation"
 #: index.php:111
 msgid "Producers"
 msgstr "Produzent*in"
+
+#: page-map.php:209
+msgid "Production date"
+msgstr "Produktionsdatum"
 
 #: index.php:122
 msgid "Production date of an audio station"
@@ -334,7 +354,7 @@ msgstr "Produktionsdaten"
 msgid "Provides a map with audio stations"
 msgstr "Stellt eine Karte mit Audiostationen zur Verfügung"
 
-#: page-map.php:300
+#: page-map.php:389
 msgid "Search"
 msgstr "Suche"
 
@@ -346,15 +366,15 @@ msgstr "Audiostationen suchen"
 msgid "Search in archive"
 msgstr "Suche im Archiv"
 
-#: page-map.php:437
+#: page-map.php:526
 msgid "Show info about the project"
 msgstr "Informationen zum Projekt anzeigen"
 
-#: page-map.php:335
+#: page-map.php:424
 msgid "Show more info about the project"
 msgstr "Mehr Informationen zum Projekt anzeigen"
 
-#: page-map.php:552
+#: page-map.php:641
 msgid "Sorry, you need to enable JavaScript to use this map."
 msgstr "Tut uns leid, aber du benötigst JavaScript um diese Karte zu benutzen."
 
@@ -386,7 +406,7 @@ msgstr ""
 "Der Suchbegriff \"%s\" hat folgende Beiträge gefunden. Klicke auf den Titel "
 "um den Beitrag zu hören:"
 
-#: page-map.php:150
+#: page-map.php:151
 msgid ""
 "This is the full-text search. Enter a word, which interests you and it can "
 "lead you to new posts :)"
@@ -426,7 +446,7 @@ msgstr "Audiostation ansehen"
 msgid "View audio stations"
 msgstr "Audiostationen ansehen"
 
-#: page-map.php:152
+#: page-map.php:153
 msgid "Vogelstang, School, Post-migration, etc."
 msgstr "Vogelstang, Schule Postmigrantisch, etc."
 
@@ -440,7 +460,7 @@ msgstr ""
 "Dateigröße bei ungefähr gleichbleibender Qualität bietet. Es wird von den "
 "meisten modernen Browsern unterstützt."
 
-#: page-map.php:174
+#: page-map.php:263
 msgid "You haven't started a search query yet. Your results will appear here."
 msgstr ""
 "Du hast noch keine Suche gestartet. Dein Suchergebnis wird hier erscheinen."
