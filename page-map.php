@@ -132,7 +132,7 @@
                                 </button>
                                 <form>
                                     <div class="mannheim-under-construction-search">
-                                        <input name="s" type="search" placeholder="<?php esc_attr_e('Enter a search phrase', 'mannheim-under-construction'); ?>" aria-label="<?php esc_attr_e('Enter a search phrase', 'mannheim-under-construction'); ?>">
+                                        <input name="s" type="search" aria-label="<?php esc_attr_e('Enter a search phrase', 'mannheim-under-construction'); ?>">
                                         <button type="submit">
                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                                  viewBox="0 0 57.167 81.5" xml:space="preserve">
@@ -148,9 +148,10 @@
                                         </button>
                                     </div>
                                     <p class="search-intro-text">
-		                                <?php esc_html_e('This is the full-text search. Enter a word, which interests you and it can lead you to new posts :)', 'mannheim-under-construction'); ?><br>
+		                                <?php esc_html_e('This is the full-text search.', 'mannheim-under-construction'); ?><br>
+                                        <?php esc_html_e('Enter a word, which interests you and it can lead you to new posts.', 'mannheim-under-construction'); ?><br>
 		                                <?php esc_html_e('For example:', 'mannheim-under-construction'); ?><br>
-		                                <?php esc_html_e('Vogelstang, School, Post-migration, etc.', 'mannheim-under-construction'); ?>
+		                                <?php esc_html_e('Vogelstang, School, Post-migration etc.', 'mannheim-under-construction'); ?>
                                     </p>
                                     <div class="extended-filters">
                                         <div class="filter-box">

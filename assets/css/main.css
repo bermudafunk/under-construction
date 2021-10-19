@@ -520,9 +520,22 @@ body.sidebar-open .leaflet-sidebar.collapsed,
 body.sidebar-open .leaflet-control-container {
     visibility: hidden;
 }
+.search-filters {
+    order: 1;
+}
+#search-tags {
+    order: 3;
+}
+#search-fulltext {
+    order: 2;
+}
+
 @media (min-width:768px) {
-    .search-results-open .mannheim-under-construction-search {
-        margin-top: 0;
+    #search-tags {
+        order: 2;
+    }
+    #search-fulltext {
+        order: 3;
     }
     .leaflet-sidebar-right:not(.collapsed) {
         width: 760px;

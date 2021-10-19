@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Mannheim Under Construction\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-13 20:28+0000\n"
-"PO-Revision-Date: 2021-10-18 17:24+0000\n"
+"PO-Revision-Date: 2021-10-19 20:37+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch (Sie)\n"
 "Language: de_DE_formal\n"
@@ -118,15 +118,15 @@ msgctxt "audio-station"
 msgid "Use as featured image"
 msgstr "Als Beitragsbild verwenden"
 
-#: index.php:226 page-map.php:408
+#: index.php:226 page-map.php:409
 msgid "Back"
 msgstr "Zurück"
 
-#: page-map.php:366
+#: page-map.php:367
 msgid "Change contrast"
 msgstr "Kontrast ändern"
 
-#: page-map.php:375
+#: page-map.php:376
 msgid "Change font size"
 msgstr "Schriftgröße ändern"
 
@@ -143,7 +143,7 @@ msgstr "Wählen Sie eine Markierung aus..."
 msgid "Choose or Upload Media"
 msgstr "Medien auswählen oder hochladen"
 
-#: page-map.php:244
+#: page-map.php:245
 msgid "Click here for extended search"
 msgstr "Klicken Sie hier für die erweiterte Suche"
 
@@ -176,7 +176,7 @@ msgstr "Audiostationen bearbeiten"
 msgid "Encoding guideline:"
 msgstr "Kodierungs-Leitfaden:"
 
-#: index.php:347
+#: index.php:364
 #| msgid ""
 #| "Enter a new search term or try finding an interesting post with the tag "
 #| "search :)"
@@ -189,6 +189,14 @@ msgstr ""
 msgid "Enter a search phrase"
 msgstr "Geben Sie einen Suchbegriff ein"
 
+#: page-map.php:152
+#| msgid ""
+#| "Enter a word, which interests you and it can lead you to new posts :)"
+msgid "Enter a word, which interests you and it can lead you to new posts."
+msgstr ""
+"Geben Sie einen Begriff ein, der Sie interessiert und dies kann Sie zu neuen "
+"Audiobeiträgen führen."
+
 #: index.php:56
 msgid "Filter audio stations list"
 msgstr "Audiostationen-Liste filtern"
@@ -197,7 +205,7 @@ msgstr "Audiostationen-Liste filtern"
 msgid "Filter by date"
 msgstr "Nach Datum filtern"
 
-#: page-map.php:152
+#: page-map.php:153
 msgid "For example:"
 msgstr "Zum Beispiel:"
 
@@ -211,7 +219,7 @@ msgstr ""
 "Container, welches das moov Atom am Anfang hat und von fast allen Browsern "
 "unterstützt wird."
 
-#: page-map.php:442
+#: page-map.php:443
 msgid "Help"
 msgstr "Hilfe"
 
@@ -219,7 +227,7 @@ msgstr "Hilfe"
 msgid "https://danwin1210.me"
 msgstr "https://danwin1210.me"
 
-#: page-map.php:436 page-map.php:631
+#: page-map.php:437 page-map.php:613
 msgid "Imprint"
 msgstr "Impressum"
 
@@ -235,7 +243,7 @@ msgstr "Länge einer Audiostation"
 msgid "Lengths"
 msgstr "Längen"
 
-#: page-map.php:192
+#: page-map.php:193
 msgid "Location"
 msgstr "Ort"
 
@@ -265,11 +273,11 @@ msgstr ""
 "Engagements. Diese Stadtkarte stellt zivilgesellschaftliches Engagement in "
 "der Stadt Mannheim vor."
 
-#: page-map.php:356
+#: page-map.php:357
 msgid "min."
 msgstr "min."
 
-#: page-map.php:491
+#: page-map.php:492
 msgid "more information"
 msgstr "mehr Informationen"
 
@@ -292,7 +300,7 @@ msgstr ""
 "Ups, während des Ladens Ihrer Suchergebnisse ist ein Fehler aufgetreten. "
 "Bitte versuchen Sie es erneut."
 
-#: page-map.php:402
+#: page-map.php:403
 msgid "Open player"
 msgstr "Wiedergabe öffnen"
 
@@ -306,27 +314,27 @@ msgstr ""
 "geringere Dateigröße bei ungefähr gleichbleibender Qualität bietet. Es wird "
 "von den meisten modernen Browsern unterstützt."
 
-#: index.php:348
+#: index.php:365
 msgid "Or listen to this randomly selected post:"
 msgstr "Oder hören Sie sich diesen zufällig ausgewählten Beitrag an:"
 
-#: page-map.php:313
+#: page-map.php:314
 msgid "Play/Pause"
 msgstr "Abspielen/Pausieren"
 
-#: page-map.php:175
+#: page-map.php:176
 msgid "Post length"
 msgstr "Beitragslänge"
 
-#: page-map.php:158
+#: page-map.php:159
 msgid "Post type"
 msgstr "Beitragsart"
 
-#: page-map.php:439 page-map.php:634
+#: page-map.php:440 page-map.php:616
 msgid "Privacy"
 msgstr "Datenschutz"
 
-#: page-map.php:226
+#: page-map.php:227
 msgid "Producer"
 msgstr "Produzent*in"
 
@@ -339,7 +347,7 @@ msgstr "Produzent*in einer Audiostation"
 msgid "Producers"
 msgstr "Produzent*in"
 
-#: page-map.php:209
+#: page-map.php:210
 msgid "Production date"
 msgstr "Produktionsdatum"
 
@@ -355,7 +363,7 @@ msgstr "Produktionsdaten"
 msgid "Provides a map with audio stations"
 msgstr "Stellt eine Karte mit Audiostationen zur Verfügung"
 
-#: page-map.php:389
+#: page-map.php:390
 msgid "Search"
 msgstr "Suche"
 
@@ -367,15 +375,15 @@ msgstr "Audiostationen suchen"
 msgid "Search in archive"
 msgstr "Suche im Archiv"
 
-#: page-map.php:526
+#: page-map.php:527
 msgid "Show info about the project"
 msgstr "Informationen zum Projekt anzeigen"
 
-#: page-map.php:424
+#: page-map.php:425
 msgid "Show more info about the project"
 msgstr "Mehr Informationen zum Projekt anzeigen"
 
-#: page-map.php:641
+#: page-map.php:623
 msgid "Sorry, you need to enable JavaScript to use this map."
 msgstr ""
 "Tut uns leid, aber Sie benötigen JavaScript um diese Karte zu benutzen."
@@ -391,12 +399,12 @@ msgstr ""
 "Das gleiche gilt für Videodateien, die für die Gebärdensprache-Version "
 "verwendet werden. Diese sind:"
 
-#: index.php:346
+#: index.php:363
 #, php-format
 msgid "The search term \"%s\" did unfortunately not find any posts :("
 msgstr "Der Suchbegriff \"%s\" hat leider keine Beiträge gefunden :("
 
-#: index.php:351
+#: index.php:368
 #, php-format
 #| msgid ""
 #| "The search term \"%s\" did find the following posts. Click on the title "
@@ -409,12 +417,8 @@ msgstr ""
 "Titel um den Beitrag zu hören:"
 
 #: page-map.php:151
-msgid ""
-"This is the full-text search. Enter a word, which interests you and it can "
-"lead you to new posts :)"
-msgstr ""
-"Dies ist die Volltextsuche. Geben Sie einen Begriff ein, der Sie "
-"interessiert und dies kann Sie zu neuen Audiobeiträgen führen :)"
+msgid "This is the full-text search."
+msgstr "Dies ist die Volltextsuche."
 
 #: index.php:132
 msgid "Type of audio station"
@@ -448,9 +452,10 @@ msgstr "Audiostation ansehen"
 msgid "View audio stations"
 msgstr "Audiostationen ansehen"
 
-#: page-map.php:153
-msgid "Vogelstang, School, Post-migration, etc."
-msgstr "Vogelstang, Schule Postmigrantisch, etc."
+#: page-map.php:154
+#| msgid "Vogelstang, School, Post-migration, etc."
+msgid "Vogelstang, School, Post-migration etc."
+msgstr "Vogelstang, Schule, Postmigrantisch etc."
 
 #: index.php:266
 msgid ""
@@ -462,7 +467,7 @@ msgstr ""
 "Dateigröße bei ungefähr gleichbleibender Qualität bietet. Es wird von den "
 "meisten modernen Browsern unterstützt."
 
-#: page-map.php:263
+#: page-map.php:297
 msgid "You haven't started a search query yet. Your results will appear here."
 msgstr ""
 "Sie haben noch keine Suche gestartet. Ihr Suchergebnis wird hier erscheinen."
