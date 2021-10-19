@@ -129,6 +129,10 @@ body.black-white .close-button svg {
     align-items: center;
     display: flex;
 }
+.content-player button > svg {
+    width: 100%;
+    height: 100%;
+}
 .content-player button {
     cursor: pointer;
     width: 50px;
