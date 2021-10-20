@@ -133,10 +133,8 @@ function setup_map(){
         return;
     }
     let map = L.map(map_element, {center: start_location, zoom: 13, worldCopyJump: true});
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 19
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
     }).addTo(map);
     const audio_icon = L.icon({iconUrl: mannheim_under_construction_admin.audio_icon_url, iconSize: [31, 47]});
     let marker = L.marker(start_location, {icon: audio_icon, title: mannheim_under_construction_admin.desired_location, alt: mannheim_under_construction_admin.desired_location}).addTo(map);
