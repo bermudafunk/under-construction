@@ -222,23 +222,6 @@
                                                 ?>
                                             </select>
                                         </div>
-                                        <div class="filter-box">
-                                            <input type="checkbox" id="producer-filter" hidden>
-                                            <label id="producer-filter-box-label" for="producer-filter"><?php esc_html_e('Producer', 'mannheim-under-construction'); ?><span class="arrow"></span></label>
-                                            <select multiple name="producer[]" aria-labelledby="producer-filter-box-label">
-                                                <?php
-                                                $terms = get_terms([
-                                                    'taxonomy' => 'producer',
-                                                    'hide_empty' => true,
-                                                ]);
-                                                if(is_array($terms)){
-                                                    foreach($terms as $term){
-                                                        echo '<option value="' . $term->term_id . '">' . esc_html($term->name) . '</option>';
-                                                    }
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
                                     </div>
                                 </form>
                                 <button id="search-extend">

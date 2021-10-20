@@ -61,7 +61,7 @@ body.small-font .leaflet-marker-icon {
     font-weight: bold;
     font-size: 1em;
     color: #000000;
-    background-color: #FFFFFF;
+    background-color: #F7FF9D;
 }
 .marker-cluster div {
     font-family: 'Junction', sans-serif;
@@ -156,8 +156,7 @@ body.black-white .leaflet-bar a.leaflet-disabled,
 body.black-white .leaflet-container .leaflet-control-attribution,
 body.black-white .marker-cluster-small div,
 body.black-white .marker-cluster-medium div,
-body.black-white .marker-cluster-large div,
-.leaflet-container {
+body.black-white .marker-cluster-large div {
     background-color: #FFFFFF;
 }
 body.black-white .leaflet-container {
@@ -612,7 +611,7 @@ body.deepdive-open .leaflet-control-container {
     background: #FFFFFF;
 }
 .filter-box {
-    margin: 10px;
+    margin-bottom: 10px;
     display: none;
 }
 .search-results-open .filter-box {
