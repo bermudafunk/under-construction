@@ -116,12 +116,15 @@ body.black-white .leaflet-sidebar-content svg,
 body.black-white .close-button svg {
     fill: #FFFFFF;
 }
-.content-player .waveform > svg {
+svg {
     width: 100%;
+    height: 100%;
+}
+.content-player .waveform > svg {
     cursor: pointer;
 }
-.content-player > div {
-    padding: 10px;
+.content-player > .waveform {
+    padding: 0 10px;
 }
 .content-player,
 .content-player > div,
@@ -129,13 +132,9 @@ body.black-white .close-button svg {
     align-items: center;
     display: flex;
 }
-.content-player button > svg {
-    width: 100%;
-    height: 100%;
-}
 .content-player button {
     cursor: pointer;
-    width: 50px;
+    width: 60px;
     flex-shrink: 0;
 }
 .leaflet-zoom-box,
@@ -169,10 +168,6 @@ body.black-white .leaflet-container {
 body.black-white .leaflet-sidebar-tabs > button:hover,
 body.black-white .leaflet-bar a:hover {
     background-color: #EEEEEE;
-}
-.leaflet-sidebar-tabs svg {
-    height: inherit;
-    width: inherit;
 }
 #mannheim-under-construction-no-js-error {
     text-align: center;
@@ -304,8 +299,14 @@ button.close-button{
     max-width: 450px;
 }
 #onboarding-explainer-1 {
-    top: 60px;
+    top: 10px;
 }
+@media (min-width: 480px) {
+    #onboarding-explainer-1 {
+        top: 60px;
+    }
+}
+
 #onboarding-explainer-2 {
     top: 150px;
 }
@@ -613,6 +614,7 @@ body.deepdive-open .leaflet-control-container {
 .filter-box {
     margin-bottom: 10px;
     display: none;
+    border: 2px black solid;
 }
 .search-results-open .filter-box {
     display: block;
@@ -620,7 +622,6 @@ body.deepdive-open .leaflet-control-container {
 .filter-box label {
     cursor: pointer;
     margin: 0;
-    border: 2px black solid;
     background-color: #F2FF5B;
     padding: 0.5em;
     text-align: left;
@@ -636,8 +637,6 @@ body.deepdive-open .leaflet-control-container {
     width: 100%;
     height: 100px;
     margin: 0 0 5px 0;
-    border: 2px black solid;
-    border-top: 0;
     text-align: left;
     font-family: 'Junction', sans-serif;
     font-weight: bold;
@@ -646,14 +645,13 @@ body.deepdive-open .leaflet-control-container {
     padding: 0.5em;
     overflow: auto;
 }
+body.black-white .filter-box{
+    border: 2px white solid;
+}
 body.black-white .filter-box label,
 body.black-white .filter-box select {
-    border: 2px white solid;
     background-color: #000000;
     color: #FFFFFF;
-}
-body.black-white .filter-box select {
-    border-top: 0;
 }
 .filter-box option {
     cursor: pointer;
@@ -684,4 +682,11 @@ body.black-white .filter-box .arrow {
 }
 body.black-white .filter-box input[type=checkbox]:checked ~ label .arrow {
     border-right: 20px solid #FFFFFF;
+}
+#search button[type="reset"] {
+    padding: 10px 0;
+    display: none;
+}
+.search-results-open #search button[type="reset"] {
+    display: block;
 }

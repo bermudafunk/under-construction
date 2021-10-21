@@ -222,6 +222,7 @@
                                                 ?>
                                             </select>
                                         </div>
+                                        <button type="reset"><?php esc_html_e('Reset', 'mannheim-under-construction'); ?></button>
                                     </div>
                                 </form>
                                 <button id="search-extend">

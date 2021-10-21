@@ -80,6 +80,7 @@ window.addEventListener('DOMContentLoaded', function(){
             let onboarding = document.querySelector('.mannheim-under-construction-onboarding');
             let search_form = document.querySelector('#search form');
             let search_form_filters = document.querySelectorAll('#search .filter-box select');
+            let search_form_open_status = document.querySelectorAll('#search .filter-box input[type="checkbox"]');
             let search_form_button = document.querySelector('.mannheim-under-construction-search button');
             let search_sidebar_fulltext = document.querySelector('#search-fulltext');
             let search_sidebar_tags = document.querySelector('#search-tags');
@@ -228,6 +229,19 @@ window.addEventListener('DOMContentLoaded', function(){
                     show_search_results();
                 });
             }
+            for(let open_status of search_form_open_status) {
+                open_status.addEventListener('change', e => {
+                    if(!e.target.checked){
+                        let options = e.target.parentElement.querySelectorAll('select option:checked');
+                        if(options.length > 0){
+                            for(let option of options){
+                                option.selected = false;
+                            }
+                            show_search_results();
+                        }
+                    }
+                });
+            }
 
             L.DomEvent.disableScrollPropagation(onboarding);
             L.DomEvent.disableClickPropagation(onboarding);
@@ -334,6 +348,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 if(tag_id) {
                     let target_tag = search_sidebar_tags.querySelector('.tag[data-tagid="' + tag_id + '"]');
                     if(target_tag) {
+                        sidebar_left.open('#search');
                         body.classList.add('search-results-open');
                         target_tag.nextElementSibling.classList.add('active');
                         target_tag.scrollIntoView();
@@ -342,6 +357,7 @@ window.addEventListener('DOMContentLoaded', function(){
             });
             document.querySelector('#help_menu').addEventListener('click', _ => {
                 onboarding.querySelector('#onboarding-start-button').innerText = mannheim_under_construction.back;
+                sidebar_right.close();
                 onboarding.classList.add('active');
             });
             document.querySelector('#imprint_menu').addEventListener('click', _ => {
