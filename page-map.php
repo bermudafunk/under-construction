@@ -89,7 +89,7 @@
                      viewBox="0 0 57.167 81.5" xml:space="preserve" class="onboarding-arrow" id="onboarding-arrow-1">
                     <path d="M16.848,23.62h24.189l4.551,4.552H24.633l20.951,20.96l-3.207,3.229L21.398,31.406v20.955l-4.551-4.574V23.62z"/>
                 </svg>
-                <p class="onboarding-explainer" id="onboarding-explainer-1"><?php esc_html_e('Change the font size or switch to black/white view', 'mannheim-under-construction'); ?></p>
+                <p class="onboarding-explainer" id="onboarding-explainer-1"><?php esc_html_e('Change the font size or switch to black/white mode', 'mannheim-under-construction'); ?></p>
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                      viewBox="0 0 57.167 81.5" xml:space="preserve" class="onboarding-arrow" id="onboarding-arrow-2">
                     <path d="M16.848,23.62h24.189l4.551,4.552H24.633l20.951,20.96l-3.207,3.229L21.398,31.406v20.955l-4.551-4.574V23.62z"/>
@@ -150,6 +150,7 @@
                                     <p class="search-intro-text">
 		                                <?php esc_html_e('This is the full-text search.', 'mannheim-under-construction'); ?><br>
                                         <?php esc_html_e('Enter a word, which interests you and it can lead you to new posts.', 'mannheim-under-construction'); ?><br>
+                                        <br>
 		                                <?php esc_html_e('For example:', 'mannheim-under-construction'); ?><br>
 		                                <?php esc_html_e('Vogelstang, School, Post-migration etc.', 'mannheim-under-construction'); ?>
                                     </p>

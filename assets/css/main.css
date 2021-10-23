@@ -75,7 +75,8 @@ input {
     font-size: 1em;
     background-color: transparent;
     outline: none;
-    border: none;
+    border: 0;
+    color: #000000;
 }
 button {
     cursor: pointer;
@@ -113,8 +114,13 @@ main,
 }
 body.black-white .content-player .waveform > svg #remaining,
 body.black-white .leaflet-sidebar-content svg,
-body.black-white .close-button svg {
+body.black-white .close-button svg,
+body.black-white .onboarding-arrow,
+#black_white_switcher circle {
     fill: #FFFFFF;
+}
+body.black-white #black_white_switcher circle{
+    fill: #F2FF5B;
 }
 svg {
     width: 100%;
@@ -159,6 +165,7 @@ body.black-white .marker-cluster-large div {
     background-color: #FFFFFF;
 }
 body.black-white .leaflet-container {
+    color: #FFFFFF;
     background-color: #000000;
 }
 .leaflet-bar a:hover {
@@ -258,6 +265,9 @@ button.close-button{
     align-items: center;
     cursor: pointer;
 }
+body.black-white .mannheim-under-construction-onboarding {
+    background-color: rgba(0, 0, 0, 0.5);
+}
 .mannheim-under-construction-onboarding.active {
     display: grid;
 }
@@ -273,13 +283,13 @@ button.close-button{
     height: 60px;
 }
 #onboarding-arrow-1 {
-    top: 60px;
+    top: 10px;
 }
 #onboarding-arrow-2 {
     top: 150px;
 }
 #onboarding-arrow-3 {
-    bottom: 60px;
+    bottom: 10px;
     transform: rotate(-90deg);
 }
 #onboarding-marker {
@@ -301,12 +311,6 @@ button.close-button{
 #onboarding-explainer-1 {
     top: 10px;
 }
-@media (min-width: 480px) {
-    #onboarding-explainer-1 {
-        top: 60px;
-    }
-}
-
 #onboarding-explainer-2 {
     top: 150px;
 }
@@ -314,17 +318,35 @@ button.close-button{
     bottom: 120px;
 }
 #onboarding-explainer-4 {
-    bottom: 60px;
+    bottom: 10px;
+}
+@media (min-width: 480px) {
+    #onboarding-explainer-1 {
+        top: 60px;
+    }
+    #onboarding-arrow-1 {
+        top: 60px;
+    }
+    #onboarding-explainer-4 {
+        bottom: 60px;
+    }
+    #onboarding-arrow-3 {
+        bottom: 60px;
+    }
 }
 #onboarding-start-button {
     font-size: 4em;
     text-align: center;
+    font-family: 'TheNeueBlack', sans-serif;
+    font-variant-ligatures: none;
 }
 .onboarding-welcome {
     font-size: 1.2em;
     position: absolute;
     right: 90px;
     top: 60px;
+    bottom: 60px;
+    overflow: auto;
     max-width: 300px;
 }
 .onboarding-welcome p+p {
@@ -342,6 +364,7 @@ button.close-button{
 .mannheim-under-construction-search button{
     height: 60px;
     width: 60px;
+    flex-shrink: 0;
 }
 .mannheim-under-construction-search button svg {
     stroke: #000000;
@@ -386,7 +409,7 @@ a, a:visited, a:hover, a:active, .leaflet-container a {
     text-decoration: underline;
 }
 body.black-white .leaflet-sidebar a,
-body.black-white .leaflet-sidebar .leaflet-sidebar-content button {
+body.black-white button {
     color: #FFFFFF;
 }
 .leaflet-sidebar, .leaflet-touch .leaflet-bar a {
@@ -410,12 +433,6 @@ body.black-white .leaflet-sidebar-content {
     color: #FFFFFF;
     background: var(--sidebar-background) repeat;
     background-size: 6em;
-}
-#black_white_switcher circle{
-    fill: #FFFFFF;
-}
-body.black-white #black_white_switcher circle{
-    fill: #F2FF5B;
 }
 #search-tags .tag,
 .content-tags .tag {
@@ -613,6 +630,7 @@ body.deepdive-open .leaflet-control-container {
 }
 .filter-box {
     margin-bottom: 10px;
+    margin-right: 60px;
     display: none;
     border: 2px black solid;
 }
@@ -629,6 +647,7 @@ body.deepdive-open .leaflet-control-container {
     font-weight: bold;
     font-size: 1em;
     outline: none;
+    border: 0;
     display: flex;
 }
 .filter-box select {
@@ -642,6 +661,7 @@ body.deepdive-open .leaflet-control-container {
     font-weight: bold;
     font-size: 1em;
     outline: none;
+    border: 0;
     padding: 0.5em;
     overflow: auto;
 }
@@ -689,4 +709,6 @@ body.black-white .filter-box input[type=checkbox]:checked ~ label .arrow {
 }
 .search-results-open #search button[type="reset"] {
     display: block;
+    margin-right: 60px;
+    margin-left: auto;
 }

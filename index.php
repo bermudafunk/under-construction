@@ -350,6 +350,41 @@ class Mannheim_Under_Constrcution
                 's' => $_POST['s'],
                 'tax_query' => $tax_query,
             ]);
+            if(!empty($_POST['s'])){
+	            $new_audios = array_merge($audios, get_posts([
+		            'post_type' => 'audio-station',
+		            'posts_per_page' => -1,
+		            'meta_query' => [
+                        ['key' => 'mannheim_under_construction_location', 'value' => $_POST['s'], 'compare' => 'LIKE'],
+                    ],
+		            'tax_query' => $tax_query,
+	            ]));
+	            $terms = get_terms([
+		            'taxonomy' => ['location', 'type'],
+		            'hide_empty' => true,
+                    'search' => $_POST['s'],
+                    'fields' => 'ids',
+	            ]);
+	            if(is_array($terms) && !empty($terms)) {
+		            $new_audios = array_merge( $audios, get_posts( [
+			            'post_type' => 'audio-station',
+			            'posts_per_page' => -1,
+			            'tax_query' => [
+                            'relation' => 'OR',
+				            [ 'taxonomy' => 'location', 'field' => 'term_id', 'terms' => $terms ],
+				            [ 'taxonomy' => 'type', 'field' => 'term_id', 'terms' => $terms ],
+			            ],
+		            ] ) );
+	            }
+                $audios = [];
+                $all_ids = [];
+                foreach($new_audios as $k => $audio){
+                    if(!in_array($audio->ID, $all_ids, true)){
+                        $audios []= $audio;
+                        $all_ids []= $audio->ID;
+                    }
+                }
+            }
         }
         if(empty($audios)){
 	        $audio = get_posts([
