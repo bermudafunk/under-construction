@@ -381,27 +381,33 @@ body.black-white .mannheim-under-construction-search button svg {
     text-align: left;
 }
 .filter-box select,
-.leaflet-sidebar-content {
+.leaflet-sidebar-content,
+.onboarding-welcome {
     scrollbar-color: #000000 #F2FF5B;
 }
 body.black-white .filter-box select,
-body.black-white .leaflet-sidebar-content {
+body.black-white .leaflet-sidebar-content,
+.onboarding-welcome {
     scrollbar-color: #000000 #FFFFFF;
 }
 .filter-box select::-webkit-scrollbar,
-.leaflet-sidebar-content::-webkit-scrollbar {
+.leaflet-sidebar-content::-webkit-scrollbar,
+.onboarding-welcome::-webkit-scrollbar {
     background: #F2FF5B;
 }
 body.black-white .filter-box select::-webkit-scrollbar,
-body.black-white .leaflet-sidebar-content::-webkit-scrollbar {
+body.black-white .leaflet-sidebar-content::-webkit-scrollbar,
+body-black-white .onboarding-welcome::-webkit-scrollbar {
     background: #FFFFFF;
 }
 .filter-box select::-webkit-scrollbar-button,
-.leaflet-sidebar-content::-webkit-scrollbar-button {
+.leaflet-sidebar-content::-webkit-scrollbar-button,
+.onboarding-welcome::-webkit-scrollbar-button {
     display: none;
 }
 .filter-box select::-webkit-scrollbar-thumb,
-.leaflet-sidebar-content::-webkit-scrollbar-thumb {
+.leaflet-sidebar-content::-webkit-scrollbar-thumb,
+.onboarding-welcome::-webkit-scrollbar-thumb {
     background: #000000;
 }
 a, a:visited, a:hover, a:active, .leaflet-container a {
