@@ -1,4 +1,71 @@
-<!doctype html>
+<?php
+$map_data = [];
+$posts = get_posts([
+	'post_type' => 'audio-station',
+	'posts_per_page' => -1,
+	'fields' => 'ids',
+]);
+$tag_data = get_tags([
+	'fields' => 'id=>name',
+	'hide_empty' => true,
+	'orderby' => 'name',
+]);
+foreach ($posts as $post_id){
+	$ogg_id = get_post_meta($post_id, 'mannheim_under_construction_ogg', true);
+	$aac_id = get_post_meta($post_id, 'mannheim_under_construction_aac', true);
+	$ogg_meta = wp_get_attachment_metadata($ogg_id);
+	$aac_meta = wp_get_attachment_metadata($aac_id);
+	$length = '';
+	$length_readable = '';
+	$tags = get_tags([
+		'object_ids' => $post_id,
+		'fields' => 'ids',
+	]);
+	if(!is_array($tags)){
+		$tags = [];
+	}
+	if(isset($ogg_meta['length_formatted'])) {
+		$length = $ogg_meta['length_formatted'];
+		$length_readable = human_readable_duration($length);
+	} elseif(isset($aac_meta['length_formatted'])) {
+		$length = $aac_meta['length_formatted'];
+		$length_readable = human_readable_duration($length);
+	}
+	$map_data []= [
+		'id' => $post_id,
+		'lat' => get_post_meta($post_id, 'mannheim_under_construction_location_lat', true),
+		'lng' => get_post_meta($post_id, 'mannheim_under_construction_location_lng', true),
+		'location' => esc_html(get_post_meta($post_id, 'mannheim_under_construction_location', true)),
+		'title' => esc_html(get_the_title($post_id)),
+		'description' => apply_filters('the_content', get_the_content(null, false, $post_id)),
+		'ogg' => wp_get_attachment_url($ogg_id),
+		'ogg_mime' => get_post_mime_type($ogg_id),
+		'aac' => wp_get_attachment_url($aac_id),
+		'aac_mime' => get_post_mime_type($aac_id),
+		'waveform' => get_post_meta($post_id, 'mannheim_under_construction_waveform', true),
+		'length' => $length,
+		'length_readable' => $length_readable,
+		'tags' => $tags,
+	];
+}
+$player_open = false;
+$random_audio = $map_data[array_rand($map_data)];
+if(!empty($_GET['audio_id'])){
+	foreach ($map_data as $audio){
+		if($audio['id'] === (int) $_GET['audio_id']){
+			$random_audio = $audio;
+			$player_open = true;
+			break;
+		}
+	}
+}
+if($player_open){
+    add_filter('body_class', function (array $classes){
+        $classes []= 'sidebar-open';
+        return $classes;
+    });
+}
+?><!doctype html>
 <html <?php language_attributes(); ?> <?php twentytwentyone_the_html_classes(); ?>>
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
@@ -10,58 +77,6 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <main>
-	<?php
-	$map_data = [];
-	$posts = get_posts([
-		'post_type' => 'audio-station',
-		'posts_per_page' => -1,
-		'fields' => 'ids',
-	]);
-	$tag_data = get_tags([
-		'fields' => 'id=>name',
-		'hide_empty' => true,
-		'orderby' => 'name',
-	]);
-	foreach ($posts as $post_id){
-		$ogg_id = get_post_meta($post_id, 'mannheim_under_construction_ogg', true);
-		$aac_id = get_post_meta($post_id, 'mannheim_under_construction_aac', true);
-		$ogg_meta = wp_get_attachment_metadata($ogg_id);
-		$aac_meta = wp_get_attachment_metadata($aac_id);
-		$length = '';
-		$length_readable = '';
-		$tags = get_tags([
-			'object_ids' => $post_id,
-			'fields' => 'ids',
-		]);
-		if(!is_array($tags)){
-			$tags = [];
-		}
-		if(isset($ogg_meta['length_formatted'])) {
-			$length = $ogg_meta['length_formatted'];
-			$length_readable = human_readable_duration($length);
-		} elseif(isset($aac_meta['length_formatted'])) {
-			$length = $aac_meta['length_formatted'];
-			$length_readable = human_readable_duration($length);
-		}
-		$map_data []= [
-			'id' => $post_id,
-			'lat' => get_post_meta($post_id, 'mannheim_under_construction_location_lat', true),
-			'lng' => get_post_meta($post_id, 'mannheim_under_construction_location_lng', true),
-			'location' => esc_html(get_post_meta($post_id, 'mannheim_under_construction_location', true)),
-			'title' => esc_html(get_the_title($post_id)),
-			'description' => apply_filters('the_content', get_the_content(null, false, $post_id)),
-			'ogg' => wp_get_attachment_url($ogg_id),
-			'ogg_mime' => get_post_mime_type($ogg_id),
-			'aac' => wp_get_attachment_url($aac_id),
-			'aac_mime' => get_post_mime_type($aac_id),
-			'waveform' => get_post_meta($post_id, 'mannheim_under_construction_waveform', true),
-			'length' => $length,
-			'length_readable' => $length_readable,
-			'tags' => $tags,
-		];
-	}
-	$random_audio = $map_data[array_rand($map_data)];
-	?>
     <audio id="audio_player" hidden preload="metadata">
 		<?php
 		if(!empty($random_audio['ogg'])){
@@ -116,7 +131,7 @@
 					<?php echo apply_filters( 'the_content', get_the_content(null, false, 209) ); ?>
                 </div>
             </div>
-            <div id="left_sidebar" class="leaflet-sidebar collapsed leaflet-sidebar-left">
+            <div id="left_sidebar" class="leaflet-sidebar <?php echo $player_open ? '' : 'collapsed'; ?> leaflet-sidebar-left">
                 <div class="leaflet-sidebar-content">
                     <div class="leaflet-sidebar-pane" id="search" role="tabpanel">
                         <div class="search-filters">
@@ -283,7 +298,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="leaflet-sidebar-pane" id="play" role="tabpanel">
+                    <div class="leaflet-sidebar-pane<?php echo $player_open ? ' active' : ''; ?>" id="play" role="tabpanel">
                         <button class="close-button">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                  viewBox="0 0 57.167 53.667" xml:space="preserve">

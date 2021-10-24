@@ -276,7 +276,14 @@ body.black-white .mannheim-under-construction-onboarding {
 }
 .mannheim-under-construction-onboarding.active ~ .leaflet-map-pane .leaflet-marker-pane,
 .mannheim-under-construction-onboarding.active ~ .leaflet-control-container,
-.mannheim-under-construction-onboarding.active ~ .leaflet-sidebar-right {
+.mannheim-under-construction-onboarding.active ~ .leaflet-sidebar-right.collapsed,
+.mannheim-under-construction-onboarding.active ~ .leaflet-sidebar .leaflet-sidebar-content,
+body.sidebar-open .leaflet-sidebar.collapsed,
+body.sidebar-open .leaflet-control-container,
+body.search-results-open .leaflet-sidebar.collapsed,
+body.search-results-open .leaflet-control-container,
+body.deepdive-open .leaflet-sidebar.collapsed,
+body.deepdive-open .leaflet-control-container {
     visibility: hidden;
 }
 .onboarding-arrow {
@@ -537,10 +544,6 @@ body.wait .leaflet-sidebar-pane {
 .deepdive-open .under-construction-title .title-line-3 span:nth-child(2n+1) {
     margin-top: 0;
 }
-body.sidebar-open .leaflet-sidebar.collapsed,
-body.sidebar-open .leaflet-control-container {
-    visibility: hidden;
-}
 .search-filters {
     order: 1;
 }
@@ -602,14 +605,6 @@ body.sidebar-open .leaflet-control-container {
 .search-results-open .leaflet-sidebar-left,
 .deepdive-open .leaflet-sidebar-right {
     width: 100%;
-}
-body.search-results-open .leaflet-sidebar.collapsed,
-body.deepdive-open .leaflet-sidebar.collapsed {
-    visibility: hidden;
-}
-body.search-results-open .leaflet-control-container,
-body.deepdive-open .leaflet-control-container {
-    visibility: hidden;
 }
 #deepdive-more-info,
 #search-extend {
