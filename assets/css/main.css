@@ -567,8 +567,8 @@ body.wait .leaflet-sidebar-pane {
     .leaflet-sidebar-right:not(.collapsed) ~ .leaflet-control-container .leaflet-right {
         right: 770px;
     }
-    body.sidebar-open .leaflet-sidebar.collapsed,
-    body.sidebar-open .leaflet-control-container{
+    body.sidebar-open:not(.deepdive-open) .leaflet-sidebar.collapsed,
+    body.sidebar-open:not(.deepdive-open) .leaflet-control-container{
         visibility: visible;
     }
     #info .right-part,
