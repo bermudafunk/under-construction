@@ -242,6 +242,13 @@ class Mannheim_Under_Constrcution
 
         add_action('wp_ajax_nopriv_audio_search', [__CLASS__, 'audio_search']);
         add_action('wp_ajax_audio_search', [__CLASS__, 'audio_search']);
+
+        add_filter('post_type_link', function (string $permalink, WP_Post $post){
+            if($post->post_type === 'audio-station'){
+                $permalink = get_the_permalink(4) . '?audio_id=' . $post->ID;
+            }
+            return $permalink;
+        }, 10, 2);
 	}
 
 	public static function register_meta_box(WP_Post $post) : void
@@ -252,6 +259,7 @@ class Mannheim_Under_Constrcution
 	public static function display_meta_box()
 	{
 		?>
+        <p><b><?php esc_html_e('Link:', 'mannheim-under-construction'); ?></b> <a href="<?php the_permalink(get_the_ID()); ?>" target="_blank" rel="noopener"><?php the_permalink( get_the_ID() ); ?></a></p>
         <b><?php esc_html_e('Encoding guideline:', 'mannheim-under-construction'); ?></b>
         <p><?php esc_html_e('Each audio file should be converted into several formats for best cross browser compatibility and optimizing download size for modern clients. Only the most commonly supported format is required, but for optimization it\'s good to also provide the alternatives. These are:', 'mannheim-under-construction'); ?></p>
         <ul>
