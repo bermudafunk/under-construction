@@ -203,8 +203,6 @@ class Mannheim_Under_Constrcution
 						wp_deregister_style( $wp_style->handle );
 					}
 				}
-				wp_deregister_style( 'wp-block-library' );
-				wp_deregister_style( 'wp-block-library-theme' );
 				wp_deregister_script( 'wp-embed' );
 				wp_enqueue_style( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.css', __FILE__ ), [], '1.7.1' );
 				wp_enqueue_script( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.js', __FILE__ ), [], '1.7.1', true );
