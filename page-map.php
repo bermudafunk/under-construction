@@ -138,11 +138,9 @@ if($player_open){
                             <div class="content">
                                 <button class="close-button">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                         viewBox="0 0 57.167 53.667" xml:space="preserve">
-                                        <g>
-                                            <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
-                                            <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
-                                        </g>
+                                         viewBox="0 0 60 60" xml:space="preserve">
+                                        <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
+                                            50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
                                     </svg>
                                 </button>
                                 <form>
@@ -150,15 +148,13 @@ if($player_open){
                                         <input name="s" type="search" aria-label="<?php esc_attr_e('Enter a search phrase', 'mannheim-under-construction'); ?>">
                                         <button type="submit">
                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                 viewBox="0 0 57.167 81.5" xml:space="preserve">
-                                                <g>
-                                                    <circle fill="none" stroke-width="3.5" stroke-miterlimit="10" cx="35.522" cy="33.893" r="16.597"/>
-                                                    <path fill="none" stroke-width="3.5" stroke-linecap="round" stroke-miterlimit="10" d="M24.277,34.022
-                                                        c0,0-0.206-8.338,8.131-10.293"/>
-                                                    <path fill="none" stroke-width="3.5" stroke-linecap="round" stroke-miterlimit="10" d="M20.572,41.123"/>
-                                                    <path fill="none" stroke-width="3.5" stroke-linecap="round" stroke-miterlimit="10" d="M21.035,42.256
-                                                        L6.573,56.563c0,0,1.544,5.662,5.867,5.559l13.639-13.638"/>
-                                                </g>
+                                                 viewBox="0 0 60 60" xml:space="preserve">
+                                                <path d="M12.433,30.425l7.931,7.93c2.282,2.282,4.675,3.382,7.088,3.378c2.071,0,4.129-0.886,6.113-2.585l10.461,10.438
+                                                    c0.78,0.779,1.803,1.168,2.825,1.168c1.025,0,2.05-0.392,2.831-1.175c1.561-1.563,1.558-4.096-0.006-5.657L39.202,33.471
+                                                    c1.634-1.956,2.462-3.958,2.458-6.007c-0.003-2.415-1.151-4.764-3.433-7.047l-7.939-7.921c-3.816-3.816-7.742-4.458-11.751-1.937
+                                                    l-1.145,1.15l-5.645,5.669l-1.244,1.249C7.998,22.647,8.617,26.608,12.433,30.425z M14.771,21.071l0.338-0.339l5.65-5.663
+                                                    l0.313-0.314c1.385-1.388,2.473-1.501,3.452-0.522l11.639,11.638c0.979,0.98,0.839,2.102-0.546,3.489l-0.268,0.268l-5.649,5.664
+                                                    l-0.266,0.266c-1.381,1.387-2.716,1.643-3.696,0.663L14.272,24.707C13.292,23.727,13.388,22.46,14.771,21.071z"/>
                                             </svg>
                                         </button>
                                     </div>
@@ -254,11 +250,9 @@ if($player_open){
                             <div class="content">
                                 <button class="close-button">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                         viewBox="0 0 57.167 53.667" xml:space="preserve">
-                                        <g>
-                                            <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
-                                            <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
-                                        </g>
+                                         viewBox="0 0 60 60" xml:space="preserve">
+                                        <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
+                                            50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
                                     </svg>
                                 </button>
                                 <div class="message"><?php esc_html_e('You haven\'t started a search query yet. Your results will appear here.', 'mannheim-under-construction'); ?></div>
@@ -269,11 +263,9 @@ if($player_open){
                             <div class="content">
                                 <button class="close-button">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                         viewBox="0 0 57.167 53.667" xml:space="preserve">
-                                        <g>
-                                            <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
-                                            <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
-                                        </g>
+                                         viewBox="0 0 60 60" xml:space="preserve">
+                                        <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
+                                            50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
                                     </svg>
                                 </button>
                                 <?php
@@ -301,11 +293,9 @@ if($player_open){
                     <div class="leaflet-sidebar-pane<?php echo $player_open ? ' active' : ''; ?>" id="play" role="tabpanel">
                         <button class="close-button">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                 viewBox="0 0 57.167 53.667" xml:space="preserve">
-                                <g>
-                                    <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
-                                    <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
-                                </g>
+                                 viewBox="0 0 60 60" xml:space="preserve">
+                                <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
+                                    50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
                             </svg>
                         </button>
                         <div class="content-location"><?php echo esc_html($random_audio['location']); ?></div>
@@ -366,38 +356,33 @@ if($player_open){
                 <div class="leaflet-sidebar-tabs" role="tablist">
                     <button id="black_white_switcher" aria-label="<?php esc_attr_e('Change contrast', 'mannheim-under-construction'); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                             viewBox="0 0 57.167 81.5" xml:space="preserve">
+                             viewBox="0 0 60 60" xml:space="preserve">
                             <g>
-                                <circle stroke="#000000" stroke-width="2" stroke-miterlimit="10" cx="29.396" cy="41.105" r="14.771"/>
-                                <path d="M29.5,26.335c8,0,14.771,6.613,14.771,14.771S37.5,55.876,29.5,55.876C29.5,55.75,30,26.5,29.5,26.335z"/>
+                                <polygon points="30,9 33.073,9 33.015,9 27.675,9 17.177,30 27.675,51 30,51"/>
+                                <polygon points="33.073,9 30,9 30,51 33.015,51 43.513,29.941"/>
                             </g>
                         </svg>
                     </button>
                     <button id="font_size_switcher" role="button" aria-label="<?php esc_attr_e('Change font size', 'mannheim-under-construction'); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                             viewBox="0 0 57.167 81.5" xml:space="preserve">
+                             viewBox="0 0 60 60" xml:space="preserve">
                             <g>
-                                <g>
-                                    <path d="M22.372,31.255L29.471,50.5h-3.674l-2.324-6.248h-5.574L15.649,50.5H11.95l7.098-19.245H22.372z M20.698,36.753
-                                        l-1.8,4.799h3.599L20.698,36.753z"/>
-                                    <path d="M39.048,36.636L44.161,50.5h-2.647l-1.674-4.501h-4.016l-1.62,4.501h-2.665l5.113-13.864H39.048z M37.841,40.597
-                                        l-1.296,3.457h2.593L37.841,40.597z"/>
-                                </g>
-                                <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="11.5" y1="58" x2="44.5" y2="58"/>
+                                <path d="M6.837,51.209l12.6-25.2h6.517l12.6,25.2h-7.884l-2.376-4.752H15.189l-2.376,4.752H6.837z M17.781,41.273h7.92l-3.96-7.92
+                                    L17.781,41.273z"/>
+                                <path d="M28.451,26.988l8.973-17.943h4.639l8.973,17.943h-5.613l-1.692-3.384h-9.331l-1.691,3.384H28.451z M36.244,19.914h5.639
+                                    l-2.818-5.639L36.244,19.914z"/>
                             </g>
                         </svg>
                     </button>
                     <button href="#search" role="tab" aria-label="<?php esc_attr_e('Search', 'mannheim-under-construction'); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                             viewBox="0 0 57.167 81.5" xml:space="preserve">
-                            <g>
-                                <circle fill="none" stroke="#000000" stroke-width="3.5" stroke-miterlimit="10" cx="35.522" cy="33.893" r="16.597"/>
-                                <path fill="none" stroke="#000000" stroke-width="3.5" stroke-linecap="round" stroke-miterlimit="10" d="M24.277,34.022
-                                    c0,0-0.206-8.338,8.131-10.293"/>
-                                <path fill="none" stroke="#000000" stroke-width="3.5" stroke-linecap="round" stroke-miterlimit="10" d="M20.572,41.123"/>
-                                <path fill="none" stroke="#000000" stroke-width="3.5" stroke-linecap="round" stroke-miterlimit="10" d="M21.035,42.256
-                                    L6.573,56.563c0,0,1.544,5.662,5.867,5.559l13.639-13.638"/>
-                            </g>
+                             viewBox="0 0 60 60" xml:space="preserve">
+                            <path d="M12.433,30.425l7.931,7.93c2.282,2.282,4.675,3.382,7.088,3.378c2.071,0,4.129-0.886,6.113-2.585l10.461,10.438
+                                c0.78,0.779,1.803,1.168,2.825,1.168c1.025,0,2.05-0.392,2.831-1.175c1.561-1.563,1.558-4.096-0.006-5.657L39.202,33.471
+                                c1.634-1.956,2.462-3.958,2.458-6.007c-0.003-2.415-1.151-4.764-3.433-7.047l-7.939-7.921c-3.816-3.816-7.742-4.458-11.751-1.937
+                                l-1.145,1.15l-5.645,5.669l-1.244,1.249C7.998,22.647,8.617,26.608,12.433,30.425z M14.771,21.071l0.338-0.339l5.65-5.663
+                                l0.313-0.314c1.385-1.388,2.473-1.501,3.452-0.522l11.639,11.638c0.979,0.98,0.839,2.102-0.546,3.489l-0.268,0.268l-5.649,5.664
+                                l-0.266,0.266c-1.381,1.387-2.716,1.643-3.696,0.663L14.272,24.707C13.292,23.727,13.388,22.46,14.771,21.071z"/>
                         </svg>
                     </button>
                     <button id="play_tab_button" href="#play" role="tab" aria-label="<?php esc_attr_e('Open player', 'mannheim-under-construction'); ?>">
@@ -424,11 +409,11 @@ if($player_open){
                                 <div class="info-menu">
                                     <button id="info-menu-button" class="under-construction-more-info" role="tab" aria-label="<?php esc_attr_e('Show more info about the project', 'mannheim-under-construction'); ?>">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                             viewBox="0 0 57.167 81.5" xml:space="preserve">
+                                             viewBox="0 0 60 60" xml:space="preserve">
                                             <g>
-                                                <rect x="11.5" y="25" width="36" height="6"/>
-                                                <rect x="11.5" y="38" width="36" height="6"/>
-                                                <rect x="11.5" y="52" width="36" height="6"/>
+                                                <rect x="7" y="9.089" width="44" height="5.324"/>
+                                                <rect x="7" y="27.089" width="44" height="5.324"/>
+                                                <rect x="7" y="46.089" width="44" height="5.324"/>
                                             </g>
                                         </svg>
                                     </button>
@@ -466,11 +451,9 @@ if($player_open){
                             <div class="content">
                                 <button class="close-button">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                         viewBox="0 0 57.167 53.667" xml:space="preserve">
-                                        <g>
-                                            <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
-                                            <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
-                                        </g>
+                                         viewBox="0 0 60 60" xml:space="preserve">
+                                        <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
+                                            50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
                                     </svg>
                                 </button>
 								<?php echo apply_filters( 'the_content', get_the_content(null, false, 218) ); ?>
@@ -480,11 +463,9 @@ if($player_open){
                             <div class="content">
                                 <button class="close-button">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                         viewBox="0 0 57.167 53.667" xml:space="preserve">
-                                        <g>
-                                            <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
-                                            <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
-                                        </g>
+                                         viewBox="0 0 60 60" xml:space="preserve">
+                                        <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
+                                            50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
                                     </svg>
                                 </button>
 								<?php echo apply_filters( 'the_content', get_the_content(null, false, 212) ); ?>
@@ -501,11 +482,9 @@ if($player_open){
                     <div class="leaflet-sidebar-pane" id="imprint" role="tabpanel">
                         <button class="close-button">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                 viewBox="0 0 57.167 53.667" xml:space="preserve">
-                                <g>
-                                    <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
-                                    <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
-                                </g>
+                                 viewBox="0 0 60 60" xml:space="preserve">
+                                <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
+                                    50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
                             </svg>
                         </button>
 						<?php echo apply_filters( 'the_content', get_the_content(null, false, 169) ); ?>
@@ -513,11 +492,9 @@ if($player_open){
                     <div class="leaflet-sidebar-pane" id="privacy" role="tabpanel">
                         <button class="close-button">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                 viewBox="0 0 57.167 53.667" xml:space="preserve">
-                                <g>
-                                    <path d="M46.3,12.919l-31.635,31.5l-3.963-3.991L42.531,8.586L46.3,12.919z"/>
-                                    <path d="M42.085,44.302l-31.5-31.636l3.99-3.962l31.843,31.828L42.085,44.302z"/>
-                                </g>
+                                 viewBox="0 0 60 60" xml:space="preserve">
+                                <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
+                                    50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
                             </svg>
                         </button>
 						<?php echo apply_filters( 'the_content', get_the_content(null, false, 7) ); ?>
@@ -526,11 +503,11 @@ if($player_open){
                 <div class="leaflet-sidebar-tabs" role="tablist">
                     <button class="open-under-construction-info" role="tab" aria-label="<?php esc_attr_e('Show info about the project', 'mannheim-under-construction'); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                             viewBox="0 0 57.167 81.5" xml:space="preserve">
+                             viewBox="0 0 60 60" xml:space="preserve">
                             <g>
-                                <rect x="11.5" y="25" width="36" height="6"/>
-                                <rect x="11.5" y="38" width="36" height="6"/>
-                                <rect x="11.5" y="52" width="36" height="6"/>
+                                <rect x="7" y="9.089" width="44" height="5.324"/>
+                                <rect x="7" y="27.089" width="44" height="5.324"/>
+                                <rect x="7" y="46.089" width="44" height="5.324"/>
                             </g>
                         </svg>
                     </button>

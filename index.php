@@ -403,7 +403,11 @@ class Mannheim_Under_Constrcution
             $message .= '<p>' . esc_html__('Or listen to this randomly selected post:', 'mannheim-under-construction') . '</p>';
 	        $audios_html .= '<li data-id="' . $audio->ID . '">' . esc_html($audio->post_title) . '</li>';
         } else {
-	        $message .= '<p>' . sprintf(esc_html__('The search term "%s" found the following posts. Click on the title to listen to the post:', 'mannheim-under-construction'), esc_html($_POST['s'])) . '</p>';
+            if(!empty($_POST['s'])) {
+	            $message .= '<p>' . sprintf( esc_html__( 'The search term "%s" found the following posts. Click on the title to listen to the post:', 'mannheim-under-construction' ), esc_html( $_POST[ 's' ] ) ) . '</p>';
+            } else {
+	            $message .= '<p>' . esc_html__( 'The search found the following posts. Click on the title to listen to the post:', 'mannheim-under-construction' ) . '</p>';
+            }
         }
 	    foreach($audios as $audio){
 		    $audios_html .= '<li data-id="' . $audio->ID . '">' . esc_html($audio->post_title) . '</li>';
