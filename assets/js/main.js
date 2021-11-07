@@ -291,6 +291,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     document.querySelector('#play .content-location').innerHTML = audio_station.location;
                     document.querySelector('#play .content-title').innerHTML = audio_station.title;
                     document.querySelector('#play .content-description').innerHTML = audio_station.description;
+                    document.querySelector('#play .content-credits').innerHTML = audio_station.credits;
                     let content_length = document.querySelector('#play .content-length .length');
                     content_length.innerHTML = audio_station.length;
                     content_length.setAttribute('aria-label', audio_station.length_readable);

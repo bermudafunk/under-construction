@@ -36,6 +36,7 @@ foreach ($posts as $post_id){
 		'lat' => get_post_meta($post_id, 'mannheim_under_construction_location_lat', true),
 		'lng' => get_post_meta($post_id, 'mannheim_under_construction_location_lng', true),
 		'location' => esc_html(get_post_meta($post_id, 'mannheim_under_construction_location', true)),
+		'credits' => apply_filters('the_content', (get_post_meta($post_id, 'mannheim_under_construction_credits', true))),
 		'title' => esc_html(get_the_title($post_id)),
 		'description' => apply_filters('the_content', get_the_content(null, false, $post_id)),
 		'ogg' => wp_get_attachment_url($ogg_id),
@@ -346,6 +347,7 @@ if($player_open){
                         <div class="content-audio-time">
                             <p class="content-length"><span class="length" aria-label="<?php echo esc_attr($random_audio['length_readable']); ?>"><?php echo esc_html($random_audio['length']); ?></span> <span aria-hidden="true"><?php esc_html_e('min.', 'mannheim-under-construction'); ?></span></p>
                         </div>
+                        <div class="content-credits"><?php echo $random_audio['credits']; ?></div>
                         <div class="content-tags">
 							<?php foreach ($random_audio['tags'] as $term_id) {
 								echo '<div class="tag" data-tagid="' . esc_attr($term_id) . '">#' . esc_html($tag_data[$term_id]) . '</div>';

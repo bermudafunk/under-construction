@@ -146,6 +146,9 @@ class Mannheim_Under_Constrcution
 			if ( $parent_id = wp_is_post_revision( $post_id ) ) {
 				$post_id = $parent_id;
 			}
+			$textarea_fields = [
+				'mannheim_under_construction_credits',
+            ];
 			$fields = [
 				'mannheim_under_construction_ogg',
 				'mannheim_under_construction_aac',
@@ -160,6 +163,11 @@ class Mannheim_Under_Constrcution
 			foreach ( $fields as $field ) {
 				if ( array_key_exists( $field, $_POST ) ) {
 					update_post_meta( $post_id, $field, sanitize_text_field( $_POST[$field] ) );
+				}
+			}
+			foreach ( $textarea_fields as $field ) {
+				if ( array_key_exists( $field, $_POST ) ) {
+					update_post_meta( $post_id, $field, sanitize_textarea_field( $_POST[$field] ) );
 				}
 			}
 		} );
@@ -305,6 +313,12 @@ class Mannheim_Under_Constrcution
         <div>
             <label for="mannheim_under_construction_location"><?php esc_html_e('Location:', 'mannheim-under-construction'); ?>
                 <input type="text" id="mannheim_under_construction_location" name="mannheim_under_construction_location" value="<?php echo esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_location', true)); ?>">
+            </label>
+        </div>
+        <br>
+        <div>
+            <label for="mannheim_under_construction_credits"><?php esc_html_e('Credits:', 'mannheim-under-construction'); ?>
+                <textarea id="mannheim_under_construction_credits" name="mannheim_under_construction_credits" rows="5" cols="30"><?php echo esc_html(get_post_meta(get_the_ID(), 'mannheim_under_construction_credits', true)); ?></textarea>
             </label>
         </div>
         <br>
