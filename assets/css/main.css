@@ -132,6 +132,7 @@ svg {
 }
 .content-player .waveform > svg {
     cursor: pointer;
+    height: 60px;
 }
 .content-player > .waveform {
     padding: 0 10px;
