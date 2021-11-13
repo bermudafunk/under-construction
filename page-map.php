@@ -419,7 +419,7 @@ if($player_open){
                                             </g>
                                         </svg>
                                     </button>
-                                    <div>
+                                    <div id="info-menu-links">
                                         <button href="#imprint" id="imprint_menu" role="tab">
 											<?php esc_html_e('Imprint', 'mannheim-under-construction'); ?>
                                         </button>

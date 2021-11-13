@@ -238,6 +238,12 @@ button.close-button{
     right: 0;
     top: 0;
 }
+#info button.close-button{
+    top: 16px;
+}
+#info-menu-links {
+    padding-top: 16px;
+}
 .search-intro-text {
     margin-right: 60px;
 }
