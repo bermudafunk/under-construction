@@ -37,11 +37,11 @@ window.addEventListener('DOMContentLoaded', function(){
                 body.classList.add('sidebar-open');
             });
             sidebar_left.on('closing', _ => {
-                body.classList.remove('search-results-open');
+                body.classList.remove('sidebar-fullscreen');
                 body.classList.remove('sidebar-open');
             });
             sidebar_right.on('closing', _ => {
-                body.classList.remove('deepdive-open');
+                body.classList.remove('sidebar-fullscreen');
                 body.classList.remove('sidebar-open');
             });
             sidebar_right.on('opening', _ => {
@@ -101,15 +101,15 @@ window.addEventListener('DOMContentLoaded', function(){
             }
             for(let opener of open_under_construction_more_info){
                 opener.addEventListener('click', _ => {
-                    if(body.classList.contains('deepdive-open')){
-                        body.classList.remove('deepdive-open');
+                    if(body.classList.contains('sidebar-fullscreen')){
+                        body.classList.remove('sidebar-fullscreen');
                     } else {
-                        body.classList.add('deepdive-open');
+                        body.classList.add('sidebar-fullscreen');
                     }
                 });
             }
             search_extend.addEventListener('click', _ => {
-                body.classList.add('search-results-open');
+                body.classList.add('sidebar-fullscreen');
             });
             black_white_switcher.addEventListener('click', _ => {
                 body.classList.toggle('black-white');
@@ -117,12 +117,12 @@ window.addEventListener('DOMContentLoaded', function(){
             });
             for(let back_button of back_buttons) {
                 back_button.addEventListener('click', _ => {
-                    if (body.classList.contains('search-results-open')) {
-                        body.classList.remove('search-results-open');
+                    if (body.classList.contains('sidebar-fullscreen')) {
+                        body.classList.remove('sidebar-fullscreen');
                     } else if(!sidebar_left_dom.classList.contains('collapsed')) {
                         sidebar_left.close();
-                    } else if(body.classList.contains('deepdive-open')){
-                        body.classList.remove('deepdive-open');
+                    } else if(body.classList.contains('sidebar-fullscreen')){
+                        body.classList.remove('sidebar-fullscreen');
                     } else if(!sidebar_right_dom.classList.contains('collapsed')) {
                         sidebar_right.close();
                     }
@@ -247,7 +247,7 @@ window.addEventListener('DOMContentLoaded', function(){
             L.DomEvent.disableClickPropagation(onboarding);
             function show_search_results(){
                 body.classList.add('wait');
-                body.classList.add('search-results-open');
+                body.classList.add('sidebar-fullscreen');
                 let form_data = new FormData(search_form);
                 form_data.append('action', 'audio_search');
                 fetch(mannheim_under_construction.ajax_url, {
@@ -320,7 +320,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         }, 100);
                     }
                     sidebar_right.close();
-                    body.classList.remove('search-results-open');
+                    body.classList.remove('sidebar-fullscreen');
                     sidebar_left.open('#play');
                     map.setView([audio_station.lat, audio_station.lng]);
                 }
@@ -350,7 +350,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     let target_tag = search_sidebar_tags.querySelector('.tag[data-tagid="' + tag_id + '"]');
                     if(target_tag) {
                         sidebar_left.open('#search');
-                        body.classList.add('search-results-open');
+                        body.classList.add('sidebar-fullscreen');
                         target_tag.nextElementSibling.classList.add('active');
                         target_tag.scrollIntoView();
                     }
@@ -362,11 +362,11 @@ window.addEventListener('DOMContentLoaded', function(){
                 onboarding.classList.add('active');
             });
             document.querySelector('#imprint_menu').addEventListener('click', _ => {
-                body.classList.remove('deepdive-open');
+                body.classList.remove('sidebar-fullscreen');
                 sidebar_right.open('#imprint');
             });
             document.querySelector('#privacy_menu').addEventListener('click', _ => {
-                body.classList.remove('deepdive-open');
+                body.classList.remove('sidebar-fullscreen');
                 sidebar_right.open('#privacy');
             });
         }
