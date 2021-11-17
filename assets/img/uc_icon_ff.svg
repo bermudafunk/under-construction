@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-	 viewBox="0 0 57.167 81.5" xml:space="preserve">
-	<g>
-		<rect x="16.5" y="27" width="9" height="31"/>
-		<rect x="31.5" y="27" width="9" height="31"/>
-	</g>
+	 viewBox="0 0 60 60" xml:space="preserve">
+	<path d="M41.239,51H30.133l9.763-21L30.133,9h11.106l9.762,21L41.239,51z M20.084,51H8.98l9.762-21L8.98,9h11.104l9.764,21
+		L20.084,51z"/>
 </svg>

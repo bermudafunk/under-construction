@@ -2,9 +2,6 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 	 viewBox="0 0 60 60" xml:space="preserve">
-	<g>
-		<rect x="9" y="18.089" width="42" height="5.324"/>
-		<rect x="9" y="29.089" width="42" height="5.324"/>
-		<rect x="9" y="40.089" width="42" height="5.324"/>
-	</g>
+	<polygon points="24.538,18.547 45.318,15.286 38.7,8.668 17.959,12.008 12.435,17.533 9.002,38.366 15.619,44.984 18.881,24.204
+		42.02,47.344 47.678,41.688 	"/>
 </svg>

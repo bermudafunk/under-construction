@@ -3,8 +3,9 @@
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 	 viewBox="0 0 60 60" xml:space="preserve">
 	<g>
-		<rect x="9" y="18.089" width="42" height="5.324"/>
-		<rect x="9" y="29.089" width="42" height="5.324"/>
-		<rect x="9" y="40.089" width="42" height="5.324"/>
+		<polygon points="18.275,17.667 24.866,8.667 15.408,8.666 9,17.36 9,25.173 15.662,34.667 24.866,34.667 18.273,25.667
+			50.998,25.667 51,17.667 	"/>
+		<rect x="43" y="24.167" width="8" height="26.493"/>
+		<rect x="31" y="42.667" width="20" height="8"/>
 	</g>
 </svg>

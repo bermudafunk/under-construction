@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', function(){
     let maps = document.getElementsByClassName('mannheim-under-construction-map-wrapper');
     if(maps) {
         const start_location = [49.4933, 8.4681];
-        const audio_icon = L.icon({iconUrl: mannheim_under_construction.audio_icon_url, iconSize: [31, 47]});
+        const audio_icon = L.icon({iconUrl: mannheim_under_construction.audio_icon_url, iconSize: [47, 47]});
         for (let map_wrapper of maps) {
             let map = L.map(map_wrapper.querySelector('.mannheim-under-construction-map'), {
                 center: start_location,

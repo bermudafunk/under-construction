@@ -223,8 +223,8 @@ class Mannheim_Under_Constrcution
 				wp_enqueue_script( 'mannheim-under-construction', plugins_url( 'assets/js/main.js', __FILE__ ), [ 'mannheim-under-construction-leaflet', 'mannheim-under-construction-sidebar-v2', 'mannheim-under-construction-leaflet-markercluster' ], substr( md5_file( __DIR__ . '/assets/js/main.js' ), 20 ), true );
 				wp_localize_script( 'mannheim-under-construction', 'mannheim_under_construction',
 					[
-						'audio_icon_url' => plugins_url( 'assets/img/uc_ort_icon.svg', __FILE__ ),
-						'audio_icon_url_bw' => plugins_url( 'assets/img/uc_ort_hoover_icon.svg', __FILE__ ),
+						'audio_icon_url' => plugins_url( 'assets/img/uc_icon_pin.svg', __FILE__ ),
+						'audio_icon_url_bw' => plugins_url( 'assets/img/uc_icon_pin_hover.svg', __FILE__ ),
 						'ajax_url' => admin_url( 'admin-ajax.php' ),
 						'search_error_message' => esc_html__('Oops, an error occured while loading your search results. Please try again', 'mannheim-under-construction'),
                         'zoom_in_title' => esc_html__('Zoom in', 'mannheim-under-construction'),

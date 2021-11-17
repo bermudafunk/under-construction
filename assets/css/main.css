@@ -49,11 +49,11 @@ body.large-font {
     transition: width 500ms, height 500ms;
 }
 body.large-font .leaflet-marker-icon {
-    width: 37px !important;
+    width: 56px !important;
     height: 56px !important;
 }
 body.small-font .leaflet-marker-icon {
-    width: 25px !important;
+    width: 38px !important;
     height: 38px !important;
 }
 .leaflet-container {
@@ -306,7 +306,6 @@ body.sidebar-fullscreen .leaflet-control-container {
 }
 #onboarding-arrow-3 {
     bottom: 10px;
-    transform: rotate(-90deg);
 }
 #onboarding-marker {
     position: absolute;
@@ -724,4 +723,7 @@ body:not(.black-white) .dark-theme {
 }
 body.black-white .light-theme {
     display: none;
+}
+.extended-search-arrow{
+    transform: rotate(-90deg);
 }
