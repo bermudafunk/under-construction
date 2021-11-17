@@ -148,6 +148,9 @@ svg {
     width: 60px;
     flex-shrink: 0;
 }
+.content-player .seek-button{
+    width: 30px;
+}
 .leaflet-zoom-box,
 .leaflet-bar a,
 .leaflet-bar a.leaflet-disabled,
