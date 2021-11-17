@@ -117,11 +117,10 @@ if($player_open){
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                      viewBox="0 0 60 60" xml:space="preserve" id="onboarding-marker">
                     <g>
-                        <polygon points="29,29.667 15.844,29.667 26.342,50.667 29,50.667"/>
-                        <polygon points="29,29.667 29,50.667 31.682,50.667 42.18,29.608"/>
-                        <polygon points="29,29.667 42.18,29.667 31.682,8.667 29,8.667"/>
-                        <polygon points="29,29.667 29,8.667 26.342,8.667 15.832,29.696"/>
-                        <polygon fill="#F2FF5B" points="26.238,17.667 26.172,27.124 29,29.667 31.669,27.124 31.682,17.667"/>
+                        <polygon points="33.073,9 27,9 16,30.059 27,51 33.015,51 44,30 	"/>
+                        <path fill="#F2FF5B" d="M32.447,17H30h-2.447C26.746,17,26,17.603,26,18.408v6.364c0,0.618,0.293,1.168,0.533,1.651
+                            c0.242,0.484,0.758,1.02,1.375,1.611L30,29.932l2.092-1.897c0.617-0.591,1.133-1.127,1.375-1.611C33.707,25.94,34,25.39,34,24.772
+                            v-6.364C34,17.603,33.254,17,32.447,17z"/>
                     </g>
                 </svg>
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -309,11 +308,14 @@ if($player_open){
                             <button class="play_pause_button" aria-label="<?php esc_attr_e('Play/Pause', 'mannheim-under-construction'); ?>">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                      viewBox="0 0 60 60" xml:space="preserve">
-                                    <path d="M51,30.055L9,51.035l9.02-41.961L51,30.055z"/>
+                                    <path d="M51,30.055L9,51.035V9.074L51,30.055z"/>
                                 </svg>
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                      viewBox="0 0 60 60" xml:space="preserve">
-                                    <path d="M8.989,51l9.762-42h11.106l-9.763,42H8.989z M30.143,51l9.764-42H51.01l-9.762,42H30.143z"/>
+                                    <g>
+                                        <polyline points="26,51 15,51 15,9 26,9"/>
+                                        <polyline points="45,51 34,51 34,9 45,9"/>
+                                    </g>
                                 </svg>
                             </button>
                             <div class="waveform">
@@ -359,8 +361,8 @@ if($player_open){
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 60 60" xml:space="preserve">
                             <g>
-                                <polygon points="30,9 33.073,9 33.015,9 27.675,9 17.177,30 27.675,51 30,51"/>
-                                <polygon points="33.073,9 30,9 30,51 33.015,51 43.513,29.941"/>
+                                <polygon points="27,51 30,51 30,9 27,9 16,30.059"/>
+                                <polygon points="33.073,9 30,9 30,51 33.015,51 44,30"/>
                             </g>
                         </svg>
                     </button>
@@ -389,8 +391,8 @@ if($player_open){
                     <button id="play_tab_button" href="#play" role="tab" aria-label="<?php esc_attr_e('Open player', 'mannheim-under-construction'); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 60 60" xml:space="preserve">
-                        <path d="M51,30.055L9,51.035l9.02-41.961L51,30.055z"/>
-                    </svg>
+                            <path d="M51,30.055L9,51.035V9.074L51,30.055z"/>
+                        </svg>
                     </button>
                     <button id="back_button" class="back-button" aria-label="<?php esc_attr_e('Back', 'mannheim-under-construction'); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"

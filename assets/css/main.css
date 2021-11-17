@@ -618,6 +618,9 @@ body.wait .leaflet-sidebar-pane {
     margin-right: 0;
     display: flex;
 }
+#deepdive-more-info{
+    margin-right: -30px;
+}
 .sidebar-fullscreen #search-extend {
     display: none;
 }
@@ -634,6 +637,8 @@ body.wait .leaflet-sidebar-pane {
     max-width: 400px;
     width: 100%;
     height: auto;
+}
+body.black-white #info figure img {
     background: #FFFFFF;
 }
 .filter-box {
