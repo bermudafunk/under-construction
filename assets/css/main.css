@@ -377,6 +377,9 @@ body.sidebar-fullscreen .leaflet-control-container {
     display: flex;
     margin-top: 40px;
 }
+body:not(.sidebar-fullscreen) .mannheim-under-construction-search {
+    margin-right: -30px;
+}
 .mannheim-under-construction-search button{
     height: 60px;
     width: 60px;
@@ -617,8 +620,6 @@ body.wait .leaflet-sidebar-pane {
     margin-left: auto;
     margin-right: 0;
     display: flex;
-}
-#deepdive-more-info{
     margin-right: -30px;
 }
 .sidebar-fullscreen #search-extend {
