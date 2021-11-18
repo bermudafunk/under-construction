@@ -634,8 +634,10 @@ body.wait .leaflet-sidebar-pane {
     width: 60px;
     height: 60px;
 }
+#info figure {
+    max-width: 50%;
+}
 #info figure img {
-    max-width: 400px;
     width: 100%;
     height: auto;
 }
