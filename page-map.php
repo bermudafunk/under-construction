@@ -67,7 +67,7 @@ if($player_open){
     });
 }
 ?><!doctype html>
-<html <?php language_attributes(); ?> <?php twentytwentyone_the_html_classes(); ?>>
+<html <?php language_attributes(); ?>>
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -178,6 +178,7 @@ if($player_open){
                                                 $terms = get_terms([
                                                     'taxonomy' => 'post-type',
                                                     'hide_empty' => true,
+                                                    'orderby' => 'term_order',
                                                 ]);
                                                 if(is_array($terms)){
                                                     foreach($terms as $term){
@@ -195,6 +196,7 @@ if($player_open){
                                                 $terms = get_terms([
                                                     'taxonomy' => 'length',
                                                     'hide_empty' => true,
+                                                    'orderby' => 'term_order',
                                                 ]);
                                                 if(is_array($terms)){
                                                     foreach($terms as $term){
@@ -212,6 +214,7 @@ if($player_open){
                                                 $terms = get_terms([
                                                     'taxonomy' => 'location',
                                                     'hide_empty' => true,
+                                                    'orderby' => 'term_order',
                                                 ]);
                                                 if(is_array($terms)){
                                                     foreach($terms as $term){
@@ -229,6 +232,7 @@ if($player_open){
                                                 $terms = get_terms([
                                                     'taxonomy' => 'production-date',
                                                     'hide_empty' => true,
+                                                    'orderby' => 'term_order',
                                                 ]);
                                                 if(is_array($terms)){
                                                     foreach($terms as $term){

@@ -465,6 +465,10 @@ body.black-white .leaflet-sidebar-content {
 .content-tags{
     margin-bottom: 30px;
 }
+#search-tags {
+    overflow: scroll;
+    max-height: 100%;
+}
 #search-tags .tag-result {
     display: none;
     margin-left: 20px;

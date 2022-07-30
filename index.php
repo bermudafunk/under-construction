@@ -5,9 +5,10 @@
  * Requires at least: 4.9
  * Requires PHP: 5.4
  * Author: Daniel Winzen
- * Author URI: https://danwin1210.me
+ * Author URI: https://danwin1210.de
  * Text Domain: mannheim-under-construction
  * Domain Path: /languages
+ * Update URI: false
  */
 
 class Mannheim_Under_Constrcution
@@ -67,7 +68,7 @@ class Mannheim_Under_Constrcution
 				'public' => false,
 				'hierarchical' => false,
 				'publicly_queryable' => false,
-                'show_ui' => true,
+				'show_ui' => true,
 				'show_in_rest' => true,
 				'menu_icon' => 'dashicons-format-audio',
 				'supports' => [
@@ -78,7 +79,7 @@ class Mannheim_Under_Constrcution
 				],
 				'register_meta_box_cb' => [__CLASS__, 'register_meta_box'],
 				'taxonomies' => [
-                    'post_tag',
+					'post_tag',
 				],
 				'has_archive' => false,
 				'rewrite' => false,
