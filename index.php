@@ -179,8 +179,8 @@ class Mannheim_Under_Constrcution
 			if( $typenow == 'audio-station' ) {
 				wp_enqueue_media();
 
-				wp_enqueue_script( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.js' , __FILE__ ), [], '1.7.1' );
-				wp_enqueue_style( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.css' , __FILE__ ), [], '1.7.1' );
+				wp_enqueue_script( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.js' , __FILE__ ), [], '1.8.0' );
+				wp_enqueue_style( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.css' , __FILE__ ), [], '1.8.0' );
 				wp_enqueue_style( 'mannheim-under-construction-admin', plugins_url( 'assets/css/admin.css' , __FILE__ ), [], substr(md5_file( __DIR__ . '/assets/css/admin.css' ), 20));
 				wp_enqueue_script( 'mannheim-under-construction-admin', plugins_url( 'assets/js/admin.js' , __FILE__ ), ['mannheim-under-construction-leaflet'], substr(md5_file( __DIR__ . '/assets/js/admin.js' ), 20));
 				wp_localize_script( 'mannheim-under-construction-admin', 'mannheim_under_construction_admin',
@@ -196,7 +196,7 @@ class Mannheim_Under_Constrcution
 
 		add_action( 'wp_enqueue_scripts', function() {
 			if(is_page('map')) {
-                // remove anything added by the theme
+				// remove anything added by the theme
 				$wp_scripts = wp_scripts();
 				$wp_styles  = wp_styles();
 				$themes_uri = get_theme_root_uri();
@@ -213,13 +213,13 @@ class Mannheim_Under_Constrcution
 					}
 				}
 				wp_deregister_script( 'wp-embed' );
-				wp_enqueue_style( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.css', __FILE__ ), [], '1.7.1' );
-				wp_enqueue_script( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.js', __FILE__ ), [], '1.7.1', true );
+				wp_enqueue_style( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.css', __FILE__ ), [], '1.8.0' );
+				wp_enqueue_script( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.js', __FILE__ ), [], '1.8.0', true );
 				wp_enqueue_style( 'mannheim-under-construction-sidebar-v2', plugins_url( 'assets/css/leaflet-sidebar-customized.css', __FILE__ ), [], substr( md5_file( __DIR__ . '/assets/css/leaflet-sidebar-customized.css' ), 20 ) );
 				wp_enqueue_script( 'mannheim-under-construction-sidebar-v2', plugins_url( 'assets/js/leaflet-sidebar-customized.js', __FILE__ ), [], substr( md5_file( __DIR__ . '/assets/js/leaflet-sidebar-customized.js' ), 20 ), true );
-				wp_enqueue_style( 'mannheim-under-construction-leaflet-markercluster', plugins_url( 'Leaflet.markercluster/dist/MarkerCluster.css', __FILE__ ), [], '1.4.1' );
-				wp_enqueue_style( 'mannheim-under-construction-leaflet-markercluster-default', plugins_url( 'Leaflet.markercluster/dist/MarkerCluster.Default.css', __FILE__ ), [], '1.4.1' );
-				wp_enqueue_script( 'mannheim-under-construction-leaflet-markercluster', plugins_url( 'Leaflet.markercluster/dist/leaflet.markercluster.js', __FILE__ ), [], '1.4.1', true );
+				wp_enqueue_style( 'mannheim-under-construction-leaflet-markercluster', plugins_url( 'Leaflet.markercluster/dist/MarkerCluster.css', __FILE__ ), [], '1.5.3' );
+				wp_enqueue_style( 'mannheim-under-construction-leaflet-markercluster-default', plugins_url( 'Leaflet.markercluster/dist/MarkerCluster.Default.css', __FILE__ ), [], '1.5.3' );
+				wp_enqueue_script( 'mannheim-under-construction-leaflet-markercluster', plugins_url( 'Leaflet.markercluster/dist/leaflet.markercluster.js', __FILE__ ), [], '1.5.3', true );
 				wp_enqueue_style( 'mannheim-under-construction', plugins_url( 'assets/css/main.css', __FILE__ ), [], substr( md5_file( __DIR__ . '/assets/css/main.css' ), 20 ) );
 				wp_enqueue_script( 'mannheim-under-construction', plugins_url( 'assets/js/main.js', __FILE__ ), [ 'mannheim-under-construction-leaflet', 'mannheim-under-construction-sidebar-v2', 'mannheim-under-construction-leaflet-markercluster' ], substr( md5_file( __DIR__ . '/assets/js/main.js' ), 20 ), true );
 				wp_localize_script( 'mannheim-under-construction', 'mannheim_under_construction',
@@ -228,11 +228,11 @@ class Mannheim_Under_Constrcution
 						'audio_icon_url_bw' => plugins_url( 'assets/img/uc_icon_pin_hover.svg', __FILE__ ),
 						'ajax_url' => admin_url( 'admin-ajax.php' ),
 						'search_error_message' => esc_html__('Oops, an error occured while loading your search results. Please try again', 'mannheim-under-construction'),
-                        'zoom_in_title' => esc_html__('Zoom in', 'mannheim-under-construction'),
-                        'zoom_out_title' => esc_html__('Zoom out', 'mannheim-under-construction'),
-                        'back' => esc_html__('Back', 'mannheim-under-construction'),
-                        'dark_backgrounds' => [plugins_url( 'assets/img/uc_a_blk_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_c_blk_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_m_blk_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_u_blk_muster.svg', __FILE__ )],
-                        'light_backgrounds' => [plugins_url( 'assets/img/uc_a_yllw_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_c_yllw_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_m_yllw_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_u_yllw_muster.svg', __FILE__ )],
+						'zoom_in_title' => esc_html__('Zoom in', 'mannheim-under-construction'),
+						'zoom_out_title' => esc_html__('Zoom out', 'mannheim-under-construction'),
+						'back' => esc_html__('Back', 'mannheim-under-construction'),
+						'dark_backgrounds' => [plugins_url( 'assets/img/uc_a_blk_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_c_blk_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_m_blk_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_u_blk_muster.svg', __FILE__ )],
+						'light_backgrounds' => [plugins_url( 'assets/img/uc_a_yllw_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_c_yllw_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_m_yllw_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_u_yllw_muster.svg', __FILE__ )],
 					]
 				);
 		    }
