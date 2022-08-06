@@ -196,21 +196,17 @@ class Mannheim_Under_Constrcution
 
 		add_action( 'wp_enqueue_scripts', function() {
 			if(is_page('map')) {
-				// remove anything added by the theme
+				// remove anything added by wp
 				$wp_scripts = wp_scripts();
 				$wp_styles  = wp_styles();
 				$themes_uri = get_theme_root_uri();
 
 				foreach ( $wp_scripts->registered as $wp_script ) {
-					if ( strpos( $wp_script->src, $themes_uri ) !== false ) {
-						wp_deregister_script( $wp_script->handle );
-					}
+					wp_deregister_script( $wp_script->handle );
 				}
 
 				foreach ( $wp_styles->registered as $wp_style ) {
-					if ( strpos( $wp_style->src, $themes_uri ) !== false ) {
-						wp_deregister_style( $wp_style->handle );
-					}
+					wp_deregister_style( $wp_style->handle );
 				}
 				wp_deregister_script( 'wp-embed' );
 				wp_enqueue_style( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.css', __FILE__ ), [], '1.8.0' );

@@ -742,3 +742,7 @@ body.black-white .light-theme {
 .extended-search-arrow{
     transform: rotate(-90deg);
 }
+.leaflet-control-attribution svg {
+    height: unset;
+    width: unset;
+}
