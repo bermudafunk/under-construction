@@ -622,7 +622,6 @@ body.wait .leaflet-sidebar-pane {
 #deepdive-more-info,
 #search-extend {
     margin-left: auto;
-    margin-right: 0;
     display: flex;
     margin-right: -30px;
 }
