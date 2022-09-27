@@ -178,7 +178,7 @@ if($player_open){
                                                 $terms = get_terms([
                                                     'taxonomy' => 'post-type',
                                                     'hide_empty' => true,
-                                                    'orderby' => 'term_order',
+                                                    'orderby' => 'name',
                                                 ]);
                                                 if(is_array($terms)){
                                                     foreach($terms as $term){
@@ -214,7 +214,7 @@ if($player_open){
                                                 $terms = get_terms([
                                                     'taxonomy' => 'location',
                                                     'hide_empty' => true,
-                                                    'orderby' => 'term_order',
+                                                    'orderby' => 'name',
                                                 ]);
                                                 if(is_array($terms)){
                                                     foreach($terms as $term){
