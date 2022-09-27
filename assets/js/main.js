@@ -50,11 +50,9 @@ window.addEventListener('DOMContentLoaded', function(){
                 body.classList.add('sidebar-open');
             });
             let audio_stations = [];
-            let audio_station_tags = JSON.parse(map_wrapper.querySelector('.tags-info').innerText);
-            let locations = JSON.parse(map_wrapper.querySelector('.location-info').innerText);
-            if (locations) {
+            if (mannheim_under_construction.map_data) {
                 let markers = L.markerClusterGroup();
-                for (let location of locations) {
+                for (let location of mannheim_under_construction.map_data) {
                     audio_stations[location.id] = location;
                     let marker = L.marker([location.lat, location.lng], {title: location.title, alt: location.title, icon: audio_icon, data_id: location.id});
                     marker.addEventListener('click', e => {
@@ -245,6 +243,8 @@ window.addEventListener('DOMContentLoaded', function(){
 
             L.DomEvent.disableScrollPropagation(onboarding);
             L.DomEvent.disableClickPropagation(onboarding);
+
+            load_audio(mannheim_under_construction.initial_audio, mannheim_under_construction.load_initial_only);
             function show_search_results(){
                 body.classList.add('wait');
                 body.classList.add('sidebar-fullscreen');
@@ -285,7 +285,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     load_audio(e.target.getAttribute('data-id'));
                 });
             }
-            function load_audio(audio_id){
+            function load_audio(audio_id, load_only = false){
                 if(audio_stations[audio_id]){
                     let audio_station = audio_stations[audio_id];
                     document.querySelector('#play .content-location').innerHTML = audio_station.location;
@@ -297,15 +297,16 @@ window.addEventListener('DOMContentLoaded', function(){
                     content_length.setAttribute('aria-label', audio_station.length_readable);
                     let tags_html = '';
                     for(let tag of audio_station.tags) {
-                        tags_html += '<div class="tag" data-tagid="' + tag + '">#' + audio_station_tags[tag] + '</div>';
+                        tags_html += '<div class="tag" data-tagid="' + tag + '">#' + mannheim_under_construction.tag_data[tag] + '</div>';
                     }
                     document.querySelector('#play .content-tags').innerHTML = tags_html;
-                    document.querySelector('#audio_player_new').innerHTML = '';
+                    let audio_player_new = document.querySelector('#audio_player_new');
+                    audio_player_new.innerHTML = '';
                     if(audio_station.ogg) {
-                        document.querySelector('#audio_player_new').innerHTML += '<source src="' + audio_station.ogg + '" type="' + audio_station.ogg_mime + '">';
+                        audio_player_new.innerHTML += '<source src="' + audio_station.ogg + '" type="' + audio_station.ogg_mime + '">';
                     }
                     if(audio_station.aac) {
-                        document.querySelector('#audio_player_new').innerHTML += '<source src="' + audio_station.aac + '" type="' + audio_station.aac_mime + '">';
+                        audio_player_new.innerHTML += '<source src="' + audio_station.aac + '" type="' + audio_station.aac_mime + '">';
                     }
                     waveform.querySelector('path').setAttribute('d', audio_station.waveform);
                     if(player.innerHTML !== player_new.innerHTML){
@@ -319,10 +320,12 @@ window.addEventListener('DOMContentLoaded', function(){
                             requestAnimationFrame(updateAudioPosition);
                         }, 100);
                     }
-                    sidebar_right.close();
-                    body.classList.remove('sidebar-fullscreen');
-                    sidebar_left.open('#play');
-                    map.setView([audio_station.lat, audio_station.lng]);
+                    if(!load_only) {
+                        sidebar_right.close();
+                        body.classList.remove('sidebar-fullscreen');
+                        sidebar_left.open('#play');
+                        map.setView([audio_station.lat, audio_station.lng]);
+                    }
                 }
             }
 

@@ -1,72 +1,4 @@
-<?php
-$map_data = [];
-$posts = get_posts([
-	'post_type' => 'audio-station',
-	'posts_per_page' => -1,
-	'fields' => 'ids',
-]);
-$tag_data = get_tags([
-	'fields' => 'id=>name',
-	'hide_empty' => true,
-	'orderby' => 'name',
-]);
-foreach ($posts as $post_id){
-	$ogg_id = get_post_meta($post_id, 'mannheim_under_construction_ogg', true);
-	$aac_id = get_post_meta($post_id, 'mannheim_under_construction_aac', true);
-	$ogg_meta = wp_get_attachment_metadata($ogg_id);
-	$aac_meta = wp_get_attachment_metadata($aac_id);
-	$length = '';
-	$length_readable = '';
-	$tags = get_tags([
-		'object_ids' => $post_id,
-		'fields' => 'ids',
-	]);
-	if(!is_array($tags)){
-		$tags = [];
-	}
-	if(isset($ogg_meta['length_formatted'])) {
-		$length = $ogg_meta['length_formatted'];
-		$length_readable = human_readable_duration($length);
-	} elseif(isset($aac_meta['length_formatted'])) {
-		$length = $aac_meta['length_formatted'];
-		$length_readable = human_readable_duration($length);
-	}
-	$map_data []= [
-		'id' => $post_id,
-		'lat' => get_post_meta($post_id, 'mannheim_under_construction_location_lat', true),
-		'lng' => get_post_meta($post_id, 'mannheim_under_construction_location_lng', true),
-		'location' => esc_html(get_post_meta($post_id, 'mannheim_under_construction_location', true)),
-		'credits' => apply_filters('the_content', (get_post_meta($post_id, 'mannheim_under_construction_credits', true))),
-		'title' => esc_html(get_the_title($post_id)),
-		'description' => apply_filters('the_content', get_the_content(null, false, $post_id)),
-		'ogg' => wp_get_attachment_url($ogg_id),
-		'ogg_mime' => get_post_mime_type($ogg_id),
-		'aac' => wp_get_attachment_url($aac_id),
-		'aac_mime' => get_post_mime_type($aac_id),
-		'waveform' => get_post_meta($post_id, 'mannheim_under_construction_waveform', true),
-		'length' => $length,
-		'length_readable' => $length_readable,
-		'tags' => $tags,
-	];
-}
-$player_open = false;
-$random_audio = $map_data[array_rand($map_data)];
-if(!empty($_GET['audio_id'])){
-	foreach ($map_data as $audio){
-		if($audio['id'] === (int) $_GET['audio_id']){
-			$random_audio = $audio;
-			$player_open = true;
-			break;
-		}
-	}
-}
-if($player_open){
-    add_filter('body_class', function (array $classes){
-        $classes []= 'sidebar-open';
-        return $classes;
-    });
-}
-?><!doctype html>
+<!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
@@ -79,24 +11,8 @@ if($player_open){
 <?php wp_body_open(); ?>
 <main>
     <audio id="audio_player" hidden preload="metadata">
-		<?php
-		if(!empty($random_audio['ogg'])){
-			echo '<source type="audio/ogg" src="' . esc_attr($random_audio['ogg']) . '">';
-		}
-		if(!empty($random_audio['aac'])){
-			echo '<source type="audio/aac" src="' . esc_attr($random_audio['aac']) . '">';
-		}
-		?>
     </audio>
     <audio id="audio_player_new" hidden preload="none">
-		<?php
-		if(!empty($random_audio['ogg'])){
-			echo '<source type="audio/ogg" src="' . esc_attr($random_audio['ogg']) . '">';
-		}
-		if(!empty($random_audio['aac'])){
-			echo '<source type="audio/aac" src="' . esc_attr($random_audio['aac']) . '">';
-		}
-		?>
     </audio>
     <div class="mannheim-under-construction-map-wrapper">
         <div class="mannheim-under-construction-map sidebar-map">
@@ -135,7 +51,7 @@ if($player_open){
 					<?php echo apply_filters( 'the_content', get_the_content(null, false, 209) ); ?>
                 </div>
             </div>
-            <div id="left_sidebar" class="leaflet-sidebar <?php echo $player_open ? '' : 'collapsed'; ?> leaflet-sidebar-left">
+            <div id="left_sidebar" class="leaflet-sidebar collapsed leaflet-sidebar-left">
                 <div class="leaflet-sidebar-content">
                     <div class="leaflet-sidebar-pane" id="search" role="tabpanel">
                         <div class="search-filters">
@@ -278,6 +194,11 @@ if($player_open){
                                     </svg>
                                 </button>
                                 <?php
+                                $tag_data = get_tags([
+	                                'fields' => 'id=>name',
+	                                'hide_empty' => true,
+	                                'orderby' => 'name',
+                                ]);
                                 if(is_array($tag_data)){
                                     foreach ($tag_data as $term_id => $term_name) {
                                         echo '<div class="tag" data-tagid="' . esc_attr($term_id) . '">#' . esc_html($term_name) . '</div>';
@@ -299,7 +220,7 @@ if($player_open){
                             </div>
                         </div>
                     </div>
-                    <div class="leaflet-sidebar-pane<?php echo $player_open ? ' active' : ''; ?>" id="play" role="tabpanel">
+                    <div class="leaflet-sidebar-pane" id="play" role="tabpanel">
                         <button class="close-button">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                  viewBox="0 0 60 60" xml:space="preserve">
@@ -307,8 +228,8 @@ if($player_open){
                                     50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
                             </svg>
                         </button>
-                        <div class="content-location"><?php echo esc_html($random_audio['location']); ?></div>
-                        <div class="content-title"><?php echo esc_html($random_audio['title']); ?></div>
+                        <div class="content-location"></div>
+                        <div class="content-title"></div>
                         <div class="content-player">
                             <button class="play_pause_button" aria-label="<?php esc_attr_e('Play/Pause', 'mannheim-under-construction'); ?>">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -330,7 +251,7 @@ if($player_open){
                                         <stop offset="90%" stop-color="white" stop-opacity="0.75"/>
                                         <stop offset="100%" stop-color="white" stop-opacity="0"/>
                                     </linearGradient>
-                                    <mask id="Mask"><path fill="url(#Gradient)" d="<?php echo esc_html($random_audio['waveform']); ?>"/></mask>
+                                    <mask id="Mask"><path fill="url(#Gradient)" d=""/></mask>
                                     <rect id="remaining" mask="url(#Mask)" x="0" y="0" width="500" height="100"/>
                                     <rect id="progress" mask="url(#Mask)" x="0" y="0" width="0" height="100"/>
                                 </svg>
@@ -349,15 +270,12 @@ if($player_open){
                                 </svg>
                             </button>
                         </div>
-                        <div class="content-description"><?php echo $random_audio['description']; ?></div>
+                        <div class="content-description"></div>
                         <div class="content-audio-time">
-                            <p class="content-length"><span class="length" aria-label="<?php echo esc_attr($random_audio['length_readable']); ?>"><?php echo esc_html($random_audio['length']); ?></span> <span aria-hidden="true"><?php esc_html_e('min.', 'mannheim-under-construction'); ?></span></p>
+                            <p class="content-length"><span class="length" aria-label=""></span> <span aria-hidden="true"><?php esc_html_e('min.', 'mannheim-under-construction'); ?></span></p>
                         </div>
-                        <div class="content-credits"><?php echo $random_audio['credits']; ?></div>
+                        <div class="content-credits"></div>
                         <div class="content-tags">
-							<?php foreach ($random_audio['tags'] as $term_id) {
-								echo '<div class="tag" data-tagid="' . esc_attr($term_id) . '">#' . esc_html($tag_data[$term_id]) . '</div>';
-							} ?>
                         </div>
                     </div>
                 </div>
@@ -608,8 +526,6 @@ if($player_open){
                 </div>
             </div>
         </div>
-        <span class="location-info" hidden><?php echo esc_html(json_encode($map_data)); ?></span>
-        <span class="tags-info" hidden><?php echo esc_html(json_encode($tag_data)); ?></span>
         <noscript id="mannheim-under-construction-no-js-error"><p><?php esc_html_e('Sorry, you need to enable JavaScript to use this map.', 'mannheim-under-construction'); ?></p></noscript>
     </div>
 </main>

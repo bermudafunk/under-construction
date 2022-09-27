@@ -218,6 +218,68 @@ class Mannheim_Under_Constrcution
 				wp_enqueue_script( 'mannheim-under-construction-leaflet-markercluster', plugins_url( 'Leaflet.markercluster/dist/leaflet.markercluster.js', __FILE__ ), [], '1.5.3', true );
 				wp_enqueue_style( 'mannheim-under-construction', plugins_url( 'assets/css/main.css', __FILE__ ), [], substr( md5_file( __DIR__ . '/assets/css/main.css' ), 20 ) );
 				wp_enqueue_script( 'mannheim-under-construction', plugins_url( 'assets/js/main.js', __FILE__ ), [ 'mannheim-under-construction-leaflet', 'mannheim-under-construction-sidebar-v2', 'mannheim-under-construction-leaflet-markercluster' ], substr( md5_file( __DIR__ . '/assets/js/main.js' ), 20 ), true );
+
+				$map_data = [];
+				$audio_posts = get_posts([
+					'post_type' => 'audio-station',
+					'posts_per_page' => -1,
+					'fields' => 'ids',
+				]);
+				$tag_data = get_tags([
+					'fields' => 'id=>name',
+					'hide_empty' => true,
+					'orderby' => 'name',
+				]);
+				foreach ($audio_posts as $post_id){
+					$ogg_id = get_post_meta($post_id, 'mannheim_under_construction_ogg', true);
+					$aac_id = get_post_meta($post_id, 'mannheim_under_construction_aac', true);
+					$ogg_meta = wp_get_attachment_metadata($ogg_id);
+					$aac_meta = wp_get_attachment_metadata($aac_id);
+					$length = '';
+					$length_readable = '';
+					$tags = get_tags([
+						'object_ids' => $post_id,
+						'fields' => 'ids',
+					]);
+					if(!is_array($tags)){
+						$tags = [];
+					}
+					if(isset($ogg_meta['length_formatted'])) {
+						$length = $ogg_meta['length_formatted'];
+						$length_readable = human_readable_duration($length);
+					} elseif(isset($aac_meta['length_formatted'])) {
+						$length = $aac_meta['length_formatted'];
+						$length_readable = human_readable_duration($length);
+					}
+					$map_data []= [
+						'id' => $post_id,
+						'lat' => get_post_meta($post_id, 'mannheim_under_construction_location_lat', true),
+						'lng' => get_post_meta($post_id, 'mannheim_under_construction_location_lng', true),
+						'location' => esc_html(get_post_meta($post_id, 'mannheim_under_construction_location', true)),
+						'credits' => apply_filters('the_content', (get_post_meta($post_id, 'mannheim_under_construction_credits', true))),
+						'title' => esc_html(get_the_title($post_id)),
+						'description' => apply_filters('the_content', get_the_content(null, false, $post_id)),
+						'ogg' => wp_get_attachment_url($ogg_id),
+						'ogg_mime' => get_post_mime_type($ogg_id),
+						'aac' => wp_get_attachment_url($aac_id),
+						'aac_mime' => get_post_mime_type($aac_id),
+						'waveform' => get_post_meta($post_id, 'mannheim_under_construction_waveform', true),
+						'length' => $length,
+						'length_readable' => $length_readable,
+						'tags' => $tags,
+					];
+				}
+				$initial_audio = $map_data[array_rand($map_data)]['id'];
+                $load_initial_only = true;
+				if(!empty($_GET['audio_id'])){
+					foreach ($map_data as $audio){
+						if($audio['id'] === (int) $_GET['audio_id']){
+							$initial_audio = $audio['id'];
+                            $load_initial_only = false;
+							break;
+						}
+					}
+				}
 				wp_localize_script( 'mannheim-under-construction', 'mannheim_under_construction',
 					[
 						'audio_icon_url' => plugins_url( 'assets/img/uc_icon_pin.svg', __FILE__ ),
@@ -229,6 +291,10 @@ class Mannheim_Under_Constrcution
 						'back' => esc_html__('Back', 'mannheim-under-construction'),
 						'dark_backgrounds' => [plugins_url( 'assets/img/uc_a_blk_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_c_blk_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_m_blk_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_u_blk_muster.svg', __FILE__ )],
 						'light_backgrounds' => [plugins_url( 'assets/img/uc_a_yllw_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_c_yllw_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_m_yllw_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_u_yllw_muster.svg', __FILE__ )],
+                        'tag_data' => $tag_data,
+                        'map_data' => $map_data,
+                        'initial_audio' => $initial_audio,
+                        'load_initial_only' => $load_initial_only,
 					]
 				);
 		    }
