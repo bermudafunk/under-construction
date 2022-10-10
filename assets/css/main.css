@@ -753,6 +753,7 @@ body.black-white .light-theme {
     bottom: 0;
     display: block;
     z-index: 3001;
+    background-color: rgba(255, 255, 217, 0.5);
 }
 .mannheim-under-construction-popup-box{
     position: absolute;
