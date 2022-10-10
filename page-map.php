@@ -525,6 +525,22 @@
                     </button>
                 </div>
             </div>
+	        <?php
+	        if(get_option('mannheim_under_construction_popup_show', false)){
+		        ?><div class="mannheim-under-construction-popup">
+                <div class="mannheim-under-construction-popup-box">
+                    <button class="close-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                             viewBox="0 0 60 60" xml:space="preserve">
+                                        <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
+                                            50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
+                                    </svg>
+                    </button>
+                    <h1><?php echo apply_filters('the_content', get_option('mannheim_under_construction_popup_headline', '')); ?></h1>
+                    <?php echo apply_filters('the_content', get_option('mannheim_under_construction_popup_text', '')); ?>
+                </div>
+            </div>
+	        <?php } ?>
         </div>
         <noscript id="mannheim-under-construction-no-js-error"><p><?php esc_html_e('Sorry, you need to enable JavaScript to use this map.', 'mannheim-under-construction'); ?></p></noscript>
     </div>

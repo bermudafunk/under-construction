@@ -195,6 +195,14 @@ class Mannheim_Under_Constrcution
 			load_plugin_textdomain( 'mannheim-under-construction', FALSE, basename( __DIR__ ) . '/languages/' );
 		} );
 
+		add_filter( 'plugin_action_links', function ( $links, $file ) {
+			if ( $file === 'under-construction/index.php' && current_user_can( 'manage_options' ) ) {
+				$links = (array) $links;
+				$links[] = sprintf( '<a href="%s">%s</a>', admin_url( 'options-general.php?page=mannheim-under-construction' ), esc_html__( 'Settings', 'mannheim-under-construction' ) );
+			}
+			return $links;
+		}, 10, 2 );
+
 		add_action( 'save_post', function( $post_id ) {
 			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
 			if ( $parent_id = wp_is_post_revision( $post_id ) ) {
@@ -224,6 +232,61 @@ class Mannheim_Under_Constrcution
 					update_post_meta( $post_id, $field, sanitize_textarea_field( $_POST[$field] ) );
 				}
 			}
+		} );
+
+		add_action( 'admin_init', function () {
+			add_settings_section(
+				'mannheim_under_construction_settings',
+				__( 'Popup', 'mannheim-under-construction' ),
+				function () {},
+				'mannheim-under-construction'
+			);
+
+			add_settings_field(
+				'mannheim_under_construction_popup_show',
+				__( 'Show popup', 'mannheim-under-construction' ),
+				function () {
+					echo '<input type="checkbox" name="mannheim_under_construction_popup_show" class="regular-text code" value="1" ' . ( get_option( 'mannheim_under_construction_popup_show', 0 ) ? 'checked' : '' ) . '>';
+				},
+				'mannheim-under-construction',
+				'mannheim_under_construction_settings'
+			);
+
+			add_settings_field(
+				'mannheim_under_construction_popup_headline',
+				__( 'Popup Headline', 'salesforce-connector' ),
+				function () {
+					echo '<input type="text" name="mannheim_under_construction_popup_headline" class="regular-text code" value="' . esc_attr( get_option( 'mannheim_under_construction_popup_headline' ) ) . '">';
+				},
+				'mannheim-under-construction',
+				'mannheim_under_construction_settings'
+			);
+
+			add_settings_field(
+				'mannheim_under_construction_popup_text',
+				__( 'Popup Text', 'salesforce-connector' ),
+				function () {
+					echo '<textarea name="mannheim_under_construction_popup_text" class="regular-text code">' . esc_html( get_option( 'mannheim_under_construction_popup_text' ) ) . '</textarea>';
+				},
+				'mannheim-under-construction',
+				'mannheim_under_construction_settings'
+			);
+
+			register_setting( 'mannheim-under-construction', 'mannheim_under_construction_popup_show', [ 'type' => 'bool' ] );
+			register_setting( 'mannheim-under-construction', 'mannheim_under_construction_popup_text', [ 'type' => 'string' ] );
+			register_setting( 'mannheim-under-construction', 'mannheim_under_construction_popup_headline', [ 'type' => 'string' ] );
+		} );
+
+		add_filter( 'allowed_options', function ( $allowed_options ) {
+			$allowed_options[ 'mannheim-under-construction' ] = [
+				'mannheim_under_construction_popup_show',
+				'mannheim_under_construction_popup_text',
+			];
+			return $allowed_options;
+		} );
+
+		add_action( 'admin_menu', function () {
+			add_options_page( __( 'Mannheim Under Construction', 'mannheim-under-construction' ), __( 'Mannheim Under Construction', 'mannheim-under-construction' ), 'manage_options', 'mannheim-under-construction', [ __CLASS__, 'options_page' ] );
 		} );
 
 
@@ -552,5 +615,20 @@ class Mannheim_Under_Constrcution
 		wp_send_json_success(['audios_html' => $audios_html, 'message' => $message]);
 		wp_die();
 	}
+
+	public static function options_page(): void {
+		?>
+        <div class="wrap">
+            <h1><?php esc_html_e( 'Settings › Mannheim Under Construction', 'mannheim-under-construction' ); ?></h1>
+            <form method="post" action="<?php echo admin_url( 'options.php' ); ?>">
+				<?php
+				settings_fields( 'mannheim-under-construction' );
+				do_settings_sections('mannheim-under-construction');
+				submit_button(); ?>
+            </form>
+        </div>
+		<?php
+	}
+
 }
 Mannheim_Under_Constrcution::get_instance();

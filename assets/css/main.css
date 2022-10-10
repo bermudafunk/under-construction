@@ -745,3 +745,26 @@ body.black-white .light-theme {
     height: unset;
     width: unset;
 }
+.mannheim-under-construction-popup{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    z-index: 3001;
+}
+.mannheim-under-construction-popup-box{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: 0 auto;
+    z-index: 3002;
+    transform: translate(-50%,-50%) scale(1);
+    max-width: 425px;
+    max-height: 350px;
+    width: 100%;
+    background: var(--sidebar-background) repeat;
+    background-size: 6em;
+    overflow: scroll;
+}
