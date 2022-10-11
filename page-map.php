@@ -536,7 +536,7 @@
                                             50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
                                     </svg>
                     </button>
-                    <h1><?php echo apply_filters('the_content', get_option('mannheim_under_construction_popup_headline', '')); ?></h1>
+                    <h2 class="font-neue-black"><?php echo esc_html(get_option('mannheim_under_construction_popup_headline', '')); ?></h2>
                     <?php echo apply_filters('the_content', get_option('mannheim_under_construction_popup_text', '')); ?>
                 </div>
             </div>
