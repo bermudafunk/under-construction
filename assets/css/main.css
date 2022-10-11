@@ -753,14 +753,12 @@ body.black-white .light-theme {
     bottom: 0;
     display: block;
     z-index: 3001;
-    background-color: rgba(255, 255, 217, 0.5);
+    background-color: rgba(255, 255, 217, 0.75);
 }
 .mannheim-under-construction-popup-box{
     position: absolute;
     left: 50%;
     top: 50%;
-    margin: 0 auto;
-    z-index: 3002;
     transform: translate(-50%,-50%) scale(1);
     max-width: 425px;
     max-height: 350px;
@@ -768,4 +766,5 @@ body.black-white .light-theme {
     background: var(--sidebar-background) repeat;
     background-size: 6em;
     overflow: scroll;
+    padding: 0 1em;
 }

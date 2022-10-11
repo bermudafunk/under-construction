@@ -251,6 +251,11 @@ window.addEventListener('DOMContentLoaded', function(){
                 close_button.addEventListener('click', _ => {
                     popup.style.display = 'none';
                 });
+                popup.addEventListener('click', e => {
+                    if(e.target === popup) {
+                        popup.style.display = 'none';
+                    }
+                });
             }
 
             load_audio(mannheim_under_construction.initial_audio, mannheim_under_construction.load_initial_only);
