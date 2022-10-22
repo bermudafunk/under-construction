@@ -208,29 +208,58 @@ class Mannheim_Under_Constrcution
 			if ( $parent_id = wp_is_post_revision( $post_id ) ) {
 				$post_id = $parent_id;
 			}
-			$textarea_fields = [
-				'mannheim_under_construction_credits',
-			];
-			$fields = [
-				'mannheim_under_construction_ogg',
-				'mannheim_under_construction_aac',
-//				'mannheim_under_construction_mp4',
-//				'mannheim_under_construction_webm',
-//				'mannheim_under_construction_vtt',
-				'mannheim_under_construction_waveform',
-				'mannheim_under_construction_location',
-				'mannheim_under_construction_location_lat',
-				'mannheim_under_construction_location_lng',
-			];
-			foreach ( $fields as $field ) {
-				if ( array_key_exists( $field, $_POST ) ) {
-					update_post_meta( $post_id, $field, sanitize_text_field( $_POST[$field] ) );
+			if(get_post_type($post_id) === 'audio-station') {
+				$textarea_fields = [
+					'mannheim_under_construction_credits',
+				];
+				$fields = [
+					'mannheim_under_construction_ogg',
+					'mannheim_under_construction_aac',
+//				    'mannheim_under_construction_mp4',
+//			    	'mannheim_under_construction_webm',
+//				    'mannheim_under_construction_vtt',
+					'mannheim_under_construction_waveform',
+					'mannheim_under_construction_location',
+					'mannheim_under_construction_location_lat',
+					'mannheim_under_construction_location_lng',
+					'mannheim_under_construction_location_hidden',
+				];
+				foreach ( $fields as $field ) {
+					if ( array_key_exists( $field, $_POST ) ) {
+						update_post_meta( $post_id, $field, sanitize_text_field( $_POST[ $field ] ) );
+					}
 				}
-			}
-			foreach ( $textarea_fields as $field ) {
-				if ( array_key_exists( $field, $_POST ) ) {
-					update_post_meta( $post_id, $field, sanitize_textarea_field( $_POST[$field] ) );
+				foreach ( $textarea_fields as $field ) {
+					if ( array_key_exists( $field, $_POST ) ) {
+						update_post_meta( $post_id, $field, sanitize_textarea_field( $_POST[ $field ] ) );
+					}
 				}
+			} elseif(get_post_type($post_id) === 'audio-walk') {
+				$fields = [
+					'mannheim_under_construction_location_lat',
+					'mannheim_under_construction_location_lng',
+                ];
+				foreach ( $fields as $field ) {
+					if ( array_key_exists( $field, $_POST ) ) {
+						update_post_meta( $post_id, $field, sanitize_text_field( $_POST[ $field ] ) );
+					}
+				}
+                if(is_array($_POST['mannheim_under_construction_stations'])){
+                    $walk = [];
+	                foreach($_POST['mannheim_under_construction_stations'] as $station){
+		                if(isset($station['title']) && !empty($station['audio_id'])){
+                            $exists = get_posts([
+                                'post_type' => 'audio-station',
+                                'posts_per_page' => 1,
+                                'p' => $station['audio_id'],
+                            ])[0] ?? false;
+                            if($exists){
+                                $walk []= $station;
+                            }
+		                }
+	                }
+	                update_post_meta( $post_id, 'mannheim_under_construction_stations', $walk );
+                }
 			}
 		} );
 
@@ -292,10 +321,27 @@ class Mannheim_Under_Constrcution
 
 		add_action( 'admin_enqueue_scripts', function() {
 			global $typenow;
-			if( $typenow == 'audio-station' ) {
+			if( in_array($typenow, ['audio-station', 'audio-walk'], true) ) {
 				wp_enqueue_media();
-
-				wp_enqueue_script( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.js' , __FILE__ ), [], '1.8.0' );
+                $walk_stations = [];
+				$walk_audios = [];
+                $is_walk = $typenow === 'audio-walk';
+				if($is_walk){
+                    if(get_the_ID()) {
+	                    $walk_stations = get_post_meta( get_the_ID(), 'mannheim_under_construction_stations', true );
+                    }
+					$audios = get_posts([
+						'post_type' => 'audio-station',
+						'posts_per_page' => -1,
+						'orderby' => ['title' => 'ASC'],
+					]);
+					if(is_array($audios)) {
+						foreach ( $audios as $audio ) {
+							$walk_audios []= ['title' => $audio->post_title, 'id' => $audio->ID];
+						}
+					}
+				}
+                wp_enqueue_script( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.js' , __FILE__ ), [], '1.8.0' );
 				wp_enqueue_style( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.css' , __FILE__ ), [], '1.8.0' );
 				wp_enqueue_style( 'mannheim-under-construction-admin', plugins_url( 'assets/css/admin.css' , __FILE__ ), [], substr(md5_file( __DIR__ . '/assets/css/admin.css' ), 20));
 				wp_enqueue_script( 'mannheim-under-construction-admin', plugins_url( 'assets/js/admin.js' , __FILE__ ), ['mannheim-under-construction-leaflet'], substr(md5_file( __DIR__ . '/assets/js/admin.js' ), 20));
@@ -304,7 +350,13 @@ class Mannheim_Under_Constrcution
 						'title' => __( 'Choose or Upload Media', 'mannheim-under-construction' ),
 						'button' => __( 'Use this media', 'mannheim-under-construction' ),
 						'desired_location' => __( 'Desired location', 'mannheim-under-construction' ),
-						'audio_icon_url' => plugins_url( 'assets/img/uc_ort_icon.svg', __FILE__ ),
+						'audio_icon_url' => plugins_url( 'assets/img/uc_icon_pin.svg', __FILE__ ),
+						'walk_icon_url' => plugins_url( 'assets/img/uc_icon_pin_hover.svg', __FILE__ ),
+                        'is_walk' => $is_walk,
+                        'walk' => [
+                            'stations' => $walk_stations,
+                            'audios' => $walk_audios,
+                        ],
 					]
 				);
 			}
@@ -335,8 +387,19 @@ class Mannheim_Under_Constrcution
 				wp_enqueue_script( 'mannheim-under-construction', plugins_url( 'assets/js/main.js', __FILE__ ), [ 'mannheim-under-construction-leaflet', 'mannheim-under-construction-sidebar-v2', 'mannheim-under-construction-leaflet-markercluster' ], substr( md5_file( __DIR__ . '/assets/js/main.js' ), 20 ), true );
 
 				$map_data = [];
+				$initial_audio = 0;
 				$audio_posts = get_posts([
 					'post_type' => 'audio-station',
+					'posts_per_page' => -1,
+					'fields' => 'ids',
+                    'meta_query' => [
+                        'relation' => 'OR',
+                        ['key' => 'mannheim_under_construction_location_hidden', 'compare' => '!=', 'value' => '1'],
+                        ['key' => 'mannheim_under_construction_location_hidden', 'compare' => 'NOT EXISTS'],
+                    ],
+				]);
+				$audio_walks = get_posts([
+					'post_type' => 'audio-walk',
 					'posts_per_page' => -1,
 					'fields' => 'ids',
 				]);
@@ -345,46 +408,54 @@ class Mannheim_Under_Constrcution
 					'hide_empty' => true,
 					'orderby' => 'name',
 				]);
-				foreach ($audio_posts as $post_id){
-					$ogg_id = get_post_meta($post_id, 'mannheim_under_construction_ogg', true);
-					$aac_id = get_post_meta($post_id, 'mannheim_under_construction_aac', true);
-					$ogg_meta = wp_get_attachment_metadata($ogg_id);
-					$aac_meta = wp_get_attachment_metadata($aac_id);
-					$length = '';
-					$length_readable = '';
-					$tags = get_tags([
-						'object_ids' => $post_id,
-						'fields' => 'ids',
-					]);
-					if(!is_array($tags)){
-						$tags = [];
+                if(is_array($audio_posts)) {
+	                foreach ( $audio_posts as $post_id ) {
+		                $ogg_id          = get_post_meta( $post_id, 'mannheim_under_construction_ogg', true );
+		                $aac_id          = get_post_meta( $post_id, 'mannheim_under_construction_aac', true );
+		                $ogg_meta        = wp_get_attachment_metadata( $ogg_id );
+		                $aac_meta        = wp_get_attachment_metadata( $aac_id );
+		                $length          = '';
+		                $length_readable = '';
+		                $tags            = get_tags( [
+			                'object_ids' => $post_id,
+			                'fields'     => 'ids',
+		                ] );
+		                if ( ! is_array( $tags ) ) {
+			                $tags = [];
+		                }
+		                if ( isset( $ogg_meta[ 'length_formatted' ] ) ) {
+			                $length          = $ogg_meta[ 'length_formatted' ];
+			                $length_readable = human_readable_duration( $length );
+		                } elseif ( isset( $aac_meta[ 'length_formatted' ] ) ) {
+			                $length          = $aac_meta[ 'length_formatted' ];
+			                $length_readable = human_readable_duration( $length );
+		                }
+		                $map_data [] = [
+			                'id'              => $post_id,
+			                'lat'             => get_post_meta( $post_id, 'mannheim_under_construction_location_lat', true ),
+			                'lng'             => get_post_meta( $post_id, 'mannheim_under_construction_location_lng', true ),
+			                'location'        => esc_html( get_post_meta( $post_id, 'mannheim_under_construction_location', true ) ),
+			                'credits'         => apply_filters( 'the_content', ( get_post_meta( $post_id, 'mannheim_under_construction_credits', true ) ) ),
+			                'title'           => esc_html( get_the_title( $post_id ) ),
+			                'description'     => apply_filters( 'the_content', get_the_content( null, false, $post_id ) ),
+			                'ogg'             => wp_get_attachment_url( $ogg_id ),
+			                'ogg_mime'        => get_post_mime_type( $ogg_id ),
+			                'aac'             => wp_get_attachment_url( $aac_id ),
+			                'aac_mime'        => get_post_mime_type( $aac_id ),
+			                'waveform'        => get_post_meta( $post_id, 'mannheim_under_construction_waveform', true ),
+			                'length'          => $length,
+			                'length_readable' => $length_readable,
+			                'tags'            => $tags,
+		                ];
+	                }
+	                $initial_audio = $map_data[array_rand($map_data)]['id'];
+                }
+                $walk_data = [];
+				if(is_array($audio_walks)){
+					foreach($audio_walks as $audio_walk){
+						$walk_data []= get_post_meta( $audio_walk, 'mannheim_under_construction_stations', true );
 					}
-					if(isset($ogg_meta['length_formatted'])) {
-						$length = $ogg_meta['length_formatted'];
-						$length_readable = human_readable_duration($length);
-					} elseif(isset($aac_meta['length_formatted'])) {
-						$length = $aac_meta['length_formatted'];
-						$length_readable = human_readable_duration($length);
-					}
-					$map_data []= [
-						'id' => $post_id,
-						'lat' => get_post_meta($post_id, 'mannheim_under_construction_location_lat', true),
-						'lng' => get_post_meta($post_id, 'mannheim_under_construction_location_lng', true),
-						'location' => esc_html(get_post_meta($post_id, 'mannheim_under_construction_location', true)),
-						'credits' => apply_filters('the_content', (get_post_meta($post_id, 'mannheim_under_construction_credits', true))),
-						'title' => esc_html(get_the_title($post_id)),
-						'description' => apply_filters('the_content', get_the_content(null, false, $post_id)),
-						'ogg' => wp_get_attachment_url($ogg_id),
-						'ogg_mime' => get_post_mime_type($ogg_id),
-						'aac' => wp_get_attachment_url($aac_id),
-						'aac_mime' => get_post_mime_type($aac_id),
-						'waveform' => get_post_meta($post_id, 'mannheim_under_construction_waveform', true),
-						'length' => $length,
-						'length_readable' => $length_readable,
-						'tags' => $tags,
-					];
 				}
-				$initial_audio = $map_data[array_rand($map_data)]['id'];
 				$load_initial_only = true;
 				if(!empty($_GET['audio_id'])){
 					foreach ($map_data as $audio){
@@ -399,6 +470,7 @@ class Mannheim_Under_Constrcution
 					[
 						'audio_icon_url' => plugins_url( 'assets/img/uc_icon_pin.svg', __FILE__ ),
 						'audio_icon_url_bw' => plugins_url( 'assets/img/uc_icon_pin_hover.svg', __FILE__ ),
+						'walk_icon_url' => plugins_url( 'assets/img/uc_icon_pin_hover.svg', __FILE__ ),
 						'ajax_url' => admin_url( 'admin-ajax.php' ),
 						'search_error_message' => esc_html__('Oops, an error occured while loading your search results. Please try again', 'mannheim-under-construction'),
 						'zoom_in_title' => esc_html__('Zoom in', 'mannheim-under-construction'),
@@ -408,6 +480,7 @@ class Mannheim_Under_Constrcution
 						'light_backgrounds' => [plugins_url( 'assets/img/uc_a_yllw_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_c_yllw_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_m_yllw_muster.svg', __FILE__ ), plugins_url( 'assets/img/uc_u_yllw_muster.svg', __FILE__ )],
 						'tag_data' => $tag_data,
 						'map_data' => $map_data,
+						'walk_data' => $walk_data,
 						'initial_audio' => $initial_audio,
 						'load_initial_only' => $load_initial_only,
 					]
@@ -447,9 +520,15 @@ class Mannheim_Under_Constrcution
 
 	public static function display_walk_meta_box(): void {
 		?>
-        <p><b><?php esc_html_e('Link:', 'mannheim-under-construction'); ?></b> <a href="<?php the_permalink(get_the_ID()); ?>" target="_blank" rel="noopener"><?php the_permalink( get_the_ID() ); ?></a></p>
-        <?php
-        }
+		<p><b><?php esc_html_e('Link:', 'mannheim-under-construction'); ?></b> <a href="<?php the_permalink(get_the_ID()); ?>" target="_blank" rel="noopener"><?php the_permalink( get_the_ID() ); ?></a></p>
+        <table id="select-walk-stations">
+            <tr><th><?php esc_html_e('Title', 'mannheim-under-construction'); ?></th><th><?php esc_html_e('Audio', 'mannheim-under-construction'); ?></th></tr>
+        </table>
+        <input type="hidden" id="mannheim_under_construction_location_lat" name="mannheim_under_construction_location_lat" value="<?php echo esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_location_lat', true)); ?>">
+        <input type="hidden" id="mannheim_under_construction_location_lng" name="mannheim_under_construction_location_lng" value="<?php echo esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_location_lng', true)); ?>">
+        <div id="select-map-location"></div>
+		<?php
+		}
 
 	public static function display_meta_box(): void {
 		?>
@@ -505,6 +584,13 @@ class Mannheim_Under_Constrcution
 		<div>
 			<label for="mannheim_under_construction_credits"><?php esc_html_e('Credits:', 'mannheim-under-construction'); ?>
 				<textarea id="mannheim_under_construction_credits" name="mannheim_under_construction_credits" rows="5" cols="30"><?php echo esc_html(get_post_meta(get_the_ID(), 'mannheim_under_construction_credits', true)); ?></textarea>
+			</label>
+		</div>
+		<br>
+		<div>
+			<label for="mannheim_under_construction_location_hidden"><?php esc_html_e('Hide on map:', 'mannheim-under-construction'); ?>
+                <?php $hidden = get_post_meta(get_the_ID(), 'mannheim_under_construction_location_hidden', true); ?>
+				<select id="mannheim_under_construction_location_hidden" name="mannheim_under_construction_location_hidden"><option value="0" <?php echo $hidden ? '' : 'selected' ?>><?php esc_html_e('No', 'mannheim-under-construction'); ?></option><option value="1" <?php echo $hidden ? 'selected' : '' ?>><?php esc_html_e('Yes', 'mannheim-under-construction'); ?></option></select>
 			</label>
 		</div>
 		<br>
@@ -618,15 +704,15 @@ class Mannheim_Under_Constrcution
 
 	public static function options_page(): void {
 		?>
-        <div class="wrap">
-            <h1><?php esc_html_e( 'Settings › Mannheim Under Construction', 'mannheim-under-construction' ); ?></h1>
-            <form method="post" action="<?php echo admin_url( 'options.php' ); ?>">
+		<div class="wrap">
+			<h1><?php esc_html_e( 'Settings › Mannheim Under Construction', 'mannheim-under-construction' ); ?></h1>
+			<form method="post" action="<?php echo admin_url( 'options.php' ); ?>">
 				<?php
 				settings_fields( 'mannheim-under-construction' );
 				do_settings_sections('mannheim-under-construction');
 				submit_button(); ?>
-            </form>
-        </div>
+			</form>
+		</div>
 		<?php
 	}
 
