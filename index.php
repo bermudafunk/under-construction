@@ -223,6 +223,7 @@ class Mannheim_Under_Constrcution
 					'mannheim_under_construction_location_lat',
 					'mannheim_under_construction_location_lng',
 					'mannheim_under_construction_location_hidden',
+					'mannheim_under_construction_location_2',
 				];
 				foreach ( $fields as $field ) {
 					if ( array_key_exists( $field, $_POST ) ) {
@@ -388,6 +389,7 @@ class Mannheim_Under_Constrcution
 
 				$map_data = [];
 				$initial_audio = 0;
+				$initial_walk = 0;
 				$audio_posts = get_posts([
 					'post_type' => 'audio-station',
 					'posts_per_page' => -1,
@@ -435,6 +437,7 @@ class Mannheim_Under_Constrcution
 			                'lat'             => get_post_meta( $post_id, 'mannheim_under_construction_location_lat', true ),
 			                'lng'             => get_post_meta( $post_id, 'mannheim_under_construction_location_lng', true ),
 			                'location'        => esc_html( get_post_meta( $post_id, 'mannheim_under_construction_location', true ) ),
+			                'location_2'      => esc_html( get_post_meta( $post_id, 'mannheim_under_construction_location_2', true ) ),
 			                'credits'         => apply_filters( 'the_content', ( get_post_meta( $post_id, 'mannheim_under_construction_credits', true ) ) ),
 			                'title'           => esc_html( get_the_title( $post_id ) ),
 			                'description'     => apply_filters( 'the_content', get_the_content( null, false, $post_id ) ),
@@ -446,6 +449,7 @@ class Mannheim_Under_Constrcution
 			                'length'          => $length,
 			                'length_readable' => $length_readable,
 			                'tags'            => $tags,
+                            'thumbnail'       => get_the_post_thumbnail_url( $post_id, 'medium' ),
 		                ];
 	                }
 	                $initial_audio = $map_data[array_rand($map_data)]['id'];
@@ -472,12 +476,20 @@ class Mannheim_Under_Constrcution
 						}
 					}
 				}
+				if(!empty($_GET['walk_id'])){
+					foreach ($walk_data as $walk){
+						if($walk['id'] === (int) $_GET['walk_id']){
+							$initial_walk = $walk['id'];
+							break;
+						}
+					}
+				}
 				wp_localize_script( 'mannheim-under-construction', 'mannheim_under_construction',
 					[
 						'audio_icon_url' => plugins_url( 'assets/img/uc_icon_pin.svg', __FILE__ ),
 						'audio_icon_url_bw' => plugins_url( 'assets/img/uc_icon_pin_hover.svg', __FILE__ ),
-						'walk_icon_url' => plugins_url( 'assets/img/uc_icon_walk_sy.svg', __FILE__ ),
-						'walk_icon_url_bw' => plugins_url( 'assets/img/uc_icon_walk.svg', __FILE__ ),
+						'walk_icon_url' => plugins_url( 'assets/img/uc_icon_walk.svg', __FILE__ ),
+						'walk_icon_url_bw' => plugins_url( 'assets/img/uc_icon_walk_sy.svg', __FILE__ ),
 						'ajax_url' => admin_url( 'admin-ajax.php' ),
 						'search_error_message' => esc_html__('Oops, an error occurred while loading your search results. Please try again', 'mannheim-under-construction'),
 						'zoom_in_title' => esc_html__('Zoom in', 'mannheim-under-construction'),
@@ -489,6 +501,7 @@ class Mannheim_Under_Constrcution
 						'map_data' => $map_data,
 						'walk_data' => $walk_data,
 						'initial_audio' => $initial_audio,
+						'initial_walk' => $initial_walk,
 						'load_initial_only' => $load_initial_only,
 					]
 				);
@@ -585,6 +598,12 @@ class Mannheim_Under_Constrcution
 		<div>
 			<label for="mannheim_under_construction_location"><?php esc_html_e('Location:', 'mannheim-under-construction'); ?>
 				<input type="text" id="mannheim_under_construction_location" name="mannheim_under_construction_location" value="<?php echo esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_location', true)); ?>">
+			</label>
+		</div>
+		<br>
+		<div>
+			<label for="mannheim_under_construction_location_2"><?php esc_html_e('Location 2:', 'mannheim-under-construction'); ?>
+				<input type="text" id="mannheim_under_construction_location_2" name="mannheim_under_construction_location_2" value="<?php echo esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_location_2', true)); ?>">
 			</label>
 		</div>
 		<br>

@@ -157,7 +157,8 @@ svg {
 .leaflet-container .leaflet-control-attribution,
 .marker-cluster-small div,
 .marker-cluster-medium div,
-.marker-cluster-large div {
+.marker-cluster-large div,
+.track-swipe-bar {
     color: #000;
     background-color: #F2FF5B;
 }
@@ -172,7 +173,8 @@ body.black-white .marker-cluster-medium div,
 body.black-white .marker-cluster-large div {
     background-color: #FFFFFF;
 }
-body.black-white .leaflet-container {
+body.black-white .leaflet-container,
+body.black-white .track-swipe-bar {
     color: #FFFFFF;
     background-color: #000000;
 }
@@ -507,7 +509,8 @@ body.wait .leaflet-sidebar-pane {
 #info .right-part,
 #info .open-middle-part,
 #info .open-right-part,
-#info .left-part {
+#info .left-part,
+.full-width-spacer {
     width: 100%;
 }
 #info .content,
@@ -525,13 +528,7 @@ body.wait .leaflet-sidebar-pane {
 .sidebar-fullscreen #info .right-part {
     display: none;
 }
-#info button {
-    display: flex;
-}
-#info #info-menu-button {
-    height: 60px;
-    width: 60px;
-}
+#info button,
 #info .info-menu {
     display: flex;
 }
@@ -633,7 +630,9 @@ body.wait .leaflet-sidebar-pane {
     align-self: center;
 }
 #deepdive-more-info svg,
-#search-extend svg {
+#search-extend svg,
+#info #info-menu-button,
+.track-swipe-bar svg {
     width: 60px;
     height: 60px;
 }
@@ -767,4 +766,41 @@ body.black-white .light-theme {
     background-size: 6em;
     overflow: scroll;
     padding: 0 1em;
+}
+#walk.leaflet-sidebar-pane {
+    padding-right: 60px;
+}
+#walk .content-station-title {
+    text-align: center;
+}
+#walk .content-title {
+    text-align: left;
+}
+#walk .content-location {
+    text-align: center;
+}
+#walk .content-location-2 {
+    text-align: left;
+}
+#walk .content-audio-time {
+    text-align: center;
+}
+.track-swipe-bar {
+    display: flex;
+    position: sticky;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-left: -20px;
+    margin-right: -60px;
+}
+.next-track,
+.prev-track {
+    line-height: 60px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+.content-image {
+    min-height: 8em;
+    text-align: center;
 }

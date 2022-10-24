@@ -256,13 +256,13 @@
                                     <rect id="progress" mask="url(#Mask)" x="0" y="0" width="0" height="100"/>
                                 </svg>
                             </div>
-                            <button id="seek_backwards" class="seek-button">
+                            <button class="seek-button seek_backwards">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                      viewBox="0 0 60 60" xml:space="preserve">
                                     <path d="M8.979,30l9.762-21h11.106l-9.763,21l9.763,21H18.741L8.979,30z M30.133,30l9.764-21H51l-9.762,21L51,51H39.896L30.133,30z"/>
                                 </svg>
                             </button>
-                            <button id="seek_forwards" class="seek-button">
+                            <button class="seek-button seek_forwards">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                      viewBox="0 0 60 60" xml:space="preserve">
                                     <path d="M41.239,51H30.133l9.763-21L30.133,9h11.106l9.762,21L41.239,51z M20.084,51H8.98l9.762-21L8.98,9h11.104l9.764,21
@@ -276,6 +276,69 @@
                         </div>
                         <div class="content-credits"></div>
                         <div class="content-tags">
+                        </div>
+                    </div>
+                    <div class="leaflet-sidebar-pane" id="walk" role="tabpanel">
+                        <button class="close-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                 viewBox="0 0 60 60" xml:space="preserve">
+                                <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
+                                    50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
+                            </svg>
+                        </button>
+                        <div class="walk-onboarding">
+
+                        </div>
+                        <div class="content-walk-stations">
+                            <div class="content-station-title"></div>
+                            <div class="content-title"></div>
+                            <div class="content-location"></div>
+                            <div class="content-location-2"></div>
+                            <div class="content-audio-time">
+                                <p class="content-length"><span class="length" aria-label=""></span> <span aria-hidden="true"><?php esc_html_e('min.', 'mannheim-under-construction'); ?></span></p>
+                            </div>
+                            <div class="content-image"></div>
+                            <div class="content-player">
+                                <button class="play_pause_button" aria-label="<?php esc_attr_e('Play/Pause', 'mannheim-under-construction'); ?>">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         viewBox="0 0 60 60" xml:space="preserve">
+                                        <path d="M51,30.055L9,51.035V9.074L51,30.055z"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         viewBox="0 0 60 60" xml:space="preserve">
+                                        <g>
+                                            <polyline points="26,51 15,51 15,9 26,9"/>
+                                            <polyline points="45,51 34,51 34,9 45,9"/>
+                                        </g>
+                                    </svg>
+                                </button>
+                                <div class="full-width-spacer"></div>
+                                <button class="seek-button seek_backwards">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         viewBox="0 0 60 60" xml:space="preserve">
+                                        <path d="M8.979,30l9.762-21h11.106l-9.763,21l9.763,21H18.741L8.979,30z M30.133,30l9.764-21H51l-9.762,21L51,51H39.896L30.133,30z"/>
+                                    </svg>
+                                </button>
+                                <button class="seek-button seek_forwards">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         viewBox="0 0 60 60" xml:space="preserve">
+                                        <path d="M41.239,51H30.133l9.763-21L30.133,9h11.106l9.762,21L41.239,51z M20.084,51H8.98l9.762-21L8.98,9h11.104l9.764,21
+                                            L20.084,51z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="content-description"></div>
+                            <div class="track-swipe-bar">
+                                <svg class="prev-track" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
+                                    <path d="M20.566,30L30.33,9h11.104l-9.762,21l9.762,21H30.33L20.566,30z"/>
+                                </svg>
+                                <span class="prev-track">01 / 03</span>
+                                <div class="full-width-spacer"></div>
+                                <span class="next-track">02 / 03</span>
+                                <svg class="next-track" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
+                                    <path d="M31.83,51H20.728l9.761-21L20.728,9H31.83l9.764,21L31.83,51z"/>
+                                </svg>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -322,7 +385,7 @@
                              viewBox="0 0 60 60" xml:space="preserve">
                             <g>
                                 <polygon points="18.275,17.667 24.866,8.667 15.408,8.666 9,17.36 9,25.173 15.662,34.667 24.866,34.667 18.273,25.667
-                                    50.998,25.667 51,17.667 	"/>
+                                    50.998,25.667 51,17.667"/>
                                 <rect x="43" y="24.167" width="8" height="26.493"/>
                                 <rect x="31" y="42.667" width="20" height="8"/>
                             </g>
@@ -532,9 +595,9 @@
                     <button class="close-button">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 60 60" xml:space="preserve">
-                                        <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
-                                            50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
-                                    </svg>
+                            <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
+                                50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
+                        </svg>
                     </button>
                     <h2 class="font-neue-black"><?php echo esc_html(get_option('mannheim_under_construction_popup_headline', '')); ?></h2>
                     <?php echo apply_filters('the_content', get_option('mannheim_under_construction_popup_text', '')); ?>

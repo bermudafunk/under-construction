@@ -75,7 +75,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 walks[walk.id] = walk;
                 let marker = L.marker([walk.lat, walk.lng], {title: walk.title, alt: walk.title, icon: walk_icon, data_id: walk.id});
                 marker.addEventListener('click', e => {
-                    load_audio(e.target.options.data_id);
+                    load_walk(e.target.options.data_id);
                 });
                 marker.addEventListener('mouseover', e => {
                     e.target._icon.setAttribute('src', mannheim_under_construction.walk_icon_url_bw);
@@ -90,7 +90,7 @@ window.addEventListener('DOMContentLoaded', function(){
         let body = document.querySelector('body');
         let player = document.querySelector('#audio_player');
         let player_new = document.querySelector('#audio_player_new');
-        let play_pause_button = document.querySelector('.play_pause_button');
+        let play_pause_buttons = document.querySelectorAll('.play_pause_button');
         let back_buttons = document.querySelectorAll('.back-button, button.close-button');
         let black_white_switcher = document.querySelector('#black_white_switcher');
         let font_size_button = document.querySelector('#font_size_switcher');
@@ -102,8 +102,8 @@ window.addEventListener('DOMContentLoaded', function(){
         let search_form_button = document.querySelector('.mannheim-under-construction-search button');
         let search_sidebar_fulltext = document.querySelector('#search-fulltext');
         let search_sidebar_tags = document.querySelector('#search-tags');
-        let seek_backwards = document.querySelector('#seek_backwards');
-        let seek_forwards = document.querySelector('#seek_forwards');
+        let seek_backwards = document.querySelectorAll('.seek_backwards');
+        let seek_forwards = document.querySelectorAll('.seek_forwards');
         let waveform = document.querySelector('#play .waveform svg');
         let waveform_progress = waveform.querySelector('#progress');
         let waveform_update_interval = null;
@@ -112,6 +112,7 @@ window.addEventListener('DOMContentLoaded', function(){
         let search_extend = document.querySelector('#search-extend');
         let sidebar_left_dom = document.querySelector('.leaflet-sidebar-left');
         let sidebar_right_dom = document.querySelector('.leaflet-sidebar-right');
+        let play_tab_button = document.querySelector('#play_tab_button');
         for(let opener of open_under_construction_info){
             opener.addEventListener('click', _ => {
                 sidebar_right.open('#info');
@@ -174,18 +175,20 @@ window.addEventListener('DOMContentLoaded', function(){
                 waveform_update_interval = null;
             }
         });
-        play_pause_button.addEventListener('click', _ => {
-            if(player.innerHTML !== player_new.innerHTML) {
-                player.pause();
-                player.innerHTML = player_new.innerHTML;
-                player.load();
-            }
-            if (player.paused) {
-                player.play();
-            } else {
-                player.pause();
-            }
-        });
+        for(let play_pause_button of play_pause_buttons) {
+            play_pause_button.addEventListener('click', _ => {
+                if (player.innerHTML !== player_new.innerHTML) {
+                    player.pause();
+                    player.innerHTML = player_new.innerHTML;
+                    player.load();
+                }
+                if (player.paused) {
+                    player.play();
+                } else {
+                    player.pause();
+                }
+            });
+        }
         waveform.addEventListener('click', e => {
             const position = e.offsetX / waveform.getBoundingClientRect().width;
             if(player.innerHTML !== player_new.innerHTML) {
@@ -205,26 +208,30 @@ window.addEventListener('DOMContentLoaded', function(){
                 }
             }
         });
-        seek_forwards.addEventListener('click', _ => {
-            if(player.duration > player.currentTime + 15){
-                player.currentTime += 15;
-            } else {
-                player.currentTime = player.duration;
-            }
-            if(player.innerHTML === player_new.innerHTML) {
-                updateAudioPosition();
-            }
-        });
-        seek_backwards.addEventListener('click', _ => {
-            if(0 < player.currentTime - 15){
-                player.currentTime -= 15;
-            } else {
-                player.currentTime = 0;
-            }
-            if(player.innerHTML === player_new.innerHTML) {
-                updateAudioPosition();
-            }
-        });
+        for(let seek of seek_forwards) {
+            seek.addEventListener('click', _ => {
+                if (player.duration > player.currentTime + 15) {
+                    player.currentTime += 15;
+                } else {
+                    player.currentTime = player.duration;
+                }
+                if (player.innerHTML === player_new.innerHTML) {
+                    updateAudioPosition();
+                }
+            });
+        }
+        for(let seek of seek_backwards) {
+            seek.addEventListener('click', _ => {
+                if (0 < player.currentTime - 15) {
+                    player.currentTime -= 15;
+                } else {
+                    player.currentTime = 0;
+                }
+                if (player.innerHTML === player_new.innerHTML) {
+                    updateAudioPosition();
+                }
+            });
+        }
         onboarding.addEventListener('click', _ => {
             onboarding.classList.remove('active');
         });
@@ -278,6 +285,9 @@ window.addEventListener('DOMContentLoaded', function(){
         }
 
         load_audio(mannheim_under_construction.initial_audio, mannheim_under_construction.load_initial_only);
+        if(mannheim_under_construction.initial_walk) {
+            load_walk(mannheim_under_construction.initial_walk);
+        }
         function show_search_results(){
             body.classList.add('wait');
             body.classList.add('sidebar-fullscreen');
@@ -320,6 +330,7 @@ window.addEventListener('DOMContentLoaded', function(){
         }
         function load_audio(audio_id, load_only = false){
             if(audio_stations[audio_id]){
+                play_tab_button.setAttribute('href', '#play');
                 let audio_station = audio_stations[audio_id];
                 document.querySelector('#play .content-location').innerHTML = audio_station.location;
                 document.querySelector('#play .content-title').innerHTML = audio_station.title;
@@ -333,7 +344,6 @@ window.addEventListener('DOMContentLoaded', function(){
                     tags_html += '<div class="tag" data-tagid="' + tag + '">#' + mannheim_under_construction.tag_data[tag] + '</div>';
                 }
                 document.querySelector('#play .content-tags').innerHTML = tags_html;
-                let audio_player_new = document.querySelector('#audio_player_new');
                 audio_player_new.innerHTML = '';
                 if(audio_station.ogg) {
                     audio_player_new.innerHTML += '<source src="' + audio_station.ogg + '" type="' + audio_station.ogg_mime + '">';
@@ -359,6 +369,53 @@ window.addEventListener('DOMContentLoaded', function(){
                     sidebar_left.open('#play');
                     map.setView([audio_station.lat, audio_station.lng]);
                 }
+            }
+        }
+
+        function load_walk(walk_id){
+            if(walks[walk_id]){
+                play_tab_button.setAttribute('href', '#walk');
+                let walk = walks[walk_id];
+                if(walk.stations[0]){
+                    load_walk_station(walk_id, 0);
+                }
+                sidebar_right.close();
+                body.classList.remove('sidebar-fullscreen');
+                sidebar_left.open('#walk');
+                map.setView([walk.lat, walk.lng]);
+            }
+        }
+
+        function load_walk_station(walk_id, station_id){
+            if(walks[walk_id].stations[station_id]){
+                let station = walks[walk_id].stations[station_id];
+                let audio_station = audio_stations[station.audio_id];
+                document.querySelector('#walk .content-station-title').innerHTML = station.title;
+                document.querySelector('#walk .content-title').innerHTML = audio_station.title;
+                document.querySelector('#walk .content-location').innerHTML = audio_station.location;
+                document.querySelector('#walk .content-location-2').innerHTML = audio_station.location_2;
+                document.querySelector('#walk .content-description').innerHTML = audio_station.description;
+                let image_container = document.querySelector('#walk .content-image');
+                if(audio_station.thumbnail) {
+                    image_container.innerHTML = '<img src="' + audio_station.thumbnail + '" loading="lazy">';
+                } else {
+                    image_container.innerHTML = '';
+                }
+                let content_length = document.querySelector('#walk .content-length .length');
+                content_length.innerHTML = audio_station.length;
+                content_length.setAttribute('aria-label', audio_station.length_readable);
+                audio_player_new.innerHTML = '';
+                if(audio_station.ogg) {
+                    audio_player_new.innerHTML += '<source src="' + audio_station.ogg + '" type="' + audio_station.ogg_mime + '">';
+                }
+                if(audio_station.aac) {
+                    audio_player_new.innerHTML += '<source src="' + audio_station.aac + '" type="' + audio_station.aac_mime + '">';
+                }
+               if(waveform_update_interval) {
+                    clearInterval(waveform_update_interval);
+                    waveform_update_interval = null;
+                }
+                waveform_progress.setAttribute('width', '0');
             }
         }
 
