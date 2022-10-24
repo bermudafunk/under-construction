@@ -351,7 +351,7 @@ class Mannheim_Under_Constrcution
 						'button' => __( 'Use this media', 'mannheim-under-construction' ),
 						'desired_location' => __( 'Desired location', 'mannheim-under-construction' ),
 						'audio_icon_url' => plugins_url( 'assets/img/uc_icon_pin.svg', __FILE__ ),
-						'walk_icon_url' => plugins_url( 'assets/img/uc_icon_pin_hover.svg', __FILE__ ),
+						'walk_icon_url' => plugins_url( 'assets/img/uc_icon_walk_sy.svg', __FILE__ ),
                         'is_walk' => $is_walk,
                         'walk' => [
                             'stations' => $walk_stations,
@@ -453,7 +453,13 @@ class Mannheim_Under_Constrcution
                 $walk_data = [];
 				if(is_array($audio_walks)){
 					foreach($audio_walks as $audio_walk){
-						$walk_data []= get_post_meta( $audio_walk, 'mannheim_under_construction_stations', true );
+						$walk_data []= [
+                            'id' => $audio_walk,
+                            'lat' => get_post_meta( $audio_walk, 'mannheim_under_construction_location_lat', true ),
+                            'lng' => get_post_meta( $audio_walk, 'mannheim_under_construction_location_lng', true ),
+                            'stations' => get_post_meta( $audio_walk, 'mannheim_under_construction_stations', true ),
+                            'title' => get_the_title( $audio_walk ),
+                        ];
 					}
 				}
 				$load_initial_only = true;
@@ -470,9 +476,10 @@ class Mannheim_Under_Constrcution
 					[
 						'audio_icon_url' => plugins_url( 'assets/img/uc_icon_pin.svg', __FILE__ ),
 						'audio_icon_url_bw' => plugins_url( 'assets/img/uc_icon_pin_hover.svg', __FILE__ ),
-						'walk_icon_url' => plugins_url( 'assets/img/uc_icon_pin_hover.svg', __FILE__ ),
+						'walk_icon_url' => plugins_url( 'assets/img/uc_icon_walk_sy.svg', __FILE__ ),
+						'walk_icon_url_bw' => plugins_url( 'assets/img/uc_icon_walk.svg', __FILE__ ),
 						'ajax_url' => admin_url( 'admin-ajax.php' ),
-						'search_error_message' => esc_html__('Oops, an error occured while loading your search results. Please try again', 'mannheim-under-construction'),
+						'search_error_message' => esc_html__('Oops, an error occurred while loading your search results. Please try again', 'mannheim-under-construction'),
 						'zoom_in_title' => esc_html__('Zoom in', 'mannheim-under-construction'),
 						'zoom_out_title' => esc_html__('Zoom out', 'mannheim-under-construction'),
 						'back' => esc_html__('Back', 'mannheim-under-construction'),

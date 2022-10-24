@@ -4,6 +4,7 @@ window.addEventListener('DOMContentLoaded', function(){
     if(map_wrapper) {
         const start_location = [49.4933, 8.4681];
         const audio_icon = L.icon({iconUrl: mannheim_under_construction.audio_icon_url, iconSize: [47, 47]});
+        const walk_icon = L.icon({iconUrl: mannheim_under_construction.walk_icon_url, iconSize: [47, 47]});
         let map = L.map(map_wrapper.querySelector('.mannheim-under-construction-map'), {
             center: start_location,
             zoom: 13,
@@ -50,7 +51,7 @@ window.addEventListener('DOMContentLoaded', function(){
         });
         let audio_stations = [];
         if (mannheim_under_construction.map_data) {
-            let markers = L.markerClusterGroup();
+            let station_markers = L.markerClusterGroup();
             for (let location of mannheim_under_construction.map_data) {
                 audio_stations[location.id] = location;
                 let marker = L.marker([location.lat, location.lng], {title: location.title, alt: location.title, icon: audio_icon, data_id: location.id});
@@ -63,9 +64,28 @@ window.addEventListener('DOMContentLoaded', function(){
                 marker.addEventListener('mouseout', e => {
                     e.target._icon.setAttribute('src', mannheim_under_construction.audio_icon_url);
                 });
-                markers.addLayer(marker);
+                station_markers.addLayer(marker);
             }
-            map.addLayer(markers);
+            map.addLayer(station_markers);
+        }
+        let walks = [];
+        if (mannheim_under_construction.walk_data) {
+            let walk_markers = L.markerClusterGroup();
+            for (let walk of mannheim_under_construction.walk_data) {
+                walks[walk.id] = walk;
+                let marker = L.marker([walk.lat, walk.lng], {title: walk.title, alt: walk.title, icon: walk_icon, data_id: walk.id});
+                marker.addEventListener('click', e => {
+                    load_audio(e.target.options.data_id);
+                });
+                marker.addEventListener('mouseover', e => {
+                    e.target._icon.setAttribute('src', mannheim_under_construction.walk_icon_url_bw);
+                });
+                marker.addEventListener('mouseout', e => {
+                    e.target._icon.setAttribute('src', mannheim_under_construction.walk_icon_url);
+                });
+                walk_markers.addLayer(marker);
+            }
+            map.addLayer(walk_markers);
         }
         let body = document.querySelector('body');
         let player = document.querySelector('#audio_player');
