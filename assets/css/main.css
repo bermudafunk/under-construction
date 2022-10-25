@@ -417,7 +417,7 @@ body.black-white .leaflet-sidebar-content,
 }
 body.black-white .filter-box select::-webkit-scrollbar,
 body.black-white .leaflet-sidebar-content::-webkit-scrollbar,
-body-black-white .onboarding-welcome::-webkit-scrollbar {
+body.black-white .onboarding-welcome::-webkit-scrollbar {
     background: #FFFFFF;
 }
 .filter-box select::-webkit-scrollbar-button,
@@ -803,4 +803,12 @@ body.black-white .light-theme {
 .content-image {
     min-height: 8em;
     text-align: center;
+}
+details summary {
+    font-family: 'TheNeueBlack', sans-serif;
+    font-variant-ligatures: none;
+    list-style-image: url('../img/uc_icon_acc1.svg');
+}
+details[open] summary {
+    list-style-image: url('../img/uc_icon_acc2.svg');
 }

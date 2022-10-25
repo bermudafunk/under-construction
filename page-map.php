@@ -287,9 +287,23 @@
                             </svg>
                         </button>
                         <div class="walk-onboarding">
-
+                            
                         </div>
-                        <div class="content-walk-stations">
+                        <div class="walk-intro" hidden>
+                            <details>
+                                <summary>Mannheim Under Construction</summary>
+                                <p>Die Audio-Stadtkarte "Mannheim Under Construction" stellt online zivilgesellschaftliches Engagement in der Stadt Mannheim vor – und manchmal auch darüber hinaus.</p>
+                                <p>"Mannheim Under Construction" bedeutet, dass es sich bei diesem Engagement um einen fortdauernden Prozess handelt, der immer weitergeschrieben, -gedacht und -gesprochen wird.</p>
+                                <p>Das Freie Radio Rhein-Neckar e. V., der bermuda.funk, begleitet diesen Prozess mit seinem gleichnamigen Projekt.</p>
+                            </details>
+                            <details>
+                                <summary>Aktionsfonds "Zivilgesellschaftliches Engagement"</summary>
+                                <p>"Mannheim Under Construction" wird gefördert von der Stadt Mannheim im Rahmen des Aktionsfonds "Zivilgesellschaftliches Engagement gegen Rechtsradikalismus, Muslimfeindlichkeit, Antisemitismus und Antiziganismus".</p>
+                                <p>Der Aktionsfonds ist ein Angebot an die Mannheimer Stadtgesellschaft, sich mit bewährten Ansätzen und neuen Ideen auf vielfältige Weise für die freiheitlich-demokratischen Werte einzusetzen.</p>
+                                <p>Er ist kommunaler Impuls, zivilgesellschaftliches Engagement der Mannheimer Bürgerschaft gegen Rechtsextremismus und weitere Formen gruppenbezogener Menschenfeindlichkeit zu stärken.</p>
+                            </details>
+                        </div>
+                        <div class="content-walk-stations" hidden>
                             <div class="content-station-title"></div>
                             <div class="content-title"></div>
                             <div class="content-location"></div>
