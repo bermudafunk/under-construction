@@ -125,12 +125,15 @@ window.addEventListener('DOMContentLoaded', _ => {
 
     setTimeout(setup_map, 1000);
     if(mannheim_under_construction_admin.is_walk) {
-        let walk_selects = document.getElementById('select-walk-stations');
         let station_count = 0;
+        let intro_count = 0;
+        let stations_selects = document.getElementById('select-walk-stations');
+        let intro_selects = document.getElementById('select-walk-intros');
         let audio_options = '<option value=""> - </option>';
         for (let audio of mannheim_under_construction_admin.walk.audios) {
             audio_options += '<option value="' + audio.id + '">' + audio.title + '</option>';
         }
+        //station select
         for (let station of mannheim_under_construction_admin.walk.stations) {
             let row = document.createElement('tr');
             row.innerHTML = '<td><input name="mannheim_under_construction_stations['+station_count+'][title]" type="text" value="' + station.title + '"></td>';
@@ -139,26 +142,56 @@ window.addEventListener('DOMContentLoaded', _ => {
             if(selected) {
                 selected.setAttribute('selected', 'selected');
             }
-            walk_selects.appendChild(row);
+            stations_selects.appendChild(row);
             ++station_count;
         }
         let row = document.createElement('tr');
-        row.innerHTML = '<td><input name="mannheim_under_construction_stations['+station_count+'][title]" type="text" value="Station ' + (station_count + 1) + '"></td>';
+        row.innerHTML = '<td><input name="mannheim_under_construction_intros['+station_count+'][title]" type="text" value="Station ' + (station_count + 1) + '"></td>';
         row.innerHTML += '<td><select name="mannheim_under_construction_stations['+station_count+'][audio_id]">' + audio_options + '</select></td>';
-        walk_selects.appendChild(row);
+        stations_selects.appendChild(row);
         ++station_count;
-        let last_select_field = walk_selects.querySelector('tr:last-of-type select');
-        function last_select_change(e) {
-            e.target.removeEventListener('change', last_select_change);
+        let last_station_select_field = stations_selects.querySelector('tr:last-of-type select');
+        function stations_last_select_change(e) {
+            e.target.removeEventListener('change', stations_last_select_change);
             let row = document.createElement('tr');
             row.innerHTML = '<td><input name="mannheim_under_construction_stations['+station_count+'][title]" type="text" value="Station ' + (station_count + 1) + '"></td>';
             row.innerHTML += '<td><select name="mannheim_under_construction_stations['+station_count+'][audio_id]">' + audio_options + '</select></td>';
-            walk_selects.appendChild(row);
+            stations_selects.appendChild(row);
             ++station_count;
-            last_select_field = walk_selects.querySelector('tr:last-of-type select');
-            last_select_field.addEventListener('change', last_select_change);
+            last_station_select_field = stations_selects.querySelector('tr:last-of-type select');
+            last_station_select_field.addEventListener('change', stations_last_select_change);
         }
-        last_select_field.addEventListener('change', last_select_change);
+        last_station_select_field.addEventListener('change', stations_last_select_change);
+
+        //intro select
+        for (let intro of mannheim_under_construction_admin.walk.intros) {
+            let row = document.createElement('tr');
+            row.innerHTML = '<td><input name="mannheim_under_construction_intros['+intro_count+'][title]" type="text" value="' + intro.title + '"></td>';
+            row.innerHTML += '<td><select name="mannheim_under_construction_intros['+intro_count+'][audio_id]">' + audio_options + '</select></td>';
+            let selected = row.querySelector('select option[value="'+intro.audio_id+'"]');
+            if(selected) {
+                selected.setAttribute('selected', 'selected');
+            }
+            intro_selects.appendChild(row);
+            ++intro_count;
+        }
+        row = document.createElement('tr');
+        row.innerHTML = '<td><input name="mannheim_under_construction_intros['+intro_count+'][title]" type="text" value="Intro ' + (intro_count + 1) + '"></td>';
+        row.innerHTML += '<td><select name="mannheim_under_construction_intros['+intro_count+'][audio_id]">' + audio_options + '</select></td>';
+        intro_selects.appendChild(row);
+        ++intro_count;
+        let last_intro_select_field = intro_selects.querySelector('tr:last-of-type select');
+        function intro_last_select_change(e) {
+            e.target.removeEventListener('change', intro_last_select_change);
+            let row = document.createElement('tr');
+            row.innerHTML = '<td><input name="mannheim_under_construction_intros['+intro_count+'][title]" type="text" value="Intro ' + (intro_count + 1) + '"></td>';
+            row.innerHTML += '<td><select name="mannheim_under_construction_intros['+intro_count+'][audio_id]">' + audio_options + '</select></td>';
+            intro_selects.appendChild(row);
+            ++intro_count;
+            last_intro_select_field = intro_selects.querySelector('tr:last-of-type select');
+            last_intro_select_field.addEventListener('change', intro_last_select_change);
+        }
+        last_intro_select_field.addEventListener('change', intro_last_select_change);
     }
 });
 

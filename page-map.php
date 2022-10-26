@@ -287,9 +287,9 @@
                             </svg>
                         </button>
                         <div class="walk-onboarding">
-                            
+
                         </div>
-                        <div class="walk-intro" hidden>
+                        <div class="walk-intro">
                             <details>
                                 <summary>Mannheim Under Construction</summary>
                                 <p>Die Audio-Stadtkarte "Mannheim Under Construction" stellt online zivilgesellschaftliches Engagement in der Stadt Mannheim vor – und manchmal auch darüber hinaus.</p>
@@ -303,7 +303,7 @@
                                 <p>Er ist kommunaler Impuls, zivilgesellschaftliches Engagement der Mannheimer Bürgerschaft gegen Rechtsextremismus und weitere Formen gruppenbezogener Menschenfeindlichkeit zu stärken.</p>
                             </details>
                         </div>
-                        <div class="content-walk-stations" hidden>
+                        <div class="content-walk-stations">
                             <div class="content-station-title"></div>
                             <div class="content-title"></div>
                             <div class="content-location"></div>

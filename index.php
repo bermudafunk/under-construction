@@ -246,7 +246,7 @@ class Mannheim_Under_Constrcution
 					}
 				}
                 if(is_array($_POST['mannheim_under_construction_stations'])){
-                    $walk = [];
+                    $stations = [];
 	                foreach($_POST['mannheim_under_construction_stations'] as $station){
 		                if(isset($station['title']) && !empty($station['audio_id'])){
                             $exists = get_posts([
@@ -255,11 +255,27 @@ class Mannheim_Under_Constrcution
                                 'p' => $station['audio_id'],
                             ])[0] ?? false;
                             if($exists){
-                                $walk []= $station;
+                                $stations []= $station;
                             }
 		                }
 	                }
-	                update_post_meta( $post_id, 'mannheim_under_construction_stations', $walk );
+	                update_post_meta( $post_id, 'mannheim_under_construction_stations', $stations );
+                }
+                if(is_array($_POST['mannheim_under_construction_intros'])){
+                    $intros = [];
+	                foreach($_POST['mannheim_under_construction_intros'] as $station){
+		                if(isset($station['title']) && !empty($station['audio_id'])){
+                            $exists = get_posts([
+                                'post_type' => 'audio-station',
+                                'posts_per_page' => 1,
+                                'p' => $station['audio_id'],
+                            ])[0] ?? false;
+                            if($exists){
+                                $intros []= $station;
+                            }
+		                }
+	                }
+	                update_post_meta( $post_id, 'mannheim_under_construction_intros', $intros );
                 }
 			}
 		} );
@@ -325,11 +341,23 @@ class Mannheim_Under_Constrcution
 			if( in_array($typenow, ['audio-station', 'audio-walk'], true) ) {
 				wp_enqueue_media();
                 $walk_stations = [];
+                $walk_intros = [];
 				$walk_audios = [];
                 $is_walk = $typenow === 'audio-walk';
 				if($is_walk){
                     if(get_the_ID()) {
-	                    $walk_stations = get_post_meta( get_the_ID(), 'mannheim_under_construction_stations', true );
+	                    $stations = get_post_meta( get_the_ID(), 'mannheim_under_construction_stations', true );
+                        if(is_array($stations)){
+                            foreach($stations as $station){
+                                $walk_stations []= ['title' => esc_attr($station['title']), 'audio_id' => $station['audio_id']];
+                            }
+                        }
+	                    $intros = get_post_meta( get_the_ID(), 'mannheim_under_construction_intros', true );
+	                    if(is_array($intros)){
+		                    foreach($intros as $intro){
+			                    $walk_intros []= ['title' => esc_attr($intro['title']), 'audio_id' => $intro['audio_id']];
+		                    }
+	                    }
                     }
 					$audios = get_posts([
 						'post_type' => 'audio-station',
@@ -338,7 +366,7 @@ class Mannheim_Under_Constrcution
 					]);
 					if(is_array($audios)) {
 						foreach ( $audios as $audio ) {
-							$walk_audios []= ['title' => $audio->post_title, 'id' => $audio->ID];
+							$walk_audios []= ['title' => esc_attr($audio->post_title), 'id' => $audio->ID];
 						}
 					}
 				}
@@ -356,6 +384,7 @@ class Mannheim_Under_Constrcution
                         'is_walk' => $is_walk,
                         'walk' => [
                             'stations' => $walk_stations,
+                            'intros' => $walk_intros,
                             'audios' => $walk_audios,
                         ],
 					]
@@ -462,6 +491,7 @@ class Mannheim_Under_Constrcution
                             'lat' => get_post_meta( $audio_walk, 'mannheim_under_construction_location_lat', true ),
                             'lng' => get_post_meta( $audio_walk, 'mannheim_under_construction_location_lng', true ),
                             'stations' => get_post_meta( $audio_walk, 'mannheim_under_construction_stations', true ),
+                            'intros' => get_post_meta( $audio_walk, 'mannheim_under_construction_intros', true ),
                             'title' => get_the_title( $audio_walk ),
                         ];
 					}
@@ -541,7 +571,12 @@ class Mannheim_Under_Constrcution
 	public static function display_walk_meta_box(): void {
 		?>
 		<p><b><?php esc_html_e('Link:', 'mannheim-under-construction'); ?></b> <a href="<?php the_permalink(get_the_ID()); ?>" target="_blank" rel="noopener"><?php the_permalink( get_the_ID() ); ?></a></p>
+        <p><b><?php esc_html_e('Stations:', 'mannheim-under-construction'); ?></b></p>
         <table id="select-walk-stations">
+            <tr><th><?php esc_html_e('Title', 'mannheim-under-construction'); ?></th><th><?php esc_html_e('Audio', 'mannheim-under-construction'); ?></th></tr>
+        </table>
+        <p><b><?php esc_html_e('Intros:', 'mannheim-under-construction'); ?></b></p>
+        <table id="select-walk-intros">
             <tr><th><?php esc_html_e('Title', 'mannheim-under-construction'); ?></th><th><?php esc_html_e('Audio', 'mannheim-under-construction'); ?></th></tr>
         </table>
         <input type="hidden" id="mannheim_under_construction_location_lat" name="mannheim_under_construction_location_lat" value="<?php echo esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_location_lat', true)); ?>">
