@@ -423,11 +423,6 @@ class Mannheim_Under_Constrcution
 					'post_type' => 'audio-station',
 					'posts_per_page' => -1,
 					'fields' => 'ids',
-                    'meta_query' => [
-                        'relation' => 'OR',
-                        ['key' => 'mannheim_under_construction_location_hidden', 'compare' => '!=', 'value' => '1'],
-                        ['key' => 'mannheim_under_construction_location_hidden', 'compare' => 'NOT EXISTS'],
-                    ],
 				]);
 				$audio_walks = get_posts([
 					'post_type' => 'audio-walk',
@@ -479,6 +474,7 @@ class Mannheim_Under_Constrcution
 			                'length_readable' => $length_readable,
 			                'tags'            => $tags,
                             'thumbnail'       => get_the_post_thumbnail_url( $post_id, 'medium' ),
+                            'hidden'          => get_post_meta( $post_id, 'mannheim_under_construction_location_hidden', true ),
 		                ];
 	                }
 	                $initial_audio = $map_data[array_rand($map_data)]['id'];

@@ -639,7 +639,8 @@ body.wait .leaflet-sidebar-pane {
 #deepdive-more-info svg,
 #search-extend svg,
 #info #info-menu-button,
-.track-swipe-bar svg {
+.track-swipe-bar svg,
+.intro-station-to-walk svg {
     width: 60px;
     height: 60px;
 }
@@ -807,6 +808,8 @@ body.black-white .light-theme {
     line-height: 60px;
     flex-shrink: 0;
     cursor: pointer;
+    font-family: 'TheNeueBlack', sans-serif;
+    font-variant-ligatures: none;
 }
 .content-image {
     min-height: 8em;
@@ -819,4 +822,27 @@ details summary {
 }
 details[open] summary {
     list-style-image: url('../img/uc_icon_acc2.svg');
+}
+.intro-station-title {
+    font-size: 2.5em;
+    font-family: 'TheNeueBlack', sans-serif;
+    font-variant-ligatures: none;
+}
+.intro-station-title-centered {
+    display: block;
+    text-align: center;
+}
+.intro-station-walk-icon {
+    display: flex;
+}
+.intro-station-walk-icon i {
+    background: url("../img/uc_icon_walk_sy.svg") no-repeat;
+    width: 60px;
+    height: 60px;
+}
+body.black-white .intro-station-walk-icon i {
+    background: url("../img/uc_icon_walk.svg") no-repeat;
+}
+.intro-station-to-walk {
+    display: flex;
 }

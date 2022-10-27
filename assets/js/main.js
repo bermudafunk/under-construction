@@ -54,6 +54,9 @@ window.addEventListener('DOMContentLoaded', function(){
             let station_markers = L.markerClusterGroup();
             for (let location of mannheim_under_construction.map_data) {
                 audio_stations[location.id] = location;
+                if(location.hidden){
+                    continue;
+                }
                 let marker = L.marker([location.lat, location.lng], {title: location.title, alt: location.title, icon: audio_icon, data_id: location.id});
                 marker.addEventListener('click', e => {
                     load_audio(e.target.options.data_id);
@@ -115,6 +118,10 @@ window.addEventListener('DOMContentLoaded', function(){
         let sidebar_left_dom = document.querySelector('.leaflet-sidebar-left');
         let sidebar_right_dom = document.querySelector('.leaflet-sidebar-right');
         let play_tab_button = document.querySelector('#play_tab_button');
+        let content_walk_stations = document.querySelector('#walk .content-walk-stations');
+        let walk_intro = document.querySelector('#walk .walk-intro');
+        let walk_intro_player = walk_intro.querySelector('.content-player');
+
         let current_walk = 0;
         let current_walk_station = 0;
         for(let opener of open_under_construction_info){
@@ -180,19 +187,15 @@ window.addEventListener('DOMContentLoaded', function(){
             }
         });
         for(let play_pause_button of play_pause_buttons) {
-            play_pause_button.addEventListener('click', _ => {
-                if (player.innerHTML !== player_new.innerHTML) {
-                    player.pause();
-                    player.innerHTML = player_new.innerHTML;
-                    player.load();
-                }
-                if (player.paused) {
-                    player.play();
-                } else {
-                    player.pause();
-                }
-            });
+            play_pause_button.addEventListener('click', play_pause_handler);
         }
+        walk_intro_player.querySelector('.play_pause_button').removeEventListener('click', play_pause_handler);
+        walk_intro_player.querySelector('.play_pause_button').addEventListener('click', _ => {
+            if(current_walk.intros[0]){
+                play_pause_handler_with_id(current_walk.intros[0].audio_id);
+            }
+        });
+
         waveform.addEventListener('click', e => {
             const position = e.offsetX / waveform.getBoundingClientRect().width;
             if(player.innerHTML !== player_new.innerHTML) {
@@ -213,28 +216,10 @@ window.addEventListener('DOMContentLoaded', function(){
             }
         });
         for(let seek of seek_forwards) {
-            seek.addEventListener('click', _ => {
-                if (player.duration > player.currentTime + 15) {
-                    player.currentTime += 15;
-                } else {
-                    player.currentTime = player.duration;
-                }
-                if (player.innerHTML === player_new.innerHTML) {
-                    updateAudioPosition();
-                }
-            });
+            seek.addEventListener('click', seek_forwards_handler);
         }
         for(let seek of seek_backwards) {
-            seek.addEventListener('click', _ => {
-                if (0 < player.currentTime - 15) {
-                    player.currentTime -= 15;
-                } else {
-                    player.currentTime = 0;
-                }
-                if (player.innerHTML === player_new.innerHTML) {
-                    updateAudioPosition();
-                }
-            });
+            seek.addEventListener('click', seek_backwards_handler);
         }
         for(let walk_prev of walk_prevs) {
             walk_prev.addEventListener('click', _ => {
@@ -302,6 +287,52 @@ window.addEventListener('DOMContentLoaded', function(){
         if(mannheim_under_construction.initial_walk) {
             load_walk(mannheim_under_construction.initial_walk);
         }
+        function play_pause_handler(){
+            if (player.innerHTML !== player_new.innerHTML) {
+                player.pause();
+                player.innerHTML = player_new.innerHTML;
+                player.load();
+            }
+            if (player.paused) {
+                player.play();
+            } else {
+                player.pause();
+            }
+        }
+        function play_pause_handler_with_id(audio_id){
+            let audio_station = audio_stations[audio_id];
+            audio_player_new.innerHTML = '';
+            if(audio_station.ogg) {
+                audio_player_new.innerHTML += '<source src="' + audio_station.ogg + '" type="' + audio_station.ogg_mime + '">';
+            }
+            if(audio_station.aac) {
+                audio_player_new.innerHTML += '<source src="' + audio_station.aac + '" type="' + audio_station.aac_mime + '">';
+            }
+            play_pause_handler();
+        }
+
+        function seek_forwards_handler() {
+            if (player.duration > player.currentTime + 15) {
+                player.currentTime += 15;
+            } else {
+                player.currentTime = player.duration;
+            }
+            if (player.innerHTML === player_new.innerHTML) {
+                updateAudioPosition();
+            }
+        }
+
+        function seek_backwards_handler() {
+            if (0 < player.currentTime - 15) {
+                player.currentTime -= 15;
+            } else {
+                player.currentTime = 0;
+            }
+            if (player.innerHTML === player_new.innerHTML) {
+                updateAudioPosition();
+            }
+        }
+
         function show_search_results(){
             body.classList.add('wait');
             body.classList.add('sidebar-fullscreen');
@@ -390,8 +421,38 @@ window.addEventListener('DOMContentLoaded', function(){
             if(walks[walk_id]){
                 play_tab_button.setAttribute('href', '#walk');
                 current_walk = walks[walk_id];
-                if(current_walk.stations[0]){
-                    load_walk_station(0);
+                if(current_walk.intros[0]){
+                    load_walk_station(-1);
+                }
+                let details_wrapper = walk_intro.querySelector('.intro-station-details-wrapper');
+                let content_player = walk_intro.querySelector('.content-player');
+                walk_intro.querySelector('span.next-track').innerHTML = current_walk.stations[0].title;
+                details_wrapper.innerHTML = '';
+                let first = true;
+                for(let intro of current_walk.intros){
+                    let audio_station = audio_stations[intro.audio_id];
+                    if(first){
+                        walk_intro.querySelector('.intro-station-description').innerHTML = audio_station.description;
+                        let image_container = walk_intro.querySelector('.content-image');
+                        if(audio_station.thumbnail) {
+                            image_container.innerHTML = '<img src="' + audio_station.thumbnail + '" loading="lazy">';
+                        } else {
+                            image_container.innerHTML = '';
+                        }
+                        first = false;
+                    } else {
+                        details_wrapper.innerHTML += '<details data-><summary>' + intro.title + '</summary><div class="content-player" data-audio-id="' + intro.audio_id + '">' + content_player.innerHTML + '</div>' + audio_station.description + '</details>';
+                    }
+                }
+                let content_players = details_wrapper.querySelectorAll('.content-player');
+                if(content_players) {
+                    for (let content_player of content_players) {
+                        content_player.querySelector('.play_pause_button').addEventListener('click', _ => {
+                            play_pause_handler_with_id(parseInt(content_player.getAttribute('data-audio-id')));
+                        });
+                        content_player.querySelector('.seek_backwards').addEventListener('click', seek_backwards_handler);
+                        content_player.querySelector('.seek_forwards').addEventListener('click', seek_forwards_handler);
+                    }
                 }
                 sidebar_right.close();
                 body.classList.remove('sidebar-fullscreen');
@@ -402,21 +463,23 @@ window.addEventListener('DOMContentLoaded', function(){
 
         function load_walk_station(station_id){
             if(current_walk.stations[station_id]){
+                content_walk_stations.style.display = '';
+                walk_intro.style.display = 'none';
                 current_walk_station = station_id;
                 let station = current_walk.stations[station_id];
                 let audio_station = audio_stations[station.audio_id];
-                document.querySelector('#walk .content-station-title').innerHTML = station.title;
-                document.querySelector('#walk .content-title').innerHTML = audio_station.title;
-                document.querySelector('#walk .content-location').innerHTML = audio_station.location;
-                document.querySelector('#walk .content-location-2').innerHTML = audio_station.location_2;
-                document.querySelector('#walk .content-description').innerHTML = audio_station.description;
-                let image_container = document.querySelector('#walk .content-image');
+                content_walk_stations.querySelector('.content-station-title').innerHTML = station.title;
+                content_walk_stations.querySelector('.content-title').innerHTML = audio_station.title;
+                content_walk_stations.querySelector('.content-location').innerHTML = audio_station.location;
+                content_walk_stations.querySelector('.content-location-2').innerHTML = audio_station.location_2;
+                content_walk_stations.querySelector('.content-description').innerHTML = audio_station.description;
+                let image_container = content_walk_stations.querySelector('.content-image');
                 if(audio_station.thumbnail) {
                     image_container.innerHTML = '<img src="' + audio_station.thumbnail + '" loading="lazy">';
                 } else {
                     image_container.innerHTML = '';
                 }
-                let content_length = document.querySelector('#walk .content-length .length');
+                let content_length = content_walk_stations.querySelector('.content-length .length');
                 content_length.innerHTML = audio_station.length;
                 content_length.setAttribute('aria-label', audio_station.length_readable);
                 audio_player_new.innerHTML = '';
@@ -426,24 +489,17 @@ window.addEventListener('DOMContentLoaded', function(){
                 if(audio_station.aac) {
                     audio_player_new.innerHTML += '<source src="' + audio_station.aac + '" type="' + audio_station.aac_mime + '">';
                 }
-                if(station_id <= 0) {
-                    document.querySelector('#walk .track-swipe-bar span.prev-track').innerHTML = '';
-                    for(let walk_prev of walk_prevs){
-                        walk_prev.style.display = 'none';
-                    }
-                } else {
-                    document.querySelector('#walk .track-swipe-bar span.prev-track').innerHTML = (station_id ) + ' / ' + current_walk.stations.length;
-                    for(let walk_prev of walk_prevs){
-                        walk_prev.style.display = '';
-                    }
+                content_walk_stations.querySelector('.track-swipe-bar span.prev-track').innerHTML = (station_id ) + ' / ' + current_walk.stations.length;
+                for(let walk_prev of walk_prevs){
+                    walk_prev.style.display = '';
                 }
                 if(current_walk.stations.length <= station_id + 1) {
-                    document.querySelector('#walk .track-swipe-bar span.next-track').innerHTML = '';
+                    content_walk_stations.querySelector('.track-swipe-bar span.next-track').innerHTML = '';
                     for(let walk_next of walk_nexts){
                         walk_next.style.display = 'none';
                     }
                 } else {
-                    document.querySelector('#walk .track-swipe-bar span.next-track').innerHTML = (station_id + 2 ) + ' / ' + current_walk.stations.length;
+                    content_walk_stations.querySelector('.track-swipe-bar span.next-track').innerHTML = (station_id + 2 ) + ' / ' + current_walk.stations.length;
                     for(let walk_next of walk_nexts){
                         walk_next.style.display = '';
                     }
@@ -453,6 +509,10 @@ window.addEventListener('DOMContentLoaded', function(){
                     waveform_update_interval = null;
                 }
                 waveform_progress.setAttribute('width', '0');
+            } else if(station_id === -1){
+                current_walk_station = station_id;
+                content_walk_stations.style.display = 'none';
+                walk_intro.style.display = '';
             }
         }
 

@@ -289,19 +289,49 @@
                         <div class="walk-onboarding">
 
                         </div>
-                        <div class="walk-intro">
-                            <details>
-                                <summary>Mannheim Under Construction</summary>
-                                <p>Die Audio-Stadtkarte "Mannheim Under Construction" stellt online zivilgesellschaftliches Engagement in der Stadt Mannheim vor – und manchmal auch darüber hinaus.</p>
-                                <p>"Mannheim Under Construction" bedeutet, dass es sich bei diesem Engagement um einen fortdauernden Prozess handelt, der immer weitergeschrieben, -gedacht und -gesprochen wird.</p>
-                                <p>Das Freie Radio Rhein-Neckar e. V., der bermuda.funk, begleitet diesen Prozess mit seinem gleichnamigen Projekt.</p>
-                            </details>
-                            <details>
-                                <summary>Aktionsfonds "Zivilgesellschaftliches Engagement"</summary>
-                                <p>"Mannheim Under Construction" wird gefördert von der Stadt Mannheim im Rahmen des Aktionsfonds "Zivilgesellschaftliches Engagement gegen Rechtsradikalismus, Muslimfeindlichkeit, Antisemitismus und Antiziganismus".</p>
-                                <p>Der Aktionsfonds ist ein Angebot an die Mannheimer Stadtgesellschaft, sich mit bewährten Ansätzen und neuen Ideen auf vielfältige Weise für die freiheitlich-demokratischen Werte einzusetzen.</p>
-                                <p>Er ist kommunaler Impuls, zivilgesellschaftliches Engagement der Mannheimer Bürgerschaft gegen Rechtsextremismus und weitere Formen gruppenbezogener Menschenfeindlichkeit zu stärken.</p>
-                            </details>
+                        <div class="walk-intro" style="display:none">
+                            <div class="intro-station-title">
+                                <span>Allaa</span><br><span class="intro-station-title-centered">Hop!</span>
+                            </div>
+                            <div class="intro-station-walk-icon"><div class="full-width-spacer"></div><i></i></div>
+                            <div class="content-image"></div>
+                            <div class="content-player">
+                                <button class="play_pause_button" aria-label="<?php esc_attr_e('Play/Pause', 'mannheim-under-construction'); ?>">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         viewBox="0 0 60 60" xml:space="preserve">
+                                        <path d="M51,30.055L9,51.035V9.074L51,30.055z"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         viewBox="0 0 60 60" xml:space="preserve">
+                                        <g>
+                                            <polyline points="26,51 15,51 15,9 26,9"/>
+                                            <polyline points="45,51 34,51 34,9 45,9"/>
+                                        </g>
+                                    </svg>
+                                </button>
+                                <div class="full-width-spacer"></div>
+                                <button class="seek-button seek_backwards">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         viewBox="0 0 60 60" xml:space="preserve">
+                                        <path d="M8.979,30l9.762-21h11.106l-9.763,21l9.763,21H18.741L8.979,30z M30.133,30l9.764-21H51l-9.762,21L51,51H39.896L30.133,30z"/>
+                                    </svg>
+                                </button>
+                                <button class="seek-button seek_forwards">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         viewBox="0 0 60 60" xml:space="preserve">
+                                        <path d="M41.239,51H30.133l9.763-21L30.133,9h11.106l9.762,21L41.239,51z M20.084,51H8.98l9.762-21L8.98,9h11.104l9.764,21
+                                            L20.084,51z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="intro-station-description"></div>
+                            <div class="intro-station-to-walk"><div class="full-width-spacer"></div>
+                                <span class="next-track"></span>
+                                <svg class="next-track" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
+                                    <path d="M31.83,51H20.728l9.761-21L20.728,9H31.83l9.764,21L31.83,51z"/>
+                                </svg>
+                            </div>
+                            <div class="intro-station-details-wrapper"></div>
                         </div>
                         <div class="content-walk-stations">
                             <div class="content-station-title"></div>
