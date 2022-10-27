@@ -342,6 +342,7 @@
                                 </button>
                             </div>
                             <div class="content-description"></div>
+                            <div class="full-height-spacer"></div>
                             <div class="track-swipe-bar">
                                 <svg class="prev-track" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
                                     <path d="M20.566,30L30.33,9h11.104l-9.762,21l9.762,21H30.33L20.566,30z"/>

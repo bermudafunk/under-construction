@@ -104,6 +104,8 @@ window.addEventListener('DOMContentLoaded', function(){
         let search_sidebar_tags = document.querySelector('#search-tags');
         let seek_backwards = document.querySelectorAll('.seek_backwards');
         let seek_forwards = document.querySelectorAll('.seek_forwards');
+        let walk_prevs = document.querySelectorAll('#walk .prev-track');
+        let walk_nexts = document.querySelectorAll('#walk .next-track');
         let waveform = document.querySelector('#play .waveform svg');
         let waveform_progress = waveform.querySelector('#progress');
         let waveform_update_interval = null;
@@ -113,6 +115,8 @@ window.addEventListener('DOMContentLoaded', function(){
         let sidebar_left_dom = document.querySelector('.leaflet-sidebar-left');
         let sidebar_right_dom = document.querySelector('.leaflet-sidebar-right');
         let play_tab_button = document.querySelector('#play_tab_button');
+        let current_walk = 0;
+        let current_walk_station = 0;
         for(let opener of open_under_construction_info){
             opener.addEventListener('click', _ => {
                 sidebar_right.open('#info');
@@ -230,6 +234,16 @@ window.addEventListener('DOMContentLoaded', function(){
                 if (player.innerHTML === player_new.innerHTML) {
                     updateAudioPosition();
                 }
+            });
+        }
+        for(let walk_prev of walk_prevs) {
+            walk_prev.addEventListener('click', _ => {
+                load_walk_station(current_walk_station - 1);
+            });
+        }
+        for(let walk_next of walk_nexts) {
+            walk_next.addEventListener('click', _ => {
+                load_walk_station(current_walk_station + 1);
             });
         }
         onboarding.addEventListener('click', _ => {
@@ -375,20 +389,21 @@ window.addEventListener('DOMContentLoaded', function(){
         function load_walk(walk_id){
             if(walks[walk_id]){
                 play_tab_button.setAttribute('href', '#walk');
-                let walk = walks[walk_id];
-                if(walk.stations[0]){
-                    load_walk_station(walk_id, 0);
+                current_walk = walks[walk_id];
+                if(current_walk.stations[0]){
+                    load_walk_station(0);
                 }
                 sidebar_right.close();
                 body.classList.remove('sidebar-fullscreen');
                 sidebar_left.open('#walk');
-                map.setView([walk.lat, walk.lng]);
+                map.setView([current_walk.lat, current_walk.lng]);
             }
         }
 
-        function load_walk_station(walk_id, station_id){
-            if(walks[walk_id].stations[station_id]){
-                let station = walks[walk_id].stations[station_id];
+        function load_walk_station(station_id){
+            if(current_walk.stations[station_id]){
+                current_walk_station = station_id;
+                let station = current_walk.stations[station_id];
                 let audio_station = audio_stations[station.audio_id];
                 document.querySelector('#walk .content-station-title').innerHTML = station.title;
                 document.querySelector('#walk .content-title').innerHTML = audio_station.title;
@@ -411,7 +426,29 @@ window.addEventListener('DOMContentLoaded', function(){
                 if(audio_station.aac) {
                     audio_player_new.innerHTML += '<source src="' + audio_station.aac + '" type="' + audio_station.aac_mime + '">';
                 }
-               if(waveform_update_interval) {
+                if(station_id <= 0) {
+                    document.querySelector('#walk .track-swipe-bar span.prev-track').innerHTML = '';
+                    for(let walk_prev of walk_prevs){
+                        walk_prev.style.display = 'none';
+                    }
+                } else {
+                    document.querySelector('#walk .track-swipe-bar span.prev-track').innerHTML = (station_id ) + ' / ' + current_walk.stations.length;
+                    for(let walk_prev of walk_prevs){
+                        walk_prev.style.display = '';
+                    }
+                }
+                if(current_walk.stations.length <= station_id + 1) {
+                    document.querySelector('#walk .track-swipe-bar span.next-track').innerHTML = '';
+                    for(let walk_next of walk_nexts){
+                        walk_next.style.display = 'none';
+                    }
+                } else {
+                    document.querySelector('#walk .track-swipe-bar span.next-track').innerHTML = (station_id + 2 ) + ' / ' + current_walk.stations.length;
+                    for(let walk_next of walk_nexts){
+                        walk_next.style.display = '';
+                    }
+                }
+                if(waveform_update_interval) {
                     clearInterval(waveform_update_interval);
                     waveform_update_interval = null;
                 }

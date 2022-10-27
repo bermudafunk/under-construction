@@ -509,9 +509,16 @@ body.wait .leaflet-sidebar-pane {
 #info .right-part,
 #info .open-middle-part,
 #info .open-right-part,
-#info .left-part,
+#info .left-part {
+    width: 100%;
+}
+.full-height-spacer {
+    height: 100%;
+    flex-grow: 1;
+}
 .full-width-spacer {
     width: 100%;
+    flex-grow: 1;
 }
 #info .content,
 #search .content {
@@ -785,12 +792,13 @@ body.black-white .light-theme {
 #walk .content-audio-time {
     text-align: center;
 }
+.content-walk-stations {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 .track-swipe-bar {
     display: flex;
-    position: sticky;
-    left: 0;
-    right: 0;
-    bottom: 0;
     margin-left: -20px;
     margin-right: -60px;
 }
