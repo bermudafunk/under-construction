@@ -108,7 +108,6 @@ main,
 #walk .content-title,
 #walk .content-location,
 #walk .content-location-2,
-#walk .content-audio-time,
 .intro-station-title,
 details summary,
 .prev-track,
@@ -794,6 +793,8 @@ body.black-white .light-theme {
     display: flex;
     margin-left: -20px;
     margin-right: -60px;
+    position: sticky;
+    bottom: 0;
 }
 .next-track,
 .prev-track {
@@ -805,6 +806,9 @@ body.black-white .light-theme {
     min-height: 190px;
     text-align: center;
     flex-shrink: 0;
+}
+.content-image img {
+    max-width: 100%;
 }
 details summary {
     list-style-image: url('../img/uc_icon_acc1.svg');

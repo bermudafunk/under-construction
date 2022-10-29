@@ -107,14 +107,9 @@ window.addEventListener('DOMContentLoaded', _ => {
     }
 
     function processTrack(buffer) {
-        console.time('decodeAudioData');
         return audioContext.decodeAudioData(buffer)
             .then(audioBuffer => {
-                console.timeEnd('decodeAudioData');
-
-                console.time('getWaveformData');
                 const waveformData = getWaveformData(audioBuffer, svg_width / smoothing);
-                console.timeEnd('getWaveformData');
 
                 const svgPath = getSVGPath(waveformData, svg_height, smoothing);
                 svg.querySelector('path').setAttribute('d', svgPath);
@@ -129,6 +124,9 @@ window.addEventListener('DOMContentLoaded', _ => {
         let intro_count = 0;
         let stations_selects = document.getElementById('select-walk-stations');
         let intro_selects = document.getElementById('select-walk-intros');
+        if(!stations_selects || !intro_selects){
+            return;
+        }
         let audio_options = '<option value=""> - </option>';
         for (let audio of mannheim_under_construction_admin.walk.audios) {
             audio_options += '<option value="' + audio.id + '">' + audio.title + '</option>';
