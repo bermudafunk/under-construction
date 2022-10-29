@@ -338,7 +338,7 @@
                             <div>&emsp;&emsp;&emsp;<span class="content-location"></span></div>
                             <div class="content-location-2"></div>
                             <div class="content-audio-time">
-                                <p class="content-length">&emsp;&emsp;&emsp;<span class="length" aria-label=""></span> <span aria-hidden="true"><?php esc_html_e('min.', 'mannheim-under-construction'); ?></span></p>
+                                <p class="content-length"><span class="length" aria-label=""></span> <span aria-hidden="true"><?php esc_html_e('min.', 'mannheim-under-construction'); ?></span></p>
                             </div>
                             <div class="content-image"></div>
                             <div class="content-player">

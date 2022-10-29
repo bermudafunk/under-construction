@@ -107,8 +107,6 @@ window.addEventListener('DOMContentLoaded', function(){
         let search_sidebar_tags = document.querySelector('#search-tags');
         let seek_backwards = document.querySelectorAll('.seek_backwards');
         let seek_forwards = document.querySelectorAll('.seek_forwards');
-        let walk_prevs = document.querySelectorAll('#walk .prev-track');
-        let walk_nexts = document.querySelectorAll('#walk .next-track');
         let waveform = document.querySelector('#play .waveform svg');
         let waveform_progress = waveform.querySelector('#progress');
         let waveform_update_interval = null;
@@ -118,8 +116,11 @@ window.addEventListener('DOMContentLoaded', function(){
         let sidebar_left_dom = document.querySelector('.leaflet-sidebar-left');
         let sidebar_right_dom = document.querySelector('.leaflet-sidebar-right');
         let play_tab_button = document.querySelector('#play_tab_button');
-        let content_walk_stations = document.querySelector('#walk .content-walk-stations');
-        let walk_intro = document.querySelector('#walk .walk-intro');
+        let walk = document.querySelector('#walk');
+        let walk_prevs = walk.querySelectorAll('.prev-track');
+        let walk_nexts = walk.querySelectorAll('.next-track');
+        let content_walk_stations = walk.querySelector('.content-walk-stations');
+        let walk_intro = walk.querySelector('.walk-intro');
         let walk_intro_player = walk_intro.querySelector('.content-player');
 
         let current_walk = 0;
@@ -281,6 +282,39 @@ window.addEventListener('DOMContentLoaded', function(){
                     popup.style.display = 'none';
                 }
             });
+        }
+
+        let walk_touch_x_down = 0;
+        let walk_touch_x_up = 0;
+        for(let screen of [content_walk_stations, walk_intro]) {
+            screen.addEventListener('touchstart', e => {
+                walk_touch_x_down = e.touches[0].clientX;
+            }, {passive: true});
+            screen.addEventListener('touchmove', e => {
+                walk_touch_x_up = e.touches[0].clientX;
+            }, {passive: true});
+            screen.addEventListener('touchend', e => {
+                if (Math.abs(walk_touch_x_down - walk_touch_x_up) > 40) {
+                    if (walk_touch_x_down > walk_touch_x_up) {
+                        load_walk_station(current_walk_station + 1);
+                    } else {
+                        load_walk_station(current_walk_station - 1);
+                    }
+                }
+            }, {passive: true});
+            screen.addEventListener('mousedown', e => {
+                walk_touch_x_down = e.clientX;
+            }, {passive: true});
+            screen.addEventListener('mouseup', e => {
+                walk_touch_x_up = e.clientX;
+                if (Math.abs(walk_touch_x_down - walk_touch_x_up) > 40) {
+                    if (walk_touch_x_down > walk_touch_x_up) {
+                        load_walk_station(current_walk_station + 1);
+                    } else {
+                        load_walk_station(current_walk_station - 1);
+                    }
+                }
+            }, {passive: true});
         }
 
         load_audio(mannheim_under_construction.initial_audio, mannheim_under_construction.load_initial_only);
