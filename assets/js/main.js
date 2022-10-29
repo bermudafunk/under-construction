@@ -433,12 +433,6 @@ window.addEventListener('DOMContentLoaded', function(){
                     let audio_station = audio_stations[intro.audio_id];
                     if(first){
                         walk_intro.querySelector('.intro-station-description').innerHTML = audio_station.description;
-                        let image_container = walk_intro.querySelector('.content-image');
-                        if(audio_station.thumbnail) {
-                            image_container.innerHTML = '<img src="' + audio_station.thumbnail + '" loading="lazy">';
-                        } else {
-                            image_container.innerHTML = '';
-                        }
                         first = false;
                     } else {
                         details_wrapper.innerHTML += '<details data-><summary>' + intro.title + '</summary><div class="content-player" data-audio-id="' + intro.audio_id + '">' + content_player.innerHTML + '</div>' + audio_station.description + '</details>';
@@ -489,7 +483,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 if(audio_station.aac) {
                     audio_player_new.innerHTML += '<source src="' + audio_station.aac + '" type="' + audio_station.aac_mime + '">';
                 }
-                content_walk_stations.querySelector('.track-swipe-bar span.prev-track').innerHTML = (station_id ) + ' / ' + current_walk.stations.length;
+                content_walk_stations.querySelector('.track-swipe-bar span.prev-track').innerHTML = ('' + station_id).padStart(2, '0') + ' / ' + ('' + current_walk.stations.length).padStart(2, '0');
                 for(let walk_prev of walk_prevs){
                     walk_prev.style.display = '';
                 }
@@ -499,7 +493,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         walk_next.style.display = 'none';
                     }
                 } else {
-                    content_walk_stations.querySelector('.track-swipe-bar span.next-track').innerHTML = (station_id + 2 ) + ' / ' + current_walk.stations.length;
+                    content_walk_stations.querySelector('.track-swipe-bar span.next-track').innerHTML = ('' + (station_id + 2 )).padStart(2, '0') + ' / ' + ('' + current_walk.stations.length).padStart(2, '0');
                     for(let walk_next of walk_nexts){
                         walk_next.style.display = '';
                     }

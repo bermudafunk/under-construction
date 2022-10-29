@@ -291,10 +291,9 @@
                         </div>
                         <div class="walk-intro" style="display:none">
                             <div class="intro-station-title">
-                                <span>Allaa</span><br><span class="intro-station-title-centered">Hop!</span>
+                                <span>Los</span><br><span>&emsp;&emsp;&emsp;geht's!</span>
                             </div>
                             <div class="intro-station-walk-icon"><div class="full-width-spacer"></div><i></i></div>
-                            <div class="content-image"></div>
                             <div class="content-player">
                                 <button class="play_pause_button" aria-label="<?php esc_attr_e('Play/Pause', 'mannheim-under-construction'); ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -334,12 +333,12 @@
                             <div class="intro-station-details-wrapper"></div>
                         </div>
                         <div class="content-walk-stations">
-                            <div class="content-station-title"></div>
+                            <div>&emsp;&emsp;&emsp;<span class="content-station-title"></span></div>
                             <div class="content-title"></div>
-                            <div class="content-location"></div>
+                            <div>&emsp;&emsp;&emsp;<span class="content-location"></span></div>
                             <div class="content-location-2"></div>
                             <div class="content-audio-time">
-                                <p class="content-length"><span class="length" aria-label=""></span> <span aria-hidden="true"><?php esc_html_e('min.', 'mannheim-under-construction'); ?></span></p>
+                                <p class="content-length">&emsp;&emsp;&emsp;<span class="length" aria-label=""></span> <span aria-hidden="true"><?php esc_html_e('min.', 'mannheim-under-construction'); ?></span></p>
                             </div>
                             <div class="content-image"></div>
                             <div class="content-player">

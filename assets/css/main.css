@@ -28,6 +28,7 @@ body {
     color: #000;
     background-color: #F2FF5B;
     transition: font-size 500ms;
+    font-variant-ligatures: none;
 }
 body.black-white {
     color: #000;
@@ -103,9 +104,17 @@ main,
 .leaflet-container .leaflet-control-scale {
     font-size: 0.65em;
 }
+#walk .content-station-title,
+#walk .content-title,
+#walk .content-location,
+#walk .content-location-2,
+#walk .content-audio-time,
+.intro-station-title,
+details summary,
+.prev-track,
+.next-track,
 .font-neue-black {
     font-family: 'TheNeueBlack', sans-serif;
-    font-variant-ligatures: none;
 }
 .font-enable-ligatures {
     font-variant-ligatures: normal;
@@ -361,7 +370,6 @@ body.sidebar-fullscreen .leaflet-control-container {
     font-size: 4em;
     text-align: center;
     font-family: 'TheNeueBlack', sans-serif;
-    font-variant-ligatures: none;
 }
 .onboarding-welcome {
     font-size: 1.1em;
@@ -545,7 +553,6 @@ body.wait .leaflet-sidebar-pane {
     text-transform: uppercase;
     word-wrap: anywhere;
     font-family: 'TheNeueBlack', sans-serif;
-    font-variant-ligatures: none;
     transition: margin-top 500ms;
 }
 .under-construction-title div {
@@ -778,21 +785,6 @@ body.black-white .light-theme {
 #walk.leaflet-sidebar-pane {
     padding-right: 60px;
 }
-#walk .content-station-title {
-    text-align: center;
-}
-#walk .content-title {
-    text-align: left;
-}
-#walk .content-location {
-    text-align: center;
-}
-#walk .content-location-2 {
-    text-align: left;
-}
-#walk .content-audio-time {
-    text-align: center;
-}
 .content-walk-stations {
     display: flex;
     flex-direction: column;
@@ -808,16 +800,13 @@ body.black-white .light-theme {
     line-height: 60px;
     flex-shrink: 0;
     cursor: pointer;
-    font-family: 'TheNeueBlack', sans-serif;
-    font-variant-ligatures: none;
 }
 .content-image {
-    min-height: 8em;
+    min-height: 190px;
     text-align: center;
+    flex-shrink: 0;
 }
 details summary {
-    font-family: 'TheNeueBlack', sans-serif;
-    font-variant-ligatures: none;
     list-style-image: url('../img/uc_icon_acc1.svg');
 }
 details[open] summary {
@@ -825,20 +814,15 @@ details[open] summary {
 }
 .intro-station-title {
     font-size: 2.5em;
-    font-family: 'TheNeueBlack', sans-serif;
-    font-variant-ligatures: none;
-}
-.intro-station-title-centered {
-    display: block;
-    text-align: center;
 }
 .intro-station-walk-icon {
     display: flex;
 }
 .intro-station-walk-icon i {
     background: url("../img/uc_icon_walk_sy.svg") no-repeat;
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
 }
 body.black-white .intro-station-walk-icon i {
     background: url("../img/uc_icon_walk.svg") no-repeat;
