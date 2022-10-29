@@ -517,7 +517,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 if(audio_station.aac) {
                     audio_player_new.innerHTML += '<source src="' + audio_station.aac + '" type="' + audio_station.aac_mime + '">';
                 }
-                content_walk_stations.querySelector('.track-swipe-bar span.prev-track').innerHTML = ('' + station_id).padStart(2, '0') + ' / ' + ('' + current_walk.stations.length).padStart(2, '0');
+                content_walk_stations.querySelector('.track-swipe-bar span.prev-track').innerHTML = ('' + station_id).padStart(2, '0') + ' / ' + ('' + (current_walk.stations.length - 1)).padStart(2, '0');
                 for(let walk_prev of walk_prevs){
                     walk_prev.style.display = '';
                 }
@@ -532,7 +532,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         walk_next.style.display = '';
                     }
                 } else {
-                    content_walk_stations.querySelector('.track-swipe-bar span.next-track').innerHTML = ('' + (station_id + 2 )).padStart(2, '0') + ' / ' + ('' + current_walk.stations.length).padStart(2, '0');
+                    content_walk_stations.querySelector('.track-swipe-bar span.next-track').innerHTML = ('' + (station_id + 2 )).padStart(2, '0') + ' / ' + ('' + (current_walk.stations.length - 1)).padStart(2, '0');
                     for(let walk_next of walk_nexts){
                         walk_next.style.display = '';
                     }
