@@ -112,7 +112,9 @@ main,
 details summary,
 .prev-track,
 .next-track,
-.font-neue-black {
+.font-neue-black,
+.onboarding-title,
+.onboarding-explainer-title {
     font-family: 'TheNeueBlack', sans-serif;
 }
 .font-enable-ligatures {
@@ -646,7 +648,8 @@ body.wait .leaflet-sidebar-pane {
 #search-extend svg,
 #info #info-menu-button,
 .track-swipe-bar svg,
-.intro-station-to-walk svg {
+.intro-station-to-walk svg,
+.onboarding-explainer-description svg {
     width: 60px;
     height: 60px;
 }
@@ -796,6 +799,8 @@ body.black-white .light-theme {
     position: sticky;
     bottom: 0;
 }
+.next-slide,
+.prev-slide,
 .next-track,
 .prev-track {
     line-height: 60px;
@@ -822,6 +827,7 @@ details[open] summary {
 .intro-station-walk-icon {
     display: flex;
 }
+.onboarding-walk-icon,
 .intro-station-walk-icon i {
     background: url("../img/uc_icon_walk_sy.svg") no-repeat;
     width: 80px;
@@ -834,6 +840,23 @@ body.black-white .intro-station-walk-icon i {
 .intro-station-to-walk {
     display: flex;
 }
+.walk-onboarding,
 .walk-intro {
     height: 100%;
+}
+.onboarding-walk-icon {
+    display: block;
+    margin: auto;
+}
+button.onboarding-start {
+    display: block;
+    margin: auto;
+    font-size: 4em;
+    font-family: 'TheNeueBlack', sans-serif;
+}
+.onboarding-explainer-description {
+    display: flex;
+    padding: 1em 0;
+    margin-left: -20px;
+    margin-right: -60px;
 }

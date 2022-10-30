@@ -120,11 +120,18 @@ window.addEventListener('DOMContentLoaded', function(){
         let walk_prevs = walk.querySelectorAll('.prev-track');
         let walk_nexts = walk.querySelectorAll('.next-track');
         let content_walk_stations = walk.querySelector('.content-walk-stations');
+        let walk_onboarding = walk.querySelector('.walk-onboarding');
+        let walk_onboarding_start = walk_onboarding.querySelector('button.onboarding-start');
         let walk_intro = walk.querySelector('.walk-intro');
         let walk_intro_player = walk_intro.querySelector('.content-player');
+        let explainers = walk.querySelector('.onboarding-explainer-description');
+        let all_explainers = explainers.querySelectorAll('.explainer');
+        let explainer_prev = explainers.querySelector('.prev-slide');
+        let explainer_next = explainers.querySelector('.next-slide');
 
         let current_walk = 0;
         let current_walk_station = 0;
+        let current_walk_explainer = 0;
         for(let opener of open_under_construction_info){
             opener.addEventListener('click', _ => {
                 sidebar_right.open('#info');
@@ -316,6 +323,44 @@ window.addEventListener('DOMContentLoaded', function(){
                 }
             }, {passive: true});
         }
+        explainers.addEventListener('touchstart', e => {
+            walk_touch_x_down = e.touches[0].clientX;
+        }, {passive: true});
+        explainers.addEventListener('touchmove', e => {
+            walk_touch_x_up = e.touches[0].clientX;
+        }, {passive: true});
+        explainers.addEventListener('touchend', e => {
+            if (Math.abs(walk_touch_x_down - walk_touch_x_up) > 40) {
+                if (walk_touch_x_down > walk_touch_x_up) {
+                    load_walk_explainer(current_walk_explainer + 1);
+                } else {
+                    load_walk_explainer(current_walk_explainer - 1);
+                }
+            }
+        }, {passive: true});
+        explainers.addEventListener('mousedown', e => {
+            walk_touch_x_down = e.clientX;
+        }, {passive: true});
+        explainers.addEventListener('mouseup', e => {
+            walk_touch_x_up = e.clientX;
+            if (Math.abs(walk_touch_x_down - walk_touch_x_up) > 40) {
+                if (walk_touch_x_down > walk_touch_x_up) {
+                    load_walk_explainer(current_walk_explainer + 1);
+                } else {
+                    load_walk_explainer(current_walk_explainer - 1);
+                }
+            }
+        }, {passive: true});
+        explainer_next.addEventListener('click', _ => {
+            load_walk_explainer(current_walk_explainer + 1);
+        });
+        explainer_prev.addEventListener('click', _ => {
+            load_walk_explainer(current_walk_explainer - 1);
+        });
+
+        walk_onboarding_start.addEventListener('click', _ => {
+            load_walk_station(-1);
+        });
 
         load_audio(mannheim_under_construction.initial_audio, mannheim_under_construction.load_initial_only);
         if(mannheim_under_construction.initial_walk) {
@@ -456,7 +501,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 play_tab_button.setAttribute('href', '#walk');
                 current_walk = walks[walk_id];
                 if(current_walk.intros[0]){
-                    load_walk_station(-1);
+                    load_walk_station(-2);
                 }
                 let details_wrapper = walk_intro.querySelector('.intro-station-details-wrapper');
                 let content_player = walk_intro.querySelector('.content-player');
@@ -489,10 +534,32 @@ window.addEventListener('DOMContentLoaded', function(){
             }
         }
 
+        function load_walk_explainer(explainer_id){
+            let new_explainer = explainers.querySelector('.explainer[data-id="'+explainer_id+'"]');
+            if(new_explainer){
+                for(let explainer of all_explainers){
+                    explainer.hidden = true;
+                }
+                new_explainer.hidden = false;
+                current_walk_explainer = explainer_id;
+            }
+            if(all_explainers.length <= explainer_id + 1){
+                explainer_next.style.visibility = 'hidden';
+            } else {
+                explainer_next.style.visibility = '';
+            }
+            if(explainer_id <= 0){
+                explainer_prev.style.visibility = 'hidden';
+            } else {
+                explainer_prev.style.visibility = '';
+            }
+        }
+
         function load_walk_station(station_id){
             if(current_walk.stations[station_id]){
                 content_walk_stations.style.display = '';
                 walk_intro.style.display = 'none';
+                walk_onboarding.style.display = 'none';
                 current_walk_station = station_id;
                 let station = current_walk.stations[station_id];
                 let audio_station = audio_stations[station.audio_id];
@@ -545,7 +612,14 @@ window.addEventListener('DOMContentLoaded', function(){
             } else if(station_id === -1){
                 current_walk_station = station_id;
                 content_walk_stations.style.display = 'none';
+                walk_onboarding.style.display = 'none';
                 walk_intro.style.display = '';
+            } else if(station_id === -2){
+                current_walk_station = station_id;
+                content_walk_stations.style.display = 'none';
+                walk_onboarding.style.display = '';
+                walk_intro.style.display = 'none';
+                load_walk_explainer(current_walk_explainer);
             }
         }
 

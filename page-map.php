@@ -287,9 +287,34 @@
                             </svg>
                         </button>
                         <div class="walk-onboarding">
-
+                            <div class="onboarding-title"><?php esc_html_e('Walk', 'mannheim-under-construction'); ?></div>
+                            <div class="onboarding-description">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</div>
+                            <i class="onboarding-walk-icon"></i>
+                            <button class="onboarding-start"><?php esc_html_e('Start', 'mannheim-under-construction'); ?></button>
+                            <div class="onboarding-explainer-title"><?php esc_html_e('This is how it works', 'mannheim-under-construction'); ?></div>
+                            <div class="onboarding-explainer-description">
+                                <svg class="prev-slide" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
+                                    <path d="M20.566,30L30.33,9h11.104l-9.762,21l9.762,21H30.33L20.566,30z"/>
+                                </svg>
+                                <div class="explainer" data-id="0">
+                                    <?php esc_html_e('This icon means, that you can swipe further. You can for example continue reading this text. Swipe to the left to...', 'mannheim-under-construction'); ?>
+                                </div>
+                                <div class="explainer" data-id="1" hidden>
+                                    <?php esc_html_e('...hear the next station. The icon now points to the left. You could also swipe back, or forward to the left to...', 'mannheim-under-construction'); ?>
+                                </div>
+                                <div class="explainer" data-id="2" hidden>
+                                    <?php esc_html_e('...continue reading this text. When no icon points to the right anymore, the content is finished. Here is the end.', 'mannheim-under-construction'); ?>
+                                </div>
+                                <svg class="next-slide" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
+                                    <path d="M31.83,51H20.728l9.761-21L20.728,9H31.83l9.764,21L31.83,51z"/>
+                                </svg>
+                            </div>
+                            <details>
+                                <summary><?php esc_html_e('This icon means, that more content is behind it.', 'mannheim-under-construction'); ?></summary>
+                                <p><?php esc_html_e('By clicking it, it opens like an Accordion.', 'mannheim-under-construction'); ?></p>
+                            </details>
                         </div>
-                        <div class="walk-intro" style="display:none">
+                        <div class="walk-intro">
                             <div class="intro-station-title">
                                 <span>Los</span><br><span>&emsp;&emsp;&emsp;geht's!</span>
                             </div>
@@ -376,9 +401,9 @@
                                 <svg class="prev-track" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
                                     <path d="M20.566,30L30.33,9h11.104l-9.762,21l9.762,21H30.33L20.566,30z"/>
                                 </svg>
-                                <span class="prev-track">01 / 03</span>
+                                <span class="prev-track"></span>
                                 <div class="full-width-spacer"></div>
-                                <span class="next-track">02 / 03</span>
+                                <span class="next-track"></span>
                                 <svg class="next-track" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
                                     <path d="M31.83,51H20.728l9.761-21L20.728,9H31.83l9.764,21L31.83,51z"/>
                                 </svg>
