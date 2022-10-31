@@ -296,6 +296,7 @@ window.addEventListener('DOMContentLoaded', function(){
         for(let screen of [content_walk_stations, walk_intro]) {
             screen.addEventListener('touchstart', e => {
                 walk_touch_x_down = e.touches[0].clientX;
+                walk_touch_x_up = e.touches[0].clientX;
             }, {passive: true});
             screen.addEventListener('touchmove', e => {
                 walk_touch_x_up = e.touches[0].clientX;
@@ -325,6 +326,7 @@ window.addEventListener('DOMContentLoaded', function(){
         }
         explainers.addEventListener('touchstart', e => {
             walk_touch_x_down = e.touches[0].clientX;
+            walk_touch_x_up = e.touches[0].clientX;
         }, {passive: true});
         explainers.addEventListener('touchmove', e => {
             walk_touch_x_up = e.touches[0].clientX;
