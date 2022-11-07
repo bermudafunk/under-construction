@@ -474,7 +474,7 @@ class Mannheim_Under_Constrcution
 			                'length_readable' => $length_readable,
 			                'tags'            => $tags,
                             'thumbnail'       => get_the_post_thumbnail_url( $post_id, 'medium' ),
-                            'hidden'          => get_post_meta( $post_id, 'mannheim_under_construction_location_hidden', true ),
+                            'hidden'          => intval(get_post_meta( $post_id, 'mannheim_under_construction_location_hidden', true )),
 		                ];
 	                }
 	                $initial_audio = $map_data[array_rand($map_data)]['id'];
@@ -698,13 +698,24 @@ class Mannheim_Under_Constrcution
 				'posts_per_page' => -1,
 				's' => $_POST['s'],
 				'tax_query' => $tax_query,
+                'meta_query' => [
+                    'relation' => 'OR',
+                    ['key' => 'mannheim_under_construction_location_hidden', 'value' => '0'],
+                    ['key' => 'mannheim_under_construction_location_hidden', 'compare' => 'NOT EXISTS'],
+                ],
 			]);
 			if(!empty($_POST['s'])){
 				$new_audios = array_merge($audios, get_posts([
 					'post_type' => 'audio-station',
 					'posts_per_page' => -1,
 					'meta_query' => [
+                        'relation' => 'AND',
 						['key' => 'mannheim_under_construction_location', 'value' => $_POST['s'], 'compare' => 'LIKE'],
+						[
+							'relation' => 'OR',
+							['key' => 'mannheim_under_construction_location_hidden', 'value' => '0'],
+							['key' => 'mannheim_under_construction_location_hidden', 'compare' => 'NOT EXISTS'],
+						],
 					],
 					'tax_query' => $tax_query,
 				]));
@@ -723,6 +734,11 @@ class Mannheim_Under_Constrcution
 							[ 'taxonomy' => 'location', 'field' => 'term_id', 'terms' => $terms ],
 							[ 'taxonomy' => 'type', 'field' => 'term_id', 'terms' => $terms ],
 						],
+                        'meta_query' => [
+	                        'relation' => 'OR',
+	                        ['key' => 'mannheim_under_construction_location_hidden', 'value' => '0'],
+	                        ['key' => 'mannheim_under_construction_location_hidden', 'compare' => 'NOT EXISTS'],
+                        ],
 					] ) );
 				}
 				$audios = [];
@@ -740,6 +756,11 @@ class Mannheim_Under_Constrcution
 				'post_type' => 'audio-station',
 				'posts_per_page' => 1,
 				'orderby' => 'rand',
+                'meta_query' => [
+	                'relation' => 'OR',
+	                ['key' => 'mannheim_under_construction_location_hidden', 'value' => '0'],
+	                ['key' => 'mannheim_under_construction_location_hidden', 'compare' => 'NOT EXISTS'],
+                ],
 			])[0];
 			$message .= '<p>' . sprintf(esc_html__('The search term "%s" did unfortunately not find any posts :(', 'mannheim-under-construction'), esc_html($_POST['s'])) . '</p>';
 			$message .= '<p>' . esc_html__('Enter a new search term or try finding a post with the tag search :)', 'mannheim-under-construction') . '</p>';

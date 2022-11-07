@@ -209,6 +209,11 @@
                                             'tax_query' => [
                                                 ['taxonomy' => 'post_tag', 'field' => 'term_id', 'terms' => $term_id],
                                             ],
+                                            'meta_query' => [
+	                                            'relation' => 'OR',
+	                                            ['key' => 'mannheim_under_construction_location_hidden', 'value' => '0'],
+	                                            ['key' => 'mannheim_under_construction_location_hidden', 'compare' => 'NOT EXISTS'],
+                                            ],
                                         ]);
                                         foreach($audios as $audio){
                                             echo '<li data-id="' . $audio->ID . '">' . esc_html($audio->post_title) . '</li>';
