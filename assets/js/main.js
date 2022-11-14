@@ -120,14 +120,9 @@ window.addEventListener('DOMContentLoaded', function(){
         let walk_prevs = walk.querySelectorAll('.prev-track');
         let walk_nexts = walk.querySelectorAll('.next-track');
         let content_walk_stations = walk.querySelector('.content-walk-stations');
-        let walk_onboarding = walk.querySelector('.walk-onboarding');
-        let walk_onboarding_start = walk_onboarding.querySelector('button.onboarding-start');
         let walk_intro = walk.querySelector('.walk-intro');
         let walk_intro_player = walk_intro.querySelector('.content-player');
-        let explainers = walk.querySelector('.onboarding-explainer-description');
-        let all_explainers = explainers.querySelectorAll('.explainer');
-        let explainer_prev = explainers.querySelector('.prev-slide');
-        let explainer_next = explainers.querySelector('.next-slide');
+        let explainers = walk.querySelectorAll('.onboarding-explainer-description');
 
         let current_walk = 0;
         let current_walk_station = 0;
@@ -301,7 +296,7 @@ window.addEventListener('DOMContentLoaded', function(){
             screen.addEventListener('touchmove', e => {
                 walk_touch_x_up = e.touches[0].clientX;
             }, {passive: true});
-            screen.addEventListener('touchend', e => {
+            screen.addEventListener('touchend', _ => {
                 if (Math.abs(walk_touch_x_down - walk_touch_x_up) > 40) {
                     if (walk_touch_x_down > walk_touch_x_up) {
                         load_walk_station(current_walk_station + 1);
@@ -324,45 +319,45 @@ window.addEventListener('DOMContentLoaded', function(){
                 }
             }, {passive: true});
         }
-        explainers.addEventListener('touchstart', e => {
-            walk_touch_x_down = e.touches[0].clientX;
-            walk_touch_x_up = e.touches[0].clientX;
-        }, {passive: true});
-        explainers.addEventListener('touchmove', e => {
-            walk_touch_x_up = e.touches[0].clientX;
-        }, {passive: true});
-        explainers.addEventListener('touchend', e => {
-            if (Math.abs(walk_touch_x_down - walk_touch_x_up) > 40) {
-                if (walk_touch_x_down > walk_touch_x_up) {
-                    load_walk_explainer(current_walk_explainer + 1);
-                } else {
-                    load_walk_explainer(current_walk_explainer - 1);
+        for(let explainer_wrapper of explainers) {
+            explainer_wrapper.addEventListener('touchstart', e => {
+                walk_touch_x_down = e.touches[0].clientX;
+                walk_touch_x_up = e.touches[0].clientX;
+            }, {passive: true});
+            explainer_wrapper.addEventListener('touchmove', e => {
+                walk_touch_x_up = e.touches[0].clientX;
+            }, {passive: true});
+            explainer_wrapper.addEventListener('touchend', _ => {
+                if (Math.abs(walk_touch_x_down - walk_touch_x_up) > 40) {
+                    if (walk_touch_x_down > walk_touch_x_up) {
+                        load_walk_explainer(current_walk_explainer + 1);
+                    } else {
+                        load_walk_explainer(current_walk_explainer - 1);
+                    }
                 }
-            }
-        }, {passive: true});
-        explainers.addEventListener('mousedown', e => {
-            walk_touch_x_down = e.clientX;
-        }, {passive: true});
-        explainers.addEventListener('mouseup', e => {
-            walk_touch_x_up = e.clientX;
-            if (Math.abs(walk_touch_x_down - walk_touch_x_up) > 40) {
-                if (walk_touch_x_down > walk_touch_x_up) {
-                    load_walk_explainer(current_walk_explainer + 1);
-                } else {
-                    load_walk_explainer(current_walk_explainer - 1);
+            }, {passive: true});
+            explainer_wrapper.addEventListener('mousedown', e => {
+                walk_touch_x_down = e.clientX;
+            }, {passive: true});
+            explainer_wrapper.addEventListener('mouseup', e => {
+                walk_touch_x_up = e.clientX;
+                if (Math.abs(walk_touch_x_down - walk_touch_x_up) > 40) {
+                    if (walk_touch_x_down > walk_touch_x_up) {
+                        load_walk_explainer(current_walk_explainer + 1);
+                    } else {
+                        load_walk_explainer(current_walk_explainer - 1);
+                    }
                 }
-            }
-        }, {passive: true});
-        explainer_next.addEventListener('click', _ => {
-            load_walk_explainer(current_walk_explainer + 1);
-        });
-        explainer_prev.addEventListener('click', _ => {
-            load_walk_explainer(current_walk_explainer - 1);
-        });
-
-        walk_onboarding_start.addEventListener('click', _ => {
-            load_walk_station(-1);
-        });
+            }, {passive: true});
+            let explainer_prev = explainer_wrapper.querySelector('.prev-slide');
+            let explainer_next = explainer_wrapper.querySelector('.next-slide');
+            explainer_next.addEventListener('click', _ => {
+                load_walk_explainer(current_walk_explainer + 1);
+            });
+            explainer_prev.addEventListener('click', _ => {
+                load_walk_explainer(current_walk_explainer - 1);
+            });
+        }
 
         load_audio(mannheim_under_construction.initial_audio, mannheim_under_construction.load_initial_only);
         if(mannheim_under_construction.initial_walk) {
@@ -503,17 +498,22 @@ window.addEventListener('DOMContentLoaded', function(){
                 play_tab_button.setAttribute('href', '#walk');
                 current_walk = walks[walk_id];
                 if(current_walk.intros[0]){
-                    load_walk_station(-2);
+                    load_walk_station(-1);
                 }
                 let details_wrapper = walk_intro.querySelector('.intro-station-details-wrapper');
                 let content_player = walk_intro.querySelector('.content-player');
-                walk_intro.querySelector('span.next-track').innerHTML = current_walk.stations[0].title;
                 details_wrapper.innerHTML = '';
                 let first = true;
                 for(let intro of current_walk.intros){
                     let audio_station = audio_stations[intro.audio_id];
                     if(first){
                         walk_intro.querySelector('.intro-station-description').innerHTML = audio_station.description;
+                        let image_container = walk_intro.querySelector('.content-image');
+                        if(audio_station.thumbnail) {
+                            image_container.innerHTML = '<img src="' + audio_station.thumbnail + '" loading="lazy">';
+                        } else {
+                            image_container.innerHTML = '';
+                        }
                         first = false;
                     } else {
                         details_wrapper.innerHTML += '<details data-><summary>' + intro.title + '</summary><div class="content-player" data-audio-id="' + intro.audio_id + '">' + content_player.innerHTML + '</div>' + audio_station.description + '</details>';
@@ -537,23 +537,28 @@ window.addEventListener('DOMContentLoaded', function(){
         }
 
         function load_walk_explainer(explainer_id){
-            let new_explainer = explainers.querySelector('.explainer[data-id="'+explainer_id+'"]');
-            if(new_explainer){
-                for(let explainer of all_explainers){
-                    explainer.hidden = true;
+            for(let explainer_wrapper of explainers) {
+                let all_explainers = explainer_wrapper.querySelectorAll('.explainer');
+                let explainer_prev = explainer_wrapper.querySelector('.prev-slide');
+                let explainer_next = explainer_wrapper.querySelector('.next-slide');
+                let new_explainer = explainer_wrapper.querySelector('.explainer[data-id="' + explainer_id + '"]');
+                if (new_explainer) {
+                    for (let explainer of all_explainers) {
+                        explainer.hidden = true;
+                    }
+                    new_explainer.hidden = false;
+                    current_walk_explainer = explainer_id;
                 }
-                new_explainer.hidden = false;
-                current_walk_explainer = explainer_id;
-            }
-            if(all_explainers.length <= explainer_id + 1){
-                explainer_next.style.visibility = 'hidden';
-            } else {
-                explainer_next.style.visibility = '';
-            }
-            if(explainer_id <= 0){
-                explainer_prev.style.visibility = 'hidden';
-            } else {
-                explainer_prev.style.visibility = '';
+                if (all_explainers.length <= explainer_id + 1) {
+                    explainer_next.style.visibility = 'hidden';
+                } else {
+                    explainer_next.style.visibility = '';
+                }
+                if (explainer_id <= 0) {
+                    explainer_prev.style.visibility = 'hidden';
+                } else {
+                    explainer_prev.style.visibility = '';
+                }
             }
         }
 
@@ -561,7 +566,6 @@ window.addEventListener('DOMContentLoaded', function(){
             if(current_walk.stations[station_id]){
                 content_walk_stations.style.display = '';
                 walk_intro.style.display = 'none';
-                walk_onboarding.style.display = 'none';
                 current_walk_station = station_id;
                 let station = current_walk.stations[station_id];
                 let audio_station = audio_stations[station.audio_id];
@@ -614,14 +618,7 @@ window.addEventListener('DOMContentLoaded', function(){
             } else if(station_id === -1){
                 current_walk_station = station_id;
                 content_walk_stations.style.display = 'none';
-                walk_onboarding.style.display = 'none';
                 walk_intro.style.display = '';
-            } else if(station_id === -2){
-                current_walk_station = station_id;
-                content_walk_stations.style.display = 'none';
-                walk_onboarding.style.display = '';
-                walk_intro.style.display = 'none';
-                load_walk_explainer(current_walk_explainer);
             }
         }
 

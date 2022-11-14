@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Mannheim Under Construction\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-13 20:28+0000\n"
-"PO-Revision-Date: 2022-10-29 10:27+0000\n"
+"PO-Revision-Date: 2022-11-14 09:44+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch (Sie)\n"
 "Language: de_DE_formal\n"
@@ -19,7 +19,7 @@ msgstr ""
 msgid "... or a random post."
 msgstr "... oder einen zufälligen Beitrag."
 
-#: page-map.php:303
+#: page-map.php:339
 msgid ""
 "...continue reading this text. When no icon points to the right anymore, the "
 "content is finished. Here is the end."
@@ -27,7 +27,7 @@ msgstr ""
 "... diesen Text weiter zu lesen. Wenn kein Icon mehr nach rechts zeigt, ist "
 "der Inhalt beendet. Hier befindet sich das Ende."
 
-#: page-map.php:300
+#: page-map.php:336
 msgid ""
 "...hear the next station. The icon now points to the left. You could also "
 "swipe back, or forward to the left to..."
@@ -229,19 +229,15 @@ msgctxt "audio-walk"
 msgid "Use as featured image"
 msgstr "Als Beitragsbild verwenden"
 
-#: index.php:523 page-map.php:446
+#: index.php:523 page-map.php:447
 msgid "Back"
 msgstr "Zurück"
 
-#: page-map.php:308
-msgid "By clicking it, it opens like an Accordion."
-msgstr "Durch einen Klick zieht es sich auseinander, wie ein Akkordeon."
-
-#: page-map.php:409
+#: page-map.php:410
 msgid "Change contrast"
 msgstr "Kontrast ändern"
 
-#: page-map.php:418
+#: page-map.php:419
 msgid "Change font size"
 msgstr "Schriftgröße ändern"
 
@@ -300,7 +296,7 @@ msgstr "Audiowalk bearbeiten"
 msgid "Encoding guideline:"
 msgstr "Kodierungs-Leitfaden:"
 
-#: index.php:745
+#: index.php:766
 #| msgid ""
 #| "Enter a new search term or try finding an interesting post with the tag "
 #| "search :)"
@@ -347,7 +343,7 @@ msgstr ""
 "Container, welches das moov Atom am Anfang hat und von fast allen Browsern "
 "unterstützt wird."
 
-#: page-map.php:483
+#: page-map.php:484
 msgid "Help"
 msgstr "Hilfe"
 
@@ -360,7 +356,7 @@ msgstr "Auf Karte verstecken:"
 msgid "https://danwin1210.de"
 msgstr "https://danwin1210.de"
 
-#: page-map.php:477 page-map.php:647
+#: page-map.php:478 page-map.php:648
 msgid "Imprint"
 msgstr "Impressum"
 
@@ -383,6 +379,10 @@ msgstr "Länge einer Audiostation"
 #: index.php:144
 msgid "Lengths"
 msgstr "Längen"
+
+#: page-map.php:349
+msgid "Let's go!"
+msgstr "Los geht's!"
 
 #: index.php:569 index.php:586
 msgid "Link:"
@@ -423,11 +423,11 @@ msgstr ""
 "Engagements. Diese Stadtkarte stellt zivilgesellschaftliches Engagement in "
 "der Stadt Mannheim vor."
 
-#: page-map.php:275 page-map.php:360
+#: page-map.php:280 page-map.php:392
 msgid "min."
 msgstr "min."
 
-#: page-map.php:528
+#: page-map.php:529
 msgid "more information"
 msgstr "mehr Informationen"
 
@@ -468,7 +468,7 @@ msgstr ""
 "Ups, während des Ladens Ihrer Suchergebnisse ist ein Fehler aufgetreten. "
 "Bitte versuchen Sie es erneut"
 
-#: page-map.php:440
+#: page-map.php:441
 msgid "Open player"
 msgstr "Wiedergabe öffnen"
 
@@ -482,11 +482,11 @@ msgstr ""
 "geringere Dateigröße bei ungefähr gleichbleibender Qualität bietet. Es wird "
 "von den meisten modernen Browsern unterstützt."
 
-#: index.php:746
+#: index.php:767
 msgid "Or listen to this randomly selected post:"
 msgstr "Oder hören Sie sich diesen zufällig ausgewählten Beitrag an:"
 
-#: page-map.php:234 page-map.php:317 page-map.php:364
+#: page-map.php:239 page-map.php:297 page-map.php:362
 msgid "Play/Pause"
 msgstr "Abspielen/Pausieren"
 
@@ -502,7 +502,7 @@ msgstr "Beitragslänge"
 msgid "Post type"
 msgstr "Beitragsart"
 
-#: page-map.php:480 page-map.php:650
+#: page-map.php:481 page-map.php:651
 msgid "Privacy"
 msgstr "Datenschutz"
 
@@ -535,7 +535,7 @@ msgstr "Stellt eine Karte mit Audiostationen zur Verfügung"
 msgid "Reset"
 msgstr "Zurücksetzen"
 
-#: page-map.php:429
+#: page-map.php:430
 msgid "Search"
 msgstr "Suche"
 
@@ -555,15 +555,15 @@ msgstr "Suche im Archiv"
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: index.php:765
+#: index.php:786
 msgid "Settings › Mannheim Under Construction"
 msgstr "Einstellungen  › Mannheim Under Construction"
 
-#: page-map.php:560
+#: page-map.php:561
 msgid "Show info about the project"
 msgstr "Informationen zum Projekt anzeigen"
 
-#: page-map.php:465
+#: page-map.php:466
 msgid "Show more info about the project"
 msgstr "Mehr Informationen zum Projekt anzeigen"
 
@@ -571,12 +571,12 @@ msgstr "Mehr Informationen zum Projekt anzeigen"
 msgid "Show popup"
 msgstr "Popup anzeigen"
 
-#: page-map.php:671
+#: page-map.php:672
 msgid "Sorry, you need to enable JavaScript to use this map."
 msgstr ""
 "Tut uns leid, aber Sie benötigen JavaScript um diese Karte zu benutzen."
 
-#: page-map.php:49 page-map.php:293
+#: page-map.php:49
 msgid "Start"
 msgstr "Start"
 
@@ -591,7 +591,7 @@ msgstr ""
 "Das gleiche gilt für Videodateien, die für die Gebärdensprache-Version "
 "verwendet werden. Diese sind:"
 
-#: index.php:752
+#: index.php:773
 msgid ""
 "The search found the following posts. Click on the title to listen to the "
 "post:"
@@ -599,12 +599,12 @@ msgstr ""
 "Die Suche hat folgende Beiträge gefunden. Klicken Sie auf den Titel um den "
 "Beitrag zu hören:"
 
-#: index.php:744
+#: index.php:765
 #, php-format
 msgid "The search term \"%s\" did unfortunately not find any posts :("
 msgstr "Der Suchbegriff \"%s\" hat leider keine Beiträge gefunden :("
 
-#: index.php:750
+#: index.php:771
 #, php-format
 #| msgid ""
 #| "The search term \"%s\" did find the following posts. Click on the title "
@@ -616,11 +616,7 @@ msgstr ""
 "Der Suchbegriff \"%s\" hat folgende Beiträge gefunden. Klicken Sie auf den "
 "Titel um den Beitrag zu hören:"
 
-#: page-map.php:307
-msgid "This icon means, that more content is behind it."
-msgstr "Dieses Icon bedeutet, dass sich dahinter mehr Inhalt befindet."
-
-#: page-map.php:297
+#: page-map.php:333
 msgid ""
 "This icon means, that you can swipe further. You can for example continue "
 "reading this text. Swipe to the left to..."
@@ -628,7 +624,7 @@ msgstr ""
 "Dieses Icon bedeutet, dass Sie die Möglichkeit haben weiter zu wischen. Sie "
 "können zum Beispiel diesen Text weiter lesen. Wischen Sie nach links, um..."
 
-#: page-map.php:294
+#: page-map.php:327
 msgid "This is how it works"
 msgstr "So funktioniert's"
 
@@ -694,10 +690,6 @@ msgstr ""
 "VP9 bei CRF 40 und 25 fps in einem WebM Container, was deutlich geringere "
 "Dateigröße bei ungefähr gleichbleibender Qualität bietet. Es wird von den "
 "meisten modernen Browsern unterstützt."
-
-#: page-map.php:290
-msgid "Walk"
-msgstr "Spaziergang"
 
 #: index.php:650
 msgid "Yes"

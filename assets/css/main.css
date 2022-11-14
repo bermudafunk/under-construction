@@ -108,13 +108,10 @@ main,
 #walk .content-title,
 #walk .content-location,
 #walk .content-location-2,
-.intro-station-title,
 details summary,
 .prev-track,
 .next-track,
-.font-neue-black,
-.onboarding-title,
-.onboarding-explainer-title {
+.font-neue-black {
     font-family: 'TheNeueBlack', sans-serif;
 }
 .font-enable-ligatures {
@@ -648,7 +645,6 @@ body.wait .leaflet-sidebar-pane {
 #search-extend svg,
 #info #info-menu-button,
 .track-swipe-bar svg,
-.intro-station-to-walk svg,
 .onboarding-explainer-description svg {
     width: 60px;
     height: 60px;
@@ -785,9 +781,10 @@ body.black-white .light-theme {
     padding: 0 1em;
 }
 #walk.leaflet-sidebar-pane {
-    padding-right: 60px;
+    padding: 0 60px 0 20px;
 }
-.content-walk-stations {
+.content-walk-stations,
+.walk-intro {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -811,6 +808,7 @@ body.black-white .light-theme {
     min-height: 190px;
     text-align: center;
     flex-shrink: 0;
+    margin: 16px 0;
 }
 .content-image img {
     max-width: 100%;
@@ -820,39 +818,6 @@ details summary {
 }
 details[open] summary {
     list-style-image: url('../img/uc_icon_acc2.svg');
-}
-.intro-station-title {
-    font-size: 2.5em;
-}
-.intro-station-walk-icon {
-    display: flex;
-}
-.onboarding-walk-icon,
-.intro-station-walk-icon i {
-    background: url("../img/uc_icon_walk_sy.svg") no-repeat;
-    width: 80px;
-    height: 80px;
-    flex-shrink: 0;
-}
-body.black-white .intro-station-walk-icon i {
-    background: url("../img/uc_icon_walk.svg") no-repeat;
-}
-.intro-station-to-walk {
-    display: flex;
-}
-.walk-onboarding,
-.walk-intro {
-    height: 100%;
-}
-.onboarding-walk-icon {
-    display: block;
-    margin: auto;
-}
-button.onboarding-start {
-    display: block;
-    margin: auto;
-    font-size: 4em;
-    font-family: 'TheNeueBlack', sans-serif;
 }
 .onboarding-explainer-description {
     display: flex;
