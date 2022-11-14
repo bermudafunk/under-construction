@@ -781,7 +781,7 @@ body.black-white .light-theme {
     padding: 0 1em;
 }
 #walk.leaflet-sidebar-pane {
-    padding: 0 60px 0 20px;
+    padding: 20px 60px 0 20px;
 }
 .content-walk-stations,
 .walk-intro {
