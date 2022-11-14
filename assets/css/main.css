@@ -825,3 +825,8 @@ details[open] summary {
     margin-left: -20px;
     margin-right: -60px;
 }
+#walk .content-player {
+    max-width: 286px;
+    align-self: center;
+    width: 100%;
+}
