@@ -619,6 +619,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 current_walk_station = station_id;
                 content_walk_stations.style.display = 'none';
                 walk_intro.style.display = '';
+                load_walk_explainer(0);
             }
         }
 

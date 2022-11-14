@@ -819,6 +819,12 @@ details summary {
 details[open] summary {
     list-style-image: url('../img/uc_icon_acc2.svg');
 }
+body.black-white details summary {
+    list-style-image: url('../img/uc_icon_acc1_w.svg');
+}
+body.black-white details[open] summary {
+    list-style-image: url('../img/uc_icon_acc2_w.svg');
+}
 .onboarding-explainer-description {
     display: flex;
     padding: 1em 0;
