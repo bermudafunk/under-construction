@@ -292,6 +292,7 @@
                             </svg>
                         </button>
                         <div class="walk-intro">
+                            <div class="font-neue-black"><?php esc_html_e('Walk', 'mannheim-under-construction'); ?></div>
                             <div class="content-image"></div>
                             <div class="content-player">
                                 <button class="play_pause_button" aria-label="<?php esc_attr_e('Play/Pause', 'mannheim-under-construction'); ?>">

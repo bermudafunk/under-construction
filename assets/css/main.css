@@ -805,7 +805,6 @@ body.black-white .light-theme {
     cursor: pointer;
 }
 .content-image {
-    min-height: 190px;
     text-align: center;
     flex-shrink: 0;
     margin: 16px 0;
