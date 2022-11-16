@@ -74,7 +74,9 @@ window.addEventListener('DOMContentLoaded', function(){
         let walks = [];
         if (mannheim_under_construction.walk_data) {
             let walk_markers = L.markerClusterGroup();
+            let walk_list = document.querySelector('.walk-list');
             for (let walk of mannheim_under_construction.walk_data) {
+                walk_list.innerHTML += '<li data-walk-id="' + walk.id + '">' + walk.title + '</li>';
                 walks[walk.id] = walk;
                 let marker = L.marker([walk.lat, walk.lng], {title: walk.title, alt: walk.title, icon: walk_icon, data_id: walk.id});
                 marker.addEventListener('click', e => {
@@ -89,6 +91,12 @@ window.addEventListener('DOMContentLoaded', function(){
                 walk_markers.addLayer(marker);
             }
             map.addLayer(walk_markers);
+            let walk_links = walk_list.querySelectorAll('li');
+            for(let walk_link of walk_links){
+                walk_link.addEventListener('click', e => {
+                    load_walk(e.target.getAttribute('data-walk-id'));
+                })
+            }
         }
         let body = document.querySelector('body');
         let player = document.querySelector('#audio_player');
@@ -120,6 +128,7 @@ window.addEventListener('DOMContentLoaded', function(){
         let walk_prevs = walk.querySelectorAll('.prev-track');
         let walk_nexts = walk.querySelectorAll('.next-track');
         let content_walk_stations = walk.querySelector('.content-walk-stations');
+        let walk_select = walk.querySelector('.walk-select');
         let walk_intro = walk.querySelector('.walk-intro');
         let walk_intro_player = walk_intro.querySelector('.content-player');
         let explainers = walk.querySelectorAll('.onboarding-explainer-description');
@@ -514,9 +523,12 @@ window.addEventListener('DOMContentLoaded', function(){
                         } else {
                             image_container.innerHTML = '';
                         }
+                        walk_intro.querySelector('.content-title').innerHTML = audio_station.title;
+                        walk_intro.querySelector('.content-location').innerHTML = audio_station.location;
+                        walk_intro.querySelector('.content-location-2').innerHTML = audio_station.location_2;
                         first = false;
                     } else {
-                        details_wrapper.innerHTML += '<details data-><summary>' + intro.title + '</summary><div class="content-player" data-audio-id="' + intro.audio_id + '">' + content_player.innerHTML + '</div>' + audio_station.description + '</details>';
+                        details_wrapper.innerHTML += '<details><summary>' + intro.title + '<span class="arrow"></span></summary><div class="content-player" data-audio-id="' + intro.audio_id + '">' + content_player.innerHTML + '</div>' + audio_station.description + '</details>';
                     }
                 }
                 let content_players = details_wrapper.querySelectorAll('.content-player');
@@ -566,6 +578,7 @@ window.addEventListener('DOMContentLoaded', function(){
             if(current_walk.stations[station_id]){
                 content_walk_stations.style.display = '';
                 walk_intro.style.display = 'none';
+                walk_select.style.display = 'none';
                 current_walk_station = station_id;
                 let station = current_walk.stations[station_id];
                 let audio_station = audio_stations[station.audio_id];
@@ -618,7 +631,14 @@ window.addEventListener('DOMContentLoaded', function(){
             } else if(station_id === -1){
                 current_walk_station = station_id;
                 content_walk_stations.style.display = 'none';
+                walk_select.style.display = 'none';
                 walk_intro.style.display = '';
+                load_walk_explainer(0);
+            } else if(station_id === -2){
+                current_walk_station = station_id;
+                content_walk_stations.style.display = 'none';
+                walk_intro.style.display = 'none';
+                walk_select.style.display = '';
                 load_walk_explainer(0);
             }
         }

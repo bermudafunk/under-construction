@@ -127,7 +127,8 @@ body.black-white .content-player .waveform > svg #remaining,
 body.black-white .leaflet-sidebar-content svg,
 body.black-white .close-button svg,
 body.black-white .onboarding-arrow,
-#black_white_switcher polygon:first-of-type {
+#black_white_switcher polygon:first-of-type,
+body.black-white #walk_button svg > g > path {
     fill: #FFFFFF;
 }
 body.black-white #black_white_switcher polygon:first-of-type{
@@ -237,9 +238,7 @@ body.black-white .leaflet-sidebar:not(.collapsed) ~ .leaflet-map-pane {
     right: 0;
     width: 100%;
 }
-#privacy_button,
-#play_tab_button,
-#back_button {
+#privacy_button {
     position: absolute;
     bottom: 0;
 }
@@ -708,6 +707,7 @@ body.black-white .filter-box select {
 .filter-box option {
     cursor: pointer;
 }
+details .arrow,
 .filter-box .arrow {
     width: 0;
     height: 0;
@@ -716,7 +716,9 @@ body.black-white .filter-box select {
     border-top: 20px solid #000;
     margin-right: 0;
     margin-left: auto;
+    display: inline-block;
 }
+body.black-white details .arrow,
 body.black-white .filter-box .arrow {
     border-top: 20px solid #FFFFFF;
 }
@@ -726,6 +728,7 @@ body.black-white .filter-box .arrow {
 .filter-box input[type=checkbox]:checked ~ label {
     border-bottom: 0;
 }
+details[open] .arrow,
 .filter-box input[type=checkbox]:checked ~ label .arrow {
     border-right: 20px solid #000;
     border-left: 0;
@@ -813,16 +816,8 @@ body.black-white .light-theme {
     max-width: 100%;
 }
 details summary {
-    list-style-image: url('../img/uc_icon_acc1.svg');
-}
-details[open] summary {
-    list-style-image: url('../img/uc_icon_acc2.svg');
-}
-body.black-white details summary {
-    list-style-image: url('../img/uc_icon_acc1_w.svg');
-}
-body.black-white details[open] summary {
-    list-style-image: url('../img/uc_icon_acc2_w.svg');
+    padding: 8px;
+    display: flex;
 }
 .onboarding-explainer-description {
     display: flex;
@@ -834,4 +829,8 @@ body.black-white details[open] summary {
     max-width: 286px;
     align-self: center;
     width: 100%;
+}
+.walk-list li {
+    display: block;
+    margin-bottom: 8px;
 }

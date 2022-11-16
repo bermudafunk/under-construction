@@ -291,8 +291,15 @@
                                     50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
                             </svg>
                         </button>
-                        <div class="walk-intro">
-                            <div class="font-neue-black"><?php esc_html_e('Walk', 'mannheim-under-construction'); ?></div>
+                        <div class="walk-select">
+                            <p><?php esc_html_e('Which walk would you like to listen to?', 'mannheim-under-construction'); ?></p>
+                            <ul class="walk-list"></ul>
+                        </div>
+                        <div class="walk-intro" style="display: none">
+                            <div>&emsp;&emsp;&emsp;<span class="content-station-title"><?php esc_html_e('Walk', 'mannheim-under-construction'); ?></span></div>
+                            <div class="content-title"></div>
+                            <div>&emsp;&emsp;&emsp;<span class="content-location"></span></div>
+                            <div class="content-location-2"></div>
                             <div class="content-image"></div>
                             <div class="content-player">
                                 <button class="play_pause_button" aria-label="<?php esc_attr_e('Play/Pause', 'mannheim-under-construction'); ?>">
@@ -325,7 +332,7 @@
                             </div>
                             <div class="intro-station-description"></div>
                             <details>
-                                <summary><?php esc_html_e('This is how it works', 'mannheim-under-construction'); ?></summary>
+                                <summary><?php esc_html_e('This is how it works', 'mannheim-under-construction'); ?><span class="arrow"></span></summary>
                                 <div class="onboarding-explainer-description">
                                     <svg class="prev-slide" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
                                         <path d="M20.566,30L30.33,9h11.104l-9.762,21l9.762,21H30.33L20.566,30z"/>
@@ -353,7 +360,7 @@
                                 </svg>
                             </div>
                         </div>
-                        <div class="content-walk-stations">
+                        <div class="content-walk-stations" style="display: none">
                             <div>&emsp;&emsp;&emsp;<span class="content-station-title"></span></div>
                             <div class="content-title"></div>
                             <div>&emsp;&emsp;&emsp;<span class="content-location"></span></div>
@@ -437,6 +444,27 @@
                                 l-1.145,1.15l-5.645,5.669l-1.244,1.249C7.998,22.647,8.617,26.608,12.433,30.425z M14.771,21.071l0.338-0.339l5.65-5.663
                                 l0.313-0.314c1.385-1.388,2.473-1.501,3.452-0.522l11.639,11.638c0.979,0.98,0.839,2.102-0.546,3.489l-0.268,0.268l-5.649,5.664
                                 l-0.266,0.266c-1.381,1.387-2.716,1.643-3.696,0.663L14.272,24.707C13.292,23.727,13.388,22.46,14.771,21.071z"/>
+                        </svg>
+                    </button>
+                    <div class="full-height-spacer"></div>
+                    <button id="walk_button" href="#walk" role="tab" aria-label="<?php esc_attr_e('Search', 'mannheim-under-construction'); ?>">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
+                            <g>
+                                <g>
+                                    <path d="M27.828,26.571v-9.494c0-2.618,0.691-4.619,2.078-6.001C31.293,9.691,33.295,9,35.916,9h7.306
+                                        c2.62,0,4.624,0.691,6.013,2.076c1.381,1.383,2.076,3.385,2.076,6.002l-0.008,9.444L27.828,26.571z"/>
+                                    <polygon points="42.144,9 37.074,9 27.828,26.571 39.578,44.044 51.303,26.522"/>
+                                </g>
+                                <path fill="#F2FF5B" d="M46.313,20.901l-11.949,5.4v-10.8L46.313,20.901z"/>
+                            </g>
+                            <path d="M37.576,48.903c0-1.221,0.824-2.079,1.979-2.079s1.947,0.858,1.947,2.079c0,1.188-0.76,2.078-1.98,2.078
+                                C38.367,50.981,37.576,50.091,37.576,48.903z"/>
+                            <path d="M28.062,48.903c0-1.221,0.824-2.079,1.979-2.079c1.154,0,1.946,0.858,1.946,2.079c0,1.188-0.759,2.078-1.979,2.078
+                                C28.853,50.981,28.062,50.091,28.062,48.903z"/>
+                            <path d="M18.547,48.903c0-1.221,0.824-2.079,1.98-2.079c1.154,0,1.945,0.858,1.945,2.079c0,1.188-0.758,2.078-1.979,2.078
+                                C19.338,50.981,18.547,50.091,18.547,48.903z"/>
+                            <path d="M9.033,48.903c0-1.221,0.824-2.079,1.979-2.079c1.154,0,1.946,0.858,1.946,2.079c0,1.188-0.759,2.078-1.979,2.078
+                                C9.824,50.981,9.033,50.091,9.033,48.903z"/>
                         </svg>
                     </button>
                     <button id="play_tab_button" href="#play" role="tab" aria-label="<?php esc_attr_e('Open player', 'mannheim-under-construction'); ?>">
