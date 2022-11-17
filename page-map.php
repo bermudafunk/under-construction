@@ -29,7 +29,8 @@
                         42.02,47.344 47.678,41.688 	"/>
                 </svg>
                 <p class="onboarding-explainer" id="onboarding-explainer-2"><?php esc_html_e('Search in archive', 'mannheim-under-construction'); ?></p>
-                <p class="onboarding-explainer" id="onboarding-explainer-3"><?php esc_html_e('Choose a marker...', 'mannheim-under-construction'); ?></p>
+                <p class="onboarding-explainer" id="onboarding-explainer-6"><?php esc_html_e('Choose...', 'mannheim-under-construction'); ?></p>
+                <p class="onboarding-explainer" id="onboarding-explainer-3"><?php esc_html_e('... a marker', 'mannheim-under-construction'); ?></p>
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                      viewBox="0 0 60 60" xml:space="preserve" id="onboarding-marker">
                     <g>
@@ -40,6 +41,25 @@
                             c1.549,0,2.734,0.41,3.557,1.23c0.816,0.819,1.227,2.005,1.227,3.556V30H23.172z"/>
                     </g>
                 </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve" id="onboarding-walk">
+                    <g>
+                        <g>
+                            <path d="M29.833,24.884v-8.583c0-2.366,0.625-4.175,1.88-5.425C32.965,9.625,34.775,9,37.145,9h6.604
+                                c2.369,0,4.182,0.625,5.436,1.877c1.248,1.25,1.877,3.06,1.877,5.426l-0.008,8.537L29.833,24.884z"/>
+                            <polygon points="42.774,9 38.191,9 29.833,24.884 40.455,40.68 51.053,24.84 			"/>
+                        </g>
+                        <path fill="#F2FF5B" d="M46.542,19.759L35.741,24.64v-9.763L46.542,19.759z"/>
+                    </g>
+                    <path d="M28.289,48.344c0-1.561,1.054-2.656,2.528-2.656c1.477,0,2.49,1.096,2.49,2.656c0,1.518-0.973,2.656-2.533,2.656
+                        C29.3,51,28.289,49.862,28.289,48.344z"/>
+                    <path d="M37.934,48.344c0-1.561,1.053-2.656,2.527-2.656c1.477,0,2.49,1.096,2.49,2.656c0,1.518-0.973,2.656-2.533,2.656
+                        C38.943,51,37.934,49.862,37.934,48.344z"/>
+                    <path d="M18.644,48.344c0-1.561,1.053-2.656,2.531-2.656c1.475,0,2.488,1.096,2.488,2.656c0,1.518-0.971,2.656-2.531,2.656
+                        C19.655,51,18.644,49.862,18.644,48.344z"/>
+                    <path d="M9,48.344c0-1.561,1.053-2.656,2.531-2.656c1.475,0,2.486,1.096,2.486,2.656c0,1.518-0.97,2.656-2.529,2.656
+                        C10.01,51,9,49.862,9,48.344z"/>
+                </svg>
+                <p class="onboarding-explainer" id="onboarding-explainer-5"><?php esc_html_e('... a walk', 'mannheim-under-construction'); ?></p>
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                      viewBox="0 0 60 60" xml:space="preserve" class="onboarding-arrow" id="onboarding-arrow-3">
                     <polygon points="18.88,35.461 15.619,14.681 9,21.299 12.341,42.041 17.865,47.565 38.699,50.997 45.317,44.38 24.537,41.119

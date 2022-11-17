@@ -334,11 +334,13 @@ window.addEventListener('DOMContentLoaded', function(){
             explainer_wrapper.addEventListener('touchstart', e => {
                 walk_touch_x_down = e.touches[0].clientX;
                 walk_touch_x_up = e.touches[0].clientX;
+                e.stopPropagation();
             }, {passive: true});
             explainer_wrapper.addEventListener('touchmove', e => {
                 walk_touch_x_up = e.touches[0].clientX;
+                e.stopPropagation();
             }, {passive: true});
-            explainer_wrapper.addEventListener('touchend', _ => {
+            explainer_wrapper.addEventListener('touchend', e => {
                 if (Math.abs(walk_touch_x_down - walk_touch_x_up) > 40) {
                     if (walk_touch_x_down > walk_touch_x_up) {
                         load_walk_explainer(current_walk_explainer + 1);
@@ -346,9 +348,11 @@ window.addEventListener('DOMContentLoaded', function(){
                         load_walk_explainer(current_walk_explainer - 1);
                     }
                 }
+                e.stopPropagation();
             }, {passive: true});
             explainer_wrapper.addEventListener('mousedown', e => {
                 walk_touch_x_down = e.clientX;
+                e.stopPropagation();
             }, {passive: true});
             explainer_wrapper.addEventListener('mouseup', e => {
                 walk_touch_x_up = e.clientX;
@@ -359,6 +363,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         load_walk_explainer(current_walk_explainer - 1);
                     }
                 }
+                e.stopPropagation();
             }, {passive: true});
             let explainer_prev = explainer_wrapper.querySelector('.prev-slide');
             let explainer_next = explainer_wrapper.querySelector('.next-slide');
