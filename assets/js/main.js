@@ -78,6 +78,7 @@ window.addEventListener('DOMContentLoaded', function(){
             for (let walk of mannheim_under_construction.walk_data) {
                 walk_list.innerHTML += '<li data-walk-id="' + walk.id + '">' + walk.title + '</li>';
                 walks[walk.id] = walk;
+                /*
                 let marker = L.marker([walk.lat, walk.lng], {title: walk.title, alt: walk.title, icon: walk_icon, data_id: walk.id});
                 marker.addEventListener('click', e => {
                     load_walk(e.target.options.data_id);
@@ -89,6 +90,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     e.target._icon.setAttribute('src', mannheim_under_construction.walk_icon_url);
                 });
                 walk_markers.addLayer(marker);
+                 */
             }
             map.addLayer(walk_markers);
             let walk_links = walk_list.querySelectorAll('li');
@@ -369,8 +371,12 @@ window.addEventListener('DOMContentLoaded', function(){
         }
 
         load_audio(mannheim_under_construction.initial_audio, mannheim_under_construction.load_initial_only);
-        if(mannheim_under_construction.initial_walk) {
+        if(mannheim_under_construction.initial_walk && mannheim_under_construction.initial_walk !== "0") {
             load_walk(mannheim_under_construction.initial_walk);
+        } else {
+            if(mannheim_under_construction.walk_data.length === 1){
+                load_walk(mannheim_under_construction.walk_data[0].id, true);
+            }
         }
         function play_pause_handler(){
             if (player.innerHTML !== player_new.innerHTML) {
@@ -502,7 +508,7 @@ window.addEventListener('DOMContentLoaded', function(){
             }
         }
 
-        function load_walk(walk_id){
+        function load_walk(walk_id, load_only = false){
             if(walks[walk_id]){
                 play_tab_button.setAttribute('href', '#walk');
                 current_walk = walks[walk_id];
@@ -541,10 +547,12 @@ window.addEventListener('DOMContentLoaded', function(){
                         content_player.querySelector('.seek_forwards').addEventListener('click', seek_forwards_handler);
                     }
                 }
-                sidebar_right.close();
-                body.classList.remove('sidebar-fullscreen');
-                sidebar_left.open('#walk');
-                map.setView([current_walk.lat, current_walk.lng]);
+                if(!load_only) {
+                    sidebar_right.close();
+                    body.classList.remove('sidebar-fullscreen');
+                    sidebar_left.open('#walk');
+                    map.setView([current_walk.lat, current_walk.lng]);
+                }
             }
         }
 

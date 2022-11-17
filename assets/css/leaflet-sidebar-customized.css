@@ -52,6 +52,7 @@
     line-height: 60px;
     text-align: center;
     cursor: pointer;
+    flex-shrink: 0;
 }
 .leaflet-sidebar-tabs > button:hover {
     background-color: #E2EF4B;

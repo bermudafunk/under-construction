@@ -709,18 +709,17 @@ body.black-white .filter-box select {
 }
 details .arrow,
 .filter-box .arrow {
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-top: 20px solid #000;
+    width: 1.5em;
+    height: 1.5em;
     margin-right: 0;
     margin-left: auto;
     display: inline-block;
+    background: url("../img/uc_icon_acc1.svg") no-repeat;
+    transform: rotate(180deg);
 }
 body.black-white details .arrow,
 body.black-white .filter-box .arrow {
-    border-top: 20px solid #FFFFFF;
+    background: url("../img/uc_icon_acc1_w.svg") no-repeat;
 }
 .filter-box input[type=checkbox]:checked ~ select {
     display: flex;
@@ -730,13 +729,7 @@ body.black-white .filter-box .arrow {
 }
 details[open] .arrow,
 .filter-box input[type=checkbox]:checked ~ label .arrow {
-    border-right: 20px solid #000;
-    border-left: 0;
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
-}
-body.black-white .filter-box input[type=checkbox]:checked ~ label .arrow {
-    border-right: 20px solid #FFFFFF;
+    transform: rotate(0);
 }
 #search button[type="reset"] {
     padding: 10px 0;
@@ -833,4 +826,7 @@ details summary {
 .walk-list li {
     display: block;
     margin-bottom: 8px;
+}
+summary::-webkit-details-marker {
+    display: none;
 }
