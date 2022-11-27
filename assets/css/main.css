@@ -353,7 +353,7 @@ body.sidebar-fullscreen .leaflet-control-container {
 #onboarding-explainer-6 {
     bottom: 160px;
 }
-@media (min-height: 760px) {
+@media (min-height: 660px) {
     #onboarding-explainer-3 {
         bottom: 170px;
     }
@@ -370,7 +370,7 @@ body.sidebar-fullscreen .leaflet-control-container {
         bottom: 170px;
     }
 }
-@media (min-width: 480px) {
+@media (min-height: 760px) {
     #onboarding-explainer-1 {
         top: 60px;
     }
@@ -378,16 +378,16 @@ body.sidebar-fullscreen .leaflet-control-container {
         top: 60px;
     }
     #onboarding-explainer-3 {
-        bottom: 170px;
+        bottom: 230px;
     }
     #onboarding-explainer-4 {
         bottom: 60px;
     }
     #onboarding-explainer-5 {
-        bottom: 120px;
+        bottom: 150px;
     }
     #onboarding-explainer-6 {
-        bottom: 210px;
+        bottom: 300px;
     }
     #onboarding-arrow-3 {
         bottom: 60px;
@@ -396,10 +396,10 @@ body.sidebar-fullscreen .leaflet-control-container {
         font-size: 1.8em;
     }
     #onboarding-walk {
-        bottom: 120px;
+        bottom: 150px;
     }
     #onboarding-marker {
-        bottom: 170px;
+        bottom: 230px;
     }
 }
 #onboarding-start-button {
