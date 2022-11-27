@@ -303,11 +303,13 @@ body.sidebar-fullscreen .leaflet-sidebar.collapsed,
 body.sidebar-fullscreen .leaflet-control-container {
     visibility: hidden;
 }
-.onboarding-arrow {
+.onboarding-arrow,
+#onboarding-marker,
+#onboarding-walk {
     position: absolute;
     left: 60px;
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
 }
 #onboarding-arrow-1 {
     top: 10px;
@@ -319,18 +321,10 @@ body.sidebar-fullscreen .leaflet-control-container {
     bottom: 10px;
 }
 #onboarding-marker {
-    position: absolute;
-    left: 60px;
     bottom: 120px;
-    width: 60px;
-    height: 60px;
 }
 #onboarding-walk {
-    position: absolute;
-    left: 60px;
     bottom: 70px;
-    width: 60px;
-    height: 60px;
 }
 .onboarding-explainer {
     position: absolute;
@@ -358,6 +352,23 @@ body.sidebar-fullscreen .leaflet-control-container {
 }
 #onboarding-explainer-6 {
     bottom: 160px;
+}
+@media (min-height: 760px) {
+    #onboarding-explainer-3 {
+        bottom: 170px;
+    }
+    #onboarding-explainer-5 {
+        bottom: 90px;
+    }
+    #onboarding-explainer-6 {
+        bottom: 240px;
+    }
+    #onboarding-walk {
+        bottom: 90px;
+    }
+    #onboarding-marker {
+        bottom: 170px;
+    }
 }
 @media (min-width: 480px) {
     #onboarding-explainer-1 {
@@ -744,6 +755,7 @@ details .arrow,
     display: inline-block;
     background: url("../img/uc_icon_acc1.svg") no-repeat;
     transform: rotate(180deg);
+    flex-shrink: 0;
 }
 body.black-white details .arrow,
 body.black-white .filter-box .arrow {
@@ -839,6 +851,7 @@ body.black-white .light-theme {
 details summary {
     padding: 8px;
     display: flex;
+    flex-wrap: nowrap;
 }
 .onboarding-explainer-description {
     display: flex;
@@ -850,6 +863,9 @@ details summary {
     max-width: 286px;
     align-self: center;
     width: 100%;
+}
+#walk details .content-player {
+    padding-top: 1em;
 }
 .walk-list li {
     display: block;

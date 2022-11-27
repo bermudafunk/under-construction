@@ -539,7 +539,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         walk_intro.querySelector('.content-location-2').innerHTML = audio_station.location_2;
                         first = false;
                     } else {
-                        details_wrapper.innerHTML += '<details><summary>' + intro.title + '<span class="arrow"></span></summary><div class="content-player" data-audio-id="' + intro.audio_id + '">' + content_player.innerHTML + '</div>' + audio_station.description + '</details>';
+                        details_wrapper.innerHTML += '<details><summary><span>' + intro.title + '</span><span class="arrow"></span></summary><div class="content-player" data-audio-id="' + intro.audio_id + '">' + content_player.innerHTML + '</div>' + audio_station.description + '</details>';
                     }
                 }
                 let content_players = details_wrapper.querySelectorAll('.content-player');
@@ -647,12 +647,11 @@ window.addEventListener('DOMContentLoaded', function(){
                 walk_select.style.display = 'none';
                 walk_intro.style.display = '';
                 load_walk_explainer(0);
-            } else if(station_id === -2){
+            } else if(station_id === -2 && mannheim_under_construction.walk_data.length > 1){
                 current_walk_station = station_id;
                 content_walk_stations.style.display = 'none';
                 walk_intro.style.display = 'none';
                 walk_select.style.display = '';
-                load_walk_explainer(0);
             }
         }
 

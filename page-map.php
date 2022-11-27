@@ -352,7 +352,7 @@
                             </div>
                             <div class="intro-station-description"></div>
                             <details>
-                                <summary><?php esc_html_e('This is how it works', 'mannheim-under-construction'); ?><span class="arrow"></span></summary>
+                                <summary><span><?php esc_html_e('This is how it works', 'mannheim-under-construction'); ?></span><span class="arrow"></span></summary>
                                 <div class="onboarding-explainer-description">
                                     <svg class="prev-slide" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
                                         <path d="M20.566,30L30.33,9h11.104l-9.762,21l9.762,21H30.33L20.566,30z"/>
