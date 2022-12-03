@@ -311,21 +311,6 @@ body.sidebar-fullscreen .leaflet-control-container {
     width: 55px;
     height: 55px;
 }
-#onboarding-arrow-1 {
-    top: 10px;
-}
-#onboarding-arrow-2 {
-    top: 150px;
-}
-#onboarding-arrow-3 {
-    bottom: 10px;
-}
-#onboarding-marker {
-    bottom: 120px;
-}
-#onboarding-walk {
-    bottom: 70px;
-}
 .onboarding-explainer {
     position: absolute;
     left: 130px;
@@ -338,68 +323,43 @@ body.sidebar-fullscreen .leaflet-control-container {
 #onboarding-explainer-1 {
     top: 10px;
 }
-#onboarding-explainer-2 {
-    top: 150px;
+#onboarding-arrow-1 {
+    top: 40px;
 }
-#onboarding-explainer-3 {
+#onboarding-explainer-2,
+#onboarding-arrow-2 {
+    top: 130px;
+}
+#onboarding-explainer-3,
+#onboarding-marker {
     bottom: 120px;
 }
-#onboarding-explainer-4 {
+#onboarding-explainer-4,
+#onboarding-arrow-3 {
     bottom: 10px;
 }
-#onboarding-explainer-5 {
+#onboarding-explainer-5,
+#onboarding-walk {
     bottom: 70px;
 }
 #onboarding-explainer-6 {
     bottom: 160px;
 }
 @media (min-height: 660px) {
-    #onboarding-explainer-3 {
-        bottom: 170px;
-    }
-    #onboarding-explainer-5 {
-        bottom: 90px;
+    #onboarding-explainer-2,
+    #onboarding-arrow-2 {
+        top: 150px;
     }
     #onboarding-explainer-6 {
         bottom: 240px;
     }
-    #onboarding-walk {
+    #onboarding-walk,
+    #onboarding-explainer-5 {
         bottom: 90px;
     }
-    #onboarding-marker {
-        bottom: 170px;
-    }
-}
-@media (min-height: 760px) {
-    #onboarding-explainer-1 {
-        top: 60px;
-    }
-    #onboarding-arrow-1 {
-        top: 60px;
-    }
+    #onboarding-marker,
     #onboarding-explainer-3 {
-        bottom: 230px;
-    }
-    #onboarding-explainer-4 {
-        bottom: 60px;
-    }
-    #onboarding-explainer-5 {
-        bottom: 150px;
-    }
-    #onboarding-explainer-6 {
-        bottom: 300px;
-    }
-    #onboarding-arrow-3 {
-        bottom: 60px;
-    }
-    .under-construction-title span {
-        font-size: 1.8em;
-    }
-    #onboarding-walk {
-        bottom: 150px;
-    }
-    #onboarding-marker {
-        bottom: 230px;
+        bottom: 170px;
     }
 }
 #onboarding-start-button {
@@ -443,6 +403,9 @@ body.black-white .mannheim-under-construction-search button svg {
     height: 60px;
     border: 2px black solid;
     text-align: left;
+}
+input[type="search"]::-webkit-search-decoration{
+    display: none;
 }
 .filter-box select,
 .leaflet-sidebar-content,
