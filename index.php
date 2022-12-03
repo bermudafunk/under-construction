@@ -215,9 +215,6 @@ class Mannheim_Under_Constrcution
 				$fields = [
 					'mannheim_under_construction_ogg',
 					'mannheim_under_construction_aac',
-//				    'mannheim_under_construction_mp4',
-//			    	'mannheim_under_construction_webm',
-//				    'mannheim_under_construction_vtt',
 					'mannheim_under_construction_waveform',
 					'mannheim_under_construction_location',
 					'mannheim_under_construction_location_lat',
@@ -477,7 +474,10 @@ class Mannheim_Under_Constrcution
                             'hidden'          => intval(get_post_meta( $post_id, 'mannheim_under_construction_location_hidden', true )),
 		                ];
 	                }
-	                $initial_audio = $map_data[array_rand($map_data)]['id'];
+                    do{
+                        $initial_audio = $map_data[array_rand($map_data)];
+                    }while($initial_audio['hidden']);
+	                $initial_audio = $initial_audio['id'];
                 }
                 $walk_data = [];
 				if(is_array($audio_walks)){
@@ -489,6 +489,8 @@ class Mannheim_Under_Constrcution
                             'stations' => get_post_meta( $audio_walk, 'mannheim_under_construction_stations', true ),
                             'intros' => get_post_meta( $audio_walk, 'mannheim_under_construction_intros', true ),
                             'title' => get_the_title( $audio_walk ),
+                            'description' => get_the_content( null, false, $audio_walk ),
+                            'thumbnail' => get_the_post_thumbnail_url( $audio_walk, 'medium' ),
                         ];
 					}
 				}
@@ -529,6 +531,9 @@ class Mannheim_Under_Constrcution
 						'initial_audio' => $initial_audio,
 						'initial_walk' => $initial_walk,
 						'load_initial_only' => $load_initial_only,
+						'text_bonus' => esc_html__('Bonus', 'mannheim-under-construction'),
+                        'text_end' => esc_html__('End', 'mannheim-under-construction'),
+						'text_walk' => esc_html__('Walk', 'mannheim-under-construction'),
 					]
 				);
 			}
@@ -651,24 +656,6 @@ class Mannheim_Under_Constrcution
 			</label>
 		</div>
 		<br>
-<?php /*		<!-- <div>
-			<input type="hidden" id="mannheim_under_construction_vtt" name="mannheim_under_construction_vtt" value="<?php echo esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_vtt', true)); ?>">
-			<button class="under-construction-upload" data-field="mannheim_under_construction_vtt" data-type="text/vtt"><?php esc_html_e('Upload VTT-Subtitle file'), 'mannheim-under-construction'; ?></button>
-			<span id="mannheim_under_construction_vtt-selected"><?php echo esc_html(basename(get_post_meta( (get_post_meta(get_the_ID(), 'mannheim_under_construction_vtt', true)), '_wp_attached_file', true ))); ?></span>
-		</div>
-		<br>
-		<div>
-			<input type="hidden" id="mannheim_under_construction_mp4" name="mannheim_under_construction_mp4" value="<?php echo esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_mp4', true)); ?>">
-			<button class="under-construction-upload" data-field="mannheim_under_construction_mp4" data-type="video/mp4"><?php esc_html_e('Upload MP4-Video file', 'mannheim-under-construction'); ?></button>
-			<span id="mannheim_under_construction_mp4-selected"><?php echo esc_html(basename(get_post_meta( (get_post_meta(get_the_ID(), 'mannheim_under_construction_mp4', true)), '_wp_attached_file', true ))); ?></span>
-		</div>
-		<br>
-		<div>
-			<input type="hidden" id="mannheim_under_construction_webm" name="mannheim_under_construction_webm" value="<?php echo esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_webm', true)); ?>">
-			<button class="under-construction-upload" data-field="mannheim_under_construction_webm" data-type="video/webm"><?php esc_html_e('Upload WebM-Video file', 'mannheim-under-construction'); ?></button>
-			<span id="mannheim_under_construction_webm-selected"><?php echo esc_html(basename(get_post_meta( (get_post_meta(get_the_ID(), 'mannheim_under_construction_webm', true)), '_wp_attached_file', true ))); ?></span>
-		</div> -->
- */ ?>
 		<input type="hidden" id="mannheim_under_construction_location_lat" name="mannheim_under_construction_location_lat" value="<?php echo esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_location_lat', true)); ?>">
 		<input type="hidden" id="mannheim_under_construction_location_lng" name="mannheim_under_construction_location_lng" value="<?php echo esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_location_lng', true)); ?>">
 		<div id="select-map-location"></div>

@@ -29,7 +29,7 @@
                         42.02,47.344 47.678,41.688 	"/>
                 </svg>
                 <p class="onboarding-explainer" id="onboarding-explainer-2"><?php esc_html_e('Search in archive', 'mannheim-under-construction'); ?></p>
-                <p class="onboarding-explainer" id="onboarding-explainer-6"><?php esc_html_e('Choose...', 'mannheim-under-construction'); ?></p>
+                <p class="onboarding-explainer" id="onboarding-explainer-6"><?php esc_html_e('Click on start and choose...', 'mannheim-under-construction'); ?></p>
                 <p class="onboarding-explainer" id="onboarding-explainer-3"><?php esc_html_e('... a marker', 'mannheim-under-construction'); ?></p>
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                      viewBox="0 0 60 60" xml:space="preserve" id="onboarding-marker">
@@ -52,7 +52,7 @@
                     <polygon points="18.88,35.461 15.619,14.681 9,21.299 12.341,42.041 17.865,47.565 38.699,50.997 45.317,44.38 24.537,41.119
                         47.678,17.979 42.021,12.321"/>
                 </svg>
-                <p class="onboarding-explainer" id="onboarding-explainer-4"><?php esc_html_e('... or a random post.', 'mannheim-under-construction'); ?></p>
+                <p class="onboarding-explainer" id="onboarding-explainer-4"><?php esc_html_e('... or a random post', 'mannheim-under-construction'); ?></p>
                 <button autofocus id="onboarding-start-button"><?php esc_html_e('Start', 'mannheim-under-construction'); ?></button>
                 <div class="onboarding-welcome">
 					<?php echo apply_filters( 'the_content', get_the_content(null, false, 209) ); ?>
@@ -362,7 +362,7 @@
                             <div class="intro-station-details-wrapper"></div>
                             <div class="full-height-spacer"></div>
                             <div class="track-swipe-bar"><div class="full-width-spacer"></div>
-                                <span class="next-track"><?php esc_html_e("Let's go!", 'mannheim-under-construction'); ?></span>
+                                <span class="next-track"><?php esc_html_e("Start with station 01", 'mannheim-under-construction'); ?></span>
                                 <svg class="next-track" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
                                     <path d="M31.83,51H20.728l9.761-21L20.728,9H31.83l9.764,21L31.83,51z"/>
                                 </svg>
@@ -419,6 +419,21 @@
                                 <svg class="next-track" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
                                     <path d="M31.83,51H20.728l9.761-21L20.728,9H31.83l9.764,21L31.83,51z"/>
                                 </svg>
+                            </div>
+                        </div>
+                        <div class="walk-end" style="display: none">
+                            <div>&emsp;&emsp;&emsp;<span class="content-title"><?php esc_html_e('End', 'mannheim-under-construction'); ?></span></div>
+                            <div class="content-station-title"></div>
+                            <div>&emsp;&emsp;&emsp;<span class="content-title"><?php esc_html_e('Thanks for participating!', 'mannheim-under-construction'); ?></span></div>
+                            <div class="content-image"></div>
+                            <div class="content-description"></div>
+                            <div class="full-height-spacer"></div>
+                            <div class="track-swipe-bar">
+                                <svg class="prev-track" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
+                                    <path d="M20.566,30L30.33,9h11.104l-9.762,21l9.762,21H30.33L20.566,30z"/>
+                                </svg>
+                                <span class="prev-track"><?php esc_html_e('Bonus', 'mannheim-under-construction'); ?></span>
+                                <div class="full-width-spacer"></div>
                             </div>
                         </div>
                     </div>

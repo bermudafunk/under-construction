@@ -783,7 +783,8 @@ body.black-white .light-theme {
     padding: 20px 60px 0 20px;
 }
 .content-walk-stations,
-.walk-intro {
+.walk-intro,
+.walk-end {
     display: flex;
     flex-direction: column;
     height: 100%;

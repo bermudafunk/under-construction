@@ -78,19 +78,6 @@ window.addEventListener('DOMContentLoaded', function(){
             for (let walk of mannheim_under_construction.walk_data) {
                 walk_list.innerHTML += '<li data-walk-id="' + walk.id + '">' + walk.title + '</li>';
                 walks[walk.id] = walk;
-                /*
-                let marker = L.marker([walk.lat, walk.lng], {title: walk.title, alt: walk.title, icon: walk_icon, data_id: walk.id});
-                marker.addEventListener('click', e => {
-                    load_walk(e.target.options.data_id);
-                });
-                marker.addEventListener('mouseover', e => {
-                    e.target._icon.setAttribute('src', mannheim_under_construction.walk_icon_url_bw);
-                });
-                marker.addEventListener('mouseout', e => {
-                    e.target._icon.setAttribute('src', mannheim_under_construction.walk_icon_url);
-                });
-                walk_markers.addLayer(marker);
-                 */
             }
             map.addLayer(walk_markers);
             let walk_links = walk_list.querySelectorAll('li');
@@ -133,6 +120,7 @@ window.addEventListener('DOMContentLoaded', function(){
         let content_walk_pause = content_walk_stations.querySelector('.play_pause_button .pause');
         let content_walk_play = content_walk_stations.querySelector('.play_pause_button .play');
         let walk_select = walk.querySelector('.walk-select');
+        let walk_end = walk.querySelector('.walk-end');
         let walk_intro = walk.querySelector('.walk-intro');
         let walk_intro_player = walk_intro.querySelector('.content-player');
         let explainers = walk.querySelectorAll('.onboarding-explainer-description');
@@ -565,6 +553,21 @@ window.addEventListener('DOMContentLoaded', function(){
                         details_wrapper.innerHTML += '<details><summary><span>' + intro.title + '</span><span class="arrow"></span></summary><div class="content-player" data-audio-id="' + intro.audio_id + '">' + content_player.innerHTML + '</div>' + audio_station.description + '</details>';
                     }
                 }
+                walk_end.querySelector('.content-station-title').innerText = mannheim_under_construction.text_walk + ' ' + audio_stations[current_walk.intros[0].audio_id].title;
+                let walk_end_description = walk_end.querySelector('.content-description');
+                walk_end_description.innerHTML = current_walk.description;
+                let random_audio_link = walk_end_description.querySelector('a[href="#"]');
+                if(random_audio_link){
+                    random_audio_link.addEventListener('click', _ => {
+                        load_audio(mannheim_under_construction.initial_audio);
+                    });
+                }
+                let image_container = walk_end.querySelector('.content-image');
+                if(current_walk.thumbnail) {
+                    image_container.innerHTML = '<img src="' + current_walk.thumbnail + '" loading="lazy">';
+                } else {
+                    image_container.innerHTML = '';
+                }
                 let content_players = details_wrapper.querySelectorAll('.content-player');
                 if(content_players) {
                     for (let content_player of content_players) {
@@ -617,6 +620,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 content_walk_stations.style.display = '';
                 walk_intro.style.display = 'none';
                 walk_select.style.display = 'none';
+                walk_end.style.display = 'none';
                 current_walk_station = station_id;
                 let station = current_walk.stations[station_id];
                 let audio_station = audio_stations[station.audio_id];
@@ -645,13 +649,17 @@ window.addEventListener('DOMContentLoaded', function(){
                 for(let walk_prev of walk_prevs){
                     walk_prev.style.display = '';
                 }
-                if(current_walk.stations.length <= station_id + 1) {
-                    content_walk_stations.querySelector('.track-swipe-bar span.next-track').innerHTML = '';
+                if(current_walk.stations.length <= station_id) {
                     for (let walk_next of walk_nexts) {
                         walk_next.style.display = 'none';
                     }
+                } else if(current_walk.stations.length <= station_id + 1) {
+                    content_walk_stations.querySelector('.track-swipe-bar span.next-track').innerHTML = mannheim_under_construction.text_end;
+                    for (let walk_next of walk_nexts) {
+                        walk_next.style.display = '';
+                    }
                 } else if(current_walk.stations.length <= station_id + 2) {
-                    content_walk_stations.querySelector('.track-swipe-bar span.next-track').innerHTML = 'Bonus';
+                    content_walk_stations.querySelector('.track-swipe-bar span.next-track').innerHTML = mannheim_under_construction.text_bonus;
                     for(let walk_next of walk_nexts){
                         walk_next.style.display = '';
                     }
@@ -677,13 +685,21 @@ window.addEventListener('DOMContentLoaded', function(){
                 current_walk_station = station_id;
                 content_walk_stations.style.display = 'none';
                 walk_select.style.display = 'none';
+                walk_end.style.display = 'none';
                 walk_intro.style.display = '';
                 load_walk_explainer(0);
             } else if(station_id === -2 && mannheim_under_construction.walk_data.length > 1){
                 current_walk_station = station_id;
                 content_walk_stations.style.display = 'none';
                 walk_intro.style.display = 'none';
+                walk_end.style.display = 'none';
                 walk_select.style.display = '';
+            } else if(station_id === current_walk.stations.length){
+                current_walk_station = station_id;
+                content_walk_stations.style.display = 'none';
+                walk_intro.style.display = 'none';
+                walk_select.style.display = 'none';
+                walk_end.style.display = '';
             }
         }
 
