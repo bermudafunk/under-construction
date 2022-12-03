@@ -309,13 +309,20 @@
                             <div class="content-location-2"></div>
                             <div class="content-image"></div>
                             <div class="content-player">
-                                <button class="play_pause_button" aria-label="<?php esc_attr_e('Play/Pause', 'mannheim-under-construction'); ?>">
+                                <button class="seek-button seek_backwards">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                          viewBox="0 0 60 60" xml:space="preserve">
+                                        <path d="M8.979,30l9.762-21h11.106l-9.763,21l9.763,21H18.741L8.979,30z M30.133,30l9.764-21H51l-9.762,21L51,51H39.896L30.133,30z"/>
+                                    </svg>
+                                </button>
+                                <div class="full-width-spacer"></div>
+                                <button class="play_pause_button" aria-label="<?php esc_attr_e('Play/Pause', 'mannheim-under-construction'); ?>">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         viewBox="0 0 60 60" xml:space="preserve" class="play">
                                         <path d="M51,30.055L9,51.035V9.074L51,30.055z"/>
                                     </svg>
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                         viewBox="0 0 60 60" xml:space="preserve">
+                                         viewBox="0 0 60 60" xml:space="preserve" class="pause" style="display:none">
                                         <g>
                                             <polyline points="26,51 15,51 15,9 26,9"/>
                                             <polyline points="45,51 34,51 34,9 45,9"/>
@@ -323,12 +330,6 @@
                                     </svg>
                                 </button>
                                 <div class="full-width-spacer"></div>
-                                <button class="seek-button seek_backwards">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                         viewBox="0 0 60 60" xml:space="preserve">
-                                        <path d="M8.979,30l9.762-21h11.106l-9.763,21l9.763,21H18.741L8.979,30z M30.133,30l9.764-21H51l-9.762,21L51,51H39.896L30.133,30z"/>
-                                    </svg>
-                                </button>
                                 <button class="seek-button seek_forwards">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                          viewBox="0 0 60 60" xml:space="preserve">
@@ -374,13 +375,20 @@
                             <div class="content-location-2"></div>
                             <div class="content-image"></div>
                             <div class="content-player">
-                                <button class="play_pause_button" aria-label="<?php esc_attr_e('Play/Pause', 'mannheim-under-construction'); ?>">
+                                <button class="seek-button seek_backwards">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                          viewBox="0 0 60 60" xml:space="preserve">
+                                        <path d="M8.979,30l9.762-21h11.106l-9.763,21l9.763,21H18.741L8.979,30z M30.133,30l9.764-21H51l-9.762,21L51,51H39.896L30.133,30z"/>
+                                    </svg>
+                                </button>
+                                <div class="full-width-spacer"></div>
+                                <button class="play_pause_button" aria-label="<?php esc_attr_e('Play/Pause', 'mannheim-under-construction'); ?>">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         viewBox="0 0 60 60" xml:space="preserve" class="play">
                                         <path d="M51,30.055L9,51.035V9.074L51,30.055z"/>
                                     </svg>
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                         viewBox="0 0 60 60" xml:space="preserve">
+                                         viewBox="0 0 60 60" xml:space="preserve" class="pause">
                                         <g>
                                             <polyline points="26,51 15,51 15,9 26,9"/>
                                             <polyline points="45,51 34,51 34,9 45,9"/>
@@ -388,12 +396,6 @@
                                     </svg>
                                 </button>
                                 <div class="full-width-spacer"></div>
-                                <button class="seek-button seek_backwards">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                         viewBox="0 0 60 60" xml:space="preserve">
-                                        <path d="M8.979,30l9.762-21h11.106l-9.763,21l9.763,21H18.741L8.979,30z M30.133,30l9.764-21H51l-9.762,21L51,51H39.896L30.133,30z"/>
-                                    </svg>
-                                </button>
                                 <button class="seek-button seek_forwards">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                          viewBox="0 0 60 60" xml:space="preserve">
