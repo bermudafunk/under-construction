@@ -338,6 +338,9 @@
                                     </svg>
                                 </button>
                             </div>
+                            <div class="content-audio-time">
+                                <p class="content-length"><span class="length" aria-label=""></span> <span aria-hidden="true"><?php esc_html_e('min.', 'mannheim-under-construction'); ?></span></p>
+                            </div>
                             <div class="intro-station-description"></div>
                             <details>
                                 <summary><span><?php esc_html_e('This is how it works', 'mannheim-under-construction'); ?></span><span class="arrow"></span></summary>
@@ -424,7 +427,7 @@
                         <div class="walk-end" style="display: none">
                             <div>&emsp;&emsp;&emsp;<span class="content-title"><?php esc_html_e('End', 'mannheim-under-construction'); ?></span></div>
                             <div class="content-station-title"></div>
-                            <div>&emsp;&emsp;&emsp;<span class="content-title"><?php esc_html_e('Thanks for participating!', 'mannheim-under-construction'); ?></span></div>
+                            <div>&emsp;&emsp;&emsp;<span class="content-title"><?php esc_html_e('Discover Mannheim further...', 'mannheim-under-construction'); ?></span></div>
                             <div class="content-image"></div>
                             <div class="content-description"></div>
                             <div class="full-height-spacer"></div>

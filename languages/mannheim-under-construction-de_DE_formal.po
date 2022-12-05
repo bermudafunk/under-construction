@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Mannheim Under Construction\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-13 20:28+0000\n"
-"PO-Revision-Date: 2022-12-03 15:02+0000\n"
+"PO-Revision-Date: 2022-12-05 18:26+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch (Sie)\n"
 "Language: de_DE_formal\n"
@@ -28,7 +28,7 @@ msgstr "... einen Spaziergang"
 msgid "... or a random post"
 msgstr "... einen Zufallsbeitrag"
 
-#: page-map.php:355
+#: page-map.php:358
 msgid ""
 "...continue reading this text. When no icon points to the right anymore, the "
 "content is finished. Here is the end."
@@ -36,7 +36,7 @@ msgstr ""
 "... diesen Text weiter zu lesen. Wenn kein Icon mehr nach rechts zeigt, ist "
 "der Inhalt beendet. Hier befindet sich das Ende."
 
-#: page-map.php:352
+#: page-map.php:355
 msgid ""
 "...hear the next station. The icon now points to the left. You could also "
 "swipe back, or forward to the left to..."
@@ -238,19 +238,19 @@ msgctxt "audio-walk"
 msgid "Use as featured image"
 msgstr "Als Beitragsbild verwenden"
 
-#: index.php:525 page-map.php:500
+#: index.php:525 page-map.php:503
 msgid "Back"
 msgstr "Zurück"
 
-#: index.php:534 page-map.php:435
+#: index.php:534 page-map.php:438
 msgid "Bonus"
 msgstr "Bonus"
 
-#: page-map.php:442
+#: page-map.php:445
 msgid "Change contrast"
 msgstr "Kontrast ändern"
 
-#: page-map.php:451
+#: page-map.php:454
 msgid "Change font size"
 msgstr "Schriftgröße ändern"
 
@@ -260,7 +260,7 @@ msgid "Change the font size or switch to black/white mode"
 msgstr ""
 "Veränderen Sie die Schriftgröße oder wechseln Sie in den Schwarz/Weiß-Modus"
 
-#: index.php:379
+#: index.php:376
 msgid "Choose or Upload Media"
 msgstr "Medien auswählen oder hochladen"
 
@@ -280,9 +280,13 @@ msgstr "Credits:"
 msgid "Daniel Winzen"
 msgstr "Daniel Winzen"
 
-#: index.php:381
+#: index.php:378
 msgid "Desired location"
 msgstr "Gewünschter Ort"
+
+#: page-map.php:430
+msgid "Discover Mannheim further..."
+msgstr "Erkunden Sie Mannheim weiter..."
 
 #: index.php:593
 msgid ""
@@ -309,11 +313,11 @@ msgstr "Audiowalk bearbeiten"
 msgid "Encoding guideline:"
 msgstr "Kodierungs-Leitfaden:"
 
-#: index.php:535 page-map.php:425
+#: index.php:535 page-map.php:428
 msgid "End"
 msgstr "Ende"
 
-#: index.php:771
+#: index.php:753
 #| msgid ""
 #| "Enter a new search term or try finding an interesting post with the tag "
 #| "search :)"
@@ -360,7 +364,7 @@ msgstr ""
 "Container, welches das moov Atom am Anfang hat und von fast allen Browsern "
 "unterstützt wird."
 
-#: page-map.php:537
+#: page-map.php:540
 msgid "Help"
 msgstr "Hilfe"
 
@@ -373,7 +377,7 @@ msgstr "Auf Karte verstecken:"
 msgid "https://danwin1210.de"
 msgstr "https://danwin1210.de"
 
-#: page-map.php:531 page-map.php:701
+#: page-map.php:534 page-map.php:704
 msgid "Imprint"
 msgstr "Impressum"
 
@@ -423,7 +427,7 @@ msgid "Locations"
 msgstr "Orte"
 
 #. Name of the plugin
-#: index.php:335
+#: index.php:332
 msgid "Mannheim Under Construction"
 msgstr "Mannheim Under Construction"
 
@@ -436,11 +440,11 @@ msgstr ""
 "Engagements. Diese Stadtkarte stellt zivilgesellschaftliches Engagement in "
 "der Stadt Mannheim vor."
 
-#: page-map.php:287 page-map.php:409
+#: page-map.php:287 page-map.php:342 page-map.php:412
 msgid "min."
 msgstr "min."
 
-#: page-map.php:582
+#: page-map.php:585
 msgid "more information"
 msgstr "mehr Informationen"
 
@@ -481,7 +485,7 @@ msgstr ""
 "Ups, während des Ladens Ihrer Suchergebnisse ist ein Fehler aufgetreten. "
 "Bitte versuchen Sie es erneut"
 
-#: page-map.php:494
+#: page-map.php:497
 msgid "Open player"
 msgstr "Wiedergabe öffnen"
 
@@ -495,15 +499,15 @@ msgstr ""
 "geringere Dateigröße bei ungefähr gleichbleibender Qualität bietet. Es wird "
 "von den meisten modernen Browsern unterstützt."
 
-#: index.php:772
+#: index.php:754
 msgid "Or listen to this randomly selected post:"
 msgstr "Oder hören Sie sich diesen zufällig ausgewählten Beitrag an:"
 
-#: page-map.php:246 page-map.php:319 page-map.php:385
+#: page-map.php:246 page-map.php:319 page-map.php:388
 msgid "Play/Pause"
 msgstr "Abspielen/Pausieren"
 
-#: index.php:286
+#: index.php:283
 msgid "Popup"
 msgstr "Popup"
 
@@ -515,7 +519,7 @@ msgstr "Beitragslänge"
 msgid "Post type"
 msgstr "Beitragsart"
 
-#: page-map.php:534 page-map.php:704
+#: page-map.php:537 page-map.php:707
 msgid "Privacy"
 msgstr "Datenschutz"
 
@@ -548,7 +552,7 @@ msgstr "Stellt eine Karte mit Audiostationen zur Verfügung"
 msgid "Reset"
 msgstr "Zurücksetzen"
 
-#: page-map.php:462 page-map.php:474
+#: page-map.php:465 page-map.php:477
 msgid "Search"
 msgstr "Suche"
 
@@ -568,23 +572,23 @@ msgstr "Suche im Archiv"
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: index.php:791
+#: index.php:773
 msgid "Settings › Mannheim Under Construction"
 msgstr "Einstellungen  › Mannheim Under Construction"
 
-#: page-map.php:614
+#: page-map.php:617
 msgid "Show info about the project"
 msgstr "Informationen zum Projekt anzeigen"
 
-#: page-map.php:519
+#: page-map.php:522
 msgid "Show more info about the project"
 msgstr "Mehr Informationen zum Projekt anzeigen"
 
-#: index.php:293
+#: index.php:290
 msgid "Show popup"
 msgstr "Popup anzeigen"
 
-#: page-map.php:725
+#: page-map.php:728
 msgid "Sorry, you need to enable JavaScript to use this map."
 msgstr ""
 "Tut uns leid, aber Sie benötigen JavaScript um diese Karte zu benutzen."
@@ -593,17 +597,13 @@ msgstr ""
 msgid "Start"
 msgstr "Start"
 
-#: page-map.php:365
+#: page-map.php:368
 msgid "Start with station 01"
 msgstr "Starten Sie mit Station 01"
 
 #: index.php:575
 msgid "Stations:"
 msgstr "Stationen:"
-
-#: page-map.php:427
-msgid "Thanks for participating!"
-msgstr "Danke für‘s Mitmachen!"
 
 #: index.php:598
 msgid ""
@@ -612,7 +612,7 @@ msgstr ""
 "Das gleiche gilt für Videodateien, die für die Gebärdensprache-Version "
 "verwendet werden. Diese sind:"
 
-#: index.php:778
+#: index.php:760
 msgid ""
 "The search found the following posts. Click on the title to listen to the "
 "post:"
@@ -620,12 +620,12 @@ msgstr ""
 "Die Suche hat folgende Beiträge gefunden. Klicken Sie auf den Titel um den "
 "Beitrag zu hören:"
 
-#: index.php:770
+#: index.php:752
 #, php-format
 msgid "The search term \"%s\" did unfortunately not find any posts :("
 msgstr "Der Suchbegriff \"%s\" hat leider keine Beiträge gefunden :("
 
-#: index.php:776
+#: index.php:758
 #, php-format
 #| msgid ""
 #| "The search term \"%s\" did find the following posts. Click on the title "
@@ -637,7 +637,7 @@ msgstr ""
 "Der Suchbegriff \"%s\" hat folgende Beiträge gefunden. Klicken Sie auf den "
 "Titel um den Beitrag zu hören:"
 
-#: page-map.php:349
+#: page-map.php:352
 msgid ""
 "This icon means, that you can swipe further. You can for example continue "
 "reading this text. Swipe to the left to..."
@@ -645,7 +645,7 @@ msgstr ""
 "Dieses Icon bedeutet, dass Sie die Möglichkeit haben weiter zu wischen. Sie "
 "können zum Beispiel diesen Text weiter lesen. Wischen Sie nach links, um..."
 
-#: page-map.php:343
+#: page-map.php:346
 msgid "This is how it works"
 msgstr "So funktioniert's"
 
@@ -681,7 +681,7 @@ msgstr "Zu dieser Audiostation hochgeladen"
 msgid "Uploaded to this audio walk"
 msgstr "Zu diesem Audiowalk hochgeladen"
 
-#: index.php:380
+#: index.php:377
 msgid "Use this media"
 msgstr "Diese Mediendatei verwenden"
 

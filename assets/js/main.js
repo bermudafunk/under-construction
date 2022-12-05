@@ -548,18 +548,28 @@ window.addEventListener('DOMContentLoaded', function(){
                         walk_intro.querySelector('.content-title').innerHTML = audio_station.title;
                         walk_intro.querySelector('.content-location').innerHTML = audio_station.location;
                         walk_intro.querySelector('.content-location-2').innerHTML = audio_station.location_2;
+                        let content_length = walk_intro.querySelector('.content-length .length');
+                        content_length.innerHTML = audio_station.length;
+                        content_length.setAttribute('aria-label', audio_station.length_readable);
                         first = false;
                     } else {
-                        details_wrapper.innerHTML += '<details><summary><span>' + intro.title + '</span><span class="arrow"></span></summary><div class="content-player" data-audio-id="' + intro.audio_id + '">' + content_player.innerHTML + '</div>' + audio_station.description + '</details>';
+                        let audio_station = audio_stations[intro.audio_id];
+                        details_wrapper.innerHTML += '<details><summary><span>' + intro.title + '</span><span class="arrow"></span></summary><div class="content-player" data-audio-id="' + intro.audio_id + '">' + content_player.innerHTML + '</div>' + '<div class="content-audio-time"><p class="content-length"><span class="length" aria-label="' + audio_station.length_readable + '">' + audio_station.length + '</span> <span aria-hidden="true">min.</span></p></div>' + audio_station.description + '</details>';
                     }
                 }
                 walk_end.querySelector('.content-station-title').innerText = mannheim_under_construction.text_walk + ' ' + audio_stations[current_walk.intros[0].audio_id].title;
                 let walk_end_description = walk_end.querySelector('.content-description');
                 walk_end_description.innerHTML = current_walk.description;
-                let random_audio_link = walk_end_description.querySelector('a[href="#"]');
-                if(random_audio_link){
-                    random_audio_link.addEventListener('click', _ => {
-                        load_audio(mannheim_under_construction.initial_audio);
+                let close_walk = walk_end_description.querySelector('a[href="#"]');
+                if(close_walk){
+                    close_walk.addEventListener('click', _ => {
+                        sidebar_left.close();
+                    });
+                }
+                let search = walk_end_description.querySelector('a[href="#search"]');
+                if(search){
+                    search.addEventListener('click', _ => {
+                        sidebar_left.open('#search');
                     });
                 }
                 let image_container = walk_end.querySelector('.content-image');
