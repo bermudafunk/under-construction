@@ -367,8 +367,8 @@ class Mannheim_Under_Constrcution
 						}
 					}
 				}
-                wp_enqueue_script( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.js' , __FILE__ ), [], '1.9.2' );
-				wp_enqueue_style( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.css' , __FILE__ ), [], '1.9.2' );
+                wp_enqueue_script( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.js' , __FILE__ ), [], '1.9.3' );
+				wp_enqueue_style( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.css' , __FILE__ ), [], '1.9.3' );
 				wp_enqueue_style( 'mannheim-under-construction-admin', plugins_url( 'assets/css/admin.css' , __FILE__ ), [], substr(md5_file( __DIR__ . '/assets/css/admin.css' ), 20));
 				wp_enqueue_script( 'mannheim-under-construction-admin', plugins_url( 'assets/js/admin.js' , __FILE__ ), ['mannheim-under-construction-leaflet'], substr(md5_file( __DIR__ . '/assets/js/admin.js' ), 20));
 				wp_localize_script( 'mannheim-under-construction-admin', 'mannheim_under_construction_admin',
@@ -403,8 +403,8 @@ class Mannheim_Under_Constrcution
 					wp_deregister_style( $wp_style->handle );
 				}
 				wp_deregister_script( 'wp-embed' );
-				wp_enqueue_style( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.css', __FILE__ ), [], '1.9.2' );
-				wp_enqueue_script( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.js', __FILE__ ), [], '1.9.2', true );
+				wp_enqueue_style( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.css', __FILE__ ), [], '1.9.3' );
+				wp_enqueue_script( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.js', __FILE__ ), [], '1.9.3', true );
 				wp_enqueue_style( 'mannheim-under-construction-sidebar-v2', plugins_url( 'assets/css/leaflet-sidebar-customized.css', __FILE__ ), [], substr( md5_file( __DIR__ . '/assets/css/leaflet-sidebar-customized.css' ), 20 ) );
 				wp_enqueue_script( 'mannheim-under-construction-sidebar-v2', plugins_url( 'assets/js/leaflet-sidebar-customized.js', __FILE__ ), [], substr( md5_file( __DIR__ . '/assets/js/leaflet-sidebar-customized.js' ), 20 ), true );
 				wp_enqueue_style( 'mannheim-under-construction-leaflet-markercluster', plugins_url( 'Leaflet.markercluster/dist/MarkerCluster.css', __FILE__ ), [], '1.5.3' );
