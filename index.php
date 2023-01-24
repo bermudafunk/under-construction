@@ -215,7 +215,6 @@ class Mannheim_Under_Constrcution
 				$fields = [
 					'mannheim_under_construction_ogg',
 					'mannheim_under_construction_aac',
-					'mannheim_under_construction_waveform',
 					'mannheim_under_construction_location',
 					'mannheim_under_construction_location_lat',
 					'mannheim_under_construction_location_lng',
@@ -232,7 +231,16 @@ class Mannheim_Under_Constrcution
 						update_post_meta( $post_id, $field, sanitize_textarea_field( $_POST[ $field ] ) );
 					}
 				}
-			} elseif(get_post_type($post_id) === 'audio-walk') {
+				if(is_array($_POST['mannheim_under_construction_accordions'])) {
+					$accordions = [];
+					foreach ( $_POST[ 'mannheim_under_construction_accordions' ] as $accordion ) {
+						if ( isset( $accordion[ 'title' ] ) && ! empty( $accordion[ 'description' ] ) ) {
+							$accordions [] = $accordion;
+						}
+					}
+					update_post_meta( $post_id, 'mannheim_under_construction_accordions', $accordions );
+				}
+            } elseif(get_post_type($post_id) === 'audio-walk') {
 				$fields = [
 					'mannheim_under_construction_location_lat',
 					'mannheim_under_construction_location_lng',
@@ -320,14 +328,6 @@ class Mannheim_Under_Constrcution
 			register_setting( 'mannheim-under-construction', 'mannheim_under_construction_popup_headline', [ 'type' => 'string' ] );
 		} );
 
-		add_filter( 'allowed_options', function ( $allowed_options ) {
-			$allowed_options[ 'mannheim-under-construction' ] = [
-				'mannheim_under_construction_popup_show',
-				'mannheim_under_construction_popup_text',
-			];
-			return $allowed_options;
-		} );
-
 		add_action( 'admin_menu', function () {
 			add_options_page( __( 'Mannheim Under Construction', 'mannheim-under-construction' ), __( 'Mannheim Under Construction', 'mannheim-under-construction' ), 'manage_options', 'mannheim-under-construction', [ __CLASS__, 'options_page' ] );
 		} );
@@ -340,6 +340,7 @@ class Mannheim_Under_Constrcution
                 $walk_stations = [];
                 $walk_intros = [];
 				$walk_audios = [];
+				$accordions = [];
                 $is_walk = $typenow === 'audio-walk';
 				if($is_walk){
                     if(get_the_ID()) {
@@ -366,6 +367,17 @@ class Mannheim_Under_Constrcution
 							$walk_audios []= ['title' => esc_attr($audio->post_title), 'id' => $audio->ID];
 						}
 					}
+				} else {
+					if ( get_the_ID() ) {
+						$track_accordions = get_post_meta( get_the_ID(), 'mannheim_under_construction_accordions', true );
+						if ( is_array( $track_accordions ) ) {
+							foreach ( $track_accordions as $accordion ) {
+								$accordions [] = [ 'title'    => esc_attr( $accordion[ 'title' ] ),
+								                   'description' => esc_html($accordion[ 'description' ])
+								];
+							}
+						}
+					}
 				}
                 wp_enqueue_script( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.js' , __FILE__ ), [], '1.9.3' );
 				wp_enqueue_style( 'mannheim-under-construction-leaflet', plugins_url( 'leaflet/leaflet.css' , __FILE__ ), [], '1.9.3' );
@@ -384,6 +396,7 @@ class Mannheim_Under_Constrcution
                             'intros' => $walk_intros,
                             'audios' => $walk_audios,
                         ],
+                        'accordions' => $accordions,
 					]
 				);
 			}
@@ -459,6 +472,7 @@ class Mannheim_Under_Constrcution
 			                'lng'             => get_post_meta( $post_id, 'mannheim_under_construction_location_lng', true ),
 			                'location'        => esc_html( get_post_meta( $post_id, 'mannheim_under_construction_location', true ) ),
 			                'location_2'      => esc_html( get_post_meta( $post_id, 'mannheim_under_construction_location_2', true ) ),
+			                'accordions'      => get_post_meta( $post_id, 'mannheim_under_construction_accordions', true ),
 			                'credits'         => apply_filters( 'the_content', ( get_post_meta( $post_id, 'mannheim_under_construction_credits', true ) ) ),
 			                'title'           => esc_html( get_the_title( $post_id ) ),
 			                'description'     => apply_filters( 'the_content', get_the_content( null, false, $post_id ) ),
@@ -466,7 +480,6 @@ class Mannheim_Under_Constrcution
 			                'ogg_mime'        => get_post_mime_type( $ogg_id ),
 			                'aac'             => wp_get_attachment_url( $aac_id ),
 			                'aac_mime'        => get_post_mime_type( $aac_id ),
-			                'waveform'        => get_post_meta( $post_id, 'mannheim_under_construction_waveform', true ),
 			                'length'          => $length,
 			                'length_readable' => $length_readable,
 			                'tags'            => $tags,
@@ -600,7 +613,7 @@ class Mannheim_Under_Constrcution
 			<li><?php esc_html_e('H264 with Pixel format yuv420p, main profile and 25 fps in an mp4 container, which has the moov atom at the beginning, which is supported by almost all browsers .', 'mannheim-under-construction'); ?></li>
 			<li><?php esc_html_e('VP9 at CRF 40 and 25 fps in a WebM container, which offers significantly lower file size with about the same quality. It\'s supported by most modern browsers.', 'mannheim-under-construction'); ?></li>
 		</ul> -->
-		<div>
+        <div>
 			<input type="hidden" id="mannheim_under_construction_ogg" name="mannheim_under_construction_ogg" value="<?php echo esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_ogg', true)); ?>">
 			<button type="button" class="under-construction-upload" data-field="mannheim_under_construction_ogg" data-type="audio/ogg"><?php esc_html_e('Upload OGG-Audio file', 'mannheim-under-construction'); ?></button>
 			<span id="mannheim_under_construction_ogg-selected"><?php echo esc_html(basename(get_post_meta( (get_post_meta(get_the_ID(), 'mannheim_under_construction_ogg', true)), '_wp_attached_file', true ))); ?></span>
@@ -610,25 +623,6 @@ class Mannheim_Under_Constrcution
 			<input type="hidden" id="mannheim_under_construction_aac" name="mannheim_under_construction_aac" value="<?php echo esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_aac', true)); ?>">
 			<button type="button" class="under-construction-upload" data-field="mannheim_under_construction_aac" data-type="audio/mpeg,audio/aac"><?php esc_html_e('Upload AAC-Audio file', 'mannheim-under-construction'); ?></button>
 			<span id="mannheim_under_construction_aac-selected"><?php echo esc_html(basename(get_post_meta( (get_post_meta(get_the_ID(), 'mannheim_under_construction_aac', true)), '_wp_attached_file', true ))); ?></span>
-		</div>
-		<br>
-		<div>
-			<?php $waveform = esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_waveform', true)); ?>
-			<input type="hidden" id="mannheim_under_construction_waveform" name="mannheim_under_construction_waveform" value="<?php echo $waveform; ?>">
-			<div class="mannheim-under-construction-waveform">
-				<svg preserveAspectRatio="none" width="500" height="50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 100">
-					<linearGradient id="Gradient" x1="0" x2="0" y1="0" y2="1">
-						<stop offset="0%" stop-color="white"/>
-						<stop offset="90%" stop-color="white" stop-opacity="0.75"/>
-						<stop offset="100%" stop-color="white" stop-opacity="0"/>
-					</linearGradient>
-					<mask id="Mask">
-						<path fill="url(#Gradient)" d="<?php echo $waveform; ?>"/>
-					</mask>
-					<rect id="remaining" mask="url(#Mask)" x="0" y="0" width="500" height="100" fill="#E6E6E6"/>
-					<rect id="progress" mask="url(#Mask)" x="0" y="0" width="0" height="100" fill="#F2FF5B"/>
-				</svg>
-			</div>
 		</div>
 		<br>
 		<div>
@@ -656,6 +650,11 @@ class Mannheim_Under_Constrcution
 			</label>
 		</div>
 		<br>
+        <p><b><?php esc_html_e('Accordions:', 'mannheim-under-construction'); ?></b></p>
+        <table id="select-accordions">
+            <tr><th><?php esc_html_e('Title', 'mannheim-under-construction'); ?></th><th><?php esc_html_e('Description', 'mannheim-under-construction'); ?></th></tr>
+        </table>
+        <br>
 		<input type="hidden" id="mannheim_under_construction_location_lat" name="mannheim_under_construction_location_lat" value="<?php echo esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_location_lat', true)); ?>">
 		<input type="hidden" id="mannheim_under_construction_location_lng" name="mannheim_under_construction_location_lng" value="<?php echo esc_attr(get_post_meta(get_the_ID(), 'mannheim_under_construction_location_lng', true)); ?>">
 		<div id="select-map-location"></div>

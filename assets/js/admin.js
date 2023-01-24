@@ -30,92 +30,40 @@ window.addEventListener('DOMContentLoaded', _ => {
                     let media_attachment = metaImageFrame.state().get('selection').first().toJSON();
                     field.setAttribute('value', media_attachment.id);
                     selected_label.innerText = media_attachment.filename;
-                    fetch(media_attachment.url).then(r => {
-                        if(r.ok){
-                            r.arrayBuffer().then(processTrack, console.error);
-                        }
-                    }, console.error);
                 });
 
                 // Opens the media library frame.
                 metaImageFrame.open();
             });
         }
-    }
-
-
-    // Inspired by https://gist.github.com/maxjvh/e4f6c9ec0fdea9450fd9303dd088b96d
-
-    let svg;
-    let svg_width;
-    let svg_height;
-    let svg_progress;
-    let svg_remaining;
-    setTimeout(_ => {
-        svg = document.querySelector('.mannheim-under-construction-waveform svg');
-        if(svg) {
-            svg_width = svg.getAttribute('width');
-            svg_height = svg.getAttribute('height');
-            svg_progress = svg.querySelector('#progress');
-            svg_remaining = svg.querySelector('#remaining');
-            svg.setAttribute('viewBox', `0 0 ${svg_width} ${svg_height}`);
-            svg_progress.setAttribute('height', svg_height);
-            svg_progress.setAttribute('width', '0');
-            svg_remaining.setAttribute('height', svg_height);
-            svg_remaining.setAttribute('width', svg_width);
-        }
-    }, 1000);
-
-    const smoothing = 2;
-    const avg = values => values.reduce((sum, value) => sum + value, 0) / values.length;
-    const max = values => values.reduce((max, value) => Math.max(max, value), 0);
-    const audioContext = new window.AudioContext();
-
-    function getWaveformData(audioBuffer, dataPoints) {
-        let channels = [];
-        for(let i = 0; i < audioBuffer.numberOfChannels; ++i) {
-            channels[i] = audioBuffer.getChannelData(i);
-        }
-
-        const values = new Float32Array(dataPoints);
-        const dataWindow = Math.round(channels[0].length / dataPoints);
-        for (let i = 0, y = 0, buffer = []; i < channels[0].length; ++i) {
-            let summedValue = 0;
-            for(let channel of channels){
-                summedValue += Math.abs(channel[i]);
+        let accordions = document.getElementById('select-accordions');
+        let accordion_count = 0;
+        if(accordions){
+            for (let accordion of mannheim_under_construction_admin.accordions) {
+                let row = document.createElement('tr');
+                row.innerHTML = '<td><input name="mannheim_under_construction_accordions['+accordion_count+'][title]" type="text" value="' + accordion.title + '"></td>';
+                row.innerHTML += '<td><textarea name="mannheim_under_construction_accordions['+accordion_count+'][description]">' + accordion.description + '</textarea></td>';
+                accordions.appendChild(row);
+                ++accordion_count;
             }
-            summedValue = summedValue / audioBuffer.numberOfChannels;
-            buffer.push(summedValue);
-            if (buffer.length === dataWindow) {
-                values[y++] = avg(buffer);
-                buffer = [];
+            let row = document.createElement('tr');
+            row.innerHTML = '<td><input name="mannheim_under_construction_accordions['+accordion_count+'][title]" type="text"></td>';
+            row.innerHTML += '<td><textarea name="mannheim_under_construction_accordions['+accordion_count+'][description]"></textarea></td>';
+            accordions.appendChild(row);
+            ++accordion_count;
+            let last_accordion_textarea = accordions.querySelector('tr:last-of-type textarea');
+            function accordions_last_change(e) {
+                e.target.removeEventListener('change', accordions_last_change);
+                let row = document.createElement('tr');
+                row.innerHTML = '<td><input name="mannheim_under_construction_accordions['+accordion_count+'][title]" type="text"></td>';
+                row.innerHTML += '<td><textarea name="mannheim_under_construction_accordions['+accordion_count+'][description]"></textarea></td>';
+                accordions.appendChild(row);
+                ++accordion_count;
+                last_accordion_textarea = accordions.querySelector('tr:last-of-type textarea');
+                last_accordion_textarea.addEventListener('change', accordions_last_change);
             }
+            last_accordion_textarea.addEventListener('change', accordions_last_change);
         }
-        return values;
-    }
-
-    function getSVGPath(waveformData) {
-        const maxValue = max(waveformData);
-
-        let path = `M 0 ${svg_height} `;
-        for (let i = 0; i < waveformData.length; ++i) {
-            path += `L ${i * smoothing} ${(1 - waveformData[i] / maxValue) * svg_height} `;
-        }
-        path += `V ${svg_height} H 0 Z`;
-
-        return path;
-    }
-
-    function processTrack(buffer) {
-        return audioContext.decodeAudioData(buffer)
-            .then(audioBuffer => {
-                const waveformData = getWaveformData(audioBuffer, svg_width / smoothing);
-
-                const svgPath = getSVGPath(waveformData, svg_height, smoothing);
-                svg.querySelector('path').setAttribute('d', svgPath);
-                document.querySelector('#mannheim_under_construction_waveform').setAttribute('value', svgPath);
-            })
-            .catch(console.error);
     }
 
     setTimeout(setup_map, 1000);
@@ -144,7 +92,7 @@ window.addEventListener('DOMContentLoaded', _ => {
             ++station_count;
         }
         let row = document.createElement('tr');
-        row.innerHTML = '<td><input name="mannheim_under_construction_intros['+station_count+'][title]" type="text" value="Station ' + (station_count + 1) + '"></td>';
+        row.innerHTML = '<td><input name="mannheim_under_construction_stations['+station_count+'][title]" type="text" value="Station ' + (station_count + 1) + '"></td>';
         row.innerHTML += '<td><select name="mannheim_under_construction_stations['+station_count+'][audio_id]">' + audio_options + '</select></td>';
         stations_selects.appendChild(row);
         ++station_count;

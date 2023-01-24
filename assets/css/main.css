@@ -104,10 +104,10 @@ main,
 .leaflet-container .leaflet-control-scale {
     font-size: 0.65em;
 }
-#walk .content-station-title,
-#walk .content-title,
-#walk .content-location,
-#walk .content-location-2,
+.content-station-title,
+.content-title,
+.content-location,
+.content-location-2,
 details summary,
 .prev-track,
 .next-track,
@@ -117,18 +117,12 @@ details summary,
 .font-enable-ligatures {
     font-variant-ligatures: normal;
 }
-.content-player .waveform > svg #progress {
-    fill: #888888;
-}
-.content-player .waveform > svg #remaining {
-    fill: #000000;
-}
-body.black-white .content-player .waveform > svg #remaining,
 body.black-white .leaflet-sidebar-content svg,
 body.black-white .close-button svg,
 body.black-white .onboarding-arrow,
 #black_white_switcher polygon:first-of-type,
-body.black-white #walk_button svg > g > path {
+body.black-white #walk_button svg > g > path,
+body.black-white #back_button svg > g > path:last-of-type {
     fill: #FFFFFF;
 }
 body.black-white #black_white_switcher polygon:first-of-type{
@@ -137,13 +131,6 @@ body.black-white #black_white_switcher polygon:first-of-type{
 svg {
     width: 100%;
     height: 100%;
-}
-.content-player .waveform > svg {
-    cursor: pointer;
-    height: 60px;
-}
-.content-player > .waveform {
-    padding: 0 10px;
 }
 .content-player,
 .content-player > div,
@@ -457,15 +444,16 @@ body.black-white button {
 }
 :root {
     --sidebar-background: url('../img/uc_c_yllw_muster.svg');
+    --audio-progress: 0;
 }
 .leaflet-sidebar-content {
     background: var(--sidebar-background) repeat;
-    background-size: 6em;
+    background-size: 9em;
 }
 body.black-white .leaflet-sidebar-content {
     color: #FFFFFF;
     background: var(--sidebar-background) repeat;
-    background-size: 6em;
+    background-size: 9em;
 }
 #search-tags .tag,
 .content-tags .tag {
@@ -775,7 +763,7 @@ body.black-white .light-theme {
     max-height: 350px;
     width: 100%;
     background: var(--sidebar-background) repeat;
-    background-size: 6em;
+    background-size: 9em;
     overflow: scroll;
     padding: 0 1em;
 }
@@ -837,4 +825,11 @@ details summary {
 }
 summary::-webkit-details-marker {
     display: none;
+}
+.content-timeline {
+    height: auto;
+    min-height: 60px;
+}
+.content-timeline path:last-of-type {
+    transform: translateX(calc(-66% + 0.95% * var(--audio-progress)));
 }

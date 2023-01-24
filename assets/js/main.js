@@ -104,15 +104,17 @@ window.addEventListener('DOMContentLoaded', function(){
         let search_sidebar_tags = document.querySelector('#search-tags');
         let seek_backwards = document.querySelectorAll('.seek_backwards');
         let seek_forwards = document.querySelectorAll('.seek_forwards');
-        let waveform = document.querySelector('#play .waveform svg');
-        let waveform_progress = waveform.querySelector('#progress');
-        let waveform_update_interval = null;
+        let timeline_update_interval = null;
+        let timelines = document.querySelectorAll('.content-timeline');
         let open_under_construction_info = document.querySelectorAll('.open-under-construction-info');
         let open_under_construction_more_info = document.querySelectorAll('.under-construction-more-info');
         let search_extend = document.querySelector('#search-extend');
         let sidebar_left_dom = document.querySelector('.leaflet-sidebar-left');
         let sidebar_right_dom = document.querySelector('.leaflet-sidebar-right');
         let play_tab_button = document.querySelector('#play_tab_button');
+        let play_tab = document.querySelector('#play');
+        let play_tab_pause = play_tab.querySelector('.play_pause_button .pause');
+        let play_tab_play = play_tab.querySelector('.play_pause_button .play');
         let walk = document.querySelector('#walk');
         let walk_prevs = walk.querySelectorAll('.prev-track');
         let walk_nexts = walk.querySelectorAll('.next-track');
@@ -124,7 +126,7 @@ window.addEventListener('DOMContentLoaded', function(){
         let walk_intro = walk.querySelector('.walk-intro');
         let walk_intro_player = walk_intro.querySelector('.content-player');
         let explainers = walk.querySelectorAll('.onboarding-explainer-description');
-
+        let current_audio = 0;
         let current_walk = 0;
         let current_walk_station = 0;
         let current_walk_explainer = 0;
@@ -178,16 +180,16 @@ window.addEventListener('DOMContentLoaded', function(){
             }
         });
         player.addEventListener('play', _ => {
-            if(player.innerHTML === player_new.innerHTML){
-                waveform_update_interval = setInterval(function () {
+            if(!timeline_update_interval && player.innerHTML === player_new.innerHTML){
+                timeline_update_interval = setInterval(function () {
                     requestAnimationFrame(updateAudioPosition);
                 }, 100);
             }
         });
         player.addEventListener('pause', _ => {
-            if(waveform_update_interval){
-                clearInterval(waveform_update_interval);
-                waveform_update_interval = null;
+            if(timeline_update_interval){
+                clearInterval(timeline_update_interval);
+                timeline_update_interval = null;
             }
         });
         for(let play_pause_button of play_pause_buttons) {
@@ -202,25 +204,25 @@ window.addEventListener('DOMContentLoaded', function(){
             }
         });
 
-        waveform.addEventListener('click', e => {
-            const position = e.offsetX / waveform.getBoundingClientRect().width;
-            if(player.innerHTML !== player_new.innerHTML) {
-                player.pause();
-                player.innerHTML = player_new.innerHTML;
-                player.load();
-                player.addEventListener('durationchange', update_time);
-                function update_time(){
-                    player.currentTime = position * player.duration;
-                    player.play();
-                    player.removeEventListener('durationchange', update_time);
+        for(let timeline of timelines) {
+            timeline.addEventListener('click', e => {
+                const position = e.offsetX / timeline.getBoundingClientRect().width;
+                if (player.innerHTML !== player_new.innerHTML) {
+                    player.addEventListener('durationchange', update_time);
+                    play_pause_handler();
+                    function update_time() {
+                        player.currentTime = position * player.duration;
+                        player.play().catch(_=>{});
+                        player.removeEventListener('durationchange', update_time);
+                    }
+                } else {
+                    if (player.duration) {
+                        player.currentTime = position * player.duration;
+                        player.play().catch(_=>{});
+                    }
                 }
-            } else {
-                if(player.duration) {
-                    player.currentTime = position * player.duration;
-                    player.play();
-                }
-            }
-        });
+            });
+        }
         for(let seek of seek_forwards) {
             seek.addEventListener('click', seek_forwards_handler);
         }
@@ -274,6 +276,9 @@ window.addEventListener('DOMContentLoaded', function(){
         }
         document.querySelector('#walk_button').addEventListener('click', _ => {
             load_walk_station(current_walk_station);
+        });
+        document.querySelector('#play_tab_button').addEventListener('click', _ => {
+            load_audio(current_audio);
         });
 
         L.DomEvent.disableScrollPropagation(onboarding);
@@ -384,8 +389,8 @@ window.addEventListener('DOMContentLoaded', function(){
                 player.innerHTML = player_new.innerHTML;
                 player.load();
             }
-            let all_plays = walk.querySelectorAll('.content-player .play');
-            let all_pauses = walk.querySelectorAll('.content-player .pause');
+            let all_plays = document.querySelectorAll('.content-player .play');
+            let all_pauses = document.querySelectorAll('.content-player .pause');
             if(all_plays) {
                 for (let play of all_plays) {
                     play.style.display = '';
@@ -400,10 +405,14 @@ window.addEventListener('DOMContentLoaded', function(){
                 player.play().catch(_=>{});
                 content_walk_play.style.display = 'none';
                 content_walk_pause.style.display = '';
+                play_tab_play.style.display = 'none';
+                play_tab_pause.style.display = '';
             } else {
                 player.pause();
                 content_walk_play.style.display = '';
                 content_walk_pause.style.display = 'none';
+                play_tab_play.style.display = '';
+                play_tab_pause.style.display = 'none';
             }
         }
         function play_pause_handler_with_id(audio_id){
@@ -481,21 +490,27 @@ window.addEventListener('DOMContentLoaded', function(){
             });
         }
         function load_audio(audio_id, load_only = false){
+            current_audio = audio_id;
             if(audio_stations[audio_id]){
-                play_tab_button.setAttribute('href', '#play');
                 let audio_station = audio_stations[audio_id];
-                document.querySelector('#play .content-location').innerHTML = audio_station.location;
-                document.querySelector('#play .content-title').innerHTML = audio_station.title;
-                document.querySelector('#play .content-description').innerHTML = audio_station.description;
-                document.querySelector('#play .content-credits').innerHTML = audio_station.credits;
-                let content_length = document.querySelector('#play .content-length .length');
+                play_tab.querySelector('.content-location').innerHTML = audio_station.location;
+                play_tab.querySelector('.content-location-2').innerHTML = audio_station.location_2;
+                play_tab.querySelector('.content-title').innerHTML = audio_station.title;
+                play_tab.querySelector('.content-description').innerHTML = audio_station.description;
+                play_tab.querySelector('.content-credits').innerHTML = audio_station.credits;
+                let details_wrapper = play_tab.querySelector('.content-description-details');
+                details_wrapper.innerHTML = '';
+                for(let accordion of audio_station.accordions){
+                    details_wrapper.innerHTML += '<details><summary><span>' + accordion.title + '</span><span class="arrow"></span></summary>' + accordion.description + '</details>';
+                }
+                let content_length = play_tab.querySelector('.content-length .length');
                 content_length.innerHTML = audio_station.length;
                 content_length.setAttribute('aria-label', audio_station.length_readable);
                 let tags_html = '';
                 for(let tag of audio_station.tags) {
                     tags_html += '<div class="tag" data-tagid="' + tag + '">#' + mannheim_under_construction.tag_data[tag] + '</div>';
                 }
-                document.querySelector('#play .content-tags').innerHTML = tags_html;
+                play_tab.querySelector('.content-tags').innerHTML = tags_html;
                 player_new.innerHTML = '';
                 if(audio_station.ogg) {
                     player_new.innerHTML += '<source src="' + audio_station.ogg + '" type="' + audio_station.ogg_mime + '">';
@@ -503,17 +518,23 @@ window.addEventListener('DOMContentLoaded', function(){
                 if(audio_station.aac) {
                     player_new.innerHTML += '<source src="' + audio_station.aac + '" type="' + audio_station.aac_mime + '">';
                 }
-                waveform.querySelector('path').setAttribute('d', audio_station.waveform);
                 if(player.innerHTML !== player_new.innerHTML){
-                    if(waveform_update_interval) {
-                        clearInterval(waveform_update_interval);
-                        waveform_update_interval = null;
+                    if(timeline_update_interval) {
+                        clearInterval(timeline_update_interval);
+                        timeline_update_interval = null;
                     }
-                    waveform_progress.setAttribute('width', '0');
-                }else if(!waveform_update_interval && !player.paused){
-                    waveform_update_interval = setInterval(function(){
+                    document.documentElement.style.setProperty('--audio-progress', 0);
+                }else if(!timeline_update_interval && !player.paused){
+                    timeline_update_interval = setInterval(function(){
                         requestAnimationFrame(updateAudioPosition);
                     }, 100);
+                }
+                if(player_new.innerHTML !== player.innerHTML || player.paused){
+                    play_tab_play.style.display = '';
+                    play_tab_pause.style.display = 'none';
+                } else {
+                    play_tab_play.style.display = 'none';
+                    play_tab_pause.style.display = '';
                 }
                 if(!load_only) {
                     sidebar_right.close();
@@ -526,7 +547,6 @@ window.addEventListener('DOMContentLoaded', function(){
 
         function load_walk(walk_id, load_only = false){
             if(walks[walk_id]){
-                play_tab_button.setAttribute('href', '#walk');
                 current_walk = walks[walk_id];
                 if(current_walk.intros[0]){
                     load_walk_station(-1);
@@ -679,11 +699,17 @@ window.addEventListener('DOMContentLoaded', function(){
                         walk_next.style.display = '';
                     }
                 }
-                if(waveform_update_interval) {
-                    clearInterval(waveform_update_interval);
-                    waveform_update_interval = null;
+                if(player.innerHTML !== player_new.innerHTML){
+                    if(timeline_update_interval) {
+                        clearInterval(timeline_update_interval);
+                        timeline_update_interval = null;
+                    }
+                    document.documentElement.style.setProperty('--audio-progress', 0);
+                }else if(!timeline_update_interval && !player.paused){
+                    timeline_update_interval = setInterval(function(){
+                        requestAnimationFrame(updateAudioPosition);
+                    }, 100);
                 }
-                waveform_progress.setAttribute('width', '0');
                 if(player_new.innerHTML !== player.innerHTML || player.paused){
                     content_walk_play.style.display = '';
                     content_walk_pause.style.display = 'none';
@@ -698,6 +724,26 @@ window.addEventListener('DOMContentLoaded', function(){
                 walk_end.style.display = 'none';
                 walk_intro.style.display = '';
                 load_walk_explainer(0);
+                player_new.innerHTML = '';
+                let station = current_walk.intros[0];
+                let audio_station = audio_stations[station.audio_id];
+                if(audio_station.ogg) {
+                    player_new.innerHTML += '<source src="' + audio_station.ogg + '" type="' + audio_station.ogg_mime + '">';
+                }
+                if(audio_station.aac) {
+                    player_new.innerHTML += '<source src="' + audio_station.aac + '" type="' + audio_station.aac_mime + '">';
+                }
+                if(player.innerHTML !== player_new.innerHTML){
+                    if(timeline_update_interval) {
+                        clearInterval(timeline_update_interval);
+                        timeline_update_interval = null;
+                    }
+                    document.documentElement.style.setProperty('--audio-progress', 0);
+                }else if(!timeline_update_interval && !player.paused){
+                    timeline_update_interval = setInterval(function(){
+                        requestAnimationFrame(updateAudioPosition);
+                    }, 100);
+                }
             } else if(station_id === -2 && mannheim_under_construction.walk_data.length > 1){
                 current_walk_station = station_id;
                 content_walk_stations.style.display = 'none';
@@ -715,10 +761,8 @@ window.addEventListener('DOMContentLoaded', function(){
 
         function updateAudioPosition() {
             const {currentTime, duration} = player;
-            const physicalPosition = currentTime / duration * 500;
-            if (physicalPosition) {
-                waveform_progress.setAttribute('width', physicalPosition);
-            }
+            const percent = currentTime / duration * 100;
+            document.documentElement.style.setProperty('--audio-progress', percent);
         }
 
         function update_bg(){
@@ -731,7 +775,7 @@ window.addEventListener('DOMContentLoaded', function(){
             document.documentElement.style.setProperty('--sidebar-background', 'url(' + backgrounds[Math.floor(Math.random() * backgrounds.length)] + ')');
         }
 
-        document.querySelector('#play .content-tags').addEventListener('click', e => {
+        play_tab.querySelector('.content-tags').addEventListener('click', e => {
             let tag_id = e.target.getAttribute('data-tagid');
             if(tag_id) {
                 let target_tag = search_sidebar_tags.querySelector('.tag[data-tagid="' + tag_id + '"]');
