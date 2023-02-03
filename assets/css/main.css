@@ -448,12 +448,12 @@ body.black-white button {
 }
 .leaflet-sidebar-content {
     background: var(--sidebar-background) repeat;
-    background-size: 9em;
+    background-size: 8em;
 }
 body.black-white .leaflet-sidebar-content {
     color: #FFFFFF;
     background: var(--sidebar-background) repeat;
-    background-size: 9em;
+    background-size: 8em;
 }
 #search-tags .tag,
 .content-tags .tag {
@@ -763,16 +763,18 @@ body.black-white .light-theme {
     max-height: 350px;
     width: 100%;
     background: var(--sidebar-background) repeat;
-    background-size: 9em;
+    background-size: 8em;
     overflow: scroll;
     padding: 0 1em;
 }
-#walk.leaflet-sidebar-pane {
+#walk.leaflet-sidebar-pane,
+#play.leaflet-sidebar-pane {
     padding: 20px 60px 0 20px;
 }
 .content-walk-stations,
 .walk-intro,
-.walk-end {
+.walk-end,
+#play {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -811,7 +813,9 @@ details summary {
     margin-left: -20px;
     margin-right: -60px;
 }
-#walk .content-player {
+.content-player,
+.content-timeline,
+.content-audio-time {
     max-width: 286px;
     align-self: center;
     width: 100%;
@@ -832,4 +836,7 @@ summary::-webkit-details-marker {
 }
 .content-timeline path:last-of-type {
     transform: translateX(calc(-66% + 0.95% * var(--audio-progress)));
+}
+.content-length {
+    margin: 0;
 }
