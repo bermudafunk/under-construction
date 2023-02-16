@@ -381,6 +381,9 @@ window.addEventListener('DOMContentLoaded', function(){
         } else {
             if(mannheim_under_construction.walk_data.length === 1){
                 load_walk(mannheim_under_construction.walk_data[0].id, true);
+                if(!mannheim_under_construction.load_initial_only){
+                    load_audio(mannheim_under_construction.initial_audio, false);
+                }
             }
         }
         function play_pause_handler(){
