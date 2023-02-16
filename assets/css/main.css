@@ -774,7 +774,7 @@ body.black-white .light-theme {
 .content-walk-stations,
 .walk-intro,
 .walk-end,
-#play {
+#play.active {
     display: flex;
     flex-direction: column;
     height: 100%;
