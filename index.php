@@ -305,7 +305,7 @@ class Mannheim_Under_Constrcution
 
 			add_settings_field(
 				'mannheim_under_construction_popup_headline',
-				__( 'Popup Headline', 'salesforce-connector' ),
+				__( 'Popup Headline', 'mannheim-under-construction' ),
 				function () {
 					echo '<input type="text" name="mannheim_under_construction_popup_headline" class="regular-text code" value="' . esc_attr( get_option( 'mannheim_under_construction_popup_headline' ) ) . '">';
 				},
@@ -315,7 +315,7 @@ class Mannheim_Under_Constrcution
 
 			add_settings_field(
 				'mannheim_under_construction_popup_text',
-				__( 'Popup Text', 'salesforce-connector' ),
+				__( 'Popup Text', 'mannheim-under-construction' ),
 				function () {
 					echo '<textarea name="mannheim_under_construction_popup_text" class="regular-text code">' . esc_html( get_option( 'mannheim_under_construction_popup_text' ) ) . '</textarea>';
 				},
