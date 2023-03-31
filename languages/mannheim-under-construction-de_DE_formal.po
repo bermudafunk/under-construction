@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Mannheim Under Construction\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-13 20:28+0000\n"
-"PO-Revision-Date: 2022-12-05 18:26+0000\n"
+"PO-Revision-Date: 2023-03-31 17:53+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch (Sie)\n"
 "Language: de_DE_formal\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.3; wp-6.1.1\n"
+"X-Loco-Version: 2.6.4; wp-6.2\n"
 "X-Domain: mannheim-under-construction"
 
 #: page-map.php:33
@@ -28,7 +28,7 @@ msgstr "... einen Spaziergang"
 msgid "... or a random post"
 msgstr "... einen Zufallsbeitrag"
 
-#: page-map.php:358
+#: page-map.php:366
 msgid ""
 "...continue reading this text. When no icon points to the right anymore, the "
 "content is finished. Here is the end."
@@ -36,7 +36,7 @@ msgstr ""
 "... diesen Text weiter zu lesen. Wenn kein Icon mehr nach rechts zeigt, ist "
 "der Inhalt beendet. Hier befindet sich das Ende."
 
-#: page-map.php:355
+#: page-map.php:363
 msgid ""
 "...hear the next station. The icon now points to the left. You could also "
 "swipe back, or forward to the left to..."
@@ -44,13 +44,17 @@ msgstr ""
 "... die nächste Station zu hören. Das Icon zeigt nun nach links. Sie könnten "
 "auch zurück wischen, oder vorwärts um..."
 
-#: index.php:595
+#: index.php:621
 msgid ""
 "AAC at 96kbps (alternatively MP3 at 128kbps) with 48kHz sample rate, which "
 "is supported by almost all browsers."
 msgstr ""
 "AAC bei 96kbps (alternativ MP3 bei 128kbps) mit 48kHz Abtastrate, was von "
 "fast allen Browsern unterstützt wird."
+
+#: index.php:666
+msgid "Accordions:"
+msgstr "Akkordions:"
 
 #: index.php:40
 msgid "Add new audio station"
@@ -68,7 +72,7 @@ msgstr "Alle Audiostationen"
 msgid "All audio walks"
 msgstr "Alle Audiowalks"
 
-#: index.php:577 index.php:581
+#: index.php:603 index.php:607
 msgid "Audio"
 msgstr "Audio"
 
@@ -80,7 +84,7 @@ msgstr "Audiostation Archive"
 msgid "Audio station Attributes"
 msgstr "Audiostation Attribute"
 
-#: index.php:568
+#: index.php:594
 msgid "Audio station data"
 msgstr "Audiostationsdaten"
 
@@ -128,7 +132,7 @@ msgstr "Audiowalk Archive"
 msgid "Audio walk Attributes"
 msgstr "Audiowalk Attribute"
 
-#: index.php:569
+#: index.php:595
 msgid "Audio walk data"
 msgstr "Audiowalk-Daten"
 
@@ -238,19 +242,19 @@ msgctxt "audio-walk"
 msgid "Use as featured image"
 msgstr "Als Beitragsbild verwenden"
 
-#: index.php:525 page-map.php:503
+#: index.php:551 page-map.php:519
 msgid "Back"
 msgstr "Zurück"
 
-#: index.php:534 page-map.php:438
+#: index.php:560 page-map.php:454
 msgid "Bonus"
 msgstr "Bonus"
 
-#: page-map.php:445
+#: page-map.php:461
 msgid "Change contrast"
 msgstr "Kontrast ändern"
 
-#: page-map.php:454
+#: page-map.php:470
 msgid "Change font size"
 msgstr "Schriftgröße ändern"
 
@@ -260,7 +264,7 @@ msgid "Change the font size or switch to black/white mode"
 msgstr ""
 "Veränderen Sie die Schriftgröße oder wechseln Sie in den Schwarz/Weiß-Modus"
 
-#: index.php:376
+#: index.php:388
 msgid "Choose or Upload Media"
 msgstr "Medien auswählen oder hochladen"
 
@@ -272,7 +276,7 @@ msgstr "Klicken Sie hier für die erweiterte Suche"
 msgid "Click on start and choose..."
 msgstr "Klicken Sie auf Start und wählen Sie dann..."
 
-#: index.php:647
+#: index.php:654
 msgid "Credits:"
 msgstr "Credits:"
 
@@ -280,15 +284,19 @@ msgstr "Credits:"
 msgid "Daniel Winzen"
 msgstr "Daniel Winzen"
 
-#: index.php:378
+#: index.php:668
+msgid "Description"
+msgstr "Beschreibung"
+
+#: index.php:390
 msgid "Desired location"
 msgstr "Gewünschter Ort"
 
-#: page-map.php:430
+#: page-map.php:446
 msgid "Discover Mannheim further..."
 msgstr "Erkunden Sie Mannheim weiter..."
 
-#: index.php:593
+#: index.php:619
 msgid ""
 "Each audio file should be converted into several formats for best cross "
 "browser compatibility and optimizing download size for modern clients. Only "
@@ -309,15 +317,15 @@ msgstr "Audiostationen bearbeiten"
 msgid "Edit audio walk"
 msgstr "Audiowalk bearbeiten"
 
-#: index.php:592
+#: index.php:618
 msgid "Encoding guideline:"
 msgstr "Kodierungs-Leitfaden:"
 
-#: index.php:535 page-map.php:428
+#: index.php:561 page-map.php:444
 msgid "End"
 msgstr "Ende"
 
-#: index.php:753
+#: index.php:765
 #| msgid ""
 #| "Enter a new search term or try finding an interesting post with the tag "
 #| "search :)"
@@ -354,7 +362,7 @@ msgstr "Nach Datum filtern"
 msgid "For example:"
 msgstr "Zum Beispiel:"
 
-#: index.php:600
+#: index.php:626
 msgid ""
 "H264 with Pixel format yuv420p, main profile and 25 fps in an mp4 container, "
 "which has the moov atom at the beginning, which is supported by almost all "
@@ -364,11 +372,11 @@ msgstr ""
 "Container, welches das moov Atom am Anfang hat und von fast allen Browsern "
 "unterstützt wird."
 
-#: page-map.php:540
+#: page-map.php:556
 msgid "Help"
 msgstr "Hilfe"
 
-#: index.php:653
+#: index.php:660
 msgid "Hide on map:"
 msgstr "Auf Karte verstecken:"
 
@@ -377,7 +385,7 @@ msgstr "Auf Karte verstecken:"
 msgid "https://danwin1210.de"
 msgstr "https://danwin1210.de"
 
-#: page-map.php:534 page-map.php:704
+#: page-map.php:550 page-map.php:720
 msgid "Imprint"
 msgstr "Impressum"
 
@@ -389,7 +397,7 @@ msgstr "In Audiostation einfügen"
 msgid "Insert into audio walk"
 msgstr "In Audiowalk einfügen"
 
-#: index.php:579
+#: index.php:605
 msgid "Intros:"
 msgstr "Intros:"
 
@@ -401,7 +409,7 @@ msgstr "Länge einer Audiostation"
 msgid "Lengths"
 msgstr "Längen"
 
-#: index.php:574 index.php:591
+#: index.php:600 index.php:617
 msgid "Link:"
 msgstr "Link:"
 
@@ -409,7 +417,7 @@ msgstr "Link:"
 msgid "Location"
 msgstr "Ort"
 
-#: index.php:641
+#: index.php:648
 msgid "Location 2:"
 msgstr "Ort 2:"
 
@@ -417,7 +425,7 @@ msgstr "Ort 2:"
 msgid "Location of an audio station"
 msgstr "Ort einer Audiostation"
 
-#: index.php:635
+#: index.php:642
 msgid "Location:"
 msgstr "Ort:"
 
@@ -440,11 +448,11 @@ msgstr ""
 "Engagements. Diese Stadtkarte stellt zivilgesellschaftliches Engagement in "
 "der Stadt Mannheim vor."
 
-#: page-map.php:287 page-map.php:342 page-map.php:412
+#: page-map.php:255 page-map.php:320 page-map.php:397
 msgid "min."
 msgstr "min."
 
-#: page-map.php:585
+#: page-map.php:601
 msgid "more information"
 msgstr "mehr Informationen"
 
@@ -456,7 +464,7 @@ msgstr "Neue Audiostation"
 msgid "New audio walk"
 msgstr "Neuer Audiowalk"
 
-#: index.php:655
+#: index.php:662
 msgid "No"
 msgstr "Nein"
 
@@ -476,7 +484,7 @@ msgstr "Keine Audiowalks im Papierkorb gefunden."
 msgid "No audio walks found."
 msgstr "Keine Audiowalks gefunden."
 
-#: index.php:522
+#: index.php:548
 #| msgid ""
 #| "Oops, an error occured while loading your search results. Please try again"
 msgid ""
@@ -485,11 +493,11 @@ msgstr ""
 "Ups, während des Ladens Ihrer Suchergebnisse ist ein Fehler aufgetreten. "
 "Bitte versuchen Sie es erneut"
 
-#: page-map.php:497
+#: page-map.php:513
 msgid "Open player"
 msgstr "Wiedergabe öffnen"
 
-#: index.php:596
+#: index.php:622
 msgid ""
 "Opus at 64kbps with 48kHz sample rate in an OGG container, which offers "
 "significant lower file size with about the same quality. It's supported by "
@@ -499,17 +507,25 @@ msgstr ""
 "geringere Dateigröße bei ungefähr gleichbleibender Qualität bietet. Es wird "
 "von den meisten modernen Browsern unterstützt."
 
-#: index.php:754
+#: index.php:766
 msgid "Or listen to this randomly selected post:"
 msgstr "Oder hören Sie sich diesen zufällig ausgewählten Beitrag an:"
 
-#: page-map.php:246 page-map.php:319 page-map.php:388
+#: page-map.php:265 page-map.php:330 page-map.php:407
 msgid "Play/Pause"
 msgstr "Abspielen/Pausieren"
 
-#: index.php:283
+#: index.php:291
 msgid "Popup"
 msgstr "Popup"
+
+#: index.php:308
+msgid "Popup Headline"
+msgstr "Popup Titel"
+
+#: index.php:318
+msgid "Popup Text"
+msgstr "Popup Text"
 
 #: page-map.php:116
 msgid "Post length"
@@ -519,7 +535,7 @@ msgstr "Beitragslänge"
 msgid "Post type"
 msgstr "Beitragsart"
 
-#: page-map.php:537 page-map.php:707
+#: page-map.php:553 page-map.php:723
 msgid "Privacy"
 msgstr "Datenschutz"
 
@@ -540,6 +556,10 @@ msgstr "Produktionsdatum"
 msgid "Production date of an audio station"
 msgstr "Produktionsdatum einer Audiostation"
 
+#: index.php:468
+msgid "Production date: "
+msgstr "Produktionsdatum: "
+
 #: index.php:174
 msgid "Production dates"
 msgstr "Produktionsdaten"
@@ -552,7 +572,7 @@ msgstr "Stellt eine Karte mit Audiostationen zur Verfügung"
 msgid "Reset"
 msgstr "Zurücksetzen"
 
-#: page-map.php:465 page-map.php:477
+#: page-map.php:481 page-map.php:493
 msgid "Search"
 msgstr "Suche"
 
@@ -572,23 +592,23 @@ msgstr "Suche im Archiv"
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: index.php:773
+#: index.php:785
 msgid "Settings › Mannheim Under Construction"
 msgstr "Einstellungen  › Mannheim Under Construction"
 
-#: page-map.php:617
+#: page-map.php:633
 msgid "Show info about the project"
 msgstr "Informationen zum Projekt anzeigen"
 
-#: page-map.php:522
+#: page-map.php:538
 msgid "Show more info about the project"
 msgstr "Mehr Informationen zum Projekt anzeigen"
 
-#: index.php:290
+#: index.php:298
 msgid "Show popup"
 msgstr "Popup anzeigen"
 
-#: page-map.php:728
+#: page-map.php:744
 msgid "Sorry, you need to enable JavaScript to use this map."
 msgstr ""
 "Tut uns leid, aber Sie benötigen JavaScript um diese Karte zu benutzen."
@@ -597,22 +617,22 @@ msgstr ""
 msgid "Start"
 msgstr "Start"
 
-#: page-map.php:368
+#: page-map.php:376
 msgid "Start with station 01"
 msgstr "Starten Sie mit Station 01"
 
-#: index.php:575
+#: index.php:601
 msgid "Stations:"
 msgstr "Stationen:"
 
-#: index.php:598
+#: index.php:624
 msgid ""
 "The same applies to video files used in the sign language version. These are:"
 msgstr ""
 "Das gleiche gilt für Videodateien, die für die Gebärdensprache-Version "
 "verwendet werden. Diese sind:"
 
-#: index.php:760
+#: index.php:772
 msgid ""
 "The search found the following posts. Click on the title to listen to the "
 "post:"
@@ -620,12 +640,12 @@ msgstr ""
 "Die Suche hat folgende Beiträge gefunden. Klicken Sie auf den Titel um den "
 "Beitrag zu hören:"
 
-#: index.php:752
+#: index.php:764
 #, php-format
 msgid "The search term \"%s\" did unfortunately not find any posts :("
 msgstr "Der Suchbegriff \"%s\" hat leider keine Beiträge gefunden :("
 
-#: index.php:758
+#: index.php:770
 #, php-format
 #| msgid ""
 #| "The search term \"%s\" did find the following posts. Click on the title "
@@ -637,7 +657,7 @@ msgstr ""
 "Der Suchbegriff \"%s\" hat folgende Beiträge gefunden. Klicken Sie auf den "
 "Titel um den Beitrag zu hören:"
 
-#: page-map.php:352
+#: page-map.php:360
 msgid ""
 "This icon means, that you can swipe further. You can for example continue "
 "reading this text. Swipe to the left to..."
@@ -645,7 +665,7 @@ msgstr ""
 "Dieses Icon bedeutet, dass Sie die Möglichkeit haben weiter zu wischen. Sie "
 "können zum Beispiel diesen Text weiter lesen. Wischen Sie nach links, um..."
 
-#: page-map.php:346
+#: page-map.php:354
 msgid "This is how it works"
 msgstr "So funktioniert's"
 
@@ -653,7 +673,7 @@ msgstr "So funktioniert's"
 msgid "This is the full-text search."
 msgstr "Dies ist die Volltextsuche."
 
-#: index.php:577 index.php:581
+#: index.php:603 index.php:607 index.php:668
 msgid "Title"
 msgstr "Titel"
 
@@ -665,11 +685,11 @@ msgstr "Beitragsart einer Audiostation"
 msgid "Types"
 msgstr "Beitragsarten"
 
-#: index.php:611
+#: index.php:637
 msgid "Upload AAC-Audio file"
 msgstr "AAC-Audiodatei hochladen"
 
-#: index.php:605
+#: index.php:631
 msgid "Upload OGG-Audio file"
 msgstr "OGG-Audiodatei hochladen"
 
@@ -681,7 +701,7 @@ msgstr "Zu dieser Audiostation hochgeladen"
 msgid "Uploaded to this audio walk"
 msgstr "Zu diesem Audiowalk hochgeladen"
 
-#: index.php:377
+#: index.php:389
 msgid "Use this media"
 msgstr "Diese Mediendatei verwenden"
 
@@ -702,7 +722,7 @@ msgstr "Audiowalk ansehen"
 msgid "Vogelstang, School, Post-migration etc."
 msgstr "Vogelstang, Schule, Postmigrantisch etc."
 
-#: index.php:601
+#: index.php:627
 msgid ""
 "VP9 at CRF 40 and 25 fps in a WebM container, which offers significantly "
 "lower file size with about the same quality. It's supported by most modern "
@@ -712,7 +732,7 @@ msgstr ""
 "Dateigröße bei ungefähr gleichbleibender Qualität bietet. Es wird von den "
 "meisten modernen Browsern unterstützt."
 
-#: index.php:536 page-map.php:306
+#: index.php:562 page-map.php:306
 msgid "Walk"
 msgstr "Spaziergang"
 
@@ -720,7 +740,7 @@ msgstr "Spaziergang"
 msgid "Which walk would you like to listen to?"
 msgstr "Welchen Spaziergang möchten Sie sich anhören?"
 
-#: index.php:655
+#: index.php:662
 msgid "Yes"
 msgstr "Ja"
 
@@ -729,10 +749,10 @@ msgid "You haven't started a search query yet. Your results will appear here."
 msgstr ""
 "Sie haben noch keine Suche gestartet. Ihr Suchergebnis wird hier erscheinen."
 
-#: index.php:523
+#: index.php:549
 msgid "Zoom in"
 msgstr "Herein zoomen"
 
-#: index.php:524
+#: index.php:550
 msgid "Zoom out"
 msgstr "Heraus zoomen"

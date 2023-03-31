@@ -459,6 +459,18 @@ class Mannheim_Under_Constrcution
 		                if ( ! is_array( $tags ) ) {
 			                $tags = [];
 		                }
+						$production_date = '';
+		                $production_dates = get_terms( [
+			                'object_ids' => $post_id,
+			                'taxonomy'   => 'production-date',
+		                ] );
+		                if(is_array($production_dates) && !empty($production_dates)) {
+							$production_date = __('Production date: ', 'mannheim-under-construction');
+							foreach ($production_dates as $date){
+								$production_date .= $date->name . ', ';
+							}
+							$production_date = rtrim($production_date, ', ');
+		                }
 		                if ( isset( $ogg_meta[ 'length_formatted' ] ) ) {
 			                $length          = $ogg_meta[ 'length_formatted' ];
 			                $length_readable = human_readable_duration( $length );
@@ -483,6 +495,7 @@ class Mannheim_Under_Constrcution
 			                'length'          => $length,
 			                'length_readable' => $length_readable,
 			                'tags'            => $tags,
+			                'production_date' => $production_date,
                             'thumbnail'       => get_the_post_thumbnail_url( $post_id, 'medium' ),
                             'hidden'          => intval(get_post_meta( $post_id, 'mannheim_under_construction_location_hidden', true )),
 		                ];

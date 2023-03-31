@@ -514,6 +514,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     tags_html += '<div class="tag" data-tagid="' + tag + '">#' + mannheim_under_construction.tag_data[tag] + '</div>';
                 }
                 play_tab.querySelector('.content-tags').innerHTML = tags_html;
+                play_tab.querySelector('.content-production-date').innerHTML = audio_station.production_date;
                 player_new.innerHTML = '';
                 if(audio_station.ogg) {
                     player_new.innerHTML += '<source src="' + audio_station.ogg + '" type="' + audio_station.ogg_mime + '">';

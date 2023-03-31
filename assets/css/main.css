@@ -459,6 +459,7 @@ body.black-white .leaflet-sidebar-content {
 .content-tags .tag {
     cursor: pointer;
 }
+.content-production-date,
 .content-tags{
     margin-bottom: 30px;
 }

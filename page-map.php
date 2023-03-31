@@ -286,9 +286,9 @@
                         </div>
                         <div class="content-description"></div>
                         <div class="content-description-details"></div>
+                        <div class="content-production-date"></div>
                         <div class="content-credits"></div>
-                        <div class="content-tags">
-                        </div>
+                        <div class="content-tags"></div>
                     </div>
                     <div class="leaflet-sidebar-pane" id="walk" role="tabpanel">
                         <button class="close-button">
