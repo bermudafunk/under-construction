@@ -373,21 +373,16 @@ body.sidebar-fullscreen .leaflet-control-container {
 body:not(.sidebar-fullscreen) .mannheim-under-construction-search {
     margin-right: -30px;
 }
+.mannheim-under-construction-search {
+    height: 44px;
+}
 .mannheim-under-construction-search button{
-    height: 60px;
     width: 60px;
     flex-shrink: 0;
-}
-.mannheim-under-construction-search button svg {
-    stroke: #000000;
-}
-body.black-white .mannheim-under-construction-search button svg {
-    stroke: #FFFFFF;
 }
 .mannheim-under-construction-search input[type="search"]{
     background-color: #FFFFFF;
     width: 100%;
-    height: 60px;
     border: 2px black solid;
     text-align: left;
 }
