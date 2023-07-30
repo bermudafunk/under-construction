@@ -716,7 +716,7 @@ class Mannheim_Under_Constrcution
 					'tax_query' => $tax_query,
 				]));
 				$terms = get_terms([
-					'taxonomy' => ['location', 'type'],
+					'taxonomy' => ['location', 'post_tag'],
 					'hide_empty' => true,
 					'search' => $_POST['s'],
 					'fields' => 'ids',
@@ -728,7 +728,7 @@ class Mannheim_Under_Constrcution
 						'tax_query' => [
 							'relation' => 'OR',
 							[ 'taxonomy' => 'location', 'field' => 'term_id', 'terms' => $terms ],
-							[ 'taxonomy' => 'type', 'field' => 'term_id', 'terms' => $terms ],
+							[ 'taxonomy' => 'post_tag', 'field' => 'term_id', 'terms' => $terms ],
 						],
                         'meta_query' => [
 	                        'relation' => 'OR',
