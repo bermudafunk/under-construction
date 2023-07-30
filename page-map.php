@@ -86,24 +86,6 @@
                                     </p>
                                     <div class="extended-filters">
                                         <div class="filter-box">
-                                            <input type="checkbox" id="type-filter" hidden>
-                                            <label id="type-filter-box-label" for="type-filter"><?php esc_html_e('Post type', 'mannheim-under-construction'); ?><span class="arrow"></span></label>
-                                            <select multiple name="type[]" aria-labelledby="type-filter-box-label">
-                                                <?php
-                                                $terms = get_terms([
-                                                    'taxonomy' => 'post-type',
-                                                    'hide_empty' => true,
-                                                    'orderby' => 'name',
-                                                ]);
-                                                if(is_array($terms)){
-                                                    foreach($terms as $term){
-                                                        echo '<option value="' . $term->term_id . '">' . esc_html($term->name) . '</option>';
-                                                    }
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                        <div class="filter-box">
                                             <input type="checkbox" id="length-filter" hidden>
                                             <label id="length-filter-box-label" for="length-filter"><?php esc_html_e('Post length', 'mannheim-under-construction'); ?><span class="arrow"></span></label>
                                             <select multiple name="length[]" aria-labelledby="length-filter-box-label">

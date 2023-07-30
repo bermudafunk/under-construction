@@ -679,9 +679,6 @@ class Mannheim_Under_Constrcution
 		$message = '';
 		$audios_html = '';
 		$tax_query = ['relation' => 'AND'];
-		if(!empty($_POST['type']) && is_array($_POST['type'])){
-			$tax_query []= ['taxonomy' => 'post-type', 'field' => 'term_id', 'terms' => $_POST['type']];
-		}
 		if(!empty($_POST['length']) && is_array($_POST['length'])){
 			$tax_query []= ['taxonomy' => 'length', 'field' => 'term_id', 'terms' => $_POST['length']];
 		}
