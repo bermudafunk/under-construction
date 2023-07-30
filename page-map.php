@@ -464,7 +464,7 @@
                         </svg>
                     </button>
                     <div class="full-height-spacer"></div>
-                    <button id="walk_button" href="#walk" role="tab" title="<?php esc_attr_e('Search', 'mannheim-under-construction'); ?>">
+                    <button id="walk_button" href="#walk" role="tab" title="<?php esc_attr_e('Walk', 'mannheim-under-construction'); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
                             <g>
                                 <g>
