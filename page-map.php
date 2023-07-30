@@ -63,7 +63,7 @@
                     <div class="leaflet-sidebar-pane" id="search" role="tabpanel">
                         <div class="search-filters">
                             <div class="content">
-                                <button class="close-button">
+                                <button class="close-button" title="<?php esc_html_e('Close', 'mannheim-under-construction'); ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                          viewBox="0 0 60 60" xml:space="preserve">
                                         <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
@@ -154,7 +154,7 @@
                         </div>
                         <div class="search_sidebar" id="search-fulltext">
                             <div class="content">
-                                <button class="close-button">
+                                <button class="close-button" title="<?php esc_html_e('Close', 'mannheim-under-construction'); ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                          viewBox="0 0 60 60" xml:space="preserve">
                                         <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
@@ -167,7 +167,7 @@
                         </div>
                         <div class="search_sidebar" id="search-tags">
                             <div class="content">
-                                <button class="close-button">
+                                <button class="close-button" title="<?php esc_html_e('Close', 'mannheim-under-construction'); ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                          viewBox="0 0 60 60" xml:space="preserve">
                                         <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
@@ -207,7 +207,7 @@
                         </div>
                     </div>
                     <div class="leaflet-sidebar-pane" id="play" role="tabpanel">
-                        <button class="close-button">
+                        <button class="close-button" title="<?php esc_html_e('Close', 'mannheim-under-construction'); ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                  viewBox="0 0 60 60" xml:space="preserve">
                                 <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
@@ -229,14 +229,14 @@
                             <p class="content-length"><span class="length" aria-label=""></span> <span aria-hidden="true"><?php esc_html_e('min.', 'mannheim-under-construction'); ?></span></p>
                         </div>
                         <div class="content-player">
-                            <button class="seek-button seek_backwards">
+                            <button class="seek-button seek_backwards" title="<?php esc_html_e('Seek backward', 'mannheim-under-construction'); ?>">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                      viewBox="0 0 60 60" xml:space="preserve">
                                     <path d="M8.979,30l9.762-21h11.106l-9.763,21l9.763,21H18.741L8.979,30z M30.133,30l9.764-21H51l-9.762,21L51,51H39.896L30.133,30z"/>
                                 </svg>
                             </button>
                             <div class="full-width-spacer"></div>
-                            <button class="play_pause_button" aria-label="<?php esc_attr_e('Play/Pause', 'mannheim-under-construction'); ?>">
+                            <button class="play_pause_button" title="<?php esc_attr_e('Play/Pause', 'mannheim-under-construction'); ?>">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                      viewBox="0 0 60 60" xml:space="preserve" class="play">
                                         <path d="M51,30.055L9,51.035V9.074L51,30.055z"/>
@@ -250,7 +250,7 @@
                                     </svg>
                             </button>
                             <div class="full-width-spacer"></div>
-                            <button class="seek-button seek_forwards">
+                            <button class="seek-button seek_forwards" title="<?php esc_html_e('Seek forward', 'mannheim-under-construction'); ?>">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                      viewBox="0 0 60 60" xml:space="preserve">
                                     <path d="M41.239,51H30.133l9.763-21L30.133,9h11.106l9.762,21L41.239,51z M20.084,51H8.98l9.762-21L8.98,9h11.104l9.764,21
@@ -265,7 +265,7 @@
                         <div class="content-tags"></div>
                     </div>
                     <div class="leaflet-sidebar-pane" id="walk" role="tabpanel">
-                        <button class="close-button">
+                        <button class="close-button" title="<?php esc_html_e('Close', 'mannheim-under-construction'); ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                  viewBox="0 0 60 60" xml:space="preserve">
                                 <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
@@ -294,14 +294,14 @@
                                 <p class="content-length"><span class="length" aria-label=""></span> <span aria-hidden="true"><?php esc_html_e('min.', 'mannheim-under-construction'); ?></span></p>
                             </div>
                             <div class="content-player">
-                                <button class="seek-button seek_backwards">
+                                <button class="seek-button seek_backwards" title="<?php esc_html_e('Seek backward', 'mannheim-under-construction'); ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                          viewBox="0 0 60 60" xml:space="preserve">
                                         <path d="M8.979,30l9.762-21h11.106l-9.763,21l9.763,21H18.741L8.979,30z M30.133,30l9.764-21H51l-9.762,21L51,51H39.896L30.133,30z"/>
                                     </svg>
                                 </button>
                                 <div class="full-width-spacer"></div>
-                                <button class="play_pause_button" aria-label="<?php esc_attr_e('Play/Pause', 'mannheim-under-construction'); ?>">
+                                <button class="play_pause_button" title="<?php esc_attr_e('Play/Pause', 'mannheim-under-construction'); ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                          viewBox="0 0 60 60" xml:space="preserve" class="play">
                                         <path d="M51,30.055L9,51.035V9.074L51,30.055z"/>
@@ -315,7 +315,7 @@
                                     </svg>
                                 </button>
                                 <div class="full-width-spacer"></div>
-                                <button class="seek-button seek_forwards">
+                                <button class="seek-button seek_forwards" title="<?php esc_html_e('Seek forward', 'mannheim-under-construction'); ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                          viewBox="0 0 60 60" xml:space="preserve">
                                         <path d="M41.239,51H30.133l9.763-21L30.133,9h11.106l9.762,21L41.239,51z M20.084,51H8.98l9.762-21L8.98,9h11.104l9.764,21
@@ -347,8 +347,8 @@
                             <div class="intro-station-details-wrapper"></div>
                             <div class="full-height-spacer"></div>
                             <div class="track-swipe-bar"><div class="full-width-spacer"></div>
-                                <span class="next-track"><?php esc_html_e("Start with station 01", 'mannheim-under-construction'); ?></span>
-                                <svg class="next-track" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
+                                <span class="next-track" title="<?php esc_html_e('Next track', 'mannheim-under-construction'); ?>"><?php esc_html_e("Start with station 01", 'mannheim-under-construction'); ?></span>
+                                <svg class="next-track" title="<?php esc_html_e('Next track', 'mannheim-under-construction'); ?>" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
                                     <path d="M31.83,51H20.728l9.761-21L20.728,9H31.83l9.764,21L31.83,51z"/>
                                 </svg>
                             </div>
@@ -371,14 +371,14 @@
                                 <p class="content-length"><span class="length" aria-label=""></span> <span aria-hidden="true"><?php esc_html_e('min.', 'mannheim-under-construction'); ?></span></p>
                             </div>
                             <div class="content-player">
-                                <button class="seek-button seek_backwards">
+                                <button class="seek-button seek_backwards" title="<?php esc_html_e('Seek backward', 'mannheim-under-construction'); ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                          viewBox="0 0 60 60" xml:space="preserve">
                                         <path d="M8.979,30l9.762-21h11.106l-9.763,21l9.763,21H18.741L8.979,30z M30.133,30l9.764-21H51l-9.762,21L51,51H39.896L30.133,30z"/>
                                     </svg>
                                 </button>
                                 <div class="full-width-spacer"></div>
-                                <button class="play_pause_button" aria-label="<?php esc_attr_e('Play/Pause', 'mannheim-under-construction'); ?>">
+                                <button class="play_pause_button" title="<?php esc_attr_e('Play/Pause', 'mannheim-under-construction'); ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                          viewBox="0 0 60 60" xml:space="preserve" class="play">
                                         <path d="M51,30.055L9,51.035V9.074L51,30.055z"/>
@@ -392,7 +392,7 @@
                                     </svg>
                                 </button>
                                 <div class="full-width-spacer"></div>
-                                <button class="seek-button seek_forwards">
+                                <button class="seek-button seek_forwards" title="<?php esc_html_e('Seek forward', 'mannheim-under-construction'); ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                          viewBox="0 0 60 60" xml:space="preserve">
                                         <path d="M41.239,51H30.133l9.763-21L30.133,9h11.106l9.762,21L41.239,51z M20.084,51H8.98l9.762-21L8.98,9h11.104l9.764,21
@@ -403,13 +403,13 @@
                             <div class="content-description"></div>
                             <div class="full-height-spacer"></div>
                             <div class="track-swipe-bar">
-                                <svg class="prev-track" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
+                                <svg class="prev-track" title="<?php esc_html_e('Previous track', 'mannheim-under-construction'); ?>" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
                                     <path d="M20.566,30L30.33,9h11.104l-9.762,21l9.762,21H30.33L20.566,30z"/>
                                 </svg>
-                                <span class="prev-track"></span>
+                                <span class="prev-track" title="<?php esc_html_e('Previous track', 'mannheim-under-construction'); ?>"></span>
                                 <div class="full-width-spacer"></div>
-                                <span class="next-track"></span>
-                                <svg class="next-track" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
+                                <span class="next-track" title="<?php esc_html_e('Next track', 'mannheim-under-construction'); ?>"></span>
+                                <svg class="next-track" title="<?php esc_html_e('Next track', 'mannheim-under-construction'); ?>" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
                                     <path d="M31.83,51H20.728l9.761-21L20.728,9H31.83l9.764,21L31.83,51z"/>
                                 </svg>
                             </div>
@@ -422,17 +422,17 @@
                             <div class="content-description"></div>
                             <div class="full-height-spacer"></div>
                             <div class="track-swipe-bar">
-                                <svg class="prev-track" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
+                                <svg class="prev-track" title="<?php esc_html_e('Previous track', 'mannheim-under-construction'); ?>" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
                                     <path d="M20.566,30L30.33,9h11.104l-9.762,21l9.762,21H30.33L20.566,30z"/>
                                 </svg>
-                                <span class="prev-track"><?php esc_html_e('Bonus', 'mannheim-under-construction'); ?></span>
+                                <span class="prev-track" title="<?php esc_html_e('Previous track', 'mannheim-under-construction'); ?>"><?php esc_html_e('Bonus', 'mannheim-under-construction'); ?></span>
                                 <div class="full-width-spacer"></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="leaflet-sidebar-tabs" role="tablist">
-                    <button id="black_white_switcher" aria-label="<?php esc_attr_e('Change contrast', 'mannheim-under-construction'); ?>">
+                    <button id="black_white_switcher" title="<?php esc_attr_e('Change contrast', 'mannheim-under-construction'); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 60 60" xml:space="preserve">
                             <g>
@@ -441,7 +441,7 @@
                             </g>
                         </svg>
                     </button>
-                    <button id="font_size_switcher" role="button" aria-label="<?php esc_attr_e('Change font size', 'mannheim-under-construction'); ?>">
+                    <button id="font_size_switcher" role="button" title="<?php esc_attr_e('Change font size', 'mannheim-under-construction'); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 60 60" xml:space="preserve">
                             <g>
@@ -452,7 +452,7 @@
                             </g>
                         </svg>
                     </button>
-                    <button href="#search" role="tab" aria-label="<?php esc_attr_e('Search', 'mannheim-under-construction'); ?>">
+                    <button href="#search" role="tab" title="<?php esc_attr_e('Search', 'mannheim-under-construction'); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 60 60" xml:space="preserve">
                             <path d="M12.433,30.425l7.931,7.93c2.282,2.282,4.675,3.382,7.088,3.378c2.071,0,4.129-0.886,6.113-2.585l10.461,10.438
@@ -464,7 +464,7 @@
                         </svg>
                     </button>
                     <div class="full-height-spacer"></div>
-                    <button id="walk_button" href="#walk" role="tab" aria-label="<?php esc_attr_e('Search', 'mannheim-under-construction'); ?>">
+                    <button id="walk_button" href="#walk" role="tab" title="<?php esc_attr_e('Search', 'mannheim-under-construction'); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
                             <g>
                                 <g>
@@ -484,13 +484,13 @@
                                 C10.01,51,9,49.862,9,48.344z"/>
                         </svg>
                     </button>
-                    <button id="play_tab_button" href="#play" role="tab" aria-label="<?php esc_attr_e('Open player', 'mannheim-under-construction'); ?>">
+                    <button id="play_tab_button" href="#play" role="tab" title="<?php esc_attr_e('Open player', 'mannheim-under-construction'); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 60 60" xml:space="preserve">
                             <path d="M51,30.055L9,51.035V9.074L51,30.055z"/>
                         </svg>
                     </button>
-                    <button id="back_button" class="back-button" aria-label="<?php esc_attr_e('Back', 'mannheim-under-construction'); ?>">
+                    <button id="back_button" class="back-button" title="<?php esc_attr_e('Back', 'mannheim-under-construction'); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 60 60" xml:space="preserve">
                             <g>
@@ -509,7 +509,7 @@
                         <div class="left-part">
                             <div class="content">
                                 <div class="info-menu">
-                                    <button id="info-menu-button" class="under-construction-more-info" role="tab" aria-label="<?php esc_attr_e('Show more info about the project', 'mannheim-under-construction'); ?>">
+                                    <button id="info-menu-button" class="under-construction-more-info" role="tab" title="<?php esc_attr_e('Show more info about the project', 'mannheim-under-construction'); ?>">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                              viewBox="0 0 60 60" xml:space="preserve">
                                             <g>
@@ -551,7 +551,7 @@
                         </div>
                         <div class="open-right-part">
                             <div class="content">
-                                <button class="close-button">
+                                <button class="close-button" title="<?php esc_html_e('Close', 'mannheim-under-construction'); ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                          viewBox="0 0 60 60" xml:space="preserve">
                                         <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
@@ -563,7 +563,7 @@
                         </div>
                         <div class="right-part">
                             <div class="content">
-                                <button class="close-button">
+                                <button class="close-button" title="<?php esc_html_e('Close', 'mannheim-under-construction'); ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                          viewBox="0 0 60 60" xml:space="preserve">
                                         <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
@@ -583,7 +583,7 @@
                         </div>
                     </div>
                     <div class="leaflet-sidebar-pane" id="imprint" role="tabpanel">
-                        <button class="close-button">
+                        <button class="close-button" title="<?php esc_html_e('Close', 'mannheim-under-construction'); ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                  viewBox="0 0 60 60" xml:space="preserve">
                                 <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
@@ -593,7 +593,7 @@
 						<?php echo apply_filters( 'the_content', get_the_content(null, false, 169) ); ?>
                     </div>
                     <div class="leaflet-sidebar-pane" id="privacy" role="tabpanel">
-                        <button class="close-button">
+                        <button class="close-button" title="<?php esc_html_e('Close', 'mannheim-under-construction'); ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                  viewBox="0 0 60 60" xml:space="preserve">
                                 <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
@@ -604,7 +604,7 @@
                     </div>
                 </div>
                 <div class="leaflet-sidebar-tabs" role="tablist">
-                    <button class="open-under-construction-info" role="tab" aria-label="<?php esc_attr_e('Show info about the project', 'mannheim-under-construction'); ?>">
+                    <button class="open-under-construction-info" role="tab" title="<?php esc_attr_e('Show info about the project', 'mannheim-under-construction'); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 60 60" xml:space="preserve">
                             <g>
@@ -614,7 +614,7 @@
                             </g>
                         </svg>
                     </button>
-                    <button class="open-under-construction-info" role="tab" id="right_sidebar_title" aria-hidden="true">
+                    <button class="open-under-construction-info" role="tab" id="right_sidebar_title" aria-hidden="true" title="<?php esc_attr_e('Show info about the project', 'mannheim-under-construction'); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 51.5 450.33" xml:space="preserve">
                             <g>
@@ -702,7 +702,7 @@
 	        if(get_option('mannheim_under_construction_popup_show', false)){
 		        ?><div class="mannheim-under-construction-popup">
                 <div class="mannheim-under-construction-popup-box">
-                    <button class="close-button">
+                    <button class="close-button" title="<?php esc_html_e('Close', 'mannheim-under-construction'); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 60 60" xml:space="preserve">
                             <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
