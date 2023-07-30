@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mannheim Under Construction\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-31 17:52+0000\n"
+"POT-Creation-Date: 2023-07-30 12:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -28,13 +28,13 @@ msgstr ""
 msgid "... or a random post"
 msgstr ""
 
-#: page-map.php:366
+#: page-map.php:340
 msgid ""
 "...continue reading this text. When no icon points to the right anymore, the "
 "content is finished. Here is the end."
 msgstr ""
 
-#: page-map.php:363
+#: page-map.php:337
 msgid ""
 "...hear the next station. The icon now points to the left. You could also "
 "swipe back, or forward to the left to..."
@@ -236,19 +236,19 @@ msgctxt "audio-walk"
 msgid "Use as featured image"
 msgstr ""
 
-#: index.php:551 page-map.php:519
+#: index.php:551 page-map.php:493
 msgid "Back"
 msgstr ""
 
-#: index.php:560 page-map.php:454
+#: index.php:560 page-map.php:428
 msgid "Bonus"
 msgstr ""
 
-#: page-map.php:461
+#: page-map.php:435
 msgid "Change contrast"
 msgstr ""
 
-#: page-map.php:470
+#: page-map.php:444
 msgid "Change font size"
 msgstr ""
 
@@ -260,12 +260,18 @@ msgstr ""
 msgid "Choose or Upload Media"
 msgstr ""
 
-#: page-map.php:172
+#: page-map.php:146
 msgid "Click here for extended search"
 msgstr ""
 
 #: page-map.php:32
 msgid "Click on start and choose..."
+msgstr ""
+
+#: page-map.php:66 page-map.php:157 page-map.php:170 page-map.php:210
+#: page-map.php:268 page-map.php:554 page-map.php:566 page-map.php:586
+#: page-map.php:596 page-map.php:705
+msgid "Close"
 msgstr ""
 
 #: index.php:654
@@ -284,7 +290,7 @@ msgstr ""
 msgid "Desired location"
 msgstr ""
 
-#: page-map.php:446
+#: page-map.php:420
 msgid "Discover Mannheim further..."
 msgstr ""
 
@@ -308,11 +314,11 @@ msgstr ""
 msgid "Encoding guideline:"
 msgstr ""
 
-#: index.php:561 page-map.php:444
+#: index.php:561 page-map.php:418
 msgid "End"
 msgstr ""
 
-#: index.php:765
+#: index.php:762
 msgid "Enter a new search term or try finding a post with the tag search :)"
 msgstr ""
 
@@ -320,7 +326,7 @@ msgstr ""
 msgid "Enter a search phrase"
 msgstr ""
 
-#: page-map.php:90
+#: page-map.php:82
 msgid "Enter a word, which interests you and it can lead you to new posts."
 msgstr ""
 
@@ -336,7 +342,7 @@ msgstr ""
 msgid "Filter by date"
 msgstr ""
 
-#: page-map.php:92
+#: page-map.php:84
 msgid "For example:"
 msgstr ""
 
@@ -347,7 +353,7 @@ msgid ""
 "browsers ."
 msgstr ""
 
-#: page-map.php:556
+#: page-map.php:530
 msgid "Help"
 msgstr ""
 
@@ -359,7 +365,7 @@ msgstr ""
 msgid "https://danwin1210.de"
 msgstr ""
 
-#: page-map.php:550 page-map.php:720
+#: page-map.php:524 page-map.php:694
 msgid "Imprint"
 msgstr ""
 
@@ -387,7 +393,7 @@ msgstr ""
 msgid "Link:"
 msgstr ""
 
-#: page-map.php:134
+#: page-map.php:108
 msgid "Location"
 msgstr ""
 
@@ -418,11 +424,11 @@ msgid ""
 "This map introduces civil societal engagement in the city Mannheim."
 msgstr ""
 
-#: page-map.php:255 page-map.php:320 page-map.php:397
+#: page-map.php:229 page-map.php:294 page-map.php:371
 msgid "min."
 msgstr ""
 
-#: page-map.php:601
+#: page-map.php:575
 msgid "more information"
 msgstr ""
 
@@ -432,6 +438,10 @@ msgstr ""
 
 #: index.php:98
 msgid "New audio walk"
+msgstr ""
+
+#: page-map.php:350 page-map.php:351 page-map.php:411 page-map.php:412
+msgid "Next track"
 msgstr ""
 
 #: index.php:662
@@ -459,7 +469,7 @@ msgid ""
 "Oops, an error occurred while loading your search results. Please try again"
 msgstr ""
 
-#: page-map.php:513
+#: page-map.php:487
 msgid "Open player"
 msgstr ""
 
@@ -470,11 +480,11 @@ msgid ""
 "most modern browsers."
 msgstr ""
 
-#: index.php:766
+#: index.php:763
 msgid "Or listen to this randomly selected post:"
 msgstr ""
 
-#: page-map.php:265 page-map.php:330 page-map.php:407
+#: page-map.php:239 page-map.php:304 page-map.php:381
 msgid "Play/Pause"
 msgstr ""
 
@@ -490,15 +500,15 @@ msgstr ""
 msgid "Popup Text"
 msgstr ""
 
-#: page-map.php:116
+#: page-map.php:90
 msgid "Post length"
 msgstr ""
 
-#: page-map.php:98
-msgid "Post type"
+#: page-map.php:406 page-map.php:409 page-map.php:425 page-map.php:428
+msgid "Previous track"
 msgstr ""
 
-#: page-map.php:553 page-map.php:723
+#: page-map.php:527 page-map.php:697
 msgid "Privacy"
 msgstr ""
 
@@ -510,7 +520,7 @@ msgstr ""
 msgid "Producers"
 msgstr ""
 
-#: page-map.php:152
+#: page-map.php:126
 msgid "Production date"
 msgstr ""
 
@@ -530,11 +540,11 @@ msgstr ""
 msgid "Provides a map with audio stations"
 msgstr ""
 
-#: page-map.php:168
+#: page-map.php:142
 msgid "Reset"
 msgstr ""
 
-#: page-map.php:481 page-map.php:493
+#: page-map.php:75 page-map.php:77 page-map.php:455 page-map.php:467
 msgid "Search"
 msgstr ""
 
@@ -550,19 +560,27 @@ msgstr ""
 msgid "Search in archive"
 msgstr ""
 
+#: page-map.php:232 page-map.php:297 page-map.php:374
+msgid "Seek backward"
+msgstr ""
+
+#: page-map.php:253 page-map.php:318 page-map.php:395
+msgid "Seek forward"
+msgstr ""
+
 #: index.php:201
 msgid "Settings"
 msgstr ""
 
-#: index.php:785
+#: index.php:782
 msgid "Settings › Mannheim Under Construction"
 msgstr ""
 
-#: page-map.php:633
+#: page-map.php:607 page-map.php:617
 msgid "Show info about the project"
 msgstr ""
 
-#: page-map.php:538
+#: page-map.php:512
 msgid "Show more info about the project"
 msgstr ""
 
@@ -570,7 +588,7 @@ msgstr ""
 msgid "Show popup"
 msgstr ""
 
-#: page-map.php:744
+#: page-map.php:718
 msgid "Sorry, you need to enable JavaScript to use this map."
 msgstr ""
 
@@ -578,7 +596,7 @@ msgstr ""
 msgid "Start"
 msgstr ""
 
-#: page-map.php:376
+#: page-map.php:350
 msgid "Start with station 01"
 msgstr ""
 
@@ -591,35 +609,35 @@ msgid ""
 "The same applies to video files used in the sign language version. These are:"
 msgstr ""
 
-#: index.php:772
+#: index.php:769
 msgid ""
 "The search found the following posts. Click on the title to listen to the "
 "post:"
 msgstr ""
 
-#: index.php:764
+#: index.php:761
 #, php-format
 msgid "The search term \"%s\" did unfortunately not find any posts :("
 msgstr ""
 
-#: index.php:770
+#: index.php:767
 #, php-format
 msgid ""
 "The search term \"%s\" found the following posts. Click on the title to "
 "listen to the post:"
 msgstr ""
 
-#: page-map.php:360
+#: page-map.php:334
 msgid ""
 "This icon means, that you can swipe further. You can for example continue "
 "reading this text. Swipe to the left to..."
 msgstr ""
 
-#: page-map.php:354
+#: page-map.php:328
 msgid "This is how it works"
 msgstr ""
 
-#: page-map.php:89
+#: page-map.php:81
 msgid "This is the full-text search."
 msgstr ""
 
@@ -667,7 +685,7 @@ msgstr ""
 msgid "View audio walk"
 msgstr ""
 
-#: page-map.php:93
+#: page-map.php:85
 msgid "Vogelstang, School, Post-migration etc."
 msgstr ""
 
@@ -678,11 +696,11 @@ msgid ""
 "browsers."
 msgstr ""
 
-#: index.php:562 page-map.php:306
+#: index.php:562 page-map.php:280
 msgid "Walk"
 msgstr ""
 
-#: page-map.php:302
+#: page-map.php:276
 msgid "Which walk would you like to listen to?"
 msgstr ""
 
@@ -690,7 +708,7 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: page-map.php:190
+#: page-map.php:164
 msgid "You haven't started a search query yet. Your results will appear here."
 msgstr ""
 
