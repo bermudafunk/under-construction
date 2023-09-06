@@ -214,9 +214,10 @@
                                     50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
                             </svg>
                         </button>
-                        <div> &emsp;&emsp;&emsp;<span class="content-location"></span></div>
-                        <div>&emsp;&emsp;&emsp;<span class="content-location-2"></span></div>
                         <div class="content-title"></div>
+                        <div><span class="content-location"></span></div>
+                        <div><span class="content-location-2"></span></div>
+                        <div class="content-description"></div>
                         <svg class="content-timeline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 239 16.667" xml:space="preserve">
                             <g>
                                 <path d="M239,8.921c0,1.722-1.972,3.745-4.403,3.745H4.403C1.972,12.666,0,10.643,0,8.921V8.783c0-1.721,1.972-3.117,4.403-3.117
@@ -258,7 +259,6 @@
                                 </svg>
                             </button>
                         </div>
-                        <div class="content-description"></div>
                         <div class="content-description-details"></div>
                         <div class="content-production-date"></div>
                         <div class="content-credits"></div>

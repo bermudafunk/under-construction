@@ -106,13 +106,19 @@ main,
 }
 .content-station-title,
 .content-title,
-.content-location,
+#walk .content-location,
 .content-location-2,
 details summary,
 .prev-track,
 .next-track,
 .font-neue-black {
     font-family: 'TheNeueBlack', sans-serif;
+}
+.content-station-title,
+.content-title,
+.content-location,
+.content-location-2{
+    font-size: 1.05em;
 }
 .font-enable-ligatures {
     font-variant-ligatures: normal;
@@ -142,6 +148,9 @@ svg {
     cursor: pointer;
     width: 60px;
     flex-shrink: 0;
+}
+.content-player button.play_pause_button {
+    width: 62px;
 }
 .content-player .seek-button{
     width: 30px;
@@ -230,8 +239,8 @@ body.black-white .leaflet-sidebar:not(.collapsed) ~ .leaflet-map-pane {
     bottom: 0;
 }
 button.close-button{
-    height: 60px;
-    width: 60px;
+    height: 58px;
+    width: 58px;
     position: absolute;
     right: 0;
     top: 0;
