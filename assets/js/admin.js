@@ -3,13 +3,77 @@ window.addEventListener('DOMContentLoaded', _ => {
     // Instantiates the variable that holds the media library frame.
     let metaImageFrame;
 
+    let accordions = document.getElementById('select-accordions');
+    let accordion_count = 0;
+    if(accordions){
+        for (let accordion of mannheim_under_construction_admin.accordions) {
+            let row = document.createElement('tr');
+            row.innerHTML = '<td><input name="mannheim_under_construction_accordions['+accordion_count+'][title]" type="text" value="' + accordion.title + '"></td>';
+            row.innerHTML += '<td><textarea name="mannheim_under_construction_accordions['+accordion_count+'][description]">' + accordion.description + '</textarea></td>';
+            accordions.appendChild(row);
+            ++accordion_count;
+        }
+        let row = document.createElement('tr');
+        row.innerHTML = '<td><input name="mannheim_under_construction_accordions['+accordion_count+'][title]" type="text"></td>';
+        row.innerHTML += '<td><textarea name="mannheim_under_construction_accordions['+accordion_count+'][description]"></textarea></td>';
+        accordions.appendChild(row);
+        ++accordion_count;
+        let last_accordion_textarea = accordions.querySelector('tr:last-of-type textarea');
+        function accordions_last_change(e) {
+            e.target.removeEventListener('change', accordions_last_change);
+            let row = document.createElement('tr');
+            row.innerHTML = '<td><input name="mannheim_under_construction_accordions['+accordion_count+'][title]" type="text"></td>';
+            row.innerHTML += '<td><textarea name="mannheim_under_construction_accordions['+accordion_count+'][description]"></textarea></td>';
+            accordions.appendChild(row);
+            ++accordion_count;
+            last_accordion_textarea = accordions.querySelector('tr:last-of-type textarea');
+            last_accordion_textarea.addEventListener('change', accordions_last_change);
+        }
+        last_accordion_textarea.addEventListener('change', accordions_last_change);
+    }
+    let updates = document.getElementById('select-updates');
+    let update_count = 0;
+    if(updates){
+        for (let update of mannheim_under_construction_admin.updates) {
+            let row = document.createElement('tr');
+            row.innerHTML = '<td><input id="mannheim_under_construction_audio_updates['+update_count+'][aac]" name="mannheim_under_construction_audio_updates['+update_count+'][aac]" type="hidden" value="' + update.aac + '"><button type="button" class="under-construction-upload" data-field="mannheim_under_construction_audio_updates['+update_count+'][aac]" data-type="audio/mpeg,audio/aac">'+mannheim_under_construction_admin.upload_button_aac+'</button><br><span id="mannheim_under_construction_audio_updates['+update_count+'][aac]-selected">'+update.aac_title+'</span></td>';
+            row.innerHTML += '<td><input id="mannheim_under_construction_audio_updates['+update_count+'][ogg]" name="mannheim_under_construction_audio_updates['+update_count+'][ogg]" type="hidden" value="' + update.ogg + '"><button type="button" class="under-construction-upload" data-field="mannheim_under_construction_audio_updates['+update_count+'][ogg]" data-type="audio/ogg">'+mannheim_under_construction_admin.upload_button_ogg+'</button><br><span id="mannheim_under_construction_audio_updates['+update_count+'][ogg]-selected">'+update.ogg_title+'</span></td>';
+            row.innerHTML += '<td><button type="button" class="under-construction-upload-clear" data-field="mannheim_under_construction_audio_updates['+update_count+']"><span class="dashicons dashicons-trash"></span></button></td>';
+            updates.appendChild(row);
+            ++update_count;
+        }
+        let row = document.createElement('tr');
+        row.innerHTML = '<td><input id="mannheim_under_construction_audio_updates['+update_count+'][aac]" name="mannheim_under_construction_audio_updates['+update_count+'][aac]" type="hidden"><button type="button" class="under-construction-upload" data-field="mannheim_under_construction_audio_updates['+update_count+'][aac]"  data-type="audio/mpeg,audio/aac">'+mannheim_under_construction_admin.upload_button_aac+'</button><br><span id="mannheim_under_construction_audio_updates['+update_count+'][aac]-selected"></td>';
+        row.innerHTML += '<td><input id="mannheim_under_construction_audio_updates['+update_count+'][ogg]" name="mannheim_under_construction_audio_updates['+update_count+'][ogg]" type="hidden"><button type="button" class="under-construction-upload" data-field="mannheim_under_construction_audio_updates['+update_count+'][ogg]"  data-type="audio/ogg">'+mannheim_under_construction_admin.upload_button_ogg+'</button><br><span id="mannheim_under_construction_audio_updates['+update_count+'][ogg]-selected"></td>';
+        row.innerHTML += '<td><button type="button" class="under-construction-upload-clear" data-field="mannheim_under_construction_audio_updates['+update_count+']"><span class="dashicons dashicons-trash"></span></button></td>';
+            updates.appendChild(row);
+        ++update_count;
+    }
+
+    let clear_buttons = document.querySelectorAll('.under-construction-upload-clear');
+    if(clear_buttons) {
+        for(let clear_button of clear_buttons) {
+            clear_button.addEventListener('click', e => {
+                e.preventDefault();
+                let btn = e.currentTarget;
+                let aac_field = document.getElementById(btn.getAttribute('data-field')+'[aac]');
+                let ogg_field = document.getElementById(btn.getAttribute('data-field')+'[ogg]');
+                let aac_field_label = document.getElementById(btn.getAttribute('data-field')+'[aac]-selected');
+                let ogg_field_label = document.getElementById(btn.getAttribute('data-field')+'[ogg]-selected');
+                aac_field.value = '';
+                ogg_field.value = '';
+                aac_field_label.innerHTML = '';
+                ogg_field_label.innerHTML = '';
+            });
+        }
+    }
     // Runs when the media button is clicked.
     let upload_buttons = document.querySelectorAll( '.under-construction-upload' );
     if(upload_buttons) {
         for(let upload_button of upload_buttons) {
             upload_button.addEventListener('click', e => {
                 e.preventDefault();
-                let btn = e.target;
+                let btn = e.currentTarget;
                 let field = document.getElementById(btn.getAttribute('data-field'));
                 let selected_label = document.getElementById(btn.getAttribute('data-field') + '-selected');
                 let type = btn.getAttribute('data-type');
@@ -36,34 +100,7 @@ window.addEventListener('DOMContentLoaded', _ => {
                 metaImageFrame.open();
             });
         }
-        let accordions = document.getElementById('select-accordions');
-        let accordion_count = 0;
-        if(accordions){
-            for (let accordion of mannheim_under_construction_admin.accordions) {
-                let row = document.createElement('tr');
-                row.innerHTML = '<td><input name="mannheim_under_construction_accordions['+accordion_count+'][title]" type="text" value="' + accordion.title + '"></td>';
-                row.innerHTML += '<td><textarea name="mannheim_under_construction_accordions['+accordion_count+'][description]">' + accordion.description + '</textarea></td>';
-                accordions.appendChild(row);
-                ++accordion_count;
-            }
-            let row = document.createElement('tr');
-            row.innerHTML = '<td><input name="mannheim_under_construction_accordions['+accordion_count+'][title]" type="text"></td>';
-            row.innerHTML += '<td><textarea name="mannheim_under_construction_accordions['+accordion_count+'][description]"></textarea></td>';
-            accordions.appendChild(row);
-            ++accordion_count;
-            let last_accordion_textarea = accordions.querySelector('tr:last-of-type textarea');
-            function accordions_last_change(e) {
-                e.target.removeEventListener('change', accordions_last_change);
-                let row = document.createElement('tr');
-                row.innerHTML = '<td><input name="mannheim_under_construction_accordions['+accordion_count+'][title]" type="text"></td>';
-                row.innerHTML += '<td><textarea name="mannheim_under_construction_accordions['+accordion_count+'][description]"></textarea></td>';
-                accordions.appendChild(row);
-                ++accordion_count;
-                last_accordion_textarea = accordions.querySelector('tr:last-of-type textarea');
-                last_accordion_textarea.addEventListener('change', accordions_last_change);
-            }
-            last_accordion_textarea.addEventListener('change', accordions_last_change);
-        }
+
     }
 
     setTimeout(setup_map, 1000);
