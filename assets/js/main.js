@@ -115,6 +115,8 @@ window.addEventListener('DOMContentLoaded', function(){
         let play_tab = document.querySelector('#play');
         let play_tab_pause = play_tab.querySelector('.play_pause_button .pause');
         let play_tab_play = play_tab.querySelector('.play_pause_button .play');
+        let play_track_swipe_bar = play_tab.querySelector('.track-swipe-bar');
+        let play_track_swipe_bar_arrows = play_track_swipe_bar.querySelector('.swipe-bar-arrow-holder');
         let walk = document.querySelector('#walk');
         let walk_prevs = walk.querySelectorAll('.prev-track');
         let walk_nexts = walk.querySelectorAll('.next-track');
@@ -515,6 +517,17 @@ window.addEventListener('DOMContentLoaded', function(){
                 }
                 play_tab.querySelector('.content-tags').innerHTML = tags_html;
                 play_tab.querySelector('.content-production-date').innerHTML = audio_station.production_date;
+                if(audio_station.updates.length > 0){
+                    play_track_swipe_bar.querySelector('span.next-track').innerHTML = '01' + ' / ' + ('' + (audio_station.updates.length + 1)).padStart(2, '0');
+                    play_track_swipe_bar_arrows.innerHTML = '';
+                    play_track_swipe_bar_arrows.innerHTML += '<svg class="active next-track" title="'+mannheim_under_construction.text_next_track+'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve"><path d="M31.83,51H20.728l9.761-21L20.728,9H31.83l9.764,21L31.83,51z"/></svg>';
+                    for(let i=audio_station.updates.length; i>0; --i){
+                        play_track_swipe_bar_arrows.innerHTML += '<svg class="next-track" title="'+mannheim_under_construction.text_next_track+'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve"><path d="M31.83,51H20.728l9.761-21L20.728,9H31.83l9.764,21L31.83,51z"/></svg>';
+                    }
+                    play_track_swipe_bar.style.display = 'flex';
+                } else {
+                    play_track_swipe_bar.style.display = 'none';
+                }
                 player_new.innerHTML = '';
                 if(audio_station.ogg) {
                     player_new.innerHTML += '<source src="' + audio_station.ogg + '" type="' + audio_station.ogg_mime + '">';

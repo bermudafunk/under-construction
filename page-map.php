@@ -263,6 +263,11 @@
                         <div class="content-production-date"></div>
                         <div class="content-credits"></div>
                         <div class="content-tags"></div>
+                        <div class="track-swipe-bar">
+                                <div class="full-width-spacer"></div>
+                                <span class="next-track" title="<?php esc_html_e('Next track', 'mannheim-under-construction'); ?>"></span>
+                                <div class="swipe-bar-arrow-holder"></div>
+                            </div>
                     </div>
                     <div class="leaflet-sidebar-pane" id="walk" role="tabpanel">
                         <button class="close-button" title="<?php esc_html_e('Close', 'mannheim-under-construction'); ?>">

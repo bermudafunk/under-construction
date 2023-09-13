@@ -502,6 +502,16 @@ class Mannheim_Under_Constrcution
 			                $length          = $aac_meta[ 'length_formatted' ];
 			                $length_readable = human_readable_duration( $length );
 		                }
+						$updates = [];
+						$audio_updates = get_post_meta( $post_id, 'mannheim_under_construction_audio_updates', true );
+						foreach($audio_updates as $update){
+							$updates []= [
+								'aac' => wp_get_attachment_url($update['aac']),
+								'aac_mime' => get_post_mime_type($update['aac']),
+								'ogg' => wp_get_attachment_url($update['ogg']),
+								'ogg_mime' => get_post_mime_type($update['ogg']),
+							];
+						}
 		                $map_data [] = [
 			                'id'              => $post_id,
 			                'lat'             => get_post_meta( $post_id, 'mannheim_under_construction_location_lat', true ),
@@ -509,7 +519,7 @@ class Mannheim_Under_Constrcution
 			                'location'        => esc_html( get_post_meta( $post_id, 'mannheim_under_construction_location', true ) ),
 			                'location_2'      => esc_html( get_post_meta( $post_id, 'mannheim_under_construction_location_2', true ) ),
 			                'accordions'      => get_post_meta( $post_id, 'mannheim_under_construction_accordions', true ),
-			                'updates'         => get_post_meta( $post_id, 'mannheim_under_construction_audio_updates', true ),
+			                'updates'         => $updates,
 			                'credits'         => apply_filters( 'the_content', ( get_post_meta( $post_id, 'mannheim_under_construction_credits', true ) ) ),
 			                'title'           => esc_html( get_the_title( $post_id ) ),
 			                'description'     => apply_filters( 'the_content', get_the_content( null, false, $post_id ) ),
@@ -585,6 +595,7 @@ class Mannheim_Under_Constrcution
 						'text_bonus' => esc_html__('Bonus', 'mannheim-under-construction'),
                         'text_end' => esc_html__('End', 'mannheim-under-construction'),
 						'text_walk' => esc_html__('Walk', 'mannheim-under-construction'),
+						'text_next_track' => esc_html__('Next track', 'mannheim-under-construction'),
 					]
 				);
 			}
