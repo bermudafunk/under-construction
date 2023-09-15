@@ -505,11 +505,24 @@ class Mannheim_Under_Constrcution
 						$updates = [];
 						$audio_updates = get_post_meta( $post_id, 'mannheim_under_construction_audio_updates', true );
 						foreach($audio_updates as $update){
+							$ogg_meta        = wp_get_attachment_metadata( $update['ogg'] );
+		                	$aac_meta        = wp_get_attachment_metadata( $update['aac'] );
+							$update_length          = '';
+							$update_length_readable = '';
+			                if ( isset( $ogg_meta[ 'length_formatted' ] ) ) {
+				                $update_length          = $ogg_meta[ 'length_formatted' ];
+				                $update_length_readable = human_readable_duration( $length );
+			                } elseif ( isset( $aac_meta[ 'length_formatted' ] ) ) {
+				                $update_length          = $aac_meta[ 'length_formatted' ];
+				                $update_length_readable = human_readable_duration( $length );
+			                }
 							$updates []= [
 								'aac' => wp_get_attachment_url($update['aac']),
 								'aac_mime' => get_post_mime_type($update['aac']),
 								'ogg' => wp_get_attachment_url($update['ogg']),
 								'ogg_mime' => get_post_mime_type($update['ogg']),
+								'length' => $update_length,
+			                	'length_readable' => $update_length_readable,
 							];
 						}
 		                $map_data [] = [

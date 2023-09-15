@@ -129,6 +129,7 @@ window.addEventListener('DOMContentLoaded', function(){
         let walk_intro_player = walk_intro.querySelector('.content-player');
         let explainers = walk.querySelectorAll('.onboarding-explainer-description');
         let current_audio = 0;
+        let current_audio_update = 0;
         let current_walk = 0;
         let current_walk_station = 0;
         let current_walk_explainer = 0;
@@ -241,6 +242,9 @@ window.addEventListener('DOMContentLoaded', function(){
                 load_walk_station(current_walk_station + 1);
             });
         }
+        play_track_swipe_bar_arrows.addEventListener('click', _ => {
+            load_audio_update(current_audio_update + 1);
+        });
         onboarding.addEventListener('click', _ => {
             onboarding.classList.remove('active');
         });
@@ -496,6 +500,7 @@ window.addEventListener('DOMContentLoaded', function(){
         }
         function load_audio(audio_id, load_only = false){
             current_audio = audio_id;
+            current_audio_update = 0;
             if(audio_stations[audio_id]){
                 let audio_station = audio_stations[audio_id];
                 play_tab.querySelector('.content-location').innerHTML = audio_station.location;
@@ -524,7 +529,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     for(let i=audio_station.updates.length; i>0; --i){
                         play_track_swipe_bar_arrows.innerHTML += '<svg class="next-track" title="'+mannheim_under_construction.text_next_track+'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve"><path d="M31.83,51H20.728l9.761-21L20.728,9H31.83l9.764,21L31.83,51z"/></svg>';
                     }
-                    play_track_swipe_bar.style.display = 'flex';
+                    play_track_swipe_bar.style.display = '';
                 } else {
                     play_track_swipe_bar.style.display = 'none';
                 }
@@ -561,6 +566,52 @@ window.addEventListener('DOMContentLoaded', function(){
                 }
             }
         }
+
+        function load_audio_update(update_id){
+            if(audio_stations[current_audio].updates[update_id-1]){
+                current_audio_update = update_id;
+                let audio_station = audio_stations[current_audio].updates[update_id-1];
+                if(audio_stations[current_audio].updates.length > 0){
+                    play_track_swipe_bar.querySelector('span.next-track').innerHTML = ('' + (update_id + 1)).padStart(2, '0') + ' / ' + ('' + (audio_stations[current_audio].updates.length + 1)).padStart(2, '0');
+                    play_track_swipe_bar_arrows.innerHTML = '';
+                    for(let i=0; i<=audio_stations[current_audio].updates.length; ++i){
+                        play_track_swipe_bar_arrows.innerHTML += '<svg class="'+(update_id === i ? 'active ' : '')+'next-track" title="'+mannheim_under_construction.text_next_track+'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve"><path d="M31.83,51H20.728l9.761-21L20.728,9H31.83l9.764,21L31.83,51z"/></svg>';
+                    }
+                    play_track_swipe_bar.style.display = '';
+                } else {
+                    play_track_swipe_bar.style.display = 'none';
+                }
+                let content_length = play_tab.querySelector('.content-length .length');
+                content_length.innerHTML = audio_station.length;
+                content_length.setAttribute('aria-label', audio_station.length_readable);
+                player_new.innerHTML = '';
+                if(audio_station.ogg) {
+                    player_new.innerHTML += '<source src="' + audio_station.ogg + '" type="' + audio_station.ogg_mime + '">';
+                }
+                if(audio_station.aac) {
+                    player_new.innerHTML += '<source src="' + audio_station.aac + '" type="' + audio_station.aac_mime + '">';
+                }
+                if(player.innerHTML !== player_new.innerHTML){
+                    if(timeline_update_interval) {
+                        clearInterval(timeline_update_interval);
+                        timeline_update_interval = null;
+                    }
+                    document.documentElement.style.setProperty('--audio-progress', 0);
+                }else if(!timeline_update_interval && !player.paused){
+                    timeline_update_interval = setInterval(function(){
+                        requestAnimationFrame(updateAudioPosition);
+                    }, 100);
+                }
+                if(player_new.innerHTML !== player.innerHTML || player.paused){
+                    play_tab_play.style.display = '';
+                    play_tab_pause.style.display = 'none';
+                } else {
+                    play_tab_play.style.display = 'none';
+                    play_tab_pause.style.display = '';
+                }
+            }
+        }
+
 
         function load_walk(walk_id, load_only = false){
             if(walks[walk_id]){
