@@ -245,6 +245,42 @@ window.addEventListener('DOMContentLoaded', function(){
         play_track_swipe_bar_arrows.addEventListener('click', _ => {
             load_audio_update(current_audio_update + 1);
         });
+        let play_touch_x_down = 0;
+        let play_touch_x_up = 0;
+        play_tab.addEventListener('touchstart', e => {
+            play_touch_x_down = e.touches[0].clientX;
+            play_touch_x_up = e.touches[0].clientX;
+            e.stopPropagation();
+        }, {passive: true});
+        play_tab.addEventListener('touchmove', e => {
+            play_touch_x_up = e.touches[0].clientX;
+            e.stopPropagation();
+        }, {passive: true});
+        play_tab.addEventListener('touchend', e => {
+            if (Math.abs(play_touch_x_down - play_touch_x_up) > 40) {
+                if (play_touch_x_down > play_touch_x_up) {
+                    load_audio_update(current_audio_update + 1);
+                } else {
+                    load_audio_update(current_audio_update - 1);
+                }
+            }
+            e.stopPropagation();
+        }, {passive: true});
+        play_tab.addEventListener('mousedown', e => {
+            play_touch_x_down = e.clientX;
+            e.stopPropagation();
+        }, {passive: true});
+        play_tab.addEventListener('mouseup', e => {
+            play_touch_x_up = e.clientX;
+            if (Math.abs(play_touch_x_down - play_touch_x_up) > 40) {
+                if (play_touch_x_down > play_touch_x_up) {
+                    load_audio_update(current_audio_update + 1);
+                } else {
+                    load_audio_update(current_audio_update - 1);
+                }
+            }
+            e.stopPropagation();
+        }, {passive: true});
         onboarding.addEventListener('click', _ => {
             onboarding.classList.remove('active');
         });
@@ -568,6 +604,10 @@ window.addEventListener('DOMContentLoaded', function(){
         }
 
         function load_audio_update(update_id){
+            if(update_id === 0){
+                load_audio(current_audio);
+                return
+            }
             if(audio_stations[current_audio].updates[update_id-1]){
                 current_audio_update = update_id;
                 let audio_station = audio_stations[current_audio].updates[update_id-1];
