@@ -742,7 +742,7 @@ class Mannheim_Under_Constrcution
 			$tax_query []= ['taxonomy' => 'production-date', 'field' => 'term_id', 'terms' => $_POST['production-date']];
 		}
 		if(!empty($_POST['s']) || count($tax_query) > 1){
-			$audios = get_posts([
+			$query = new WP_Query([
 				'post_type' => 'audio-station',
 				'posts_per_page' => -1,
 				's' => $_POST['s'],
@@ -753,8 +753,9 @@ class Mannheim_Under_Constrcution
                     ['key' => 'mannheim_under_construction_location_hidden', 'compare' => 'NOT EXISTS'],
                 ],
 			]);
+			$audios = relevanssi_do_query($query);
 			if(!empty($_POST['s'])){
-				$new_audios = array_merge($audios, get_posts([
+				$query = new WP_Query([
 					'post_type' => 'audio-station',
 					'posts_per_page' => -1,
 					'meta_query' => [
@@ -767,7 +768,8 @@ class Mannheim_Under_Constrcution
 						],
 					],
 					'tax_query' => $tax_query,
-				]));
+				]);
+				$new_audios = array_merge($audios, relevanssi_do_query($query));
 				$terms = get_terms([
 					'taxonomy' => ['location', 'post_tag'],
 					'hide_empty' => true,
@@ -775,7 +777,7 @@ class Mannheim_Under_Constrcution
 					'fields' => 'ids',
 				]);
 				if(is_array($terms) && !empty($terms)) {
-					$new_audios = array_merge( $audios, get_posts( [
+					$query = new WP_Query( [
 						'post_type' => 'audio-station',
 						'posts_per_page' => -1,
 						'tax_query' => [
@@ -788,7 +790,8 @@ class Mannheim_Under_Constrcution
 	                        ['key' => 'mannheim_under_construction_location_hidden', 'value' => '0'],
 	                        ['key' => 'mannheim_under_construction_location_hidden', 'compare' => 'NOT EXISTS'],
                         ],
-					] ) );
+					] ) ;
+					$new_audios = array_merge( $audios, relevanssi_do_query($query));
 				}
 				$audios = [];
 				$all_ids = [];
@@ -801,7 +804,7 @@ class Mannheim_Under_Constrcution
 			}
 		}
 		if(empty($audios)){
-			$audio = get_posts([
+			$query = new WP_Query([
 				'post_type' => 'audio-station',
 				'posts_per_page' => 1,
 				'orderby' => 'rand',
@@ -810,7 +813,8 @@ class Mannheim_Under_Constrcution
 	                ['key' => 'mannheim_under_construction_location_hidden', 'value' => '0'],
 	                ['key' => 'mannheim_under_construction_location_hidden', 'compare' => 'NOT EXISTS'],
                 ],
-			])[0];
+			]);
+			$audio = relevanssi_do_query($query)[0];
 			$message .= '<p>' . sprintf(esc_html__('The search term "%s" did unfortunately not find any posts :(', 'mannheim-under-construction'), esc_html($_POST['s'])) . '</p>';
 			$message .= '<p>' . esc_html__('Enter a new search term or try finding a post with the tag search :)', 'mannheim-under-construction') . '</p>';
 			$message .= '<p>' . esc_html__('Or listen to this randomly selected post:', 'mannheim-under-construction') . '</p>';
