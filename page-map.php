@@ -266,7 +266,7 @@
                         <div class="track-swipe-bar">
                                 <div class="full-width-spacer"></div>
                                 <span class="next-track" title="<?php esc_html_e('Next track', 'mannheim-under-construction'); ?>"></span>
-                                <div class="swipe-bar-arrow-holder"></div>
+                                <div class="swipe-bar-arrow-holder" title="<?php esc_html_e('Next track', 'mannheim-under-construction'); ?>"></div>
                             </div>
                     </div>
                     <div class="leaflet-sidebar-pane" id="walk" role="tabpanel">

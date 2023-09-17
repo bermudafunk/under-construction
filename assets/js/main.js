@@ -319,7 +319,7 @@ window.addEventListener('DOMContentLoaded', function(){
         document.querySelector('#walk_button').addEventListener('click', _ => {
             load_walk_station(current_walk_station);
         });
-        document.querySelector('#play_tab_button').addEventListener('click', _ => {
+        play_tab_button.addEventListener('click', _ => {
             load_audio(current_audio);
         });
 
@@ -561,9 +561,9 @@ window.addEventListener('DOMContentLoaded', function(){
                 if(audio_station.updates.length > 0){
                     play_track_swipe_bar.querySelector('span.next-track').innerHTML = '01' + ' / ' + ('' + (audio_station.updates.length + 1)).padStart(2, '0');
                     play_track_swipe_bar_arrows.innerHTML = '';
-                    play_track_swipe_bar_arrows.innerHTML += '<svg class="active next-track" title="'+mannheim_under_construction.text_next_track+'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve"><path d="M31.83,51H20.728l9.761-21L20.728,9H31.83l9.764,21L31.83,51z"/></svg>';
+                    play_track_swipe_bar_arrows.innerHTML += '<svg class="active next-track" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve"><path d="M31.83,51H20.728l9.761-21L20.728,9H31.83l9.764,21L31.83,51z"/></svg>';
                     for(let i=audio_station.updates.length; i>0; --i){
-                        play_track_swipe_bar_arrows.innerHTML += '<svg class="next-track" title="'+mannheim_under_construction.text_next_track+'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve"><path d="M31.83,51H20.728l9.761-21L20.728,9H31.83l9.764,21L31.83,51z"/></svg>';
+                        play_track_swipe_bar_arrows.innerHTML += '<svg class="next-track" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve"><path d="M31.83,51H20.728l9.761-21L20.728,9H31.83l9.764,21L31.83,51z"/></svg>';
                     }
                     play_track_swipe_bar.style.display = '';
                 } else {
@@ -615,7 +615,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     play_track_swipe_bar.querySelector('span.next-track').innerHTML = ('' + (update_id + 1)).padStart(2, '0') + ' / ' + ('' + (audio_stations[current_audio].updates.length + 1)).padStart(2, '0');
                     play_track_swipe_bar_arrows.innerHTML = '';
                     for(let i=0; i<=audio_stations[current_audio].updates.length; ++i){
-                        play_track_swipe_bar_arrows.innerHTML += '<svg class="'+(update_id === i ? 'active ' : '')+'next-track" title="'+mannheim_under_construction.text_next_track+'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve"><path d="M31.83,51H20.728l9.761-21L20.728,9H31.83l9.764,21L31.83,51z"/></svg>';
+                        play_track_swipe_bar_arrows.innerHTML += '<svg class="'+(update_id === i ? 'active ' : '')+'next-track" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve"><path d="M31.83,51H20.728l9.761-21L20.728,9H31.83l9.764,21L31.83,51z"/></svg>';
                     }
                     play_track_swipe_bar.style.display = '';
                 } else {
