@@ -53,7 +53,7 @@
                         47.678,17.979 42.021,12.321"/>
                 </svg>
                 <p class="onboarding-explainer" id="onboarding-explainer-4"><?php esc_html_e('... or a random post', 'mannheim-under-construction'); ?></p>
-                <button autofocus id="onboarding-start-button"><?php esc_html_e('Start', 'mannheim-under-construction'); ?></button>
+                <button autofocus id="onboarding-start-button" tabindex="1"><?php esc_html_e('Start', 'mannheim-under-construction'); ?></button>
                 <div class="onboarding-welcome">
 					<?php echo apply_filters( 'the_content', get_the_content(null, false, 209) ); ?>
                 </div>
@@ -705,7 +705,7 @@
             </div>
 	        <?php
 	        if(get_option('mannheim_under_construction_popup_show', false)){
-		        ?><div class="mannheim-under-construction-popup">
+		        ?><div class="mannheim-under-construction-popup" role="dialog">
                 <div class="mannheim-under-construction-popup-box">
                     <button class="close-button" title="<?php esc_html_e('Close', 'mannheim-under-construction'); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"

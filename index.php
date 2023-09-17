@@ -754,6 +754,7 @@ class Mannheim_Under_Constrcution
                 ],
 			]);
 			$audios = relevanssi_do_query($query);
+
 			if(!empty($_POST['s'])){
 				$query = new WP_Query([
 					'post_type' => 'audio-station',
