@@ -263,6 +263,7 @@
                         <div class="content-production-date"></div>
                         <div class="content-credits"></div>
                         <div class="content-tags"></div>
+                        <div class="full-height-spacer"></div>
                         <div class="track-swipe-bar">
                                 <div class="full-width-spacer"></div>
                                 <span class="next-track" title="<?php esc_html_e('Next track', 'mannheim-under-construction'); ?>"></span>
