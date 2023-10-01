@@ -265,10 +265,16 @@
                         <div class="content-tags"></div>
                         <div class="full-height-spacer"></div>
                         <div class="track-swipe-bar">
-                                <div class="full-width-spacer"></div>
-                                <span class="next-track" title="<?php esc_html_e('Next track', 'mannheim-under-construction'); ?>"></span>
-                                <div class="swipe-bar-arrow-holder" title="<?php esc_html_e('Next track', 'mannheim-under-construction'); ?>"></div>
-                            </div>
+                            <svg class="prev-track" title="<?php esc_html_e('Previous track', 'mannheim-under-construction'); ?>" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
+                                <path d="M20.566,30L30.33,9h11.104l-9.762,21l9.762,21H30.33L20.566,30z"/>
+                            </svg>
+                            <span class="prev-track" title="<?php esc_html_e('Previous track', 'mannheim-under-construction'); ?>"></span>
+                            <div class="full-width-spacer"></div>
+                            <span class="next-track" title="<?php esc_html_e('Next track', 'mannheim-under-construction'); ?>"></span>
+                            <svg class="next-track" title="<?php esc_html_e('Next track', 'mannheim-under-construction'); ?>" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
+                                <path d="M31.83,51H20.728l9.761-21L20.728,9H31.83l9.764,21L31.83,51z"/>
+                            </svg>
+                        </div>
                     </div>
                     <div class="leaflet-sidebar-pane" id="walk" role="tabpanel">
                         <button class="close-button" title="<?php esc_html_e('Close', 'mannheim-under-construction'); ?>">

@@ -609,6 +609,7 @@ class Mannheim_Under_Constrcution
                         'text_end' => esc_html__('End', 'mannheim-under-construction'),
 						'text_walk' => esc_html__('Walk', 'mannheim-under-construction'),
 						'text_next_track' => esc_html__('Next track', 'mannheim-under-construction'),
+						'text_first_next_track' => esc_html__('Next update', 'mannheim-under-construction'),
 					]
 				);
 			}

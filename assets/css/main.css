@@ -859,17 +859,3 @@ summary::-webkit-details-marker {
 .content-length {
     margin: 0;
 }
-.swipe-bar-arrow-holder{
-    display: flex;
-    margin-left: 30px;
-}
-.swipe-bar-arrow-holder svg {
-    margin-left: -30px;
-    fill: #fff;
-}
-.swipe-bar-arrow-holder svg.active {
-    fill: #000;
-}
-body.black-white .swipe-bar-arrow-holder svg.active {
-    fill: #F2FF5B;
-}
