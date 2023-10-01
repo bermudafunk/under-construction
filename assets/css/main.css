@@ -150,7 +150,7 @@ svg {
     flex-shrink: 0;
 }
 .content-player button.play_pause_button {
-    width: 62px;
+    width: 65px;
 }
 .content-player .seek-button{
     width: 30px;
@@ -239,8 +239,8 @@ body.black-white .leaflet-sidebar:not(.collapsed) ~ .leaflet-map-pane {
     bottom: 0;
 }
 button.close-button{
-    height: 58px;
-    width: 58px;
+    height: 55px;
+    width: 55px;
     position: absolute;
     right: 0;
     top: 0;
@@ -464,6 +464,9 @@ body.black-white .leaflet-sidebar-content {
     cursor: pointer;
 }
 .content-production-date,
+.content-description-details{
+    margin: 16px 0;
+}
 .content-tags{
     margin-bottom: 30px;
 }
@@ -570,7 +573,18 @@ body.wait .leaflet-sidebar-pane {
 #search-fulltext {
     order: 2;
 }
-
+@media (max-width:767px){
+    body {
+        font-size: 80%;
+    }
+    body.small-font {
+        font-size: 120%;
+    }
+    body.large-font {
+        font-size: 100%;
+    }
+    
+}
 @media (min-width:768px) {
     #search-tags {
         order: 2;
@@ -810,7 +824,7 @@ body.black-white .light-theme {
 details summary {
     padding: 8px;
     display: flex;
-    flex-wrap: nowrap;
+    flex-flow: row;
 }
 .onboarding-explainer-description {
     display: flex;
