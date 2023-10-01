@@ -57,7 +57,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 if(location.hidden){
                     continue;
                 }
-                let marker = L.marker([location.lat, location.lng], {title: location.title, alt: location.title, icon: audio_icon, data_id: location.id});
+                let marker = L.marker([location.lat, location.lng], {title: location.title, alt: location.title, icon: audio_icon, data_id: location.id, keyboard: false});
                 marker.addEventListener('click', e => {
                     load_audio(e.target.options.data_id);
                 });
@@ -73,13 +73,11 @@ window.addEventListener('DOMContentLoaded', function(){
         }
         let walks = [];
         if (mannheim_under_construction.walk_data) {
-            let walk_markers = L.markerClusterGroup();
             let walk_list = document.querySelector('.walk-list');
             for (let walk of mannheim_under_construction.walk_data) {
                 walk_list.innerHTML += '<li data-walk-id="' + walk.id + '">' + walk.title + '</li>';
                 walks[walk.id] = walk;
             }
-            map.addLayer(walk_markers);
             let walk_links = walk_list.querySelectorAll('li');
             for(let walk_link of walk_links){
                 walk_link.addEventListener('click', e => {
