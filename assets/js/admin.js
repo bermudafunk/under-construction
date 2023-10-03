@@ -31,23 +31,40 @@ window.addEventListener('DOMContentLoaded', _ => {
         }
         last_accordion_textarea.addEventListener('change', accordions_last_change);
     }
+    let audio_options = '<option value=""> - </option>';
+    for (let audio of mannheim_under_construction_admin.audios_titles) {
+        audio_options += '<option value="' + audio.id + '">' + audio.title + '</option>';
+    }
     let updates = document.getElementById('select-updates');
     let update_count = 0;
     if(updates){
+        //station select
         for (let update of mannheim_under_construction_admin.updates) {
             let row = document.createElement('tr');
-            row.innerHTML = '<td><input id="mannheim_under_construction_audio_updates['+update_count+'][aac]" name="mannheim_under_construction_audio_updates['+update_count+'][aac]" type="hidden" value="' + update.aac + '"><button type="button" class="under-construction-upload" data-field="mannheim_under_construction_audio_updates['+update_count+'][aac]" data-type="audio/mpeg,audio/aac">'+mannheim_under_construction_admin.upload_button_aac+'</button><br><span id="mannheim_under_construction_audio_updates['+update_count+'][aac]-selected">'+update.aac_title+'</span></td>';
-            row.innerHTML += '<td><input id="mannheim_under_construction_audio_updates['+update_count+'][ogg]" name="mannheim_under_construction_audio_updates['+update_count+'][ogg]" type="hidden" value="' + update.ogg + '"><button type="button" class="under-construction-upload" data-field="mannheim_under_construction_audio_updates['+update_count+'][ogg]" data-type="audio/ogg">'+mannheim_under_construction_admin.upload_button_ogg+'</button><br><span id="mannheim_under_construction_audio_updates['+update_count+'][ogg]-selected">'+update.ogg_title+'</span></td>';
-            row.innerHTML += '<td><button type="button" class="under-construction-upload-clear" data-field="mannheim_under_construction_audio_updates['+update_count+']"><span class="dashicons dashicons-trash"></span></button></td>';
+            console.log(update);
+            row.innerHTML += '<td><select name="mannheim_under_construction_audio_updates['+update_count+'][audio_id]">' + audio_options + '</select></td>';
+            let selected = row.querySelector('select option[value="'+update.audio_id+'"]');
+            if(selected) {
+                selected.setAttribute('selected', 'selected');
+            }
             updates.appendChild(row);
             ++update_count;
         }
         let row = document.createElement('tr');
-        row.innerHTML = '<td><input id="mannheim_under_construction_audio_updates['+update_count+'][aac]" name="mannheim_under_construction_audio_updates['+update_count+'][aac]" type="hidden"><button type="button" class="under-construction-upload" data-field="mannheim_under_construction_audio_updates['+update_count+'][aac]"  data-type="audio/mpeg,audio/aac">'+mannheim_under_construction_admin.upload_button_aac+'</button><br><span id="mannheim_under_construction_audio_updates['+update_count+'][aac]-selected"></td>';
-        row.innerHTML += '<td><input id="mannheim_under_construction_audio_updates['+update_count+'][ogg]" name="mannheim_under_construction_audio_updates['+update_count+'][ogg]" type="hidden"><button type="button" class="under-construction-upload" data-field="mannheim_under_construction_audio_updates['+update_count+'][ogg]"  data-type="audio/ogg">'+mannheim_under_construction_admin.upload_button_ogg+'</button><br><span id="mannheim_under_construction_audio_updates['+update_count+'][ogg]-selected"></td>';
-        row.innerHTML += '<td><button type="button" class="under-construction-upload-clear" data-field="mannheim_under_construction_audio_updates['+update_count+']"><span class="dashicons dashicons-trash"></span></button></td>';
-            updates.appendChild(row);
+        row.innerHTML += '<td><select name="mannheim_under_construction_audio_updates['+update_count+'][audio_id]">' + audio_options + '</select></td>';
+        updates.appendChild(row);
         ++update_count;
+        let last_update_select_field = updates.querySelector('tr:last-of-type select');
+        function updates_last_select_change(e) {
+            e.target.removeEventListener('change', updates_last_select_change);
+            let row = document.createElement('tr');
+            row.innerHTML += '<td><select name="mannheim_under_construction_audio_updates['+update_count+'][audio_id]">' + audio_options + '</select></td>';
+            updates.appendChild(row);
+            ++update_count;
+            last_update_select_field = updates.querySelector('tr:last-of-type select');
+            last_update_select_field.addEventListener('change', updates_last_select_change);
+        }
+        last_update_select_field.addEventListener('change', updates_last_select_change);
     }
 
     let clear_buttons = document.querySelectorAll('.under-construction-upload-clear');
@@ -111,10 +128,6 @@ window.addEventListener('DOMContentLoaded', _ => {
         let intro_selects = document.getElementById('select-walk-intros');
         if(!stations_selects || !intro_selects){
             return;
-        }
-        let audio_options = '<option value=""> - </option>';
-        for (let audio of mannheim_under_construction_admin.walk.audios) {
-            audio_options += '<option value="' + audio.id + '">' + audio.title + '</option>';
         }
         //station select
         for (let station of mannheim_under_construction_admin.walk.stations) {
