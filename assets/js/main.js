@@ -620,13 +620,29 @@ window.addEventListener('DOMContentLoaded', function(){
                     next.style.display = update_id === audio_stations[current_audio].updates.length ? 'none' : '';
                 }
                 current_audio_update = update_id;
-                let audio_station = audio_stations[current_audio].updates[update_id-1];
-                play_track_swipe_bar.querySelector('span.next-track').innerHTML = ('' + (update_id + 2)).padStart(2, '0') + ' / ' + ('' + (audio_stations[current_audio].updates.length + 1)).padStart(2, '0');
-                play_track_swipe_bar.querySelector('span.prev-track').innerHTML = ('' + (update_id)).padStart(2, '0') + ' / ' + ('' + (audio_stations[current_audio].updates.length + 1)).padStart(2, '0');
-                play_track_swipe_bar.style.display = '';
+                let audio_station = audio_stations[audio_stations[current_audio].updates[update_id-1].audio_id];
+                play_tab.querySelector('.content-location').innerHTML = audio_station.location;
+                play_tab.querySelector('.content-location-2').innerHTML = audio_station.location_2;
+                play_tab.querySelector('.content-title').innerHTML = audio_station.title;
+                play_tab.querySelector('.content-description').innerHTML = audio_station.description;
+                play_tab.querySelector('.content-credits').innerHTML = audio_station.credits;
+                let details_wrapper = play_tab.querySelector('.content-description-details');
+                details_wrapper.innerHTML = '';
+                for(let accordion of audio_station.accordions){
+                    details_wrapper.innerHTML += '<details><summary><span>' + accordion.title + '</span><span class="arrow"></span></summary>' + accordion.description + '</details>';
+                }
                 let content_length = play_tab.querySelector('.content-length .length');
                 content_length.innerHTML = audio_station.length;
                 content_length.setAttribute('aria-label', audio_station.length_readable);
+                let tags_html = '';
+                for(let tag of audio_station.tags) {
+                    tags_html += '<div class="tag" data-tagid="' + tag + '">#' + mannheim_under_construction.tag_data[tag] + '</div>';
+                }
+                play_tab.querySelector('.content-tags').innerHTML = tags_html;
+                play_tab.querySelector('.content-production-date').innerHTML = audio_station.production_date;
+                play_track_swipe_bar.querySelector('span.next-track').innerHTML = ('' + (update_id + 2)).padStart(2, '0') + ' / ' + ('' + (audio_stations[current_audio].updates.length + 1)).padStart(2, '0');
+                play_track_swipe_bar.querySelector('span.prev-track').innerHTML = ('' + (update_id)).padStart(2, '0') + ' / ' + ('' + (audio_stations[current_audio].updates.length + 1)).padStart(2, '0');
+                play_track_swipe_bar.style.display = '';
                 player_new.innerHTML = '';
                 if(audio_station.ogg) {
                     player_new.innerHTML += '<source src="' + audio_station.ogg + '" type="' + audio_station.ogg_mime + '">';
