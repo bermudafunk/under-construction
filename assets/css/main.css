@@ -19,20 +19,41 @@
     font-display: swap;
 }
 
+:root {
+    --sidebar-background: url('../img/uc_c_yllw_muster.svg');
+    --audio-progress: 0;
+    --primary-colour: #F2FF5B;
+    --secondary-colour: #000000;
+    --primary-colour-hover: #E2EF4B;
+    --switcher-colour: #FFFFFF;
+    --onboarding-background: rgba(255, 255, 217, 0.5);
+    --popup-background: rgba(255, 255, 217, 0.75);
+    --search-background: #FFFFFF;
+}
 html,
 body {
     margin: 0;
     padding: 0;
     font-family: 'Junction', sans-serif;
     font-weight: bold;
-    color: #000;
-    background-color: #F2FF5B;
+    color: var(--secondary-colour);
+    background-color: var(--primary-colour);
     transition: font-size 500ms;
     font-variant-ligatures: none;
 }
+body.campaign {
+    --primary-colour: #00ECEC;
+    --primary-colour-hover: #10DCDC;
+}
 body.black-white {
-    color: #000;
-    background-color: #FFFFFF;
+    color: var(--secondary-colour);
+    --primary-colour: #FFFFFF;
+    --primary-colour-hover: #EEEEEE;
+    --switcher-colour: #F2FF5B;
+    --onboarding-background: rgba(0, 0, 0, 0.5);
+}
+body.black-white.campaign {
+    --switcher-colour: #00ECEC;
 }
 .leaflet-tile-pane{
     transition: filter 500ms;
@@ -61,8 +82,7 @@ body.small-font .leaflet-marker-icon {
     font-family: 'Junction', sans-serif;
     font-weight: bold;
     font-size: 1em;
-    color: #000000;
-    background-color: #F7FF9D;
+    color: var(--secondary-colour);
 }
 .marker-cluster div {
     font-family: 'Junction', sans-serif;
@@ -77,7 +97,7 @@ input {
     background-color: transparent;
     outline: none;
     border: 0;
-    color: #000000;
+    color: var(--secondary-colour);
     padding: 0;
 }
 button {
@@ -123,16 +143,19 @@ details summary,
 .font-enable-ligatures {
     font-variant-ligatures: normal;
 }
+#walk_button svg > g > path,
+#back_button svg > g > path:last-of-type,
+.content-timeline path:last-of-type,
+#onboarding-marker path:last-of-type {
+    fill: var(--primary-colour);
+}
 body.black-white .leaflet-sidebar-content svg,
 body.black-white .close-button svg,
-body.black-white .onboarding-arrow,
-#black_white_switcher polygon:first-of-type,
-body.black-white #walk_button svg > g > path,
-body.black-white #back_button svg > g > path:last-of-type {
-    fill: #FFFFFF;
+body.black-white .onboarding-arrow {
+    fill: var(--primary-colour);
 }
-body.black-white #black_white_switcher polygon:first-of-type{
-    fill: #F2FF5B;
+#black_white_switcher polygon:first-of-type{
+    fill: var(--switcher-colour);
 }
 svg {
     width: 100%;
@@ -163,36 +186,24 @@ svg {
 .marker-cluster-medium div,
 .marker-cluster-large div,
 .track-swipe-bar {
-    color: #000;
-    background-color: #F2FF5B;
-}
-body.black-white .leaflet-sidebar-tabs,
-body.black-white .leaflet-sidebar-tabs > button,
-body.black-white .leaflet-zoom-box,
-body.black-white .leaflet-bar a,
-body.black-white .leaflet-bar a.leaflet-disabled,
-body.black-white .leaflet-container .leaflet-control-attribution,
-body.black-white .marker-cluster-small div,
-body.black-white .marker-cluster-medium div,
-body.black-white .marker-cluster-large div {
-    background-color: #FFFFFF;
+    color: var(--secondary-colour);
+    background-color: var(--primary-colour);
 }
 body.black-white .leaflet-container,
 body.black-white .track-swipe-bar {
-    color: #FFFFFF;
-    background-color: #000000;
+    color: var(--primary-colour);
+    background-color: var(--secondary-colour);
 }
-.leaflet-bar a:hover {
-    color: #000;
-    background-color: #E2EF4B;
-}
+.leaflet-sidebar-tabs > button:hover,
+.leaflet-bar a:hover,
 body.black-white .leaflet-sidebar-tabs > button:hover,
 body.black-white .leaflet-bar a:hover {
-    background-color: #EEEEEE;
+    color: var(--secondary-colour);
+    background-color: var(--primary-colour-hover);
 }
 #mannheim-under-construction-no-js-error {
     text-align: center;
-    background: #F2FF5B;
+    background: var(--primary-colour);
     height: 100%;
     width: 100%;
     display: grid;
@@ -237,6 +248,7 @@ body.black-white .leaflet-sidebar:not(.collapsed) ~ .leaflet-map-pane {
 #privacy_button {
     position: absolute;
     bottom: 0;
+    color: var(--secondary-colour);
 }
 button.close-button{
     height: 55px;
@@ -257,6 +269,7 @@ button.close-button{
 #imprint_button {
     position: absolute;
     bottom: 30px;
+    color: var(--secondary-colour);
 }
 .leaflet-sidebar-left .leaflet-sidebar-content2 {
     left: 420px;
@@ -274,7 +287,7 @@ button.close-button{
     display: none;
 }
 .mannheim-under-construction-onboarding {
-    background-color: rgba(255, 255, 217, 0.5);
+    background-color: var(--onboarding-background);
     position: fixed;
     z-index: 3000;
     display: none;
@@ -282,9 +295,6 @@ button.close-button{
     top: 0;
     align-items: center;
     cursor: pointer;
-}
-body.black-white .mannheim-under-construction-onboarding {
-    background-color: rgba(0, 0, 0, 0.5);
 }
 .mannheim-under-construction-onboarding.active {
     display: grid;
@@ -390,9 +400,9 @@ body:not(.sidebar-fullscreen) .mannheim-under-construction-search {
     flex-shrink: 0;
 }
 .mannheim-under-construction-search input[type="search"]{
-    background-color: #FFFFFF;
+    background-color: var(--search-background);
     width: 100%;
-    border: 2px black solid;
+    border: 2px var(--secondary-colour) solid;
     text-align: left;
 }
 input[type="search"]::-webkit-search-decoration{
@@ -401,22 +411,12 @@ input[type="search"]::-webkit-search-decoration{
 .filter-box select,
 .leaflet-sidebar-content,
 .onboarding-welcome {
-    scrollbar-color: #000000 #F2FF5B;
-}
-body.black-white .filter-box select,
-body.black-white .leaflet-sidebar-content,
-.onboarding-welcome {
-    scrollbar-color: #000000 #FFFFFF;
+    scrollbar-color: var(--secondary-colour) var(--primary-colour);
 }
 .filter-box select::-webkit-scrollbar,
 .leaflet-sidebar-content::-webkit-scrollbar,
 .onboarding-welcome::-webkit-scrollbar {
-    background: #F2FF5B;
-}
-body.black-white .filter-box select::-webkit-scrollbar,
-body.black-white .leaflet-sidebar-content::-webkit-scrollbar,
-body.black-white .onboarding-welcome::-webkit-scrollbar {
-    background: #FFFFFF;
+    background: var(--primary-colour);
 }
 .filter-box select::-webkit-scrollbar-button,
 .leaflet-sidebar-content::-webkit-scrollbar-button,
@@ -426,15 +426,15 @@ body.black-white .onboarding-welcome::-webkit-scrollbar {
 .filter-box select::-webkit-scrollbar-thumb,
 .leaflet-sidebar-content::-webkit-scrollbar-thumb,
 .onboarding-welcome::-webkit-scrollbar-thumb {
-    background: #000000;
+    background: var(--secondary-colour);
 }
 a, a:visited, a:hover, a:active, .leaflet-container a {
-    color: #000000;
+    color: var(--secondary-colour);
     text-decoration: underline;
 }
 body.black-white .leaflet-sidebar a,
 body.black-white button {
-    color: #FFFFFF;
+    color: var(--primary-colour);
 }
 .leaflet-sidebar, .leaflet-touch .leaflet-bar a {
     text-decoration: none;
@@ -446,16 +446,7 @@ body.black-white button {
 .sidebar-fullscreen .search_sidebar{
     display: block;
 }
-:root {
-    --sidebar-background: url('../img/uc_c_yllw_muster.svg');
-    --audio-progress: 0;
-}
 .leaflet-sidebar-content {
-    background: var(--sidebar-background) repeat;
-    background-size: 8em;
-}
-body.black-white .leaflet-sidebar-content {
-    color: #FFFFFF;
     background: var(--sidebar-background) repeat;
     background-size: 8em;
 }
@@ -665,13 +656,13 @@ body.wait .leaflet-sidebar-pane {
     height: auto;
 }
 body.black-white #info figure img {
-    background: #FFFFFF;
+    background: var(--primary-colour);
 }
 .filter-box {
     margin-bottom: 10px;
     margin-right: 60px;
     display: none;
-    border: 2px black solid;
+    border: 2px var(--secondary-colour) solid;
 }
 .sidebar-fullscreen .filter-box {
     display: block;
@@ -679,7 +670,7 @@ body.black-white #info figure img {
 .filter-box label {
     cursor: pointer;
     margin: 0;
-    background-color: #F2FF5B;
+    background-color: var(--primary-colour);
     padding: 0.5em;
     text-align: left;
     font-family: 'Junction', sans-serif;
@@ -691,8 +682,8 @@ body.black-white #info figure img {
 }
 .filter-box select {
     display: none;
-    background-color: #F2FF5B;
-    color: #000000;
+    background-color: var(--primary-colour);
+    color: var(--secondary-colour);
     width: 100%;
     height: 100px;
     margin: 0 0 5px 0;
@@ -706,12 +697,12 @@ body.black-white #info figure img {
     overflow: auto;
 }
 body.black-white .filter-box{
-    border: 2px white solid;
+    border: 2px var(--primary-colour) solid;
 }
 body.black-white .filter-box label,
 body.black-white .filter-box select {
-    background-color: #000000;
-    color: #FFFFFF;
+    background-color: var(--secondary-colour);
+    color: var(--primary-colour);
 }
 .filter-box option {
     cursor: pointer;
@@ -771,7 +762,7 @@ body.black-white .light-theme {
     bottom: 0;
     display: block;
     z-index: 3001;
-    background-color: rgba(255, 255, 217, 0.75);
+    background-color: var(--popup-background);
 }
 .mannheim-under-construction-popup-box{
     position: absolute;
