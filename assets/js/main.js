@@ -159,8 +159,6 @@ window.addEventListener('DOMContentLoaded', function(){
                     body.classList.remove('sidebar-fullscreen');
                 } else if(!sidebar_left_dom.classList.contains('collapsed')) {
                     sidebar_left.close();
-                } else if(body.classList.contains('sidebar-fullscreen')){
-                    body.classList.remove('sidebar-fullscreen');
                 } else if(!sidebar_right_dom.classList.contains('collapsed')) {
                     sidebar_right.close();
                 }
@@ -323,6 +321,7 @@ window.addEventListener('DOMContentLoaded', function(){
             });
         }
         document.querySelector('#walk_button').addEventListener('click', _ => {
+            body.classList.remove('sidebar-fullscreen');
             load_walk_station(current_walk_station);
         });
         play_tab_button.addEventListener('click', _ => {
