@@ -6,8 +6,14 @@
     <meta name="description" content="<?php esc_attr_e('Mannheim Under Construction, the audio map of civil societal engagement. This map introduces civil societal engagement in the city Mannheim.', 'mannheim-under-construction'); ?>">
 	<?php wp_head(); ?>
 </head>
-
-<body <?php body_class(); ?>>
+<?php
+$body_classes = [];
+if(get_option('mannheim_under_construction_campaign', false)){
+    $body_classes []= 'campaign';
+    $body_classes []= 'black-white';
+}
+?>
+<body <?php body_class($body_classes); ?>>
 <?php wp_body_open(); ?>
 <main>
     <audio id="audio_player" hidden preload="metadata">
@@ -719,6 +725,24 @@
                     <?php echo apply_filters('the_content', get_option('mannheim_under_construction_popup_text', '')); ?>
                 </div>
             </div>
+	        <?php }
+            if(get_option('mannheim_under_construction_campaign', false)){
+		        ?><div class="mannheim-under-construction-campaign-popup" role="dialog" style="display: none">
+                    <svg class="arrow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 60 60" xml:space="preserve">
+                            <polygon points="24.538,18.547 45.318,15.286 38.7,8.668 17.959,12.008 12.435,17.533 9.002,38.366 15.619,44.984 18.881,24.204
+                            42.02,47.344 47.678,41.688"/>
+                    </svg>
+                    <button class="close-button" title="<?php esc_html_e('Close', 'mannheim-under-construction'); ?>">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                             viewBox="0 0 60 60" xml:space="preserve">
+                            <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
+                                50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
+                        </svg>
+                    </button>
+                    <h2 class="font-neue-black"><?php echo esc_html(get_option('mannheim_under_construction_campaign_headline', '')); ?></h2>
+                    <?php echo apply_filters('the_content', get_option('mannheim_under_construction_campaign_text', '')); ?>
+                </div>
 	        <?php } ?>
         </div>
         <noscript id="mannheim-under-construction-no-js-error"><p><?php esc_html_e('Sorry, you need to enable JavaScript to use this map.', 'mannheim-under-construction'); ?></p></noscript>

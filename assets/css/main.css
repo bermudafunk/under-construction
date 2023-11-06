@@ -51,6 +51,7 @@ body.black-white {
     --primary-colour-hover: #EEEEEE;
     --switcher-colour: #F2FF5B;
     --onboarding-background: rgba(0, 0, 0, 0.5);
+    --sidebar-background: url('../img/uc_c_blk_muster.svg');
 }
 body.black-white.campaign {
     --switcher-colour: #00ECEC;
@@ -776,6 +777,33 @@ body.black-white .light-theme {
     background-size: 8em;
     overflow: scroll;
     padding: 0 1em;
+}
+.mannheim-under-construction-campaign-popup{
+    position: absolute;
+    left: 80px;
+    top: 20px;
+    max-width: 425px;
+    max-height: 350px;
+    background: var(--sidebar-background) repeat;
+    background-size: 8em;
+    overflow: scroll;
+    padding: 0 1em;
+    z-index: 3001;
+}
+.mannheim-under-construction-campaign-popup p {
+    padding: 0 40px;
+}
+.mannheim-under-construction-campaign-popup h2 {
+    padding-left: 40px;
+    padding-top: 40px;
+}
+.mannheim-under-construction-campaign-popup .arrow{
+    height: 55px;
+    width: 55px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    fill: var(--primary-colour);
 }
 #walk.leaflet-sidebar-pane,
 #play.leaflet-sidebar-pane {

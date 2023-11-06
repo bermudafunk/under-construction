@@ -94,6 +94,7 @@ window.addEventListener('DOMContentLoaded', function(){
         let font_size_button = document.querySelector('#font_size_switcher');
         let onboarding = document.querySelector('.mannheim-under-construction-onboarding');
         let popup = document.querySelector('.mannheim-under-construction-popup');
+        let campaign_popup = document.querySelector('.mannheim-under-construction-campaign-popup');
         let search_form = document.querySelector('#search form');
         let search_form_filters = document.querySelectorAll('#search .filter-box select');
         let search_form_open_status = document.querySelectorAll('#search .filter-box input[type="checkbox"]');
@@ -340,6 +341,22 @@ window.addEventListener('DOMContentLoaded', function(){
             popup.addEventListener('click', e => {
                 if(e.target === popup) {
                     popup.style.display = 'none';
+                }
+            });
+        }
+        if(campaign_popup) {
+            this.setTimeout(() => {
+                campaign_popup.style.display = '';
+            }, 5000);
+            L.DomEvent.disableScrollPropagation(campaign_popup);
+            L.DomEvent.disableClickPropagation(campaign_popup);
+            let close_button = campaign_popup.querySelector('button.close-button');
+            close_button.addEventListener('click', _ => {
+                campaign_popup.style.display = 'none';
+            });
+            campaign_popup.addEventListener('click', e => {
+                if(e.target === campaign_popup) {
+                    campaign_popup.style.display = 'none';
                 }
             });
         }
