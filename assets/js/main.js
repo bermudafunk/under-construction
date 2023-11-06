@@ -93,6 +93,7 @@ window.addEventListener('DOMContentLoaded', function(){
         let black_white_switcher = document.querySelector('#black_white_switcher');
         let font_size_button = document.querySelector('#font_size_switcher');
         let onboarding = document.querySelector('.mannheim-under-construction-onboarding');
+        let campaign_onboarding = document.querySelector('.mannheim-under-construction-campaign-onboarding');
         let popup = document.querySelector('.mannheim-under-construction-popup');
         let campaign_popup = document.querySelector('.mannheim-under-construction-campaign-popup');
         let search_form = document.querySelector('#search form');
@@ -133,6 +134,7 @@ window.addEventListener('DOMContentLoaded', function(){
         let current_walk = 0;
         let current_walk_station = 0;
         let current_walk_explainer = 0;
+        let black_white_switcher_used = 0;
         for(let opener of open_under_construction_info){
             opener.addEventListener('click', _ => {
                 sidebar_right.open('#info');
@@ -151,6 +153,10 @@ window.addEventListener('DOMContentLoaded', function(){
             body.classList.add('sidebar-fullscreen');
         });
         black_white_switcher.addEventListener('click', _ => {
+            if(!black_white_switcher_used && body.classList.contains('campaign')) {
+                black_white_switcher_used = 1;
+                campaign_onboarding.classList.add('active');
+            }
             body.classList.toggle('black-white');
             update_bg();
         });
