@@ -200,6 +200,16 @@ svg {
     color: var(--secondary-colour);
     background-color: var(--primary-colour);
 }
+body.campaign .leaflet-zoom-box,
+body.campaign .leaflet-bar a,
+body.campaign .leaflet-bar a.leaflet-disabled,
+body.campaign .leaflet-container .leaflet-control-attribution,
+body.campaign .marker-cluster-small div,
+body.campaign .marker-cluster-medium div,
+body.campaign .marker-cluster-large div {
+    color: var(--third-colour);
+    background-color: var(--secondary-colour);
+}
 body.black-white .leaflet-container,
 body.black-white .track-swipe-bar {
     color: var(--primary-colour);
@@ -286,6 +296,10 @@ button.close-button{
     position: absolute;
     bottom: 30px;
     color: var(--secondary-colour);
+}
+#imprint_button,
+#privacy_button {
+    color: var(--third-colour);
 }
 .leaflet-sidebar-left .leaflet-sidebar-content2 {
     left: 420px;
@@ -396,7 +410,8 @@ body.sidebar-fullscreen .leaflet-control-container {
         bottom: 170px;
     }
 }
-#onboarding-start-button {
+#onboarding-start-button,
+#campaign-onboarding-start-button {
     font-size: 4em;
     text-align: center;
     font-family: 'TheNeueBlack', sans-serif;
@@ -418,16 +433,24 @@ body.sidebar-fullscreen .leaflet-control-container {
     left: 130px;
     top: 100px;
     max-width: 500px;
-    font-size: 1.1em;
+    display: none;
+    font-weight: normal;
+}
+.campaign-onboarding-welcome strong {
+    font-size: 1.2em;
 }
 .campaign-onboarding-explainer {
-    font-size: 1.1em;
+    font-size: 1.5em;
     position: absolute;
-    right: 90px;
+    right: 200px;
     top: 100px;
     overflow: auto;
     max-width: 350px;
-    display: none;
+    margin-left: 100px;
+}
+.campaign-onboarding-explainer > div {
+    display: flex;
+    align-items: center;
 }
 .mannheim-under-construction-search{
     display: flex;
@@ -475,6 +498,9 @@ input[type="search"]::-webkit-search-decoration{
 a, a:visited, a:hover, a:active, .leaflet-container a {
     color: var(--secondary-colour);
     text-decoration: underline;
+}
+body.campaign .leaflet-container a {
+    color: var(--third-colour);
 }
 body.black-white .leaflet-sidebar a,
 body.black-white button {
@@ -658,7 +684,8 @@ body.wait .leaflet-sidebar-pane {
     }
 }
 @media (min-width:1200px) {
-    .onboarding-welcome {
+    .onboarding-welcome,
+    .campaign-onboarding-welcome {
         display: block;
     }
     .leaflet-sidebar-right:not(.collapsed) {

@@ -300,6 +300,14 @@ window.addEventListener('DOMContentLoaded', function(){
                 onboarding.classList.remove('active');
             }
         });
+        campaign_onboarding.addEventListener('click', _ => {
+            campaign_onboarding.classList.remove('active');
+        });
+        campaign_onboarding.addEventListener('keydown', e => {
+            if(['Esc', 'Escape', 'Enter', ' '].includes(e.key)) {
+                campaign_onboarding.classList.remove('active');
+            }
+        });
         search_form.addEventListener('submit', e => {
             e.preventDefault();
             show_search_results();

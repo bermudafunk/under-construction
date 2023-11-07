@@ -66,42 +66,53 @@ if(get_option('mannheim_under_construction_campaign', false)){
             </div>
             <div class="mannheim-under-construction-campaign-onboarding">
                 <div class="campaign-onboarding-welcome">
-					<?php echo apply_filters( 'the_content', get_the_content(null, false, 209) ); ?>
+					<?php echo apply_filters( 'the_content', get_the_content(null, false, 555) ); ?>
+                    <button autofocus id="campaign-onboarding-start-button" tabindex="1"><?php esc_html_e('Start', 'mannheim-under-construction'); ?></button>
                 </div>
-                <button autofocus id="campaign-onboarding-start-button" tabindex="1"><?php esc_html_e('Start', 'mannheim-under-construction'); ?></button>
-                <p class="campaign-onboarding-explainer" id="campaign-onboarding-explainer-1"><?php esc_html_e('Choose a post of the following Topics:'); ?></p>
-                <svg class="campaign-icon-work" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
-                    <path fill="#00ECEC" d="M31.547,19.283C30.533,20.297,29.135,21,27.217,21H22v17.42l4.954,7.536
-                        C27.086,45.759,27,45.514,27,45.184V29.978c0-1.917,0.615-3.413,1.629-4.427S31.217,24,33.134,24H39V9.571
-                        C38,9.181,36.201,9,34.616,9H33v5.688C33,16.607,32.561,18.27,31.547,19.283z"/>
-                    <path fill="#00ECEC" d="M23.108,12h2.876C26.806,12,27,11.812,27,10.99V9h-1.139C24.379,9,23,9.136,22,9.447v1.542
-                        C22,11.811,22.286,12,23.108,12z"/>
-                    <path fill="#00ECEC" d="M37.571,32h-3.205C33.545,32,33,32.854,33,33.677v12.83l6-8.32v-4.51C39,32.854,38.393,32,37.571,32z"/>
-                    <path d="M44.139,30h0.164l0.008-11.567c0-3.137-0.734-5.411-2.391-7.069C41.096,10.542,40,9.955,39,9.571V24h-5.866
-                        c-1.917,0-3.491,0.537-4.505,1.551S27,28.06,27,29.978v15.207c0,0.33,0.023,0.575-0.109,0.772l3.239,4.78l2.87-4.23v-12.83
-                        C33,32.854,33.545,32,34.366,32h3.205C38.393,32,39,32.854,39,33.677v4.51L44.303,30H44.139z"/>
-                    <path d="M16,18.182V30l0,0l0,0l6,8.42V21h5.217c1.918,0,3.316-0.703,4.33-1.717S33,16.607,33,14.688V9h-6v1.99
-                        c0,0.822-0.194,1.01-1.016,1.01h-2.876C22.286,12,22,11.811,22,10.989V9.447c-1,0.347-2.486,0.916-3.363,1.792
-                        C16.977,12.896,16,15.045,16,18.182z"/>
-                </svg>
-                <svg class="campaign-icon-living" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
-                    <rect x="27" y="9" fill="#00ECEC" width="7" height="16"/>
-                    <path fill="#00ECEC" d="M20,10.567c-1,0.203-0.791,0.421-1.043,0.671C17.297,12.896,16,15.045,16,18.182V25h4V10.567z"/>
-                    <polygon fill="#00ECEC" points="16,30 26,43.71 26,30 16,30 			"/>
-                    <path fill="#00ECEC" d="M33,45.338c0,0.633,0.11,0.973,0.662,1.054L40,36.827V30h-7V45.338z"/>
-                    <path fill="#00ECEC" d="M44.633,18.318c0-3.137-0.795-5.354-2.451-7.012C41.814,10.941,41,10.632,41,10.361V29h3.616
-                        L44.633,18.318z"/>
-                    <path d="M44.604,29H41V10.361C39,9.401,37.398,9,34.949,9H34v16h-7V9h-0.806C23.527,9,21,9.425,20,10.567V25h-4v5h10v13.71
-                        l4.768,7.026l2.904-4.377C33.12,46.278,33,45.971,33,45.338V30h7v6.827l4.589-6.806L44.609,30L44.604,29z"/>
-                </svg>
-                <svg class="campaign-icon-climate" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
-                    <path fill="#00ECEC" d="M33.996,30l7.168-12h3.443c-0.122-3-0.934-4.962-2.457-6.486C40.484,9.854,38.09,9,34.949,9h-8.755
-                        C26.107,9,26,9.005,26,9.006V30H33.996z"/>
-                    <polygon fill="#00ECEC" points="26,37 26,44.296 30.447,50.736 36.779,41.578 34.049,37 		"/>
-                    <path d="M44.447,30.047L44.553,30l-0.015,0.021L44.615,30l0.018-11.418c0-0.252-0.014-0.582-0.025-0.582h-3.443l-7.168,12H26
-                        V9.006c-3,0.032-5.613,0.619-7.229,2.232C17.111,12.896,16,15.045,16,18.182V30l10,14.296V37h8.049l2.715,4.578l7.774-11.48
-                        L44.447,30.047z"/>
-                </svg>
+                <div class="campaign-onboarding-explainer">
+                    <p id="campaign-onboarding-explainer-1"><?php esc_html_e('Choose a post of the following Topics:'); ?></p>
+                    <div class="campaign-icon-work">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
+                            <path fill="#00ECEC" d="M31.547,19.283C30.533,20.297,29.135,21,27.217,21H22v17.42l4.954,7.536
+                                C27.086,45.759,27,45.514,27,45.184V29.978c0-1.917,0.615-3.413,1.629-4.427S31.217,24,33.134,24H39V9.571
+                                C38,9.181,36.201,9,34.616,9H33v5.688C33,16.607,32.561,18.27,31.547,19.283z"/>
+                            <path fill="#00ECEC" d="M23.108,12h2.876C26.806,12,27,11.812,27,10.99V9h-1.139C24.379,9,23,9.136,22,9.447v1.542
+                                C22,11.811,22.286,12,23.108,12z"/>
+                            <path fill="#00ECEC" d="M37.571,32h-3.205C33.545,32,33,32.854,33,33.677v12.83l6-8.32v-4.51C39,32.854,38.393,32,37.571,32z"/>
+                            <path d="M44.139,30h0.164l0.008-11.567c0-3.137-0.734-5.411-2.391-7.069C41.096,10.542,40,9.955,39,9.571V24h-5.866
+                                c-1.917,0-3.491,0.537-4.505,1.551S27,28.06,27,29.978v15.207c0,0.33,0.023,0.575-0.109,0.772l3.239,4.78l2.87-4.23v-12.83
+                                C33,32.854,33.545,32,34.366,32h3.205C38.393,32,39,32.854,39,33.677v4.51L44.303,30H44.139z"/>
+                            <path d="M16,18.182V30l0,0l0,0l6,8.42V21h5.217c1.918,0,3.316-0.703,4.33-1.717S33,16.607,33,14.688V9h-6v1.99
+                                c0,0.822-0.194,1.01-1.016,1.01h-2.876C22.286,12,22,11.811,22,10.989V9.447c-1,0.347-2.486,0.916-3.363,1.792
+                                C16.977,12.896,16,15.045,16,18.182z"/>
+                        </svg>
+                        <span><?php esc_html_e('Work', 'mannheim-under-construction'); ?></span>
+                    </div>
+                    <div class="campaign-icon-living">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
+                            <rect x="27" y="9" fill="#00ECEC" width="7" height="16"/>
+                            <path fill="#00ECEC" d="M20,10.567c-1,0.203-0.791,0.421-1.043,0.671C17.297,12.896,16,15.045,16,18.182V25h4V10.567z"/>
+                            <polygon fill="#00ECEC" points="16,30 26,43.71 26,30 16,30 			"/>
+                            <path fill="#00ECEC" d="M33,45.338c0,0.633,0.11,0.973,0.662,1.054L40,36.827V30h-7V45.338z"/>
+                            <path fill="#00ECEC" d="M44.633,18.318c0-3.137-0.795-5.354-2.451-7.012C41.814,10.941,41,10.632,41,10.361V29h3.616
+                                L44.633,18.318z"/>
+                            <path d="M44.604,29H41V10.361C39,9.401,37.398,9,34.949,9H34v16h-7V9h-0.806C23.527,9,21,9.425,20,10.567V25h-4v5h10v13.71
+                                l4.768,7.026l2.904-4.377C33.12,46.278,33,45.971,33,45.338V30h7v6.827l4.589-6.806L44.609,30L44.604,29z"/>
+                        </svg>
+                        <span><?php esc_html_e('Living', 'mannheim-under-construction'); ?></span>
+                    </div>
+                    <div class="campaign-icon-climate">
+                        <svg class="campaign-icon-climate" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
+                            <path fill="#00ECEC" d="M33.996,30l7.168-12h3.443c-0.122-3-0.934-4.962-2.457-6.486C40.484,9.854,38.09,9,34.949,9h-8.755
+                                C26.107,9,26,9.005,26,9.006V30H33.996z"/>
+                            <polygon fill="#00ECEC" points="26,37 26,44.296 30.447,50.736 36.779,41.578 34.049,37 		"/>
+                            <path d="M44.447,30.047L44.553,30l-0.015,0.021L44.615,30l0.018-11.418c0-0.252-0.014-0.582-0.025-0.582h-3.443l-7.168,12H26
+                                V9.006c-3,0.032-5.613,0.619-7.229,2.232C17.111,12.896,16,15.045,16,18.182V30l10,14.296V37h8.049l2.715,4.578l7.774-11.48
+                                L44.447,30.047z"/>
+                        </svg>
+                        <span><?php esc_html_e('Climate', 'mannheim-under-construction'); ?></span>
+                    </div>
+                </div>
             </div>
             <div id="left_sidebar" class="leaflet-sidebar collapsed leaflet-sidebar-left">
                 <div class="leaflet-sidebar-content">
