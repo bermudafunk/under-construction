@@ -539,14 +539,17 @@ class Mannheim_Under_Constrcution
 								'audio_id' => $update['audio_id'],
 							];
 						}
-						$campaign_type = get_post_meta( $post_id, 'mannheim_under_construction_campaign_type', true );
+						$campaign_type = '';
 						$campaign_title = '';
-						if($campaign_type === 'working'){
-							$campaign_title = __('Working', 'mannheim-under-construction');
-						} elseif($campaign_type === 'living'){
-							$campaign_title = __('Living', 'mannheim-under-construction');
-						} elseif($campaign_type === 'climate'){
-							$campaign_title = __('Climate', 'mannheim-under-construction');
+						if(get_option( 'mannheim_under_construction_campaign', 0 )){
+							$campaign_type = get_post_meta( $post_id, 'mannheim_under_construction_campaign_type', true );
+							if($campaign_type === 'working'){
+								$campaign_title = __('Working', 'mannheim-under-construction');
+							} elseif($campaign_type === 'living'){
+								$campaign_title = __('Living', 'mannheim-under-construction');
+							} elseif($campaign_type === 'climate'){
+								$campaign_title = __('Climate', 'mannheim-under-construction');
+							}
 						}
 		                $map_data [] = [
 			                'id'              => $post_id,

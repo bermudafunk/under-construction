@@ -53,6 +53,7 @@ window.addEventListener('DOMContentLoaded', function(){
             body.classList.add('sidebar-open');
         });
         let audio_stations = [];
+        let campaign_markers = [];
         if (mannheim_under_construction.map_data) {
             let station_markers = L.markerClusterGroup();
             for (let location of mannheim_under_construction.map_data) {
@@ -94,7 +95,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 if(location.campaign_type === ''){
                     station_markers.addLayer(marker);
                 } else {
-                    map.addLayer(marker);
+                    campaign_markers.push(marker);
                 }
             }
             map.addLayer(station_markers);
@@ -184,6 +185,9 @@ window.addEventListener('DOMContentLoaded', function(){
             if(!black_white_switcher_used && body.classList.contains('campaign')) {
                 black_white_switcher_used = 1;
                 campaign_onboarding.classList.add('active');
+                campaign_markers.forEach(marker => {
+                    map.addLayer(marker);
+                });
             }
             body.classList.toggle('black-white');
             update_bg();
