@@ -4,6 +4,9 @@ window.addEventListener('DOMContentLoaded', function(){
     if(map_wrapper) {
         const start_location = [49.4933, 8.4681];
         const audio_icon = L.icon({iconUrl: mannheim_under_construction.audio_icon_url, iconSize: [47, 47]});
+        const working_icon = L.icon({iconUrl: mannheim_under_construction.working_icon_url, iconSize: [47, 47]});
+        const living_icon = L.icon({iconUrl: mannheim_under_construction.living_icon_url, iconSize: [47, 47]});
+        const climate_icon = L.icon({iconUrl: mannheim_under_construction.climate_icon_url, iconSize: [47, 47]});
         const walk_icon = L.icon({iconUrl: mannheim_under_construction.walk_icon_url, iconSize: [47, 47]});
         let map = L.map(map_wrapper.querySelector('.mannheim-under-construction-map'), {
             center: start_location,
@@ -57,17 +60,42 @@ window.addEventListener('DOMContentLoaded', function(){
                 if(location.hidden){
                     continue;
                 }
-                let marker = L.marker([location.lat, location.lng], {title: location.title, alt: location.title, icon: audio_icon, data_id: location.id, keyboard: false});
+                let marker_audio_icon = audio_icon;
+                let marker_audio_icon_url = mannheim_under_construction.audio_icon_url;
+                let marker_audio_icon_bw_url = mannheim_under_construction.audio_icon_url_bw;
+                console.log(location.campaign_type);
+                console.log(location.id);
+                if(location.campaign_type === 'working'){
+                    marker_audio_icon = working_icon;
+                    marker_audio_icon_bw_url = mannheim_under_construction.working_icon_url_bw;
+                    marker_audio_icon_url = mannheim_under_construction.working_icon_url;
+                    console.log("working");
+                } else if(location.campaign_type === 'living'){
+                    marker_audio_icon = living_icon;
+                    marker_audio_icon_bw_url = mannheim_under_construction.living_icon_url_bw;
+                    marker_audio_icon_url = mannheim_under_construction.living_icon_url;
+                    console.log("living");
+                } else if(location.campaign_type === 'climate'){
+                    marker_audio_icon = climate_icon;
+                    marker_audio_icon_bw_url = mannheim_under_construction.climate_icon_url_bw;
+                    marker_audio_icon_url = mannheim_under_construction.climate_icon_url;
+                    console.log("climate");
+                }
+                let marker = L.marker([location.lat, location.lng], {title: location.title, alt: location.title, icon: marker_audio_icon, data_id: location.id, keyboard: false});
                 marker.addEventListener('click', e => {
                     load_audio(e.target.options.data_id);
                 });
                 marker.addEventListener('mouseover', e => {
-                    e.target._icon.setAttribute('src', mannheim_under_construction.audio_icon_url_bw);
+                    e.target._icon.setAttribute('src', marker_audio_icon_bw_url);
                 });
                 marker.addEventListener('mouseout', e => {
-                    e.target._icon.setAttribute('src', mannheim_under_construction.audio_icon_url);
+                    e.target._icon.setAttribute('src', marker_audio_icon_url);
                 });
-                station_markers.addLayer(marker);
+                if(location.campaign_type === ''){
+                    station_markers.addLayer(marker);
+                } else {
+                    map.addLayer(marker);
+                }
             }
             map.addLayer(station_markers);
         }
@@ -160,6 +188,39 @@ window.addEventListener('DOMContentLoaded', function(){
             body.classList.toggle('black-white');
             update_bg();
         });
+        L.DomEvent.disableScrollPropagation(onboarding);
+        L.DomEvent.disableClickPropagation(onboarding);
+        if(popup) {
+            L.DomEvent.disableScrollPropagation(popup);
+            L.DomEvent.disableClickPropagation(popup);
+            let close_button = popup.querySelector('button.close-button');
+            close_button.addEventListener('click', e => {
+                popup.style.display = 'none';
+                e.stopImmediatePropagation();
+            });
+            popup.addEventListener('click', e => {
+                if(e.target === popup) {
+                    popup.style.display = 'none';
+                }
+            });
+        }
+        if(campaign_popup) {
+            this.setTimeout(() => {
+                campaign_popup.style.display = '';
+            }, 5000);
+            L.DomEvent.disableScrollPropagation(campaign_popup);
+            L.DomEvent.disableClickPropagation(campaign_popup);
+            let close_button = campaign_popup.querySelector('button.close-button');
+            close_button.addEventListener('click', e => {
+                campaign_popup.style.display = 'none';
+                e.stopImmediatePropagation();
+            });
+            campaign_popup.addEventListener('click', e => {
+                if(e.target === campaign_popup) {
+                    campaign_popup.style.display = 'none';
+                }
+            });
+        }
         for(let back_button of back_buttons) {
             back_button.addEventListener('click', _ => {
                 if (body.classList.contains('sidebar-fullscreen')) {
@@ -342,38 +403,6 @@ window.addEventListener('DOMContentLoaded', function(){
         play_tab_button.addEventListener('click', _ => {
             load_audio(current_audio);
         });
-
-        L.DomEvent.disableScrollPropagation(onboarding);
-        L.DomEvent.disableClickPropagation(onboarding);
-        if(popup) {
-            L.DomEvent.disableScrollPropagation(popup);
-            L.DomEvent.disableClickPropagation(popup);
-            let close_button = popup.querySelector('button.close-button');
-            close_button.addEventListener('click', _ => {
-                popup.style.display = 'none';
-            });
-            popup.addEventListener('click', e => {
-                if(e.target === popup) {
-                    popup.style.display = 'none';
-                }
-            });
-        }
-        if(campaign_popup) {
-            this.setTimeout(() => {
-                campaign_popup.style.display = '';
-            }, 5000);
-            L.DomEvent.disableScrollPropagation(campaign_popup);
-            L.DomEvent.disableClickPropagation(campaign_popup);
-            let close_button = campaign_popup.querySelector('button.close-button');
-            close_button.addEventListener('click', _ => {
-                campaign_popup.style.display = 'none';
-            });
-            campaign_popup.addEventListener('click', e => {
-                if(e.target === campaign_popup) {
-                    campaign_popup.style.display = 'none';
-                }
-            });
-        }
 
         let walk_touch_x_down = 0;
         let walk_touch_x_up = 0;
@@ -578,6 +607,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 play_tab.querySelector('.content-location').innerHTML = audio_station.location;
                 play_tab.querySelector('.content-location-2').innerHTML = audio_station.location_2;
                 play_tab.querySelector('.content-title').innerHTML = audio_station.title;
+                play_tab.querySelector('.campaign-title').innerHTML = audio_station.campaign_title;
                 play_tab.querySelector('.content-description').innerHTML = audio_station.description;
                 play_tab.querySelector('.content-credits').innerHTML = audio_station.credits;
                 let details_wrapper = play_tab.querySelector('.content-description-details');

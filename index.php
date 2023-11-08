@@ -220,6 +220,7 @@ class Mannheim_Under_Constrcution
 					'mannheim_under_construction_location_lng',
 					'mannheim_under_construction_location_hidden',
 					'mannheim_under_construction_location_2',
+					'mannheim_under_construction_campaign_type',
 				];
 				foreach ( $fields as $field ) {
 					if ( array_key_exists( $field, $_POST ) ) {
@@ -538,6 +539,15 @@ class Mannheim_Under_Constrcution
 								'audio_id' => $update['audio_id'],
 							];
 						}
+						$campaign_type = get_post_meta( $post_id, 'mannheim_under_construction_campaign_type', true );
+						$campaign_title = '';
+						if($campaign_type === 'working'){
+							$campaign_title = __('Working', 'mannheim-under-construction');
+						} elseif($campaign_type === 'living'){
+							$campaign_title = __('Living', 'mannheim-under-construction');
+						} elseif($campaign_type === 'climate'){
+							$campaign_title = __('Climate', 'mannheim-under-construction');
+						}
 		                $map_data [] = [
 			                'id'              => $post_id,
 			                'lat'             => get_post_meta( $post_id, 'mannheim_under_construction_location_lat', true ),
@@ -559,6 +569,8 @@ class Mannheim_Under_Constrcution
 			                'production_date' => $production_date,
                             'thumbnail'       => get_the_post_thumbnail_url( $post_id, 'medium' ),
                             'hidden'          => intval(get_post_meta( $post_id, 'mannheim_under_construction_location_hidden', true )),
+							'campaign_type'   => $campaign_type,
+							'campaign_title'  => $campaign_title,
 		                ];
 	                }
                     do{
@@ -603,6 +615,12 @@ class Mannheim_Under_Constrcution
 					[
 						'audio_icon_url' => plugins_url( 'assets/img/uc_icon_pin.svg', __FILE__ ),
 						'audio_icon_url_bw' => plugins_url( 'assets/img/uc_icon_pin_hover.svg', __FILE__ ),
+						'working_icon_url' => plugins_url( 'assets/img/uc_icon_arbeit.svg', __FILE__ ),
+						'working_icon_url_bw' => plugins_url( 'assets/img/uc_icon_arbeit.svg', __FILE__ ),
+						'living_icon_url' => plugins_url( 'assets/img/uc_icon_wohnen.svg', __FILE__ ),
+						'living_icon_url_bw' => plugins_url( 'assets/img/uc_icon_wohnen.svg', __FILE__ ),
+						'climate_icon_url' => plugins_url( 'assets/img/uc_icon_klima.svg', __FILE__ ),
+						'climate_icon_url_bw' => plugins_url( 'assets/img/uc_icon_klima.svg', __FILE__ ),
 						'walk_icon_url' => plugins_url( 'assets/img/uc_icon_walk.svg', __FILE__ ),
 						'walk_icon_url_bw' => plugins_url( 'assets/img/uc_icon_walk_sy.svg', __FILE__ ),
 						'ajax_url' => admin_url( 'admin-ajax.php' ),
@@ -717,6 +735,15 @@ class Mannheim_Under_Constrcution
 			<label for="mannheim_under_construction_credits"><?php esc_html_e('Credits:', 'mannheim-under-construction'); ?>
 				<textarea id="mannheim_under_construction_credits" name="mannheim_under_construction_credits" rows="5" cols="30"><?php echo esc_html(get_post_meta(get_the_ID(), 'mannheim_under_construction_credits', true)); ?></textarea>
 			</label>
+		</div>
+		<br>
+		<div>
+			<?php esc_html_e('Campaign type:', 'mannheim-under-construction');
+			$selected = get_post_meta(get_the_ID(), 'mannheim_under_construction_campaign_type', true); ?>
+			<label><input type="radio" name="mannheim_under_construction_campaign_type" value=""<?php echo empty($selected) ? ' checked' : ''; ?>><?php echo esc_html_e('None', 'mannheim-under-construction'); ?></label>
+			<label><input type="radio" name="mannheim_under_construction_campaign_type" value="working"<?php echo $selected === 'working' ? ' checked' : ''; ?>><?php echo esc_html_e('Working', 'mannheim-under-construction'); ?></label>
+			<label><input type="radio" name="mannheim_under_construction_campaign_type" value="living"<?php echo $selected === 'living' ? ' checked' : ''; ?>><?php echo esc_html_e('Living', 'mannheim-under-construction'); ?></label>
+			<label><input type="radio" name="mannheim_under_construction_campaign_type" value="climate"<?php echo $selected === 'climate' ? ' checked' : ''; ?>><?php echo esc_html_e('Climate', 'mannheim-under-construction'); ?></label>
 		</div>
 		<br>
 		<div>

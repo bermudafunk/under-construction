@@ -270,6 +270,7 @@ if(get_option('mannheim_under_construction_campaign', false)){
                                     50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
                             </svg>
                         </button>
+                        <div class="campaign-title"></div>
                         <div class="content-title"></div>
                         <div><span class="content-location"></span></div>
                         <div><span class="content-location-2"></span></div>

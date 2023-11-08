@@ -132,6 +132,7 @@ main,
 }
 .content-station-title,
 .content-title,
+.campaign-title,
 #walk .content-location,
 .content-location-2,
 details summary,
@@ -142,6 +143,7 @@ details summary,
 }
 .content-station-title,
 .content-title,
+.campaign-title,
 .content-location,
 .content-location-2{
     font-size: 1.05em;
@@ -152,18 +154,21 @@ details summary,
 #walk_button svg > g > path,
 #back_button svg > g > path:last-of-type,
 .content-timeline path:last-of-type,
-#onboarding-marker path:last-of-type {
-    fill: var(--primary-colour);
-}
+#onboarding-marker path:last-of-type,
 body.black-white .leaflet-sidebar-content svg,
 body.black-white .close-button svg,
 body.black-white .onboarding-arrow {
     fill: var(--primary-colour);
 }
-body.campaign .leaflet-sidebar-content svg,
 body.campaign .close-button svg,
-body.campaign .onboarding-arrow {
+body.campaign .onboarding-arrow,
+body.campaign .leaflet-sidebar-content svg,
+body.campaign .mannheim-under-construction-campaign-popup .arrow,
+body.campaign .content-timeline path:first-of-type {
     fill: var(--secondary-colour);
+}
+body.campaign .track-swipe-bar svg {
+    fill: var(--third-colour);
 }
 #black_white_switcher polygon:first-of-type{
     fill: var(--switcher-colour);
@@ -214,6 +219,9 @@ body.black-white .leaflet-container,
 body.black-white .track-swipe-bar {
     color: var(--primary-colour);
     background-color: var(--secondary-colour);
+}
+body.campaign .track-swipe-bar {
+    color: var(--third-colour);
 }
 body.campaign .leaflet-container {
     color: var(--switch-colour);
@@ -502,6 +510,9 @@ a, a:visited, a:hover, a:active, .leaflet-container a {
 body.campaign .leaflet-container a {
     color: var(--third-colour);
 }
+body.campaign .leaflet-container .leaflet-sidebar-content a {
+    color: var(--secondary-colour);
+}
 body.black-white .leaflet-sidebar a,
 body.black-white button {
     color: var(--primary-colour);
@@ -776,6 +787,10 @@ body.black-white .filter-box select {
     background-color: var(--secondary-colour);
     color: var(--primary-colour);
 }
+body.campaign .filter-box label,
+body.campaign .filter-box select {
+    background-color: var(--third-colour);
+}
 .filter-box option {
     cursor: pointer;
 }
@@ -791,7 +806,9 @@ details .arrow,
     flex-shrink: 0;
 }
 body.black-white details .arrow,
-body.black-white .filter-box .arrow {
+body.black-white .filter-box .arrow,
+body.campaign details .arrow,
+body.campaign .filter-box .arrow {
     background: url("../img/uc_icon_acc1_w.svg") no-repeat;
 }
 .filter-box input[type=checkbox]:checked ~ select {
@@ -875,9 +892,6 @@ body.black-white .light-theme {
     left: 0;
     top: 0;
     fill: var(--primary-colour);
-}
-body.campaign .mannheim-under-construction-campaign-popup .arrow{
-    fill: var(--secondary-colour);
 }
 #walk.leaflet-sidebar-pane,
 #play.leaflet-sidebar-pane {
