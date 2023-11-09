@@ -71,7 +71,7 @@ if(get_option('mannheim_under_construction_campaign', false)){
                 </div>
                 <div class="campaign-onboarding-explainer">
                     <p id="campaign-onboarding-explainer-1"><?php esc_html_e('Choose a post of the following Topics:'); ?></p>
-                    <div class="campaign-icon-work">
+                    <div class="campaign-icon-working">
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
                             <path fill="#00ECEC" d="M31.547,19.283C30.533,20.297,29.135,21,27.217,21H22v17.42l4.954,7.536
                                 C27.086,45.759,27,45.514,27,45.184V29.978c0-1.917,0.615-3.413,1.629-4.427S31.217,24,33.134,24H39V9.571
@@ -86,7 +86,7 @@ if(get_option('mannheim_under_construction_campaign', false)){
                                 c0,0.822-0.194,1.01-1.016,1.01h-2.876C22.286,12,22,11.811,22,10.989V9.447c-1,0.347-2.486,0.916-3.363,1.792
                                 C16.977,12.896,16,15.045,16,18.182z"/>
                         </svg>
-                        <span><?php esc_html_e('Work', 'mannheim-under-construction'); ?></span>
+                        <span><?php esc_html_e('Working', 'mannheim-under-construction'); ?></span>
                     </div>
                     <div class="campaign-icon-living">
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
