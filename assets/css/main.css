@@ -485,6 +485,9 @@ body:not(.sidebar-fullscreen) .mannheim-under-construction-search {
     border: 2px var(--secondary-colour) solid;
     text-align: left;
 }
+body.campaign .mannheim-under-construction-search input[type="search"] {
+    color: var(--third-colour);
+}
 input[type="search"]::-webkit-search-decoration{
     display: none;
 }
