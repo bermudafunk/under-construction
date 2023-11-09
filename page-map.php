@@ -319,6 +319,17 @@ if(get_option('mannheim_under_construction_campaign', false)){
                         <div class="content-credits"></div>
                         <div class="content-tags"></div>
                         <div class="full-height-spacer"></div>
+                        <div class="more-about-campaign">
+                            <svg class="back-to-audio" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
+                                <path d="M20.566,30L30.33,9h11.104l-9.762,21l9.762,21H30.33L20.566,30z"/>
+                            </svg>
+                            <span class="back-to-audio"><?php esc_html_e('Back to audio station', 'mannheim-under-construction'); ?></span>
+                            <div class="full-width-spacer"></div>
+                            <span class="campaign-details"></span>
+                            <svg class="campaign-details" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
+                                <path d="M31.83,51H20.728l9.761-21L20.728,9H31.83l9.764,21L31.83,51z"/>
+                            </svg>
+                        </div>
                         <div class="track-swipe-bar">
                             <svg class="prev-track" title="<?php esc_html_e('Previous track', 'mannheim-under-construction'); ?>" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
                                 <path d="M20.566,30L30.33,9h11.104l-9.762,21l9.762,21H30.33L20.566,30z"/>

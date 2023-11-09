@@ -142,6 +142,9 @@ window.addEventListener('DOMContentLoaded', function(){
         let play_track_swipe_bar = play_tab.querySelector('.track-swipe-bar');
         let play_track_swipe_bar_nexts = play_track_swipe_bar.querySelectorAll('.next-track');
         let play_track_swipe_bar_prevs = play_track_swipe_bar.querySelectorAll('.prev-track');
+        let more_about_campaign = play_tab.querySelector('.more-about-campaign');
+        let more_about_campaign_back = more_about_campaign.querySelectorAll('.back-to-audio');
+        let more_about_campaign_details = more_about_campaign.querySelectorAll('.campaign-details');
         let walk = document.querySelector('#walk');
         let walk_prevs = walk.querySelectorAll('.prev-track');
         let walk_nexts = walk.querySelectorAll('.next-track');
@@ -663,6 +666,25 @@ window.addEventListener('DOMContentLoaded', function(){
                 } else {
                     play_tab_play.style.display = 'none';
                     play_tab_pause.style.display = '';
+                }
+                if(audio_station.campaign_type === ''){
+                    more_about_campaign.style.display = 'none';
+                }else {
+                    more_about_campaign.style.display = '';
+                    more_about_campaign.setAttribute('data-campaign-type', audio_station.campaign_type);
+                    more_about_campaign_back.forEach(e => {
+                        e.style.display = 'none';
+                    });
+                    more_about_campaign_details.forEach(e => {
+                        e.style.display = '';
+                    });
+                    if(audio_station.campaign_type === 'working'){
+                        more_about_campaign.querySelector('span.campaign-details').innerText = mannheim_under_construction.more_about_working;
+                    }else if(audio_station.campaign_type === 'living'){
+                        more_about_campaign.querySelector('span.campaign-details').innerText = mannheim_under_construction.more_about_living;
+                    }else if(audio_station.campaign_type === 'climate'){
+                        more_about_campaign.querySelector('span.campaign-details').innerText = mannheim_under_construction.more_about_climate;
+                    }
                 }
                 if(!load_only) {
                     sidebar_right.close();

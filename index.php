@@ -648,6 +648,9 @@ class Mannheim_Under_Constrcution
 						'text_walk' => esc_html__('Walk', 'mannheim-under-construction'),
 						'text_next_track' => esc_html__('Next track', 'mannheim-under-construction'),
 						'text_first_next_track' => esc_html__('Next update', 'mannheim-under-construction'),
+						'more_about_working' => esc_html__('More about the topic working', 'mannheim-under-construction'),
+						'more_about_living' => esc_html__('More about the topic living', 'mannheim-under-construction'),
+						'more_about_climate' => esc_html__('More about the topic climate', 'mannheim-under-construction'),
 					]
 				);
 			}

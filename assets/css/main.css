@@ -138,7 +138,8 @@ main,
 details summary,
 .prev-track,
 .next-track,
-.font-neue-black {
+.font-neue-black,
+.more-about-campaign {
     font-family: 'TheNeueBlack', sans-serif;
 }
 .content-station-title,
@@ -167,7 +168,8 @@ body.campaign .mannheim-under-construction-campaign-popup .arrow,
 body.campaign .content-timeline path:first-of-type {
     fill: var(--secondary-colour);
 }
-body.campaign .track-swipe-bar svg {
+body.campaign .track-swipe-bar svg,
+body.campaign .more-about-campaign svg {
     fill: var(--third-colour);
 }
 #black_white_switcher polygon:first-of-type{
@@ -201,7 +203,8 @@ svg {
 .marker-cluster-small div,
 .marker-cluster-medium div,
 .marker-cluster-large div,
-.track-swipe-bar {
+.track-swipe-bar,
+.more-about-campaign {
     color: var(--secondary-colour);
     background-color: var(--primary-colour);
 }
@@ -216,11 +219,13 @@ body.campaign .marker-cluster-large div {
     background-color: var(--secondary-colour);
 }
 body.black-white .leaflet-container,
-body.black-white .track-swipe-bar {
+body.black-white .track-swipe-bar,
+body.black-white .more-about-campaign {
     color: var(--primary-colour);
     background-color: var(--secondary-colour);
 }
-body.campaign .track-swipe-bar {
+body.campaign .track-swipe-bar,
+body.campaign .more-about-campaign {
     color: var(--third-colour);
 }
 body.campaign .leaflet-container {
@@ -726,6 +731,7 @@ body.wait .leaflet-sidebar-pane {
 #search-extend svg,
 #info #info-menu-button,
 .track-swipe-bar svg,
+.more-about-campaign svg,
 .onboarding-explainer-description svg,
 .mannheim-under-construction-campaign-onboarding svg {
     width: 60px;
@@ -905,7 +911,8 @@ body.black-white .light-theme {
     flex-direction: column;
     height: 100%;
 }
-.track-swipe-bar {
+.track-swipe-bar,
+.more-about-campaign {
     display: flex;
     margin-left: -20px;
     margin-right: -60px;
@@ -915,7 +922,9 @@ body.black-white .light-theme {
 .next-slide,
 .prev-slide,
 .next-track,
-.prev-track {
+.prev-track,
+.back-to-audio,
+.campaign-details {
     line-height: 60px;
     flex-shrink: 0;
     cursor: pointer;
