@@ -483,6 +483,7 @@ class Mannheim_Under_Constrcution
 				$map_data = [];
 				$initial_audio = 0;
 				$initial_walk = 0;
+				$campaign_enabled = get_option( 'mannheim_under_construction_campaign', 0 );
 				$audio_posts = get_posts([
 					'post_type' => 'audio-station',
 					'posts_per_page' => -1,
@@ -541,7 +542,7 @@ class Mannheim_Under_Constrcution
 						}
 						$campaign_type = '';
 						$campaign_title = '';
-						if(get_option( 'mannheim_under_construction_campaign', 0 )){
+						if($campaign_enabled){
 							$campaign_type = get_post_meta( $post_id, 'mannheim_under_construction_campaign_type', true );
 							if($campaign_type === 'working'){
 								$campaign_title = __('Working', 'mannheim-under-construction');
@@ -616,14 +617,17 @@ class Mannheim_Under_Constrcution
 				}
 				wp_localize_script( 'mannheim-under-construction', 'mannheim_under_construction',
 					[
-						'audio_icon_url' => plugins_url( 'assets/img/uc_icon_pin.svg', __FILE__ ),
-						'audio_icon_url_bw' => plugins_url( 'assets/img/uc_icon_pin_hover.svg', __FILE__ ),
+						'audio_icon_url' => $campaign_enabled ? plugins_url( 'assets/img/uc_icon_loc_cy.svg', __FILE__ ) : plugins_url( 'assets/img/uc_icon_pin.svg', __FILE__ ),
+						'audio_icon_url_bw' => $campaign_enabled ? plugins_url( 'assets/img/uc_icon_loc_cy.svg', __FILE__ ) : plugins_url( 'assets/img/uc_icon_pin_hover.svg', __FILE__ ),
 						'working_icon_url' => plugins_url( 'assets/img/uc_icon_arbeit.svg', __FILE__ ),
 						'working_icon_url_bw' => plugins_url( 'assets/img/uc_icon_arbeit.svg', __FILE__ ),
+						'working_bg_url' => plugins_url( 'assets/img/mauc_a_muster_blk.svg', __FILE__ ),
 						'living_icon_url' => plugins_url( 'assets/img/uc_icon_wohnen.svg', __FILE__ ),
 						'living_icon_url_bw' => plugins_url( 'assets/img/uc_icon_wohnen.svg', __FILE__ ),
+						'living_bg_url' => plugins_url( 'assets/img/mauc_w_muster_blk.svg', __FILE__ ),
 						'climate_icon_url' => plugins_url( 'assets/img/uc_icon_klima.svg', __FILE__ ),
 						'climate_icon_url_bw' => plugins_url( 'assets/img/uc_icon_klima.svg', __FILE__ ),
+						'climate_bg_url' => plugins_url( 'assets/img/mauc_k_muster_blk.svg', __FILE__ ),
 						'walk_icon_url' => plugins_url( 'assets/img/uc_icon_walk.svg', __FILE__ ),
 						'walk_icon_url_bw' => plugins_url( 'assets/img/uc_icon_walk_sy.svg', __FILE__ ),
 						'ajax_url' => admin_url( 'admin-ajax.php' ),

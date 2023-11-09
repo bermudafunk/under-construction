@@ -64,23 +64,18 @@ window.addEventListener('DOMContentLoaded', function(){
                 let marker_audio_icon = audio_icon;
                 let marker_audio_icon_url = mannheim_under_construction.audio_icon_url;
                 let marker_audio_icon_bw_url = mannheim_under_construction.audio_icon_url_bw;
-                console.log(location.campaign_type);
-                console.log(location.id);
                 if(location.campaign_type === 'working'){
                     marker_audio_icon = working_icon;
                     marker_audio_icon_bw_url = mannheim_under_construction.working_icon_url_bw;
                     marker_audio_icon_url = mannheim_under_construction.working_icon_url;
-                    console.log("working");
                 } else if(location.campaign_type === 'living'){
                     marker_audio_icon = living_icon;
                     marker_audio_icon_bw_url = mannheim_under_construction.living_icon_url_bw;
                     marker_audio_icon_url = mannheim_under_construction.living_icon_url;
-                    console.log("living");
                 } else if(location.campaign_type === 'climate'){
                     marker_audio_icon = climate_icon;
                     marker_audio_icon_bw_url = mannheim_under_construction.climate_icon_url_bw;
                     marker_audio_icon_url = mannheim_under_construction.climate_icon_url;
-                    console.log("climate");
                 }
                 let marker = L.marker([location.lat, location.lng], {title: location.title, alt: location.title, icon: marker_audio_icon, data_id: location.id, keyboard: false});
                 marker.addEventListener('click', e => {
@@ -209,9 +204,6 @@ window.addEventListener('DOMContentLoaded', function(){
             });
         }
         if(campaign_popup) {
-            this.setTimeout(() => {
-                campaign_popup.style.display = '';
-            }, 5000);
             L.DomEvent.disableScrollPropagation(campaign_popup);
             L.DomEvent.disableClickPropagation(campaign_popup);
             let close_button = campaign_popup.querySelector('button.close-button');
@@ -359,10 +351,20 @@ window.addEventListener('DOMContentLoaded', function(){
         }, {passive: true});
         onboarding.addEventListener('click', _ => {
             onboarding.classList.remove('active');
+            if(campaign_popup){
+                this.setTimeout(_ => {
+                    campaign_popup.style.display = '';
+                }, 5000);
+            }
         });
         onboarding.addEventListener('keydown', e => {
             if(['Esc', 'Escape', 'Enter', ' '].includes(e.key)) {
                 onboarding.classList.remove('active');
+                if(campaign_popup){
+                    this.setTimeout(_ => {
+                        campaign_popup.style.display = '';
+                    }, 5000);
+                }
             }
         });
         campaign_onboarding.addEventListener('click', _ => {
@@ -667,6 +669,13 @@ window.addEventListener('DOMContentLoaded', function(){
                     body.classList.remove('sidebar-fullscreen');
                     sidebar_left.open('#play');
                     map.setView([audio_station.lat, audio_station.lng]);
+                    if(audio_station.campaign_type === 'working'){
+                        body.style.setProperty('--sidebar-background', 'url(' + mannheim_under_construction.working_bg_url + ')');
+                    } else if(audio_station.campaign_type === 'living'){
+                        body.style.setProperty('--sidebar-background', 'url(' + mannheim_under_construction.living_bg_url + ')');
+                    } else if(audio_station.campaign_type === 'climate'){
+                        body.style.setProperty('--sidebar-background', 'url(' + mannheim_under_construction.climate_bg_url + ')');
+                    }
                 }
             }
         }
@@ -958,12 +967,12 @@ window.addEventListener('DOMContentLoaded', function(){
 
         function update_bg(){
             let backgrounds;
-            if(body.classList.contains('black-white')){
+            if(body.classList.contains('black-white') || body.classList.contains('campaign')) {
                 backgrounds = mannheim_under_construction.dark_backgrounds;
             } else {
                 backgrounds = mannheim_under_construction.light_backgrounds;
             }
-            document.documentElement.style.setProperty('--sidebar-background', 'url(' + backgrounds[Math.floor(Math.random() * backgrounds.length)] + ')');
+            body.style.setProperty('--sidebar-background', 'url(' + backgrounds[Math.floor(Math.random() * backgrounds.length)] + ')');
         }
 
         play_tab.querySelector('.content-tags').addEventListener('click', e => {
