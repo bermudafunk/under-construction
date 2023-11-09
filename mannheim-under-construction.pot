@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mannheim Under Construction\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-09 23:33+0000\n"
+"POT-Creation-Date: 2023-11-09 23:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -274,6 +274,10 @@ msgstr ""
 
 #: page-map.php:31
 msgid "Change the font size or switch to black/white mode"
+msgstr ""
+
+#: page-map.php:73
+msgid "Choose a post of the following Topics:"
 msgstr ""
 
 #: index.php:439

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Mannheim Under Construction\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-13 20:28+0000\n"
-"PO-Revision-Date: 2023-11-09 23:33+0000\n"
+"PO-Revision-Date: 2023-11-09 23:37+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -282,6 +282,10 @@ msgstr "Schriftgröße ändern"
 #| msgid "Change the font size or switch to black/white view"
 msgid "Change the font size or switch to black/white mode"
 msgstr "Verändere die Schriftgröße oder wechsel in den Schwarz/Weiß-Modus"
+
+#: page-map.php:73
+msgid "Choose a post of the following Topics:"
+msgstr "Wähle einen Beitrag zu folgenden Themen:"
 
 #: index.php:439
 msgid "Choose or Upload Media"

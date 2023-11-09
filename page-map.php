@@ -70,7 +70,7 @@ if(get_option('mannheim_under_construction_campaign', false)){
                     <button autofocus id="campaign-onboarding-start-button" tabindex="1"><?php esc_html_e('Start', 'mannheim-under-construction'); ?></button>
                 </div>
                 <div class="campaign-onboarding-explainer">
-                    <p id="campaign-onboarding-explainer-1"><?php esc_html_e('Choose a post of the following Topics:'); ?></p>
+                    <p id="campaign-onboarding-explainer-1"><?php esc_html_e('Choose a post of the following Topics:', 'mannheim-under-construction'); ?></p>
                     <div class="campaign-icon-working">
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
                             <path fill="#00ECEC" d="M31.547,19.283C30.533,20.297,29.135,21,27.217,21H22v17.42l4.954,7.536
