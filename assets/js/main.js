@@ -142,9 +142,9 @@ window.addEventListener('DOMContentLoaded', function(){
         let play_track_swipe_bar = play_tab.querySelector('.track-swipe-bar');
         let play_track_swipe_bar_nexts = play_track_swipe_bar.querySelectorAll('.next-track');
         let play_track_swipe_bar_prevs = play_track_swipe_bar.querySelectorAll('.prev-track');
-        let more_about_campaign = play_tab.querySelector('.more-about-campaign');
-        let more_about_campaign_back = more_about_campaign.querySelectorAll('.back-to-audio');
-        let more_about_campaign_details = more_about_campaign.querySelectorAll('.campaign-details');
+        let more_about_campaign = play_tab.querySelector('.main-player .more-about-campaign');
+        let more_about_campaign_back = play_tab.querySelector('.campaign-infos .more-about-campaign');
+        let campaign_track_list = play_tab.querySelector('.campaign-infos .campaign-tracks-list');
         let walk = document.querySelector('#walk');
         let walk_prevs = walk.querySelectorAll('.prev-track');
         let walk_nexts = walk.querySelectorAll('.next-track');
@@ -613,10 +613,12 @@ window.addEventListener('DOMContentLoaded', function(){
             current_audio_update = 0;
             if(audio_stations[audio_id]){
                 let audio_station = audio_stations[audio_id];
+                play_tab.querySelector('.main-player').style.display = '';
+                play_tab.querySelector('.campaign-infos').style.display = 'none';
                 play_tab.querySelector('.content-location').innerHTML = audio_station.location;
                 play_tab.querySelector('.content-location-2').innerHTML = audio_station.location_2;
                 play_tab.querySelector('.content-title').innerHTML = audio_station.title;
-                play_tab.querySelector('.campaign-title').innerHTML = audio_station.campaign_title;
+                play_tab.querySelector('.main-player .campaign-title').innerHTML = audio_station.campaign_title;
                 play_tab.querySelector('.content-description').innerHTML = audio_station.description;
                 play_tab.querySelector('.content-credits').innerHTML = audio_station.credits;
                 let details_wrapper = play_tab.querySelector('.content-description-details');
@@ -672,12 +674,6 @@ window.addEventListener('DOMContentLoaded', function(){
                 }else {
                     more_about_campaign.style.display = '';
                     more_about_campaign.setAttribute('data-campaign-type', audio_station.campaign_type);
-                    more_about_campaign_back.forEach(e => {
-                        e.style.display = 'none';
-                    });
-                    more_about_campaign_details.forEach(e => {
-                        e.style.display = '';
-                    });
                     if(audio_station.campaign_type === 'working'){
                         more_about_campaign.querySelector('span.campaign-details').innerText = mannheim_under_construction.more_about_working;
                     }else if(audio_station.campaign_type === 'living'){
@@ -701,6 +697,41 @@ window.addEventListener('DOMContentLoaded', function(){
                 }
             }
         }
+
+        function load_campaign_infos(type){
+            console.log(type);
+            play_tab.querySelector('.main-player').style.display = 'none';
+            play_tab.querySelector('.campaign-infos').style.display = '';
+            campaign_track_list.innerHTML = '';
+            if(type === 'working'){
+                play_tab.querySelector('.campaign-infos .campaign-title').innerHTML = mannheim_under_construction.more_about_working_title;
+                play_tab.querySelector('.campaign-infos .campaign-description').innerHTML = mannheim_under_construction.more_about_working_body;
+                play_tab.querySelector('.campaign-infos .campaign-icon').style.backgroundImage = 'url(' + mannheim_under_construction.working_icon_url + ')';
+            } else if(type === 'living'){
+                play_tab.querySelector('.campaign-infos .campaign-title').innerHTML = mannheim_under_construction.more_about_living_title;
+                play_tab.querySelector('.campaign-infos .campaign-description').innerHTML = mannheim_under_construction.more_about_living_body;
+                play_tab.querySelector('.campaign-infos .campaign-icon').style.backgroundImage = 'url(' + mannheim_under_construction.living_icon_url + ')';
+            } else if(type === 'climate'){
+                play_tab.querySelector('.campaign-infos .campaign-title').innerHTML = mannheim_under_construction.more_about_climate_title;
+                play_tab.querySelector('.campaign-infos .campaign-description').innerHTML = mannheim_under_construction.more_about_climate_body;
+                play_tab.querySelector('.campaign-infos .campaign-icon').style.backgroundImage = 'url(' + mannheim_under_construction.climate_icon_url + ')'; 
+            }
+            for(let track of mannheim_under_construction.map_data){
+                if(track.campaign_type === type && !track.hidden){
+                    campaign_track_list.innerHTML += '<li data-id="' + track.id + '">' + track.title + '</li>';
+                }
+            }
+        }
+
+        more_about_campaign.addEventListener('click', function(e){
+            load_campaign_infos(e.currentTarget.getAttribute('data-campaign-type'));
+        });
+        more_about_campaign_back.addEventListener('click', function(){
+            load_audio(current_audio);
+        });
+        campaign_track_list.addEventListener('click', e => {
+            load_audio(e.target.getAttribute('data-id'));
+        });
 
         function load_audio_update(update_id){
             if(update_id === 0){

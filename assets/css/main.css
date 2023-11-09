@@ -105,9 +105,6 @@ input {
     color: var(--secondary-colour);
     padding: 0;
 }
-button {
-    cursor: pointer;
-}
 html,
 body,
 main,
@@ -539,8 +536,11 @@ body.black-white button {
     background: var(--sidebar-background) repeat;
     background-size: 8em;
 }
+.filter-box option,
+button,
 #search-tags .tag,
-.content-tags .tag {
+.content-tags .tag,
+.campaign-tracks-list li {
     cursor: pointer;
 }
 .content-production-date,
@@ -736,9 +736,11 @@ body.wait .leaflet-sidebar-pane {
 .track-swipe-bar svg,
 .more-about-campaign svg,
 .onboarding-explainer-description svg,
-.mannheim-under-construction-campaign-onboarding svg {
+.mannheim-under-construction-campaign-onboarding svg,
+.campaign-icon {
     width: 60px;
     height: 60px;
+    flex-shrink: 0;
 }
 #info figure {
     max-width: 50%;
@@ -799,9 +801,6 @@ body.black-white .filter-box select {
 body.campaign .filter-box label,
 body.campaign .filter-box select {
     background-color: var(--third-colour);
-}
-.filter-box option {
-    cursor: pointer;
 }
 details .arrow,
 .filter-box .arrow {
@@ -909,10 +908,26 @@ body.black-white .light-theme {
 .content-walk-stations,
 .walk-intro,
 .walk-end,
-#play.active {
+#play.active,
+.main-player,
+.campaign-infos {
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+.campaign-icon {
+    background-color: var(--primary-colour);
+}
+.campaign-header {
+    display: flex;
+    flex-direction: row;
+}
+.campaign-header .campaign-title {
+    font-size: 1.4em;
+    padding: 0 1em;
+}
+.campaign-tracks p {
+    font-size: 1.4em;
 }
 .track-swipe-bar,
 .more-about-campaign {
