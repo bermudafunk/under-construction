@@ -651,6 +651,12 @@ class Mannheim_Under_Constrcution
 						'more_about_working' => esc_html__('More about the topic working', 'mannheim-under-construction'),
 						'more_about_living' => esc_html__('More about the topic living', 'mannheim-under-construction'),
 						'more_about_climate' => esc_html__('More about the topic climate', 'mannheim-under-construction'),
+						'more_about_working_title' => get_post(557)->post_title,
+						'more_about_living_title' => get_post(559)->post_title,
+						'more_about_climate_title' => get_post(561)->post_title,
+						'more_about_working_body' => apply_filters('the_content', get_the_content(null, false, 557)),
+						'more_about_living_body' => apply_filters('the_content', get_the_content(null, false, 559)),
+						'more_about_climate_body' => apply_filters('the_content', get_the_content(null, false, 561)),
 					]
 				);
 			}
