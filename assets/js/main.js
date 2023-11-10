@@ -119,7 +119,10 @@ window.addEventListener('DOMContentLoaded', function(){
         let onboarding = document.querySelector('.mannheim-under-construction-onboarding');
         let campaign_onboarding = document.querySelector('.mannheim-under-construction-campaign-onboarding');
         let popup = document.querySelector('.mannheim-under-construction-popup');
-        let campaign_popup = document.querySelector('.mannheim-under-construction-campaign-popup');
+        let campaign_popup;
+        if(mannheim_under_construction.initial_campaign === '') {
+            campaign_popup = document.querySelector('.mannheim-under-construction-campaign-popup');
+        }
         let search_form = document.querySelector('#search form');
         let search_form_filters = document.querySelectorAll('#search .filter-box select');
         let search_form_open_status = document.querySelectorAll('#search .filter-box input[type="checkbox"]');
@@ -162,6 +165,9 @@ window.addEventListener('DOMContentLoaded', function(){
         let current_walk_station = 0;
         let current_walk_explainer = 0;
         let black_white_switcher_used = 0;
+        if(mannheim_under_construction.initial_campaign !== '') {
+            black_white_switcher_used = 1;
+        }
         for(let opener of open_under_construction_info){
             opener.addEventListener('click', _ => {
                 sidebar_right.open('#info');
@@ -502,6 +508,12 @@ window.addEventListener('DOMContentLoaded', function(){
                 }
             }
         }
+        if(mannheim_under_construction.initial_campaign !== '') {
+            campaign_markers.forEach(marker => {
+                map.addLayer(marker);
+            });
+            load_campaign_infos(mannheim_under_construction.initial_campaign);
+        }
         function play_pause_handler(){
             if (player.innerHTML !== player_new.innerHTML) {
                 player.pause();
@@ -699,7 +711,6 @@ window.addEventListener('DOMContentLoaded', function(){
         }
 
         function load_campaign_infos(type){
-            console.log(type);
             play_tab.querySelector('.main-player').style.display = 'none';
             play_tab.querySelector('.campaign-infos').style.display = '';
             campaign_track_list.innerHTML = '';
@@ -721,6 +732,9 @@ window.addEventListener('DOMContentLoaded', function(){
                     campaign_track_list.innerHTML += '<li data-id="' + track.id + '">' + track.title + '</li>';
                 }
             }
+            sidebar_right.close();
+            body.classList.remove('sidebar-fullscreen');
+            sidebar_left.open('#play');
         }
 
         more_about_campaign.addEventListener('click', function(e){

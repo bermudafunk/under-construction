@@ -657,6 +657,7 @@ class Mannheim_Under_Constrcution
 						'more_about_working_body' => apply_filters('the_content', get_the_content(null, false, 557)),
 						'more_about_living_body' => apply_filters('the_content', get_the_content(null, false, 559)),
 						'more_about_climate_body' => apply_filters('the_content', get_the_content(null, false, 561)),
+						'initial_campaign' => in_array($_GET['campaign'] ?? '', ['working', 'living', 'climate'], true) ? $_GET['campaign'] : '',
 					]
 				);
 			}
@@ -684,6 +685,19 @@ class Mannheim_Under_Constrcution
 			}
 			return $permalink;
 		}, 10, 2);
+
+		add_action('wp', function ( WP $wp ) {
+			if($wp->query_vars['pagename'] === 'klima'){
+				wp_redirect(site_url('/?campaign=climate'));
+				exit;
+			}elseif($wp->query_vars['pagename'] === 'wohnen'){
+				wp_redirect(site_url('/?campaign=living'));
+				exit;
+			}elseif($wp->query_vars['pagename'] === 'arbeit'){
+				wp_redirect(site_url('/?campaign=working'));
+				exit;
+			}
+		});
 	}
 
 	public static function register_meta_box(WP_Post $post) : void
