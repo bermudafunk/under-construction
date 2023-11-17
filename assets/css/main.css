@@ -882,7 +882,7 @@ body.black-white .light-theme {
     max-height: 350px;
     background: var(--sidebar-background) repeat;
     background-size: 8em;
-    overflow: scroll;
+    overflow: auto;
     padding: 0 1em;
     z-index: 3001;
 }
