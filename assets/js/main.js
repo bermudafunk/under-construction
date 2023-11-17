@@ -363,7 +363,7 @@ window.addEventListener('DOMContentLoaded', function(){
             if(campaign_popup){
                 this.setTimeout(_ => {
                     campaign_popup.style.display = '';
-                }, 5000);
+                }, 2000);
             }
         });
         onboarding.addEventListener('keydown', e => {
