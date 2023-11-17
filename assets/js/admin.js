@@ -9,13 +9,13 @@ window.addEventListener('DOMContentLoaded', _ => {
         for (let accordion of mannheim_under_construction_admin.accordions) {
             let row = document.createElement('tr');
             row.innerHTML = '<td><input name="mannheim_under_construction_accordions['+accordion_count+'][title]" type="text" value="' + accordion.title + '"></td>';
-            row.innerHTML += '<td><textarea name="mannheim_under_construction_accordions['+accordion_count+'][description]">' + accordion.description + '</textarea></td>';
+            row.innerHTML += '<td co><textarea cols="60" rows="5" name="mannheim_under_construction_accordions['+accordion_count+'][description]">' + accordion.description + '</textarea></td>';
             accordions.appendChild(row);
             ++accordion_count;
         }
         let row = document.createElement('tr');
         row.innerHTML = '<td><input name="mannheim_under_construction_accordions['+accordion_count+'][title]" type="text"></td>';
-        row.innerHTML += '<td><textarea name="mannheim_under_construction_accordions['+accordion_count+'][description]"></textarea></td>';
+        row.innerHTML += '<td><textarea cols="60" rows="5" name="mannheim_under_construction_accordions['+accordion_count+'][description]"></textarea></td>';
         accordions.appendChild(row);
         ++accordion_count;
         let last_accordion_textarea = accordions.querySelector('tr:last-of-type textarea');
@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', _ => {
             e.target.removeEventListener('change', accordions_last_change);
             let row = document.createElement('tr');
             row.innerHTML = '<td><input name="mannheim_under_construction_accordions['+accordion_count+'][title]" type="text"></td>';
-            row.innerHTML += '<td><textarea name="mannheim_under_construction_accordions['+accordion_count+'][description]"></textarea></td>';
+            row.innerHTML += '<td><textarea cols="60" rows="5" name="mannheim_under_construction_accordions['+accordion_count+'][description]"></textarea></td>';
             accordions.appendChild(row);
             ++accordion_count;
             last_accordion_textarea = accordions.querySelector('tr:last-of-type textarea');
