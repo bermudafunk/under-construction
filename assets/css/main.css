@@ -47,6 +47,7 @@ body.campaign {
     --sidebar-background: url('../img/uc_c_blk_muster.svg');
     --secondary-colour: #FFFFFF;
     --third-colour: #000000;
+    --onboarding-background: rgba(0, 0, 0, 0.5);
 }
 body.black-white {
     color: var(--secondary-colour);
@@ -155,7 +156,9 @@ details summary,
 #onboarding-marker path:last-of-type,
 body.black-white .leaflet-sidebar-content svg,
 body.black-white .close-button svg,
-body.black-white .onboarding-arrow {
+body.black-white .onboarding-arrow,
+body.campaign #onboarding-marker path:first-of-type,
+body.campaign #onboarding-marker polygon  {
     fill: var(--primary-colour);
 }
 body.campaign .close-button svg,
@@ -166,10 +169,13 @@ body.campaign .content-timeline path:first-of-type {
     fill: var(--secondary-colour);
 }
 body.campaign .track-swipe-bar svg,
-body.campaign .more-about-campaign svg {
+body.campaign .more-about-campaign svg,
+body.campaign #onboarding-marker path:last-of-type {
     fill: var(--third-colour);
 }
-#black_white_switcher polygon:first-of-type{
+#black_white_switcher polygon:first-of-type,
+body.campaign.black-white #onboarding-marker path:first-of-type,
+body.campaign.black-white #onboarding-marker polygon {
     fill: var(--switcher-colour);
 }
 svg {

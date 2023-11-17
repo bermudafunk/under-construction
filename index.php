@@ -297,8 +297,8 @@ class Mannheim_Under_Constrcution
 
 		add_action( 'admin_init', function () {
 			add_settings_section(
-				'mannheim_under_construction_settings',
-				__( 'Popup', 'mannheim-under-construction' ),
+				'mannheim_under_construction_settings_campaign',
+				__( 'Campaign', 'mannheim-under-construction' ),
 				function () {},
 				'mannheim-under-construction'
 			);
@@ -310,7 +310,7 @@ class Mannheim_Under_Constrcution
 					echo '<input type="checkbox" name="mannheim_under_construction_campaign" class="regular-text code" value="1" ' . ( get_option( 'mannheim_under_construction_campaign', 0 ) ? 'checked' : '' ) . '>';
 				},
 				'mannheim-under-construction',
-				'mannheim_under_construction_settings'
+				'mannheim_under_construction_settings_campaign'
 			);
 
 			add_settings_field(
@@ -320,7 +320,7 @@ class Mannheim_Under_Constrcution
 					echo '<input type="text" name="mannheim_under_construction_campaign_headline" class="regular-text code" value="' . esc_attr( get_option( 'mannheim_under_construction_campaign_headline' ) ) . '">';
 				},
 				'mannheim-under-construction',
-				'mannheim_under_construction_settings'
+				'mannheim_under_construction_settings_campaign'
 			);
 
 			add_settings_field(
@@ -330,7 +330,14 @@ class Mannheim_Under_Constrcution
 					echo '<textarea name="mannheim_under_construction_campaign_text" class="regular-text code">' . esc_html( get_option( 'mannheim_under_construction_campaign_text' ) ) . '</textarea>';
 				},
 				'mannheim-under-construction',
-				'mannheim_under_construction_settings'
+				'mannheim_under_construction_settings_campaign'
+			);
+
+			add_settings_section(
+				'mannheim_under_construction_settings_popup',
+				__( 'Popup', 'mannheim-under-construction' ),
+				function () {},
+				'mannheim-under-construction'
 			);
 
 			add_settings_field(
@@ -340,7 +347,7 @@ class Mannheim_Under_Constrcution
 					echo '<input type="checkbox" name="mannheim_under_construction_popup_show" class="regular-text code" value="1" ' . ( get_option( 'mannheim_under_construction_popup_show', 0 ) ? 'checked' : '' ) . '>';
 				},
 				'mannheim-under-construction',
-				'mannheim_under_construction_settings'
+				'mannheim_under_construction_settings_popup'
 			);
 
 			add_settings_field(
@@ -350,7 +357,7 @@ class Mannheim_Under_Constrcution
 					echo '<input type="text" name="mannheim_under_construction_popup_headline" class="regular-text code" value="' . esc_attr( get_option( 'mannheim_under_construction_popup_headline' ) ) . '">';
 				},
 				'mannheim-under-construction',
-				'mannheim_under_construction_settings'
+				'mannheim_under_construction_settings_popup'
 			);
 
 			add_settings_field(
@@ -360,7 +367,7 @@ class Mannheim_Under_Constrcution
 					echo '<textarea name="mannheim_under_construction_popup_text" class="regular-text code">' . esc_html( get_option( 'mannheim_under_construction_popup_text' ) ) . '</textarea>';
 				},
 				'mannheim-under-construction',
-				'mannheim_under_construction_settings'
+				'mannheim_under_construction_settings_popup'
 			);
 
 			register_setting( 'mannheim-under-construction', 'mannheim_under_construction_popup_show', [ 'type' => 'bool' ] );
