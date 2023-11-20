@@ -165,6 +165,9 @@ window.addEventListener('DOMContentLoaded', function(){
         let current_walk_station = 0;
         let current_walk_explainer = 0;
         let black_white_switcher_used = 0;
+        let campaign_icon_working = campaign_onboarding.querySelector('.campaign-icon-working');
+        let campaign_icon_living = campaign_onboarding.querySelector('.campaign-icon-living');
+        let campaign_icon_climate = campaign_onboarding.querySelector('.campaign-icon-climate');
         if(mannheim_under_construction.initial_campaign !== '') {
             black_white_switcher_used = 1;
         }
@@ -217,15 +220,24 @@ window.addEventListener('DOMContentLoaded', function(){
             L.DomEvent.disableClickPropagation(campaign_popup);
             let close_button = campaign_popup.querySelector('button.close-button');
             close_button.addEventListener('click', e => {
-                campaign_popup.style.display = 'none';
+                campaign_popup.classList.remove('active');
                 e.stopImmediatePropagation();
             });
             campaign_popup.addEventListener('click', e => {
                 if(e.target === campaign_popup) {
-                    campaign_popup.style.display = 'none';
+                    campaign_popup.classList.remove('active');
                 }
             });
         }
+        campaign_icon_working.addEventListener('click', _ => {
+            load_campaign_infos('working');
+        });
+        campaign_icon_living.addEventListener('click', _ => {
+            load_campaign_infos('living');
+        });
+        campaign_icon_climate.addEventListener('click', _ => {
+            load_campaign_infos('climate');
+        });
         for(let back_button of back_buttons) {
             back_button.addEventListener('click', _ => {
                 if (body.classList.contains('sidebar-fullscreen')) {
@@ -362,7 +374,7 @@ window.addEventListener('DOMContentLoaded', function(){
             onboarding.classList.remove('active');
             if(campaign_popup){
                 this.setTimeout(_ => {
-                    campaign_popup.style.display = '';
+                    campaign_popup.classList.add('active');
                 }, 2000);
             }
         });
@@ -371,8 +383,8 @@ window.addEventListener('DOMContentLoaded', function(){
                 onboarding.classList.remove('active');
                 if(campaign_popup){
                     this.setTimeout(_ => {
-                        campaign_popup.style.display = '';
-                    }, 5000);
+                        campaign_popup.classList.add('active');
+                    }, 2000);
                 }
             }
         });
