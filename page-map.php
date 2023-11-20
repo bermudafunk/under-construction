@@ -119,6 +119,7 @@ if(get_option('mannheim_under_construction_campaign', false)){
                     <div class="leaflet-sidebar-pane" id="search" role="tabpanel">
                         <div class="search-filters">
                             <div class="content">
+                                <button id="search-extend"><?php esc_html_e('Click here for extended search', 'mannheim-under-construction'); ?></button>
                                 <button class="close-button" title="<?php esc_html_e('Close', 'mannheim-under-construction'); ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                          viewBox="0 0 60 60" xml:space="preserve">
@@ -129,8 +130,16 @@ if(get_option('mannheim_under_construction_campaign', false)){
                                 <form>
                                     <div class="mannheim-under-construction-search">
                                         <input name="s" placeholder="<?php esc_attr_e('Search', 'mannheim-under-construction'); ?>" type="search" aria-label="<?php esc_attr_e('Enter a search phrase', 'mannheim-under-construction'); ?>">
-                                        <button type="submit">
-                                            <?php esc_html_e('Search', 'mannheim-under-construction'); ?>
+                                        <button type="submit" title="<?php esc_html_e('Search', 'mannheim-under-construction'); ?>">
+                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                viewBox="0 0 60 60" xml:space="preserve">
+                                                <path d="M12.433,30.425l7.931,7.93c2.282,2.282,4.675,3.382,7.088,3.378c2.071,0,4.129-0.886,6.113-2.585l10.461,10.438
+                                                    c0.78,0.779,1.803,1.168,2.825,1.168c1.025,0,2.05-0.392,2.831-1.175c1.561-1.563,1.558-4.096-0.006-5.657L39.202,33.471
+                                                    c1.634-1.956,2.462-3.958,2.458-6.007c-0.003-2.415-1.151-4.764-3.433-7.047l-7.939-7.921c-3.816-3.816-7.742-4.458-11.751-1.937
+                                                    l-1.145,1.15l-5.645,5.669l-1.244,1.249C7.998,22.647,8.617,26.608,12.433,30.425z M14.771,21.071l0.338-0.339l5.65-5.663
+                                                    l0.313-0.314c1.385-1.388,2.473-1.501,3.452-0.522l11.639,11.638c0.979,0.98,0.839,2.102-0.546,3.489l-0.268,0.268l-5.649,5.664
+                                                    l-0.266,0.266c-1.381,1.387-2.716,1.643-3.696,0.663L14.272,24.707C13.292,23.727,13.388,22.46,14.771,21.071z"/>
+                                            </svg>
                                         </button>
                                     </div>
                                     <p class="search-intro-text">
@@ -198,14 +207,6 @@ if(get_option('mannheim_under_construction_campaign', false)){
                                         <button type="reset"><?php esc_html_e('Reset', 'mannheim-under-construction'); ?></button>
                                     </div>
                                 </form>
-                                <button id="search-extend">
-                                    <span><?php esc_html_e('Click here for extended search', 'mannheim-under-construction'); ?></span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                         viewBox="0 0 60 60" xml:space="preserve" class="extended-search-arrow">
-                                        <polygon points="35.46,41.119 14.68,44.379 21.298,50.999 42.039,47.658 47.563,42.133 50.996,21.299 44.379,14.681 41.117,35.461
-                                            17.979,12.321 12.32,17.978 "/>
-                                    </svg>
-                                </button>
                             </div>
                         </div>
                         <div class="search_sidebar" id="search-fulltext">

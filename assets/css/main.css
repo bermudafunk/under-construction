@@ -475,12 +475,11 @@ body.sidebar-fullscreen .leaflet-control-container {
 .mannheim-under-construction-search{
     display: flex;
     margin-top: 40px;
+    height: 104px;
+    flex-direction: column;
 }
 body:not(.sidebar-fullscreen) .mannheim-under-construction-search {
-    margin-right: -30px;
-}
-.mannheim-under-construction-search {
-    height: 44px;
+    margin-right: 30px;
 }
 .mannheim-under-construction-search button{
     width: 60px;
@@ -491,6 +490,7 @@ body:not(.sidebar-fullscreen) .mannheim-under-construction-search {
     width: 100%;
     border: 2px var(--secondary-colour) solid;
     text-align: left;
+    height: 100%;
 }
 body.campaign .mannheim-under-construction-search input[type="search"] {
     color: var(--third-colour);
@@ -703,6 +703,13 @@ body.wait .leaflet-sidebar-pane {
     .sidebar-fullscreen #info .open-right-part {
         width: 33.33%;
     }
+    .mannheim-under-construction-search {
+        height: 44px;
+        flex-direction: row;
+    }
+    body:not(.sidebar-fullscreen) .mannheim-under-construction-search {
+        margin-right: -30px;
+    }
 }
 @media (min-width: 768px) and (max-width: 1199px) {
     .under-construction-title span {
@@ -731,17 +738,16 @@ body.wait .leaflet-sidebar-pane {
 #search-extend {
     margin-left: auto;
     display: flex;
-    margin-right: -30px;
+    margin-right: 30px;
+    line-height: 60px;
 }
 .sidebar-fullscreen #search-extend {
     display: none;
 }
-#deepdive-more-info span,
-#search-extend span {
+#deepdive-more-info span {
     align-self: center;
 }
 #deepdive-more-info svg,
-#search-extend svg,
 #info #info-menu-button,
 .track-swipe-bar svg,
 .more-about-campaign svg,
