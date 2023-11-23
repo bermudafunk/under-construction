@@ -129,7 +129,7 @@ if(get_option('mannheim_under_construction_campaign', false)){
                                 </button>
                                 <form>
                                     <div class="mannheim-under-construction-search">
-                                        <input name="s" placeholder="<?php esc_attr_e('Search', 'mannheim-under-construction'); ?>" type="search" aria-label="<?php esc_attr_e('Enter a search phrase', 'mannheim-under-construction'); ?>">
+                                        <input name="s" placeholder="<?php esc_attr_e('Search for ...', 'mannheim-under-construction'); ?>" type="search" aria-label="<?php esc_attr_e('Search for ...', 'mannheim-under-construction'); ?>">
                                         <button type="submit" title="<?php esc_html_e('Search', 'mannheim-under-construction'); ?>">
                                                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                                 viewBox="0 0 60 60" xml:space="preserve">
@@ -142,13 +142,22 @@ if(get_option('mannheim_under_construction_campaign', false)){
                                             </svg>
                                         </button>
                                     </div>
-                                    <p class="search-intro-text">
-		                                <?php esc_html_e('This is the full-text search.', 'mannheim-under-construction'); ?><br>
-                                        <?php esc_html_e('Enter a word, which interests you and it can lead you to new posts.', 'mannheim-under-construction'); ?><br>
-                                        <br>
-		                                <?php esc_html_e('For example:', 'mannheim-under-construction'); ?><br>
-		                                <?php esc_html_e('Vogelstang, School, Post-migration etc.', 'mannheim-under-construction'); ?>
-                                    </p>
+                                    <div class="search-intro-text">
+                                    <?php
+                                        $tag_data = get_tags([
+                                            'fields' => 'id=>name',
+                                            'hide_empty' => true,
+                                            'orderby' => 'count',
+                                            'order' => 'DESC',
+                                            'number' => 9,
+                                        ]);
+                                        if(is_array($tag_data)){
+                                            foreach ($tag_data as $term_id => $term_name) {
+                                                echo '<div class="search-tag" data-tag="' . esc_attr($term_name) . '">#' . esc_html($term_name) . '</div>';
+                                            }
+                                        }
+                                    ?>
+                                    </div>
                                     <div class="extended-filters">
                                         <div class="filter-box">
                                             <input type="checkbox" id="length-filter" hidden>
@@ -544,7 +553,7 @@ if(get_option('mannheim_under_construction_campaign', false)){
                             </g>
                         </svg>
                     </button>
-                    <button href="#search" role="tab" title="<?php esc_attr_e('Search', 'mannheim-under-construction'); ?>">
+                    <button href="#search" role="tab" title="<?php esc_attr_e('Search', 'mannheim-under-construction'); ?>" id="search_button">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 60 60" xml:space="preserve">
                             <path d="M12.433,30.425l7.931,7.93c2.282,2.282,4.675,3.382,7.088,3.378c2.071,0,4.129-0.886,6.113-2.585l10.461,10.438

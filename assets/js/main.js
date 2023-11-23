@@ -115,6 +115,7 @@ window.addEventListener('DOMContentLoaded', function(){
         let play_pause_buttons = document.querySelectorAll('.play_pause_button');
         let back_buttons = document.querySelectorAll('.back-button, button.close-button');
         let black_white_switcher = document.querySelector('#black_white_switcher');
+        let search_button = this.document.querySelector('#search_button');
         let font_size_button = document.querySelector('#font_size_switcher');
         let onboarding = document.querySelector('.mannheim-under-construction-onboarding');
         let campaign_onboarding = document.querySelector('.mannheim-under-construction-campaign-onboarding');
@@ -123,6 +124,8 @@ window.addEventListener('DOMContentLoaded', function(){
         if(mannheim_under_construction.initial_campaign === '') {
             campaign_popup = document.querySelector('.mannheim-under-construction-campaign-popup');
         }
+        let search_intro = document.querySelector('#search .search-intro-text');
+        let search_text_box = document.querySelector('#search input[type="search"]');
         let search_form = document.querySelector('#search form');
         let search_form_filters = document.querySelectorAll('#search .filter-box select');
         let search_form_open_status = document.querySelectorAll('#search .filter-box input[type="checkbox"]');
@@ -199,6 +202,11 @@ window.addEventListener('DOMContentLoaded', function(){
             body.classList.toggle('black-white');
             update_bg();
         });
+        if(search_button){
+            search_button.addEventListener('click', _ => {
+                body.classList.add('sidebar-fullscreen');
+            });
+        }
         L.DomEvent.disableScrollPropagation(onboarding);
         L.DomEvent.disableClickPropagation(onboarding);
         if(popup) {
@@ -394,6 +402,12 @@ window.addEventListener('DOMContentLoaded', function(){
         campaign_onboarding.addEventListener('keydown', e => {
             if(['Esc', 'Escape', 'Enter', ' '].includes(e.key)) {
                 campaign_onboarding.classList.remove('active');
+            }
+        });
+        search_intro.addEventListener('click', e => {
+            if(e.target.classList.contains('search-tag')){
+                console.log(search_text_box);
+                search_text_box.setAttribute('value', e.target.getAttribute('data-tag'));
             }
         });
         search_form.addEventListener('submit', e => {
@@ -869,6 +883,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 if(search){
                     search.addEventListener('click', _ => {
                         sidebar_left.open('#search');
+                        body.classList.add('sidebar-fullscreen');
                     });
                 }
                 let image_container = walk_end.querySelector('.content-image');
