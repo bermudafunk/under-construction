@@ -900,15 +900,15 @@ class Mannheim_Under_Constrcution
 			$audios_html .= '<li data-id="' . $audio->ID . '">' . esc_html($audio->post_title) . '</li>';
 		} else {
 			if(!empty($_POST['s'])) {
-				$message .= '<p>' . sprintf( esc_html__( 'The search term "%s" found the following posts. Click on the title to listen to the post:', 'mannheim-under-construction' ), esc_html( $_POST[ 's' ] ) ) . '</p>';
+				$message .= sprintf( __( '%d results for "%s"', 'mannheim-under-construction' ), count($audios), esc_html( $_POST[ 's' ] ) );
 			} else {
-				$message .= '<p>' . esc_html__( 'The search found the following posts. Click on the title to listen to the post:', 'mannheim-under-construction' ) . '</p>';
+				$message .= sprintf( __( '%d results', 'mannheim-under-construction' ), count($audios) );
 			}
 		}
 		foreach($audios as $audio){
 			$audios_html .= '<li data-id="' . $audio->ID . '">' . esc_html($audio->post_title) . '</li>';
 		}
-		wp_send_json_success(['audios_html' => $audios_html, 'message' => $message]);
+		wp_send_json_success(['audios_html' => $audios_html, 'message' => $message, 'count' => count($audios)]);
 		wp_die();
 	}
 

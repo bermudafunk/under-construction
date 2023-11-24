@@ -116,130 +116,129 @@ if(get_option('mannheim_under_construction_campaign', false)){
             </div>
             <div id="left_sidebar" class="leaflet-sidebar collapsed leaflet-sidebar-left">
                 <div class="leaflet-sidebar-content">
-                    <div class="leaflet-sidebar-pane" id="search" role="tabpanel">
-                        <div class="search-filters">
+                    <form class="leaflet-sidebar-pane" id="search" role="tabpanel">
+                        <div class="search_sidebar" id="search-filters">
                             <div class="content">
-                                <button id="search-extend"><?php esc_html_e('Click here for extended search', 'mannheim-under-construction'); ?></button>
-                                <button class="close-button" title="<?php esc_html_e('Close', 'mannheim-under-construction'); ?>">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                         viewBox="0 0 60 60" xml:space="preserve">
-                                        <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
-                                            50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
-                                    </svg>
-                                </button>
-                                <form>
-                                    <div class="mannheim-under-construction-search">
-                                        <input name="s" placeholder="<?php esc_attr_e('Search for ...', 'mannheim-under-construction'); ?>" type="search" aria-label="<?php esc_attr_e('Search for ...', 'mannheim-under-construction'); ?>">
-                                        <button type="submit" title="<?php esc_html_e('Search', 'mannheim-under-construction'); ?>">
-                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                viewBox="0 0 60 60" xml:space="preserve">
-                                                <path d="M12.433,30.425l7.931,7.93c2.282,2.282,4.675,3.382,7.088,3.378c2.071,0,4.129-0.886,6.113-2.585l10.461,10.438
-                                                    c0.78,0.779,1.803,1.168,2.825,1.168c1.025,0,2.05-0.392,2.831-1.175c1.561-1.563,1.558-4.096-0.006-5.657L39.202,33.471
-                                                    c1.634-1.956,2.462-3.958,2.458-6.007c-0.003-2.415-1.151-4.764-3.433-7.047l-7.939-7.921c-3.816-3.816-7.742-4.458-11.751-1.937
-                                                    l-1.145,1.15l-5.645,5.669l-1.244,1.249C7.998,22.647,8.617,26.608,12.433,30.425z M14.771,21.071l0.338-0.339l5.65-5.663
-                                                    l0.313-0.314c1.385-1.388,2.473-1.501,3.452-0.522l11.639,11.638c0.979,0.98,0.839,2.102-0.546,3.489l-0.268,0.268l-5.649,5.664
-                                                    l-0.266,0.266c-1.381,1.387-2.716,1.643-3.696,0.663L14.272,24.707C13.292,23.727,13.388,22.46,14.771,21.071z"/>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <div class="search-intro-text">
-                                    <?php
-                                        $tag_data = get_tags([
-                                            'fields' => 'id=>name',
-                                            'hide_empty' => true,
-                                            'orderby' => 'count',
-                                            'order' => 'DESC',
-                                            'number' => 9,
-                                        ]);
-                                        if(is_array($tag_data)){
-                                            foreach ($tag_data as $term_id => $term_name) {
-                                                echo '<div class="search-tag" data-tag="' . esc_attr($term_name) . '">#' . esc_html($term_name) . '</div>';
+                                <div class="extended-filters">
+                                    <div class="filter-box">
+                                        <input type="checkbox" id="length-filter" hidden>
+                                        <label id="length-filter-box-label" for="length-filter"><?php esc_html_e('Post length', 'mannheim-under-construction'); ?><span class="arrow"></span></label>
+                                        <select multiple name="length[]" aria-labelledby="length-filter-box-label">
+                                            <?php
+                                            $terms = get_terms([
+                                                'taxonomy' => 'length',
+                                                'hide_empty' => true,
+                                                'orderby' => 'term_order',
+                                            ]);
+                                            if(is_array($terms)){
+                                                foreach($terms as $term){
+                                                    echo '<option value="' . $term->term_id . '">' . esc_html($term->name) . '</option>';
+                                                }
                                             }
-                                        }
-                                    ?>
+                                            ?>
+                                        </select>
                                     </div>
-                                    <div class="extended-filters">
-                                        <div class="filter-box">
-                                            <input type="checkbox" id="length-filter" hidden>
-                                            <label id="length-filter-box-label" for="length-filter"><?php esc_html_e('Post length', 'mannheim-under-construction'); ?><span class="arrow"></span></label>
-                                            <select multiple name="length[]" aria-labelledby="length-filter-box-label">
-                                                <?php
-                                                $terms = get_terms([
-                                                    'taxonomy' => 'length',
-                                                    'hide_empty' => true,
-                                                    'orderby' => 'term_order',
-                                                ]);
-                                                if(is_array($terms)){
-                                                    foreach($terms as $term){
-                                                        echo '<option value="' . $term->term_id . '">' . esc_html($term->name) . '</option>';
-                                                    }
+                                    <div class="filter-box">
+                                        <input type="checkbox" id="location-filter" hidden>
+                                        <label id="location-filter-box-label" for="location-filter"><?php esc_html_e('Location', 'mannheim-under-construction'); ?><span class="arrow"></span></label>
+                                        <select multiple name="location[]" aria-labelledby="location-filter-box-label">
+                                            <?php
+                                            $terms = get_terms([
+                                                'taxonomy' => 'location',
+                                                'hide_empty' => true,
+                                                'orderby' => 'name',
+                                            ]);
+                                            if(is_array($terms)){
+                                                foreach($terms as $term){
+                                                    echo '<option value="' . $term->term_id . '">' . esc_html($term->name) . '</option>';
                                                 }
-                                                ?>
-                                            </select>
-                                        </div>
-                                        <div class="filter-box">
-                                            <input type="checkbox" id="location-filter" hidden>
-                                            <label id="location-filter-box-label" for="location-filter"><?php esc_html_e('Location', 'mannheim-under-construction'); ?><span class="arrow"></span></label>
-                                            <select multiple name="location[]" aria-labelledby="location-filter-box-label">
-                                                <?php
-                                                $terms = get_terms([
-                                                    'taxonomy' => 'location',
-                                                    'hide_empty' => true,
-                                                    'orderby' => 'name',
-                                                ]);
-                                                if(is_array($terms)){
-                                                    foreach($terms as $term){
-                                                        echo '<option value="' . $term->term_id . '">' . esc_html($term->name) . '</option>';
-                                                    }
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                        <div class="filter-box">
-                                            <input type="checkbox" id="date-filter" hidden>
-                                            <label id="date-filter-box-label" for="date-filter"><?php esc_html_e('Production date', 'mannheim-under-construction'); ?><span class="arrow"></span></label>
-                                            <select multiple name="production-date[]" aria-labelledby="date-filter-box-label">
-                                                <?php
-                                                $terms = get_terms([
-                                                    'taxonomy' => 'production-date',
-                                                    'hide_empty' => true,
-                                                    'orderby' => 'term_order',
-                                                ]);
-                                                if(is_array($terms)){
-                                                    foreach($terms as $term){
-                                                        echo '<option value="' . $term->term_id . '">' . esc_html($term->name) . '</option>';
-                                                    }
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                        <button type="reset"><?php esc_html_e('Reset', 'mannheim-under-construction'); ?></button>
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
-                                </form>
+                                    <div class="filter-box">
+                                        <input type="checkbox" id="date-filter" hidden>
+                                        <label id="date-filter-box-label" for="date-filter"><?php esc_html_e('Production date', 'mannheim-under-construction'); ?><span class="arrow"></span></label>
+                                        <select multiple name="production-date[]" aria-labelledby="date-filter-box-label">
+                                            <?php
+                                            $terms = get_terms([
+                                                'taxonomy' => 'production-date',
+                                                'hide_empty' => true,
+                                                'orderby' => 'term_order',
+                                            ]);
+                                            if(is_array($terms)){
+                                                foreach($terms as $term){
+                                                    echo '<option value="' . $term->term_id . '">' . esc_html($term->name) . '</option>';
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="search_sidebar" id="search-fulltext">
+                        <div class="search_main" id="search-not-found">
                             <div class="content">
-                                <button class="close-button" title="<?php esc_html_e('Close', 'mannheim-under-construction'); ?>">
+                                <button type="button" class="search-extend"><?php esc_html_e('Click here for extended search', 'mannheim-under-construction'); ?></button>
+                                <button type="button" class="search-reduce"><?php esc_html_e('Click here for simple search', 'mannheim-under-construction'); ?></button>
+                                <button type="button" class="close-button" title="<?php esc_html_e('Close', 'mannheim-under-construction'); ?>">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                            viewBox="0 0 60 60" xml:space="preserve">
+                                        <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
+                                            50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
+                                    </svg>
+                                </button>
+                                <div class="message"></div>
+                                <ul class="audios"></ul>
+                                <button type="reset"><?php esc_html_e('Reset', 'mannheim-under-construction'); ?></button>
+                            </div>
+                        </div>
+                        <div class="search_main" id="search-fulltext">
+                            <div class="content">
+                                <button type="button" class="search-extend"><?php esc_html_e('Click here for extended search', 'mannheim-under-construction'); ?></button>
+                                <button type="button" class="search-reduce"><?php esc_html_e('Click here for simple search', 'mannheim-under-construction'); ?></button>
+                                <button type="button" class="close-button" title="<?php esc_html_e('Close', 'mannheim-under-construction'); ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                          viewBox="0 0 60 60" xml:space="preserve">
                                         <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
                                             50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
                                     </svg>
                                 </button>
-                                <div class="message"><?php esc_html_e('You haven\'t started a search query yet. Your results will appear here.', 'mannheim-under-construction'); ?></div>
-                                <ol class="audios"></ol>
+                                <div class="mannheim-under-construction-search">
+                                    <input name="s" placeholder="<?php esc_attr_e('Search for ...', 'mannheim-under-construction'); ?>" type="search" aria-label="<?php esc_attr_e('Search for ...', 'mannheim-under-construction'); ?>">
+                                    <button type="submit" title="<?php esc_html_e('Search', 'mannheim-under-construction'); ?>">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                            viewBox="0 0 60 60" xml:space="preserve">
+                                            <path d="M12.433,30.425l7.931,7.93c2.282,2.282,4.675,3.382,7.088,3.378c2.071,0,4.129-0.886,6.113-2.585l10.461,10.438
+                                                c0.78,0.779,1.803,1.168,2.825,1.168c1.025,0,2.05-0.392,2.831-1.175c1.561-1.563,1.558-4.096-0.006-5.657L39.202,33.471
+                                                c1.634-1.956,2.462-3.958,2.458-6.007c-0.003-2.415-1.151-4.764-3.433-7.047l-7.939-7.921c-3.816-3.816-7.742-4.458-11.751-1.937
+                                                l-1.145,1.15l-5.645,5.669l-1.244,1.249C7.998,22.647,8.617,26.608,12.433,30.425z M14.771,21.071l0.338-0.339l5.65-5.663
+                                                l0.313-0.314c1.385-1.388,2.473-1.501,3.452-0.522l11.639,11.638c0.979,0.98,0.839,2.102-0.546,3.489l-0.268,0.268l-5.649,5.664
+                                                l-0.266,0.266c-1.381,1.387-2.716,1.643-3.696,0.663L14.272,24.707C13.292,23.727,13.388,22.46,14.771,21.071z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="search-intro-text">
+                                <?php
+                                    $tag_data = get_tags([
+                                        'fields' => 'id=>name',
+                                        'hide_empty' => true,
+                                        'orderby' => 'count',
+                                        'order' => 'DESC',
+                                        'number' => 9,
+                                    ]);
+                                    if(is_array($tag_data)){
+                                        foreach ($tag_data as $term_id => $term_name) {
+                                            echo '<div class="search-tag" data-tag="' . esc_attr($term_name) . '">#' . esc_html($term_name) . '</div>';
+                                        }
+                                    }
+                                ?>
+                                </div>
+                                <ul class="audios"></ul>
                             </div>
                         </div>
                         <div class="search_sidebar" id="search-tags">
                             <div class="content">
-                                <button class="close-button" title="<?php esc_html_e('Close', 'mannheim-under-construction'); ?>">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                         viewBox="0 0 60 60" xml:space="preserve">
-                                        <polygon points="8.871,43.823 22.729,29.963 8.871,16.103 15.918,9.055 29.777,22.916 43.639,9.055 50.687,16.103 36.826,29.963
-                                            50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
-                                    </svg>
-                                </button>
                                 <?php
                                 $tag_data = get_tags([
 	                                'fields' => 'id=>name',
@@ -271,7 +270,7 @@ if(get_option('mannheim_under_construction_campaign', false)){
                                 ?>
                             </div>
                         </div>
-                    </div>
+                    </form>
                     <div class="leaflet-sidebar-pane" id="play" role="tabpanel">
                         <button class="close-button" title="<?php esc_html_e('Close', 'mannheim-under-construction'); ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"

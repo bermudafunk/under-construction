@@ -124,11 +124,13 @@ window.addEventListener('DOMContentLoaded', function(){
         if(mannheim_under_construction.initial_campaign === '') {
             campaign_popup = document.querySelector('.mannheim-under-construction-campaign-popup');
         }
-        let search_intro = document.querySelector('#search .search-intro-text');
-        let search_text_box = document.querySelector('#search input[type="search"]');
-        let search_form = document.querySelector('#search form');
-        let search_form_filters = document.querySelectorAll('#search .filter-box select');
-        let search_form_open_status = document.querySelectorAll('#search .filter-box input[type="checkbox"]');
+        let search_form = document.querySelector('#search');
+        let search_not_found = search_form.querySelector('#search-not-found');
+        let search_intro = search_form.querySelector('.search-intro-text');
+        let search_text_box = search_form.querySelector('input[type="search"]');
+        let search_reset = search_form.querySelector('button[type="reset"]');
+        let search_form_filters = search_form.querySelectorAll('.filter-box select');
+        let search_form_open_status = search_form.querySelectorAll('.filter-box input[type="checkbox"]');
         let search_form_button = document.querySelector('.mannheim-under-construction-search button');
         let search_sidebar_fulltext = document.querySelector('#search-fulltext');
         let search_sidebar_tags = document.querySelector('#search-tags');
@@ -138,7 +140,8 @@ window.addEventListener('DOMContentLoaded', function(){
         let timelines = document.querySelectorAll('.content-timeline');
         let open_under_construction_info = document.querySelectorAll('.open-under-construction-info');
         let open_under_construction_more_info = document.querySelectorAll('.under-construction-more-info');
-        let search_extend = document.querySelector('#search-extend');
+        let search_extend = document.querySelectorAll('.search-extend');
+        let search_reduce = document.querySelectorAll('.search-reduce');
         let sidebar_left_dom = document.querySelector('.leaflet-sidebar-left');
         let sidebar_right_dom = document.querySelector('.leaflet-sidebar-right');
         let play_tab_button = document.querySelector('#play_tab_button');
@@ -188,8 +191,15 @@ window.addEventListener('DOMContentLoaded', function(){
                 }
             });
         }
-        search_extend.addEventListener('click', _ => {
-            body.classList.add('sidebar-fullscreen');
+        search_extend.forEach(extend => {
+            extend.addEventListener('click', _ => {
+                search_form.classList.add('extended');
+            });
+        });
+        search_reduce.forEach(reduce => {
+            reduce.addEventListener('click', _ => {
+                search_form.classList.remove('extended');
+            });
         });
         black_white_switcher.addEventListener('click', _ => {
             if(!black_white_switcher_used && body.classList.contains('campaign')) {
@@ -250,6 +260,9 @@ window.addEventListener('DOMContentLoaded', function(){
             back_button.addEventListener('click', _ => {
                 if (body.classList.contains('sidebar-fullscreen')) {
                     body.classList.remove('sidebar-fullscreen');
+                    if(search_form.classList.contains('active')) {
+                        sidebar_left.close();
+                    }
                 } else if(!sidebar_left_dom.classList.contains('collapsed')) {
                     sidebar_left.close();
                 } else if(!sidebar_right_dom.classList.contains('collapsed')) {
@@ -406,8 +419,7 @@ window.addEventListener('DOMContentLoaded', function(){
         });
         search_intro.addEventListener('click', e => {
             if(e.target.classList.contains('search-tag')){
-                console.log(search_text_box);
-                search_text_box.setAttribute('value', e.target.getAttribute('data-tag'));
+                search_text_box.value = e.target.getAttribute('data-tag');
             }
         });
         search_form.addEventListener('submit', e => {
@@ -417,6 +429,12 @@ window.addEventListener('DOMContentLoaded', function(){
         search_form_button.addEventListener('click', e => {
             e.preventDefault();
             show_search_results();
+        });
+        search_reset.addEventListener('click', _ => {
+            search_not_found.style.display = '';
+            search_sidebar_fulltext.style.display = '';
+            search_intro.style.display = '';
+            search_sidebar_fulltext.querySelector('.audios').innerHTML = '';
         });
         for(let filter of search_form_filters) {
             filter.addEventListener('change', e => {
@@ -617,16 +635,35 @@ window.addEventListener('DOMContentLoaded', function(){
             }).then(response => {
                 if(response.ok){
                     response.json().then(r => {
-                        search_sidebar_fulltext.querySelector('.message').innerHTML = r.data.message;
-                        search_sidebar_fulltext.querySelector('.audios').innerHTML = r.data.audios_html;
-                        let results = search_sidebar_fulltext.querySelectorAll('.audios li');
-                        for(let result of results){
-                            result.addEventListener('click', e => {
-                                load_audio(e.target.getAttribute('data-id'));
-                            });
+                        if(r.data.count){
+                            search_text_box.value = r.data.message;
+                            search_sidebar_fulltext.querySelector('.audios').innerHTML = r.data.audios_html;
+                            let results = search_sidebar_fulltext.querySelectorAll('.audios li');
+                            for(let result of results){
+                                result.addEventListener('click', e => {
+                                    load_audio(e.target.getAttribute('data-id'));
+                                });
+                            }
+                            search_not_found.style.display = '';
+                            search_sidebar_fulltext.style.display = '';
+                            search_intro.style.display = 'none';
+                        } else {
+                            search_not_found.querySelector('.message').innerHTML = r.data.message;
+                            search_not_found.querySelector('.audios').innerHTML = r.data.audios_html;
+                            let results = search_not_found.querySelectorAll('.audios li');
+                            for(let result of results){
+                                result.addEventListener('click', e => {
+                                    load_audio(e.target.getAttribute('data-id'));
+                                });
+                            }
+                            search_not_found.style.display = 'flex';
+                            search_sidebar_fulltext.style.display = 'none';
                         }
                     }, _ => {
-                        search_sidebar_fulltext.querySelector('.message').innerHTML = mannheim_under_construction.search_error_message;
+                        search_not_found.querySelector('.message').innerHTML = mannheim_under_construction.search_error_message;
+                        search_not_found.querySelector('.audios').innerHTML = '';
+                        search_not_found.style.display = 'flex';
+                        search_sidebar_fulltext.style.display = 'none';
                     });
                 }
                 body.classList.remove('wait');

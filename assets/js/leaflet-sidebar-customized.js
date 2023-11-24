@@ -69,8 +69,7 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
         // Store Panes in Collection for easier iteration
         for (i = 0; i < this._paneContainer.children.length; ++i) {
             child = this._paneContainer.children[i];
-            if (child.tagName === 'DIV' &&
-                L.DomUtil.hasClass(child, 'leaflet-sidebar-pane')) {
+            if (L.DomUtil.hasClass(child, 'leaflet-sidebar-pane')) {
                 this._panes.push(child);
             }
         }
