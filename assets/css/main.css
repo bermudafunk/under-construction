@@ -66,7 +66,8 @@ body.black-white.campaign {
     transition: filter 500ms;
 }
 body.black-white .leaflet-tile-pane,
-body.campaign .leaflet-tile-pane{
+body.campaign .leaflet-tile-pane,
+#left_sidebar.not_found ~ .leaflet-pane .leaflet-tile-pane{
     filter: invert(0.9);
 }
 body.small-font {
@@ -279,7 +280,8 @@ body .leaflet-sidebar:not(.collapsed) ~ .leaflet-map-pane {
     opacity: 0.4;
 }
 body.black-white .leaflet-sidebar:not(.collapsed) ~ .leaflet-map-pane,
-body.campaign .leaflet-sidebar:not(.collapsed) ~ .leaflet-map-pane {
+body.campaign .leaflet-sidebar:not(.collapsed) ~ .leaflet-map-pane,
+#left_sidebar.not_found ~ .leaflet-map-pane {
     opacity: 0.6;
 }
 .leaflet-sidebar-tabs .legal-link {
@@ -313,6 +315,12 @@ button.close-button{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+#search:not(.extended) .extended-search-info {
+    display: none;
+}
+#search.extended .search-intro-text .search-tag {
+    display: none;
 }
 .search-intro-text .search-tag {
     min-width: 50%;
@@ -554,12 +562,40 @@ body.black-white button {
     padding-top: 60px;
     max-height: calc(100% - 60px);
 }
-#search.extended .search_sidebar {
+#left_sidebar:not(.not_found) #search.extended .search_sidebar {
     display: flex;
     visibility: visible;
 }
-#search-not-found {
+#search-not-found,
+#left_sidebar.not_found #search-fulltext {
     display: none;
+}
+#left_sidebar.not_found {
+    --sidebar-background: url('../img/uc_c_blk_muster.svg');
+    --secondary-colour: #FFFFFF;
+    color: var(--secondary-colour);
+}
+#left_sidebar.not_found #search svg {
+    fill: var(--primary-colour);
+}
+#left_sidebar.not_found #search-not-found,
+#search-fulltext,
+.flex-container {
+    display: flex;
+}
+#search-not-found .not-found-box {
+    --primary-colour: #000000;
+    background-color: var(--secondary-colour);
+    color: var(--primary-colour);
+    padding: 2em;
+}
+#left_sidebar.not_found #search-tags,
+#search-tags-not-found {
+    display: none;
+}
+#left_sidebar.not_found #search-tags-not-found {
+    display: flex;
+    visibility: visible;
 }
 .leaflet-sidebar-content {
     background: var(--sidebar-background) repeat;
@@ -591,7 +627,7 @@ button,
     display: block;
 }
 #search-tags .tag-result li,
-#search-fulltext .audios li {
+.audios li {
     cursor: pointer;
     list-style: none;
 }
@@ -639,6 +675,7 @@ body.wait .leaflet-sidebar-pane {
 #info .content,
 #search .content {
     margin: 0 10px;
+    width: 100%;
 }
 #search-tags .content {
     height: 100%;
@@ -790,7 +827,8 @@ body.wait .leaflet-sidebar-pane {
 .more-about-campaign svg,
 .onboarding-explainer-description svg,
 .mannheim-under-construction-campaign-onboarding svg,
-.campaign-icon {
+.campaign-icon,
+.flex-container svg {
     width: 60px;
     height: 60px;
     flex-shrink: 0;

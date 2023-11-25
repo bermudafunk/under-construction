@@ -188,8 +188,21 @@ if(get_option('mannheim_under_construction_campaign', false)){
                                             50.687,43.823 43.639,50.871 29.777,37.011 15.918,50.871"/>
                                     </svg>
                                 </button>
-                                <div class="message"></div>
-                                <ul class="audios"></ul>
+                                <div class="flex-container">
+                                    <div class="not-found-box">
+                                        <div class="message"></div>
+                                        <ul class="audios"></ul>
+                                    </div>
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        viewBox="0 0 60 60" xml:space="preserve">
+                                        <path d="M12.433,30.425l7.931,7.93c2.282,2.282,4.675,3.382,7.088,3.378c2.071,0,4.129-0.886,6.113-2.585l10.461,10.438
+                                            c0.78,0.779,1.803,1.168,2.825,1.168c1.025,0,2.05-0.392,2.831-1.175c1.561-1.563,1.558-4.096-0.006-5.657L39.202,33.471
+                                            c1.634-1.956,2.462-3.958,2.458-6.007c-0.003-2.415-1.151-4.764-3.433-7.047l-7.939-7.921c-3.816-3.816-7.742-4.458-11.751-1.937
+                                            l-1.145,1.15l-5.645,5.669l-1.244,1.249C7.998,22.647,8.617,26.608,12.433,30.425z M14.771,21.071l0.338-0.339l5.65-5.663
+                                            l0.313-0.314c1.385-1.388,2.473-1.501,3.452-0.522l11.639,11.638c0.979,0.98,0.839,2.102-0.546,3.489l-0.268,0.268l-5.649,5.664
+                                            l-0.266,0.266c-1.381,1.387-2.716,1.643-3.696,0.663L14.272,24.707C13.292,23.727,13.388,22.46,14.771,21.071z"/>
+                                    </svg>
+                                </div>
                                 <button type="reset"><?php esc_html_e('Reset', 'mannheim-under-construction'); ?></button>
                             </div>
                         </div>
@@ -219,7 +232,7 @@ if(get_option('mannheim_under_construction_campaign', false)){
                                     </button>
                                 </div>
                                 <div class="search-intro-text">
-                                <?php
+                                    <?php
                                     $tag_data = get_tags([
                                         'fields' => 'id=>name',
                                         'hide_empty' => true,
@@ -232,7 +245,24 @@ if(get_option('mannheim_under_construction_campaign', false)){
                                             echo '<div class="search-tag" data-tag="' . esc_attr($term_name) . '">#' . esc_html($term_name) . '</div>';
                                         }
                                     }
-                                ?>
+                                    ?>
+                                    <p class="extended-search-info"><?php esc_html_e('This is the extended search. Search on the left to find audio stations of a specific length, location or date. Or klick on a tag on the right that seems interesting to you. Or click on this randomly selected audio station:', 'mannheim-under-construction'); ?></p>
+                                    <ul class="extended-search-info audios">
+                                        <?php
+                                        $query = new WP_Query([
+                                            'post_type' => 'audio-station',
+                                            'posts_per_page' => 1,
+                                            'orderby' => 'rand',
+                                            'meta_query' => [
+                                                'relation' => 'OR',
+                                                ['key' => 'mannheim_under_construction_location_hidden', 'value' => '0'],
+                                                ['key' => 'mannheim_under_construction_location_hidden', 'compare' => 'NOT EXISTS'],
+                                            ],
+                                        ]);
+                                        $audio = relevanssi_do_query($query)[0];
+                                        ?>
+                                        <li data-id="<?php echo $audio->ID ?>"><?php echo esc_html($audio->post_title); ?></li>
+                                    </ul>
                                 </div>
                                 <ul class="audios"></ul>
                             </div>
@@ -265,6 +295,24 @@ if(get_option('mannheim_under_construction_campaign', false)){
                                             echo '<li data-id="' . $audio->ID . '">' . esc_html($audio->post_title) . '</li>';
                                         }
                                         echo '</ol>';
+                                    }
+                                }
+                                ?>
+                            </div>
+                        </div>
+                        <div class="search_sidebar" id="search-tags-not-found">
+                            <div class="content">
+                            <?php
+                                $tag_data = get_tags([
+                                    'fields' => 'id=>name',
+                                    'hide_empty' => true,
+                                    'orderby' => 'count',
+                                    'order' => 'DESC',
+                                    'number' => 9,
+                                ]);
+                                if(is_array($tag_data)){
+                                    foreach ($tag_data as $term_id => $term_name) {
+                                        echo '<div class="search-tag" data-tag="' . esc_attr($term_name) . '">#' . esc_html($term_name) . '</div>';
                                     }
                                 }
                                 ?>
@@ -552,7 +600,7 @@ if(get_option('mannheim_under_construction_campaign', false)){
                             </g>
                         </svg>
                     </button>
-                    <button href="#search" role="tab" title="<?php esc_attr_e('Search', 'mannheim-under-construction'); ?>" id="search_button">
+                    <button href="#search" role="tab" title="<?php esc_attr_e('Search', 'mannheim-under-construction'); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 60 60" xml:space="preserve">
                             <path d="M12.433,30.425l7.931,7.93c2.282,2.282,4.675,3.382,7.088,3.378c2.071,0,4.129-0.886,6.113-2.585l10.461,10.438
