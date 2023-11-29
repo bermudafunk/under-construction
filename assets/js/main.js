@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', function(){
             if(e.id === '#search'){
                 body.classList.add('sidebar-fullscreen');
             } else {
-                sidebar_left_dom.classList.remove('not_found');
+                body.classList.remove('not_found');
             }
         });
         sidebar_left.on('opening', _ => {
@@ -49,7 +49,7 @@ window.addEventListener('DOMContentLoaded', function(){
         sidebar_left.on('closing', _ => {
             body.classList.remove('sidebar-fullscreen');
             body.classList.remove('sidebar-open');
-            sidebar_left_dom.classList.remove('not_found');
+            body.classList.remove('not_found');
         });
         sidebar_right.on('closing', _ => {
             body.classList.remove('sidebar-fullscreen');
@@ -135,7 +135,7 @@ window.addEventListener('DOMContentLoaded', function(){
         let search_not_found = search_form.querySelector('#search-not-found');
         let search_intro = search_form.querySelector('.search-intro-text');
         let search_text_box = search_form.querySelector('input[type="search"]');
-        let search_reset = search_form.querySelector('button[type="reset"]');
+        let search_reset = search_form.querySelectorAll('button[type="reset"]');
         let search_form_filters = search_form.querySelectorAll('.filter-box select');
         let search_form_open_status = search_form.querySelectorAll('.filter-box input[type="checkbox"]');
         let search_form_button = document.querySelector('.mannheim-under-construction-search button');
@@ -424,7 +424,7 @@ window.addEventListener('DOMContentLoaded', function(){
         search_sidebar_tags_not_found.addEventListener('click', e => {
             if(e.target.classList.contains('search-tag')){
                 search_text_box.value = e.target.getAttribute('data-tag');
-                sidebar_left_dom.classList.remove('not_found');
+                body.classList.remove('not_found');
                 show_search_results();
             }
         });
@@ -436,10 +436,12 @@ window.addEventListener('DOMContentLoaded', function(){
             e.preventDefault();
             show_search_results();
         });
-        search_reset.addEventListener('click', _ => {
-            sidebar_left_dom.classList.remove('not_found');
-            search_intro.style.display = '';
-            search_sidebar_fulltext.querySelector('.content > .audios').innerHTML = '';
+        search_reset.forEach(reset => {
+            reset.addEventListener('click', _ => {
+                body.classList.remove('not_found');
+                search_intro.style.display = '';
+                search_sidebar_fulltext.querySelector('.content > .audios').innerHTML = '';
+            });
         });
         search_form.querySelectorAll('.audios').forEach(result => {
             result.addEventListener('click', e => {
@@ -649,17 +651,17 @@ window.addEventListener('DOMContentLoaded', function(){
                 if(response.ok){
                     response.json().then(r => {
                         if(r.data.count){
-                            sidebar_left_dom.classList.remove('not_found');
+                            body.classList.remove('not_found');
                             search_text_box.value = r.data.message;
                             search_sidebar_fulltext.querySelector('.content > .audios').innerHTML = r.data.audios_html;
                             search_intro.style.display = 'none';
                         } else {
-                            sidebar_left_dom.classList.add('not_found');
+                            body.classList.add('not_found');
                             search_not_found.querySelector('.message').innerHTML = r.data.message;
                             search_not_found.querySelector('.audios').innerHTML = r.data.audios_html;
                         }
                     }, _ => {
-                        sidebar_left_dom.classList.add('not_found');
+                        body.classList.add('not_found');
                         search_not_found.querySelector('.message').innerHTML = mannheim_under_construction.search_error_message;
                         search_not_found.querySelector('.audios').innerHTML = '';
                     });

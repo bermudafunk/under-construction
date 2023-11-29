@@ -232,6 +232,7 @@ if(get_option('mannheim_under_construction_campaign', false)){
                                     </button>
                                 </div>
                                 <div class="search-intro-text">
+                                    <p class="simple-search-info"><?php esc_html_e('Select a tag, for example (more options in the extended search):', 'mannheim-under-construction'); ?></p>
                                     <?php
                                     $tag_data = get_tags([
                                         'fields' => 'id=>name',
@@ -246,7 +247,7 @@ if(get_option('mannheim_under_construction_campaign', false)){
                                         }
                                     }
                                     ?>
-                                    <p class="extended-search-info"><?php esc_html_e('This is the extended search. Search on the left to find audio stations of a specific length, location or date. Or klick on a tag on the right that seems interesting to you. Or click on this randomly selected audio station:', 'mannheim-under-construction'); ?></p>
+                                    <p class="extended-search-info"><?php esc_html_e('This is the extended search. Search either audio stations by length, location or date. Or klick on a tag in the list that seems interesting to you. Or click on this randomly selected audio station:', 'mannheim-under-construction'); ?></p>
                                     <ul class="extended-search-info audios">
                                         <?php
                                         $query = new WP_Query([
@@ -265,6 +266,7 @@ if(get_option('mannheim_under_construction_campaign', false)){
                                     </ul>
                                 </div>
                                 <ul class="audios"></ul>
+                                <button type="reset"><?php esc_html_e('Reset', 'mannheim-under-construction'); ?></button>
                             </div>
                         </div>
                         <div class="search_sidebar" id="search-tags">
