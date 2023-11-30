@@ -265,6 +265,7 @@ if(get_option('mannheim_under_construction_campaign', false)){
                                         <li data-id="<?php echo $audio->ID ?>"><?php echo esc_html($audio->post_title); ?></li>
                                     </ul>
                                 </div>
+                                <div class="message"></div>
                                 <ul class="audios"></ul>
                                 <button type="reset"><?php esc_html_e('Reset', 'mannheim-under-construction'); ?></button>
                             </div>

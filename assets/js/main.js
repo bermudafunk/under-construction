@@ -447,6 +447,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 body.classList.remove('not_found');
                 search_intro.style.display = '';
                 search_sidebar_fulltext.querySelector('.content > .audios').innerHTML = '';
+                search_sidebar_fulltext.querySelector('.content > .message').innerHTML = '';
             });
         });
         search_form.querySelectorAll('.audios').forEach(result => {
@@ -658,7 +659,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     response.json().then(r => {
                         if(r.data.count){
                             body.classList.remove('not_found');
-                            search_text_box.value = r.data.message;
+                            search_sidebar_fulltext.querySelector('.message').innerHTML = r.data.message;
                             search_sidebar_fulltext.querySelector('.content > .audios').innerHTML = r.data.audios_html;
                             search_intro.style.display = 'none';
                         } else {

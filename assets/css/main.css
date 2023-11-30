@@ -648,6 +648,7 @@ button,
 }
 #search-fulltext .message{
     margin-right: 60px;
+    margin-top: 16px;
 }
 body.wait .leaflet-sidebar-pane *,
 body.wait .leaflet-sidebar-pane {
