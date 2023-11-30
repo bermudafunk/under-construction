@@ -614,6 +614,12 @@ button,
 .search-tag {
     cursor: pointer;
 }
+.campaign-tracks-list li {
+    list-style: url(../img/mauc_icon_acc3.svg);
+}
+.campaign-tracks-list li::marker {
+    font-size: 2em;
+}
 .content-production-date,
 .content-description-details{
     margin: 16px 0;
@@ -975,6 +981,9 @@ body.black-white .light-theme {
 .mannheim-under-construction-campaign-popup.active {
     display: block;
 }
+.mannheim-under-construction-campaign-popup.active ~ .leaflet-control-container .leaflet-control-zoom {
+    display: none;
+}
 .mannheim-under-construction-campaign-popup-box {
     position: absolute;
     left: 80px;
@@ -1014,9 +1023,6 @@ body.black-white .light-theme {
     flex-direction: column;
     height: 100%;
 }
-.campaign-icon {
-    background-color: var(--primary-colour);
-}
 .campaign-header {
     display: flex;
     flex-direction: row;
@@ -1024,9 +1030,6 @@ body.black-white .light-theme {
 .campaign-header .campaign-title {
     font-size: 1.4em;
     padding: 0 1em;
-}
-.campaign-tracks p {
-    font-size: 1.4em;
 }
 .track-swipe-bar,
 .more-about-campaign {

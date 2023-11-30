@@ -7,7 +7,6 @@ window.addEventListener('DOMContentLoaded', function(){
         const working_icon = L.icon({iconUrl: mannheim_under_construction.working_icon_url, iconSize: [47, 47]});
         const living_icon = L.icon({iconUrl: mannheim_under_construction.living_icon_url, iconSize: [47, 47]});
         const climate_icon = L.icon({iconUrl: mannheim_under_construction.climate_icon_url, iconSize: [47, 47]});
-        const walk_icon = L.icon({iconUrl: mannheim_under_construction.walk_icon_url, iconSize: [47, 47]});
         let map = L.map(map_wrapper.querySelector('.mannheim-under-construction-map'), {
             center: start_location,
             zoom: 13,
@@ -206,12 +205,19 @@ window.addEventListener('DOMContentLoaded', function(){
             });
         });
         black_white_switcher.addEventListener('click', _ => {
-            if(!black_white_switcher_used && body.classList.contains('campaign')) {
-                black_white_switcher_used = 1;
-                campaign_onboarding.classList.add('active');
-                campaign_markers.forEach(marker => {
-                    map.addLayer(marker);
-                });
+            if(body.classList.contains('campaign')){
+                if(!black_white_switcher_used) {
+                    black_white_switcher_used = 1;
+                    campaign_onboarding.classList.add('active');
+                    campaign_markers.forEach(marker => {
+                        map.addLayer(marker);
+                    });
+                }else if(black_white_switcher_used && body.classList.contains('campaign')) {
+                    black_white_switcher_used = 0;
+                    campaign_markers.forEach(marker => {
+                        map.removeLayer(marker);
+                    });
+                }
             }
             body.classList.toggle('black-white');
             update_bg();

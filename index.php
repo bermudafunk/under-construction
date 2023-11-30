@@ -447,7 +447,6 @@ class Mannheim_Under_Constrcution
 						'button' => __( 'Use this media', 'mannheim-under-construction' ),
 						'desired_location' => __( 'Desired location', 'mannheim-under-construction' ),
 						'audio_icon_url' => plugins_url( 'assets/img/uc_icon_pin.svg', __FILE__ ),
-						'walk_icon_url' => plugins_url( 'assets/img/uc_icon_walk_sy.svg', __FILE__ ),
                         'is_walk' => $is_walk,
                         'walk' => [
                             'stations' => $walk_stations,
@@ -635,8 +634,6 @@ class Mannheim_Under_Constrcution
 						'climate_icon_url' => plugins_url( 'assets/img/uc_icon_klima.svg', __FILE__ ),
 						'climate_icon_url_bw' => plugins_url( 'assets/img/uc_icon_klima.svg', __FILE__ ),
 						'climate_bg_url' => plugins_url( 'assets/img/mauc_k_muster_blk.svg', __FILE__ ),
-						'walk_icon_url' => plugins_url( 'assets/img/uc_icon_walk.svg', __FILE__ ),
-						'walk_icon_url_bw' => plugins_url( 'assets/img/uc_icon_walk_sy.svg', __FILE__ ),
 						'ajax_url' => admin_url( 'admin-ajax.php' ),
 						'search_error_message' => esc_html__('Oops, an error occurred while loading your search results. Please try again', 'mannheim-under-construction'),
 						'zoom_in_title' => esc_html__('Zoom in', 'mannheim-under-construction'),
