@@ -9,6 +9,8 @@
  * Text Domain: mannheim-under-construction
  * Domain Path: /languages
  * Update URI: false
+ * License: GPLv3
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
 
 class Mannheim_Under_Constrcution
