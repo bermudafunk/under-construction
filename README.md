@@ -1,0 +1,3 @@
+Dies ist ein WordPress Plugin, welches die Funktion für eine interaktive Audio-Stadtkarte bereitstellt. Die Karte wurde mit [Leaflet](https://leafletjs.com/) umgesetzt und die Inhalts-Pflege erfolgt über das WordPress Backend. Einige der Text-Lastigen Inhalte wurden zur Pflege als private Seiten angelegt und ausgelesen. Bei Wiederverwendung des Codes, müssen entsprechende Stellen aktualisiert werden, um der jeweiligen neuen Seite zu entsprechen.
+Für eine verbesserte Suche wurde das Plugin [Relevanssi](https://wordpress.org/plugins/relevanssi/) verwendet.
+Zur manuellen Sortierung von Taxonomies wurde das Plugin [Category Order and Taxonomy Terms Order](https://wordpress.org/plugins/taxonomy-terms-order/) verwendet.
