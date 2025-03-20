@@ -1120,6 +1120,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 if(target_tag) {
                     sidebar_left.open('#search');
                     body.classList.add('sidebar-fullscreen');
+                    search_form.classList.add('extended');
                     target_tag.nextElementSibling.classList.add('active');
                     target_tag.scrollIntoView();
                 }
